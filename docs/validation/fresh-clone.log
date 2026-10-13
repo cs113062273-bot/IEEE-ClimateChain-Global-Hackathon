@@ -1,0 +1,530 @@
+Fresh source commit: a29daadc79af054a4eeb33dddc86e6b74e24b74a
+{
+  "status": "passed",
+  "source_commit": "a29daadc79af054a4eeb33dddc86e6b74e24b74a",
+  "clone": ".runtime/fresh-clone-v2",
+  "environment": "Windows Python 3.11 newly installed pinned environment, Node 24; offline npm ci from cached packages, no copied node_modules",
+  "initial_absence": {
+    "data/raw": true,
+    "data/processed": true,
+    "experiments/models": true,
+    "contracts/runtime": true,
+    "frontend/node_modules": true,
+    "contracts/node_modules": true
+  },
+  "fixture_sha256_before": "5c403ff1c82600b7c2838a98a5adbaf0bc82c20d66a2e67a8d018268d2bdb4f0",
+  "fixture_sha256_after": "5c403ff1c82600b7c2838a98a5adbaf0bc82c20d66a2e67a8d018268d2bdb4f0",
+  "seconds": 85.917,
+  "checks": [
+    {
+      "check": "python-pip-check",
+      "returncode": 0,
+      "seconds": 5.459,
+      "log": ".runtime\\fresh-clone-checks\\python-pip-check.log"
+    },
+    {
+      "check": "python-smoke",
+      "returncode": 0,
+      "seconds": 21.349,
+      "log": ".runtime\\fresh-clone-checks\\python-smoke.log"
+    },
+    {
+      "check": "standalone-proof",
+      "returncode": 0,
+      "seconds": 0.487,
+      "log": ".runtime\\fresh-clone-checks\\standalone-proof.log"
+    },
+    {
+      "check": "sample-source-audit",
+      "returncode": 0,
+      "seconds": 0.289,
+      "log": ".runtime\\fresh-clone-checks\\sample-source-audit.log"
+    },
+    {
+      "check": "four-date-demo",
+      "returncode": 0,
+      "seconds": 7.824,
+      "log": ".runtime\\fresh-clone-checks\\four-date-demo.log"
+    },
+    {
+      "check": "python-tests",
+      "returncode": 0,
+      "seconds": 71.26,
+      "log": "docs/validation/fresh-clone-python-tests.log",
+      "command": "python -m pytest backend/tests scripts/tests -q",
+      "seconds_scope": "pytest-reported duration"
+    },
+    {
+      "check": "frontend-install-offline",
+      "returncode": 0,
+      "seconds": 36.23,
+      "log": ".runtime\\fresh-clone-checks\\frontend-install-offline.log"
+    },
+    {
+      "check": "frontend-production-build",
+      "returncode": 0,
+      "seconds": 45.99,
+      "log": ".runtime\\fresh-clone-checks\\frontend-production-build.log"
+    },
+    {
+      "check": "frontend-typecheck",
+      "returncode": 0,
+      "seconds": 3.69,
+      "log": ".runtime\\fresh-clone-checks\\frontend-typecheck.log"
+    },
+    {
+      "check": "contract-install-offline",
+      "returncode": 0,
+      "seconds": 33.818,
+      "log": ".runtime\\fresh-clone-checks\\contract-install-offline.log"
+    },
+    {
+      "check": "contract-build",
+      "returncode": 0,
+      "seconds": 11.461,
+      "log": ".runtime\\fresh-clone-checks\\contract-build.log"
+    },
+    {
+      "check": "contract-typecheck",
+      "returncode": 0,
+      "seconds": 6.053,
+      "log": ".runtime\\fresh-clone-checks\\contract-typecheck.log"
+    }
+  ],
+  "limitations": [
+    "Docker/Linux/cloud not exercised",
+    "No live chain or browser E2E inside clone; separate release tests cover them",
+    "No source reacquisition or full training/benchmark rerun; explicit original-byte/model release snapshots shipped"
+  ],
+  "failed_attempt_retained": {
+    "report": "docs/validation/fresh-clone-first-attempt.json",
+    "log": "docs/validation/fresh-clone-first-attempt.log",
+    "reason": "Test command used nonexistent data/tests; no tests ran. Corrected to scripts/tests; all 91 passed. Other 11 checks unchanged and passed."
+  },
+  "seconds_scope": "Initial three-lane checkout check wall time; corrected pytest additionally took 71.26 seconds. Not a combined latency measurement."
+}
+
+CHECK python-pip-check
+No broken requirements found.
+
+CHECK python-smoke
+{
+  "health": "ready",
+  "run_id": "run-1472b728a1bbfadb9f61",
+  "policies": {
+    "immediate": {
+      "emissions_kgco2": 34.98867200000001,
+      "forecast_emissions_kgco2": 15.345519079113414,
+      "cost_gbp": 42.56064,
+      "grid_import_kwh": 189.808,
+      "pv_used_kwh": 104.19200000000002,
+      "peak_grid_kw": 28.368000000000002,
+      "workload_kwh": 62.0,
+      "planning_peak_grid_kw": 26.352474514284904,
+      "zero_pv_peak_envelope_kw": 36.0,
+      "peak_cap_exceedance_kw": 0.0,
+      "difference_kgco2": 0.0,
+      "difference_percent": 0.0,
+      "cost_delta_gbp": 0.0
+    },
+    "cost_first": {
+      "emissions_kgco2": 35.23101939899275,
+      "forecast_emissions_kgco2": 15.049988177725588,
+      "cost_gbp": 37.71083343817214,
+      "grid_import_kwh": 192.996878407069,
+      "pv_used_kwh": 104.11200000000001,
+      "peak_grid_kw": 28.368000000000002,
+      "workload_kwh": 62.0,
+      "planning_peak_grid_kw": 25.300378360564522,
+      "zero_pv_peak_envelope_kw": 36.0,
+      "peak_cap_exceedance_kw": 0.0,
+      "difference_kgco2": -0.2423473989927416,
+      "difference_percent": -0.6926453195844117,
+      "cost_delta_gbp": -4.849806561827862
+    },
+    "carbon_first": {
+      "emissions_kgco2": 30.232687662313317,
+      "forecast_emissions_kgco2": 12.23578116330957,
+      "cost_gbp": 44.17267332312479,
+      "grid_import_kwh": 195.23391669250958,
+      "pv_used_kwh": 104.09600000000002,
+      "peak_grid_kw": 44.224000000000004,
+      "workload_kwh": 62.0,
+      "planning_peak_grid_kw": 42.4541315794373,
+      "zero_pv_peak_envelope_kw": 56.0,
+      "peak_cap_exceedance_kw": 0.0,
+      "difference_kgco2": 4.755984337686691,
+      "difference_percent": 13.592926126738076,
+      "cost_delta_gbp": 1.6120333231247912
+    },
+    "hybrid": {
+      "emissions_kgco2": 31.12381156658632,
+      "forecast_emissions_kgco2": 12.685919641908903,
+      "cost_gbp": 41.3172710123868,
+      "grid_import_kwh": 194.3956156593589,
+      "pv_used_kwh": 104.09600000000002,
+      "peak_grid_kw": 44.224000000000004,
+      "workload_kwh": 62.0,
+      "planning_peak_grid_kw": 42.4541315794373,
+      "zero_pv_peak_envelope_kw": 56.0,
+      "peak_cap_exceedance_kw": 0.0,
+      "difference_kgco2": 3.864860433413689,
+      "difference_percent": 11.046033508827339,
+      "cost_delta_gbp": -1.2433689876132021
+    },
+    "oracle": {
+      "emissions_kgco2": 29.885420110570696,
+      "forecast_emissions_kgco2": 12.659108029314536,
+      "cost_gbp": 45.70304326969629,
+      "grid_import_kwh": 193.89303836176896,
+      "pv_used_kwh": 104.13600000000002,
+      "peak_grid_kw": 43.616,
+      "workload_kwh": 62.0,
+      "planning_peak_grid_kw": 42.12509038505271,
+      "zero_pv_peak_envelope_kw": 56.0,
+      "peak_cap_exceedance_kw": 0.0,
+      "difference_kgco2": 5.103251889429313,
+      "difference_percent": 14.585440366039933,
+      "cost_delta_gbp": 3.1424032696962882
+    },
+    "peak_aware": {
+      "emissions_kgco2": 33.78117910237707,
+      "forecast_emissions_kgco2": 14.099467210812147,
+      "cost_gbp": 38.12674849470729,
+      "grid_import_kwh": 193.3130438596491,
+      "pv_used_kwh": 104.11200000000001,
+      "peak_grid_kw": 16.392888888888887,
+      "workload_kwh": 62.0,
+      "planning_peak_grid_kw": 16.0,
+      "zero_pv_peak_envelope_kw": 18.88888888888889,
+      "peak_cap_exceedance_kw": 0.0,
+      "difference_kgco2": 1.2074928976229415,
+      "difference_percent": 3.4510966795851563,
+      "cost_delta_gbp": -4.433891505292706
+    },
+    "peak_first": {
+      "emissions_kgco2": 37.5619426766917,
+      "forecast_emissions_kgco2": 26.60033383458645,
+      "cost_gbp": 43.34880541353382,
+      "grid_import_kwh": 193.0922105263157,
+      "pv_used_kwh": 104.19200000000002,
+      "peak_grid_kw": 14.257142857142853,
+      "workload_kwh": 62.0,
+      "planning_peak_grid_kw": 14.257142857142853,
+      "zero_pv_peak_envelope_kw": 14.257142857142853,
+      "peak_cap_exceedance_kw": 0.0,
+      "difference_kgco2": -2.573270676691692,
+      "difference_percent": -7.354582296497824,
+      "cost_delta_gbp": 0.7881654135338181
+    }
+  },
+  "evidence_sha256": "b3bca1e5a182b49679801de89c3bcf70105b31657bf067d4fb9476a4c2ed1fc7",
+  "verification": "VERIFIED"
+}
+
+CHECK standalone-proof
+{
+  "verified": true,
+  "status": "VERIFIED",
+  "sha256": "efd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2",
+  "digest": "0xefd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2",
+  "expected_digest": "0xefd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2",
+  "errors": [],
+  "warnings": [
+    "artifact unavailable; not locally checked: data/raw/neso_ci_2025.json",
+    "artifact unavailable; not locally checked: data/raw/openmeteo_london_2025.json"
+  ],
+  "artifact_checks": [
+    {
+      "path": "data/sample/intervals.json",
+      "role": "derived_support",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "data/raw/neso_ci_2025.json",
+      "role": "original_input",
+      "required_for_lineage": true,
+      "local_status": "NOT_LOCALLY_CHECKED"
+    },
+    {
+      "path": "data/raw/openmeteo_london_2025.json",
+      "role": "original_input",
+      "required_for_lineage": true,
+      "local_status": "NOT_LOCALLY_CHECKED"
+    },
+    {
+      "path": "experiments/models_portable/carbon_model.json",
+      "role": "decision_model",
+      "required_for_lineage": true,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "data/sample/intervals.json",
+      "role": "reproduction_code",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "backend/app/domain/solver.py",
+      "role": "reproduction_code",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "backend/app/domain/schemas.py",
+      "role": "reproduction_code",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "backend/app/services/data.py",
+      "role": "reproduction_code",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "backend/app/services/simulator.py",
+      "role": "reproduction_code",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "backend/app/services/evidence.py",
+      "role": "reproduction_code",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "backend/app/ml/forecast.py",
+      "role": "reproduction_code",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "scripts/train_models.py",
+      "role": "reproduction_code",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "requirements.txt",
+      "role": "reproduction_code",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "requirements.lock.txt",
+      "role": "reproduction_code",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "experiments/models_portable/carbon_model.json",
+      "role": "reproduction_code",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "backend/app/services/lineage.py",
+      "role": "reproduction_code",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "scripts/verify_evidence.py",
+      "role": "reproduction_code",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    },
+    {
+      "path": "data/trust/source_anchors.v1.json",
+      "role": "reproduction_code",
+      "required_for_lineage": false,
+      "local_status": "MATCHED"
+    }
+  ],
+  "levels": {
+    "integrity": {
+      "verified": true,
+      "status": "VERIFIED"
+    },
+    "source_lineage": {
+      "verified": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "source_checks": [
+        {
+          "source_id": "neso-national-ci-2025",
+          "status": "RECONSTRUCTED",
+          "representation": "embedded_original_bytes",
+          "required_for_lineage": true
+        },
+        {
+          "source_id": "openmeteo-london-weather-2025",
+          "status": "RECONSTRUCTED",
+          "representation": "embedded_original_bytes",
+          "required_for_lineage": true
+        },
+        {
+          "source_id": "gridproof-carbon-model-lightgbm-v1",
+          "status": "RECONSTRUCTED",
+          "representation": "embedded_model_bytes",
+          "required_for_lineage": true
+        }
+      ],
+      "reconstructed_fields": [
+        "actual_ci",
+        "past_only_forecast",
+        "forecast_metadata",
+        "preceding_hour_radiation",
+        "decision_calendar_pv",
+        "realized_radiation_pv",
+        "synthetic_fixed_load",
+        "illustrative_utc_tariff",
+        "scenario_configuration",
+        "decision_energy_balance"
+      ],
+      "trust_boundary": "Consistency with separately trusted HTTPS snapshot digests and fixed transforms; no proof of upstream truth, historical availability or causal avoided emissions."
+    },
+    "physical_validity": {
+      "verified": true,
+      "status": "VERIFIED",
+      "errors": []
+    },
+    "onchain_attestation": {
+      "verified": false,
+      "status": "NOT_CHECKED",
+      "required_for_offline_verification": false
+    }
+  },
+  "checks": {
+    "digest": true,
+    "source_lineage_reconstructed": true,
+    "physical_constraints_reconstructed": true,
+    "metrics_reproduced": true
+  },
+  "verified_scope": "offline integrity/source-lineage/physical arithmetic only; onchain is a separate check",
+  "trust_boundary": "Consistency with separately trusted source snapshot digests, fixed transforms and modeled arithmetic; no upstream meter truth, historical publication proof, optimality proof or real avoided emissions certification"
+}
+
+CHECK sample-source-audit
+SOURCE AUDIT gridproof-columnar-storage: acquisition_status=verified local_assets=absent_bulk_snapshot rows=75034 size=3420160 sha256=3d1ebae826407602a495c19588f94bf2250982894fc181b1336b5ca299659412
+SOURCE AUDIT gridproof-normalized-2025: acquisition_status=verified local_assets=absent_bulk_snapshot rows=17520 size=1648560 sha256=8b7e5c77838fc56066278ed272db0434a525c46410a6f89daa62e1e3fb6c036d
+SOURCE AUDIT gridproof-offline-sample: acquisition_status=verified local_assets=all_present rows=192 size=2354999 sha256=5c403ff1c82600b7c2838a98a5adbaf0bc82c20d66a2e67a8d018268d2bdb4f0
+SOURCE AUDIT neso-demand-2025: acquisition_status=verified local_assets=absent_bulk_snapshot rows=17520 size=1869771 sha256=8b8be946bbb084bc28fbf95a71fad0fceb5543b98e02755235130a42beaee4e0
+SOURCE AUDIT neso-national-ci-2025: acquisition_status=verified local_assets=absent_bulk_snapshot rows=17520 size=1657882 sha256=0c07bc094561e19c61826b693395b92e8334a34b613e5525ca016ae6c91fc815
+SOURCE AUDIT neso-national-ci-2026: acquisition_status=verified local_assets=absent_bulk_snapshot rows=13690 size=1291221 sha256=5312d125ee06556a7431f0e979fd0e6e504a147b2ea6058f5938b574875f13df
+SOURCE AUDIT openmeteo-london-weather-2025: acquisition_status=verified local_assets=absent_bulk_snapshot rows=8784 size=318992 sha256=6098ffc0ecac7610670f34efcd4322717b04a9fdaba5a666ed265ce066506edd
+SOURCE AUDIT pvgis-london-pv-model-2023: acquisition_status=verified local_assets=absent_bulk_snapshot rows=8760 size=824475 sha256=e91e05bf4ae36d1bc7f68aa207591b4cfabe346fdf609b23c5066ce626cd8c65
+SOURCE AUDIT ukpn-feeder-sample: acquisition_status=restricted local_assets=not_downloaded rows=not downloaded size=n/a sha256=n/a
+
+CHECK four-date-demo
+[
+  {
+    "date": "2025-01-15",
+    "model": "past-only-seven-day-seasonal-median-v1",
+    "policies": 7,
+    "source_lineage": "VERIFIED",
+    "verification": "VERIFIED",
+    "optional_local_source_warnings": 2
+  },
+  {
+    "date": "2025-08-12",
+    "model": "past-only-seven-day-seasonal-median-v1",
+    "policies": 7,
+    "source_lineage": "VERIFIED",
+    "verification": "VERIFIED",
+    "optional_local_source_warnings": 2
+  },
+  {
+    "date": "2025-09-01",
+    "model": "lightgbm-past-only-v1",
+    "policies": 7,
+    "source_lineage": "VERIFIED",
+    "verification": "VERIFIED",
+    "optional_local_source_warnings": 2
+  },
+  {
+    "date": "2025-10-13",
+    "model": "lightgbm-past-only-v1",
+    "policies": 7,
+    "source_lineage": "VERIFIED",
+    "verification": "VERIFIED",
+    "optional_local_source_warnings": 2
+  }
+]
+
+CHECK python-tests
+........................................................................ [ 79%]
+...................                                                      [100%]
+============================== warnings summary ===============================
+..\clean-python\Lib\site-packages\starlette\testclient.py:51
+  C:\Users\c9408\Desktop\IEEE ClimateChain Global Hackathon\.runtime\clean-python\Lib\site-packages\starlette\testclient.py:51: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+91 passed, 1 warning in 71.26s (0:01:11)
+
+CHECK frontend-install-offline
+
+added 89 packages in 35s
+
+CHECK frontend-production-build
+
+> gridproof-dashboard@0.1.0 build
+> next build
+
+▲ Next.js 16.4.0 (Turbopack)
+✓ Running next.config.ts took 166ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 18.9s
+  Running TypeScript ...
+  Finished TypeScript in 4.0s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/6) ...
+  Generating static pages using 7 workers (1/6)
+  Generating static pages using 7 workers (2/6)
+  Generating static pages using 7 workers (4/6)
+✓ Generating static pages using 7 workers (6/6) in 1300ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /audit
+├ ○ /dispatch
+└ ○ /replay
+
+
+○  (Static)  prerendered as static content
+
+CHECK frontend-typecheck
+
+> gridproof-dashboard@0.1.0 typecheck
+> tsc --noEmit
+
+CHECK contract-install-offline
+
+added 88 packages in 33s
+
+STDERR:
+npm warn allow-scripts 1 package has install scripts not yet covered by allowScripts:
+npm warn allow-scripts   esbuild@0.28.2 (postinstall: node install.js)
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
+
+CHECK contract-build
+
+> gridproof-contracts@0.1.0 build
+> hardhat build
+
+
+Compiled 1 Solidity file with solc 0.8.28 (evm target: cancun)
+
+CHECK contract-typecheck
+
+> gridproof-contracts@0.1.0 typecheck
+> tsc --noEmit

@@ -1,0 +1,104 @@
+{
+  "status": "passed",
+  "source_commit": "a29daadc79af054a4eeb33dddc86e6b74e24b74a",
+  "clone": ".runtime/fresh-clone-v2",
+  "environment": "Windows Python 3.11 newly installed pinned environment, Node 24; offline npm ci from cached packages, no copied node_modules",
+  "initial_absence": {
+    "data/raw": true,
+    "data/processed": true,
+    "experiments/models": true,
+    "contracts/runtime": true,
+    "frontend/node_modules": true,
+    "contracts/node_modules": true
+  },
+  "fixture_sha256_before": "5c403ff1c82600b7c2838a98a5adbaf0bc82c20d66a2e67a8d018268d2bdb4f0",
+  "fixture_sha256_after": "5c403ff1c82600b7c2838a98a5adbaf0bc82c20d66a2e67a8d018268d2bdb4f0",
+  "seconds": 85.917,
+  "checks": [
+    {
+      "check": "python-pip-check",
+      "returncode": 0,
+      "seconds": 5.459,
+      "log": ".runtime\\fresh-clone-checks\\python-pip-check.log"
+    },
+    {
+      "check": "python-smoke",
+      "returncode": 0,
+      "seconds": 21.349,
+      "log": ".runtime\\fresh-clone-checks\\python-smoke.log"
+    },
+    {
+      "check": "standalone-proof",
+      "returncode": 0,
+      "seconds": 0.487,
+      "log": ".runtime\\fresh-clone-checks\\standalone-proof.log"
+    },
+    {
+      "check": "sample-source-audit",
+      "returncode": 0,
+      "seconds": 0.289,
+      "log": ".runtime\\fresh-clone-checks\\sample-source-audit.log"
+    },
+    {
+      "check": "four-date-demo",
+      "returncode": 0,
+      "seconds": 7.824,
+      "log": ".runtime\\fresh-clone-checks\\four-date-demo.log"
+    },
+    {
+      "check": "python-tests",
+      "returncode": 0,
+      "seconds": 71.26,
+      "log": "docs/validation/fresh-clone-python-tests.log",
+      "command": "python -m pytest backend/tests scripts/tests -q",
+      "seconds_scope": "pytest-reported duration"
+    },
+    {
+      "check": "frontend-install-offline",
+      "returncode": 0,
+      "seconds": 36.23,
+      "log": ".runtime\\fresh-clone-checks\\frontend-install-offline.log"
+    },
+    {
+      "check": "frontend-production-build",
+      "returncode": 0,
+      "seconds": 45.99,
+      "log": ".runtime\\fresh-clone-checks\\frontend-production-build.log"
+    },
+    {
+      "check": "frontend-typecheck",
+      "returncode": 0,
+      "seconds": 3.69,
+      "log": ".runtime\\fresh-clone-checks\\frontend-typecheck.log"
+    },
+    {
+      "check": "contract-install-offline",
+      "returncode": 0,
+      "seconds": 33.818,
+      "log": ".runtime\\fresh-clone-checks\\contract-install-offline.log"
+    },
+    {
+      "check": "contract-build",
+      "returncode": 0,
+      "seconds": 11.461,
+      "log": ".runtime\\fresh-clone-checks\\contract-build.log"
+    },
+    {
+      "check": "contract-typecheck",
+      "returncode": 0,
+      "seconds": 6.053,
+      "log": ".runtime\\fresh-clone-checks\\contract-typecheck.log"
+    }
+  ],
+  "limitations": [
+    "Docker/Linux/cloud not exercised",
+    "No live chain or browser E2E inside clone; separate release tests cover them",
+    "No source reacquisition or full training/benchmark rerun; explicit original-byte/model release snapshots shipped"
+  ],
+  "failed_attempt_retained": {
+    "report": "docs/validation/fresh-clone-first-attempt.json",
+    "log": "docs/validation/fresh-clone-first-attempt.log",
+    "reason": "Test command used nonexistent data/tests; no tests ran. Corrected to scripts/tests; all 91 passed. Other 11 checks unchanged and passed."
+  },
+  "seconds_scope": "Initial three-lane checkout check wall time; corrected pytest additionally took 71.26 seconds. Not a combined latency measurement."
+}

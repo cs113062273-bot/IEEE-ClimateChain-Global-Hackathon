@@ -42,6 +42,8 @@ See [complete tables](COMPETITION_EVALUATION.md), [consistency audit](BENCHMARK_
 - [Minimal human steps](SUBMISSION_CHECKLIST.md), [public hosting/Sepolia preparation](PUBLIC_DEPLOYMENT.md).
 - [Actual tests and retained failures](VALIDATION.md).
 
+The final implementation source commit is `a29daadc79af054a4eeb33dddc86e6b74e24b74a`, independently cloned and checked with a newly installed pinned Windows Python environment. All 91 Python/data tests, both offline npm installs, four demo dates, standalone proof and production/contract builds passed there. The original checkout also passed 32 contract/bridge and six browser tests. Final documentation/log commits follow without changing that implementation. The shipped report's domain/source/model fingerprints still match the checkout.
+
 ## Remaining risks and subjective assessment
 
 The source snapshot trust root must itself come from a trusted release or independent provider check. This system does not prove provider truth, historical publication availability, optimality, actual campus deployment or causal avoided emissions. The test covers September through December of one year and one declared site template. Sensitivity fallbacks show where forecast planning can fail during realized replay. Docker/Linux/cloud execution and public service reliability are unverified.

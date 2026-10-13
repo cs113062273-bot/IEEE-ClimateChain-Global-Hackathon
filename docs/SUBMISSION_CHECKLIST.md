@@ -13,7 +13,7 @@ Displayed deadline: **2026-10-25 22:00 Asia/Taipei / 14:00 UTC**. Leave several 
 - [x] Self-contained `offline/index.html` presents recorded replay without Python/Node/network/wallet; limited browser-check scope disclosed.
 - [x] Public read-only Sepolia preparation and duplicate-scope inspection; no deployment claimed.
 - [x] Dockerfiles/compose/public-service settings prepared; **Docker/Linux execution not verified**.
-- [ ] Final integrated tests/build/reproducibility/secrets logs reviewed after the final change. Use actual final worklog; earlier passes are not substitute evidence.
+- [x] Final integrated tests/build/reproducibility/secrets logs reviewed: 91 Python/data, 32 contract/bridge and 6 browser tests, exact source-commit clone, independent benchmark consistency and actual local attestation/duplicate check. See [validation](VALIDATION.md); retained failures remain visible.
 
 ## Minimal account/publication actions for the entrant
 
@@ -26,14 +26,14 @@ Displayed deadline: **2026-10-25 22:00 Asia/Taipei / 14:00 UTC**. Leave several 
 ## Final objective release gate
 
 - [ ] Anonymous source/video links work; any demo/explorer link is real.
-- [ ] Latest Python/data, contract/bridge, E2E, source forgery/missing-source, infeasible/timeout/duplicate and production-build results pass, or unresolved failures are disclosed.
-- [ ] Fresh clone reproduces demo/full evidence; distinguish reused installed environment from a new Python/Linux install.
-- [ ] Benchmark audit agrees with CSV/paired intervals/plots; failed and negative rows remain.
-- [ ] Final source/anchor/model changes are reflected in new evidence; old bytes/receipts remain archival.
-- [ ] Secrets and attribution checked for all intended public files; exclude RPC secrets, signer keys, runtime/personal data.
-- [ ] Success and deliberate forgery rejection demonstrated; no new digest mislabeled as an old commitment.
-- [ ] Missing sources/proof and unavailable RPC show incomplete/unverifiable.
-- [ ] Claims remain modeled/simulated; no reliable custom-AI superiority or actual avoided-emissions claim.
+- [x] Latest Python/data, contract/bridge, E2E, source forgery/missing-source, infeasible/timeout/duplicate and production-build results pass; corrected intermediate failures are retained.
+- [x] Fresh clone reproduces demo/full evidence using a newly installed pinned Windows Python environment and two independent offline npm installs. Linux/container remains unverified.
+- [x] Benchmark audit agrees with CSV/paired intervals/plots; failed and negative rows remain.
+- [x] Final source/anchor/model fingerprints match shipped v2 evidence; old bytes/receipts remain archival.
+- [x] Common credential patterns and source attribution reviewed locally; RPC/signing secrets and runtime files excluded. Recheck intended public contents before publication; this bounded scan is not complete security certification.
+- [x] Success and deliberate forgery rejection demonstrated; fixed release proof is read separately from dynamic reports and no new digest is mislabeled as an old commitment.
+- [x] Missing sources/proof and unavailable RPC show incomplete/unverifiable.
+- [x] Claims remain modeled/simulated; no reliable custom-AI superiority or actual avoided-emissions claim.
 - [ ] Eligibility, account fields and official conflicts resolved as needed; confirmation/offline backup saved.
 
 Account operations are a human handoff. They do not prevent implementation/testing/artifact preparation, and were not performed automatically.
