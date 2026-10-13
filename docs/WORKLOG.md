@@ -35,3 +35,11 @@ The final UI review corrected replay request parameters: edited battery/job/obje
 Setup commands installed the pinned Python, frontend and contract dependencies on this Windows host. Unix scripts are supplied but not executed on a Unix host. The isolated source-copy test validates offline behavior with the installed dependency environment; it does not claim a separate clean dependency installation.
 
 Local preview: http://127.0.0.1:3000; API docs: http://127.0.0.1:8000/docs. `scripts/run_demo.ps1` / `sh scripts/run_demo.sh` launches/reuses the local pieces. Runtime logs, databases, local chain metadata, raw data and model binaries are ignored. No paid resources, public source push, hosted deployment, video upload or submission was performed.
+
+## Fresh Git-clone check
+
+Created a local source commit and cloned it to `.runtime/fresh-clone-f5e27d1`. The clone contained no downloaded bulk files, trained model or runtime chain metadata. Using the installed Python environment, `scripts/smoke_test.py`, the standalone verifier on the shipped evidence and sample source validation all passed. Missing upstream bulk snapshots produced explicit warnings/local availability labels. The fixture SHA256 stayed `134251a6f846bd492b2208041cd6615ad892678dc8e94b4be9a6fa5cc8e3d8d5` after Git checkout.
+
+Executed `npm ci --offline --no-audit --no-fund` independently in the clone's frontend and contracts: both installed successfully from the npm cache with no network. The clone's Next.js production build/type check and Solidity build both passed. This checks fresh node dependency installation and source packaging, while Python uses the already installed pinned environment. `.gitattributes` preserves exact bytes rather than converting line endings that would invalidate evidence fingerprints.
+
+Final browser suite passed all three workflows after parameter replay and normalized-default identity fixes. Equivalent compare/replay requests now produce the same run ID and metrics. Final backend suite has 41 tests, source suite 8, contract/bridge suite 19 and browser suite 3.
