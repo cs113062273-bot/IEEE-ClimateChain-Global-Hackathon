@@ -4,7 +4,7 @@ Release checks ran on Windows with Python 3.11 and Node 24. These are actual loc
 
 | Check | Result | Record |
 | --- | --- | --- |
-| Python engine, source, peak, judge API and lineage tests | 90 passed; one existing Starlette/AnyIO deprecation warning | [python-tests.log](validation/python-tests.log) |
+| Python engine, source, peak, judge API and lineage tests | 91 passed; one existing Starlette/AnyIO deprecation warning | [python-tests.log](validation/python-tests.log) |
 | Contract and bridge tests | 32 passed | [contract-tests.log](validation/contract-tests.log) |
 | Solidity build / TypeScript | Passed | [build](validation/contract-build.log), [typecheck](validation/contract-typecheck.log) |
 | Browser E2E / offline / responsive | 6 passed on Microsoft Edge | [browser-e2e.log](validation/browser-e2e.log) |
@@ -13,7 +13,7 @@ Release checks ran on Windows with Python 3.11 and Node 24. These are actual loc
 | New Python dependency installation | Pinned lockfile installed into a new environment; pip check passed | [dependency check](validation/clean-python-install.log) |
 | Fresh Git clone | Final source-commit check pending completion | Final record will be linked below |
 | Full benchmark consistency | 112 groups / 3,873 checks passed; old 120 policy-day values unchanged | [independent review](BENCHMARK_CONSISTENCY.md) |
-| Production build / frontend typecheck | Passed; final source clone build is also checked separately | Fresh-clone record |
+| Production build / frontend typecheck | Passed; final source clone build is also checked separately | [production-build.log](validation/production-build.log) |
 | Secrets scan | No common credential patterns found; bounded scan, not complete security proof | [secrets-scan.json](validation/secrets-scan.json) |
 
 ## Failures retained and corrected
@@ -28,3 +28,5 @@ Release checks ran on Windows with Python 3.11 and Node 24. These are actual loc
 Local VERIFIED means Integrity + Source Lineage + Physical Validity. On-chain Attestation is separate and remains NOT CHECKED without a canonical current receipt. Old v1 is INTEGRITY_ONLY. Required-source or external-anchor absence is INCOMPLETE. An untrusted rewritten source cannot become trusted merely by changing its reported hash.
 
 Only the local test chain was exercised. No public website, Sepolia deployment, Git push, visibility change, video upload or formal contest submission occurred.
+
+The captured September 1 v2 release proof, its three independently verified offline layers, rehashed forgery rejection, actual local registration/read and duplicate rejection are retained in [evidence-verification.json](validation/evidence-verification.json). This is a historical test record from that particular chain instance. A stopped or restarted local node cannot turn it into a current valid receipt; the live reader must query and verify the current deployment and record.

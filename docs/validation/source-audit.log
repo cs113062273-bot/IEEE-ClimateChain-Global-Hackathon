@@ -1,9 +1,9 @@
-SOURCE AUDIT gridproof-columnar-storage: acquisition_status=verified local_assets=all_present rows=75034 size=3420160 sha256=3d1ebae826407602a495c19588f94bf2250982894fc181b1336b5ca299659412
-SOURCE AUDIT gridproof-normalized-2025: acquisition_status=verified local_assets=all_present rows=17520 size=1648560 sha256=8b7e5c77838fc56066278ed272db0434a525c46410a6f89daa62e1e3fb6c036d
-SOURCE AUDIT gridproof-offline-sample: acquisition_status=verified local_assets=all_present rows=192 size=2354999 sha256=5c403ff1c82600b7c2838a98a5adbaf0bc82c20d66a2e67a8d018268d2bdb4f0
-SOURCE AUDIT neso-demand-2025: acquisition_status=verified local_assets=all_present rows=17520 size=1869771 sha256=8b8be946bbb084bc28fbf95a71fad0fceb5543b98e02755235130a42beaee4e0
-SOURCE AUDIT neso-national-ci-2025: acquisition_status=verified local_assets=all_present rows=17520 size=1657882 sha256=0c07bc094561e19c61826b693395b92e8334a34b613e5525ca016ae6c91fc815
-SOURCE AUDIT neso-national-ci-2026: acquisition_status=verified local_assets=all_present rows=13690 size=1291221 sha256=5312d125ee06556a7431f0e979fd0e6e504a147b2ea6058f5938b574875f13df
-SOURCE AUDIT openmeteo-london-weather-2025: acquisition_status=verified local_assets=all_present rows=8784 size=318992 sha256=6098ffc0ecac7610670f34efcd4322717b04a9fdaba5a666ed265ce066506edd
-SOURCE AUDIT pvgis-london-pv-model-2023: acquisition_status=verified local_assets=all_present rows=8760 size=824475 sha256=e91e05bf4ae36d1bc7f68aa207591b4cfabe346fdf609b23c5066ce626cd8c65
-SOURCE AUDIT ukpn-feeder-sample: acquisition_status=restricted local_assets=not_downloaded rows=not downloaded size=n/a sha256=n/a
+SOURCE AUDIT gridproof-columnar-storage: acquisition_status=verified local_assets=all_present rows=75034 size=3420160 sha256=3d1ebae826407602a495c19588f94bf2250982894fc181b1336b5ca299659412
+SOURCE AUDIT gridproof-normalized-2025: acquisition_status=verified local_assets=all_present rows=17520 size=1648560 sha256=8b7e5c77838fc56066278ed272db0434a525c46410a6f89daa62e1e3fb6c036d
+SOURCE AUDIT gridproof-offline-sample: acquisition_status=verified local_assets=all_present rows=192 size=2354999 sha256=5c403ff1c82600b7c2838a98a5adbaf0bc82c20d66a2e67a8d018268d2bdb4f0
+SOURCE AUDIT neso-demand-2025: acquisition_status=verified local_assets=all_present rows=17520 size=1869771 sha256=8b8be946bbb084bc28fbf95a71fad0fceb5543b98e02755235130a42beaee4e0
+SOURCE AUDIT neso-national-ci-2025: acquisition_status=verified local_assets=all_present rows=17520 size=1657882 sha256=0c07bc094561e19c61826b693395b92e8334a34b613e5525ca016ae6c91fc815
+SOURCE AUDIT neso-national-ci-2026: acquisition_status=verified local_assets=all_present rows=13690 size=1291221 sha256=5312d125ee06556a7431f0e979fd0e6e504a147b2ea6058f5938b574875f13df
+SOURCE AUDIT openmeteo-london-weather-2025: acquisition_status=verified local_assets=all_present rows=8784 size=318992 sha256=6098ffc0ecac7610670f34efcd4322717b04a9fdaba5a666ed265ce066506edd
+SOURCE AUDIT pvgis-london-pv-model-2023: acquisition_status=verified local_assets=all_present rows=8760 size=824475 sha256=e91e05bf4ae36d1bc7f68aa207591b4cfabe346fdf609b23c5066ce626cd8c65
+SOURCE AUDIT ukpn-feeder-sample: acquisition_status=restricted local_assets=not_downloaded rows=not downloaded size=n/a sha256=n/a

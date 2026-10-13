@@ -1,23 +1,23 @@
-
-> gridproof-dashboard@0.1.0 test:e2e
-> playwright test
-
-
-Running 6 tests using 1 worker
-
-npm.cmd : (node:28128) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
-位於 線路:2 字元:100
-+ ... d-rpc.log'; & npm.cmd --prefix frontend run test:e2e *> 'docs/validat ...
-+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: ((node:28128) Wa... env being set.:String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError
- 
-(Use `node --trace-warnings ...` to show where the warning was created)
-  ok 1 tests\competition.spec.ts:3:5 › trained AI, carbon-cost-peak comparison, source lineage and rehashed attack (7.7s)
-  ok 2 tests\competition.spec.ts:24:5 › judge pages remain readable on desktop and phone (7.5s)
-  ok 3 tests\competition.spec.ts:38:5 › offline recorded demo works without API, network, runtime or wallet (1.6s)
-  ok 4 tests\workflow.spec.ts:3:5 › computed dispatch, deterministic replay, independent tamper check, and responsive audit (9.9s)
-  ok 5 tests\workflow.spec.ts:49:5 › infeasible deadline retains the previous usable schedule and gives an explicit error (2.0s)
-  ok 6 tests\workflow.spec.ts:60:5 › deliberate local-chain attestation verifies a real receipt and rejects duplicate scope (8.5s)
-
-  6 passed (39.1s)
+
+> gridproof-dashboard@0.1.0 test:e2e
+> playwright test
+
+
+Running 6 tests using 1 worker
+
+npm.cmd : (node:24736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+位於 線路:2 字元:1
++ & npm.cmd --prefix frontend run test:e2e *> '.runtime/final-e2e-with- ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:24736) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\competition.spec.ts:3:5 › trained AI, carbon-cost-peak comparison, source lineage and rehashed attack (7.4s)
+  ok 2 tests\competition.spec.ts:27:5 › judge pages remain readable on desktop and phone (3.7s)
+  ok 3 tests\competition.spec.ts:41:5 › offline recorded demo works without API, network, runtime or wallet (640ms)
+  ok 4 tests\workflow.spec.ts:3:5 › computed dispatch, deterministic replay, independent tamper check, and responsive audit (6.2s)
+  ok 5 tests\workflow.spec.ts:49:5 › infeasible deadline retains the previous usable schedule and gives an explicit error (2.1s)
+  ok 6 tests\workflow.spec.ts:60:5 › deliberate local-chain attestation verifies a real receipt and rejects duplicate scope (7.6s)
+
+  6 passed (29.3s)

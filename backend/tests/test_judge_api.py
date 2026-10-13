@@ -56,3 +56,13 @@ def test_duplicate_does_not_overwrite_existing_receipt(monkeypatch):
     response=client.post("/api/attest",json={"evidence_id":proof["evidence_id"],"network":"local"})
     assert response.json()["status"]=="REJECTED"
     assert storage.get("chain-"+key,"chain")==original
+
+def test_recorded_release_proof_is_available_without_runtime_db(monkeypatch):
+    from backend.app import main as api_module
+    from backend.app.services import storage
+    proof=client.get("/api/demo-proof").json()
+    monkeypatch.setattr(storage,"get",lambda *args:(_ for _ in ()).throw(ValueError("empty runtime")))
+    assert client.get("/api/evidence/"+proof["evidence_id"]).json()["digest"]==proof["digest"]
+    monkeypatch.setattr(api_module,"call_bridge",lambda request:{"ok":True,"status":"VERIFIED","digest":"0x"+"f"*64})
+    checked=client.get("/api/demo-attestation").json()
+    assert checked["status"]=="REPORT_DIGEST_MISMATCH" and checked["ok"] is False

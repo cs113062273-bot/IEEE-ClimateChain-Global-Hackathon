@@ -77,4 +77,4 @@ def build(dates,history_days=7):
 
 
 if __name__=="__main__":
-    p=argparse.ArgumentParser();p.add_argument("--dates",nargs="+",default=["2025-01-15","2025-08-12"]);p.add_argument("--history-days",type=int,default=7);args=p.parse_args();build(args.dates,args.history_days)
+    p=argparse.ArgumentParser();p.add_argument("--dates",nargs="+",default=["2025-01-15","2025-08-12","2025-09-01","2025-10-13"]);p.add_argument("--history-days",type=int,default=14);args=p.parse_args();build(args.dates,args.history_days)

@@ -52,6 +52,21 @@ def demo():
     if not path.exists(): raise ValueError("Run scripts/make_demo_fixture.py to prepare the cached demo")
     return json.loads(path.read_text(encoding="utf-8"))
 
+@app.get("/api/demo-proof")
+def recorded_proof():
+    path=ROOT/"data/sample/evidence.json"
+    if not path.exists():raise ValueError("Recorded release evidence is unavailable")
+    return json.loads(path.read_text(encoding="utf-8"))
+
+@app.get("/api/demo-attestation")
+def recorded_attestation():
+    proof=recorded_proof()
+    if os.environ.get("GRIDPROOF_CHAIN_NETWORK","local")=="testnet":return public_proof()
+    result=call_bridge({"action":"lookup","network":"local","expected_chain_id":31337,"claim_scope":proof["evidence"]["claim_scope"]})
+    if result.get("status")=="VERIFIED" and result.get("digest","").lower()!=proof["digest"].lower():
+        return {"ok":False,"status":"REPORT_DIGEST_MISMATCH","existing_claim":result,"message":"The current scope commits another report; the recorded release digest is not attested"}
+    return result
+
 @app.get("/api/chain-config")
 def chain_config():
     network=os.environ.get("GRIDPROOF_CHAIN_NETWORK","local")
@@ -114,7 +129,14 @@ def evidence(request:EvidenceRequest):
 @app.get("/api/evidence/{evidence_id}")
 def cached_evidence(evidence_id:str):
     if not evidence_id.startswith("evidence-") or len(evidence_id)>64: raise ValueError("Invalid evidence identifier")
-    return storage.get(evidence_id,"evidence")
+    return prepared_proof(evidence_id)
+
+def prepared_proof(evidence_id):
+    try:return storage.get(evidence_id,"evidence")
+    except ValueError:
+        fixed=recorded_proof()
+        if fixed["evidence_id"]==evidence_id:return fixed
+        raise ValueError("Unknown or unavailable evidence identifier")
 
 class VerifyRequest(BaseModel):
     model_config=ConfigDict(extra="forbid")
@@ -130,7 +152,7 @@ class AttackRequest(BaseModel):
 
 @app.post("/api/attack-demo")
 def attack_demo(request:AttackRequest):
-    proof=storage.get(request.evidence_id,"evidence")
+    proof=prepared_proof(request.evidence_id)
     forged=copy.deepcopy(proof["evidence"])
     for key in ("intervals","dispatch","baseline_dispatch"):
         for row in forged["inputs"][key]: row["ci_actual_g_per_kwh"]="0.000000000"
@@ -143,7 +165,7 @@ def attack_demo(request:AttackRequest):
 def attest(request:AttestRequest):
     if request.network!="local" or os.environ.get("GRIDPROOF_CHAIN_NETWORK","local")!="local" or os.environ.get("GRIDPROOF_READ_ONLY")=="1" or os.environ.get("GRIDPROOF_ALLOW_CHAIN_WRITES","1")!="1":
         raise HTTPException(status_code=403,detail="Chain writes are disabled. Public reviewers use read-only verification.")
-    proof=storage.get(request.evidence_id,"evidence")
+    proof=prepared_proof(request.evidence_id)
     valid=verify_evidence(proof["evidence"],proof["digest"])
     if not valid["verified"]: raise ValueError("Prepared evidence no longer verifies")
     result=call_bridge({"action":"attest","network":request.network,"expected_chain_id":request.expected_chain_id,"digest":proof["digest"],"claim_scope":proof["evidence"]["claim_scope"]})

@@ -1,5 +1,5 @@
 {
-  "evidence_id": "evidence-4716e0d4ca849bf6804b",
+  "evidence_id": "evidence-efd8743f17511cf9c95d",
   "evidence": {
     "baseline_id": "immediate-unmanaged-battery-idle-v1",
     "canonicalization": "gridproof-canonical-json-v1/float-decimal-strings-9",
@@ -7010,7 +7010,7 @@
           "sha256": "10703bcbe2a64d113e5136f287393bd436b9f29a44dbb77b7137e13579b8d86c"
         }
       ],
-      "code_commit": "a0e734b9fe255aacc59bcff0dd3cda0db14778f3",
+      "code_commit": "e7cd586bef91e9da379a86bc87b350f32b16c66a",
       "run_id": "run-e615c6e59940915ed1d8",
       "seed": 42,
       "selected_policy": "peak_aware"
@@ -7088,7 +7088,7 @@
       "objective_value": "0.391563149",
       "peak_epigraph_kw": "18.888888889",
       "scipy_version": "1.16.3",
-      "seconds": "0.040029700",
+      "seconds": "0.068068500",
       "status": "optimal",
       "success": true
     },
@@ -7163,8 +7163,8 @@
       "time": "UTC"
     }
   },
-  "digest": "0x4716e0d4ca849bf6804b737954c6b176172da360304e6cd4651910cb40936ba7",
-  "sha256": "4716e0d4ca849bf6804b737954c6b176172da360304e6cd4651910cb40936ba7",
+  "digest": "0xefd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2",
+  "sha256": "efd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2",
   "provenance_status": {
     "grid_outcomes": "observed",
     "decision_carbon": "forecast",

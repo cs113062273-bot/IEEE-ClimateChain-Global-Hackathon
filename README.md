@@ -119,7 +119,7 @@ npm run test:e2e
 
 Tests exercise DST settlement conversion, source integrity and missingness, no future feature/weather leakage, feasible and infeasible deadlines, energy conservation, terminal SoC, battery exclusivity, shared charger caps, batch contiguity, solver failure/time limits, canonical tampering, independently reconstructed arithmetic, duplicate registry scopes, authorization, replacement history, wrong-chain/RPC handling and the browser workflow. [Execution worklog](docs/WORKLOG.md) records actual pass counts and verification limits.
 
-The upgraded Windows release passed **90 Python/data tests, 32 contract/bridge tests and 6 browser tests**, plus the production build and TypeScript checks. `scripts/test_offline_copy.py` checks four days with ignored downloads/pickle/runtime absent and external network denied; pinned original source snapshots and portable trained trees remain deliberately distributed. A separate clean Python environment was installed from the pinned lockfile.
+The upgraded Windows release passed **91 Python/data tests, 32 contract/bridge tests and 6 browser tests**, plus the production build and TypeScript checks. `scripts/test_offline_copy.py` checks four days with ignored downloads/pickle/runtime absent and external network denied; pinned original source snapshots and portable trained trees remain deliberately distributed. A separate clean Python environment was installed from the pinned lockfile. Exact fresh-clone results and retained failures are recorded in [validation](docs/VALIDATION.md).
 
 ## Repository and submission
 

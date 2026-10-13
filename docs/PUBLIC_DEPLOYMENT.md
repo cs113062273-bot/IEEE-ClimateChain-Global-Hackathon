@@ -52,12 +52,12 @@ Local deliberate attest retains `REJECTED/DUPLICATE_ACTIVE_CLAIM`. It additional
 
 `lookup` returns a flat current-record verification object plus `verification_subject`, clearly distinguishing lookup from verification of a new report. UI offers read-only existing-record inspection; if digests differ, label that mismatch and show the previously committed evidence. Replacement requires a separately authorized original submitter and explicit revoke→replace history. Do not change site/category/time to manufacture uniqueness.
 
-Local reset protection stays strict: captured deployment block hash/number, bytecode, canonical successful receipts and events must agree. Saved local receipts alone never produce live green verification after a reset. No existing running local chain was reset/redeployed in this phase.
+Local reset protection stays strict: captured deployment block hash/number, bytecode, canonical successful receipts and events must agree. Saved local receipts alone never produce live green verification after a reset. The initial preparation did not reset a running chain. Later, an interrupted local node was unavailable during integrated testing; its metadata was archived and a fresh local development registry was started. Historical receipts cannot verify on that new instance. See [release validation](VALIDATION.md) and its actual local evidence record.
 
 ## Actual preparation checks
 
-- `npm test`: **32/32** contract/bridge cases passed, including unchanged local history/reset checks, duplicate receipt reuse without new-digest verification, fixed-index validation and public read-only/two-confirmation/wrong-chain/RPC configuration tests. Actual output: `contracts/runtime/phase3-contract-tests.log`.
-- Build/TypeScript typecheck passed; actual logs: `contracts/runtime/phase3-build.log`, `contracts/runtime/phase3-typecheck.log`. Sepolia Hardhat URL is lazy configuration, so absent credentials do not break local tests/builds.
+- `npm test`: **32/32** contract/bridge cases passed, including unchanged local history/reset checks, duplicate receipt reuse without new-digest verification, fixed-index validation and public read-only/two-confirmation/wrong-chain/RPC configuration tests. Delivered actual output: [contract-tests.log](validation/contract-tests.log).
+- Build/TypeScript typecheck passed; delivered actual logs: [contract-build.log](validation/contract-build.log), [contract-typecheck.log](validation/contract-typecheck.log). Sepolia Hardhat URL is lazy configuration, so absent credentials do not break local tests/builds.
 - Actual read-only public RPC check used the URL supplied by the installed/official viem Sepolia chain definition, `https://11155111.rpc.thirdweb.com`: chain 11155111 and block 11904422 at `2026-10-13T06:56:51Z`. Only chain/block reads occurred; no signer was configured and no deploy/registration occurred. Endpoint availability is not guaranteed.
 - Anonymous GitHub webpage/API returned 404; Devpost Rules direct HTTP 403/browser success recorded in [COMPETITION_RULES.md](COMPETITION_RULES.md).
 

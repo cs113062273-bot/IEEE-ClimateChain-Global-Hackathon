@@ -19,6 +19,9 @@ test("trained AI, carbon-cost-peak comparison, source lineage and rehashed attac
   await expect(page.getByTestId("lineage-attack")).toContainText("Source Lineage: MISMATCH");
   await expect(page.getByTestId("lineage-attack")).toContainText("Integrity: VERIFIED");
   await expect(page.getByTestId("lineage-attack")).toContainText("HASH_MISMATCH");
+  await page.getByRole("button",{name:"Load recorded release proof"}).click();
+  await page.getByRole("button",{name:"Verify all local layers"}).click();
+  await expect(page.getByTestId("full-verification")).toContainText("VERIFIED");
 });
 
 test("judge pages remain readable on desktop and phone",async({page})=>{

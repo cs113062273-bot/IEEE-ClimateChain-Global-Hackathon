@@ -1,0 +1,874 @@
+{
+  "local_only": true,
+  "digest": "0xefd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2",
+  "source_commit": "e7cd586bef91e9da379a86bc87b350f32b16c66a",
+  "offline_verification": {
+    "status": "VERIFIED",
+    "verified": true,
+    "digest": "0xefd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2",
+    "expected_digest": "0xefd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2",
+    "errors": [],
+    "warnings": [],
+    "artifact_checks": [
+      {
+        "path": "data/sample/intervals.json",
+        "role": "derived_support",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "data/raw/neso_ci_2025.json",
+        "role": "original_input",
+        "required_for_lineage": true,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "data/raw/openmeteo_london_2025.json",
+        "role": "original_input",
+        "required_for_lineage": true,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "experiments/models_portable/carbon_model.json",
+        "role": "decision_model",
+        "required_for_lineage": true,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "data/sample/intervals.json",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "backend/app/domain/solver.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "backend/app/domain/schemas.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "backend/app/services/data.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "backend/app/services/simulator.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "backend/app/services/evidence.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "backend/app/ml/forecast.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "scripts/train_models.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "requirements.txt",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "requirements.lock.txt",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "experiments/models_portable/carbon_model.json",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "backend/app/services/lineage.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "scripts/verify_evidence.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "data/trust/source_anchors.v1.json",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      }
+    ],
+    "levels": {
+      "integrity": {
+        "verified": true,
+        "status": "VERIFIED"
+      },
+      "source_lineage": {
+        "verified": true,
+        "status": "VERIFIED",
+        "errors": [],
+        "warnings": [],
+        "source_checks": [
+          {
+            "source_id": "neso-national-ci-2025",
+            "status": "RECONSTRUCTED",
+            "representation": "embedded_original_bytes",
+            "required_for_lineage": true
+          },
+          {
+            "source_id": "openmeteo-london-weather-2025",
+            "status": "RECONSTRUCTED",
+            "representation": "embedded_original_bytes",
+            "required_for_lineage": true
+          },
+          {
+            "source_id": "gridproof-carbon-model-lightgbm-v1",
+            "status": "RECONSTRUCTED",
+            "representation": "embedded_model_bytes",
+            "required_for_lineage": true
+          }
+        ],
+        "reconstructed_fields": [
+          "actual_ci",
+          "past_only_forecast",
+          "forecast_metadata",
+          "preceding_hour_radiation",
+          "decision_calendar_pv",
+          "realized_radiation_pv",
+          "synthetic_fixed_load",
+          "illustrative_utc_tariff",
+          "scenario_configuration",
+          "decision_energy_balance"
+        ],
+        "trust_boundary": "Consistency with separately trusted HTTPS snapshot digests and fixed transforms; no proof of upstream truth, historical availability or causal avoided emissions."
+      },
+      "physical_validity": {
+        "verified": true,
+        "status": "VERIFIED",
+        "errors": []
+      },
+      "onchain_attestation": {
+        "verified": false,
+        "status": "NOT_CHECKED",
+        "required_for_offline_verification": false
+      }
+    },
+    "checks": {
+      "digest": true,
+      "metrics_reproduced": true,
+      "physical_constraints_reconstructed": true,
+      "source_lineage_reconstructed": true
+    },
+    "verified_scope": "offline integrity/source-lineage/physical arithmetic only; onchain is a separate check",
+    "trust_boundary": "Pinned source consistency and modeled arithmetic; no proof of upstream truth, historical publication time, optimality or real avoided emissions certification",
+    "provenance_status": {
+      "grid_outcomes": "observed",
+      "decision_carbon": "forecast",
+      "facility": "synthetic",
+      "pv": "modeled",
+      "tariff": "synthetic"
+    },
+    "units": {
+      "energy": "kWh/30-minute interval",
+      "power": "kW",
+      "carbon_intensity": "gCO2/kWh",
+      "emissions": "kgCO2",
+      "tariff": "GBP/kWh (illustrative)",
+      "cost": "GBP (illustrative)",
+      "soc": "kWh",
+      "time": "UTC"
+    },
+    "data_timestamp": "2025-09-01T00:00:00Z",
+    "claim_limit": "Modeled location-based emissions exposure; average GB intensity. No measured facility, causal avoided emissions, or tradable credit."
+  },
+  "rehashed_forgery": {
+    "status": "INVALID_EVIDENCE",
+    "verified": false,
+    "digest": "0x5316d24defd974a8ccf610473d9719c92b254d3db5d92ab57a37cc5ee823822d",
+    "expected_digest": "0x5316d24defd974a8ccf610473d9719c92b254d3db5d92ab57a37cc5ee823822d",
+    "errors": [
+      "source lineage mismatch baseline_dispatch 0 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 1 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 10 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 11 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 12 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 13 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 14 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 15 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 16 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 17 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 18 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 19 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 2 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 20 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 21 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 22 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 23 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 24 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 25 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 26 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 27 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 28 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 29 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 3 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 30 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 31 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 32 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 33 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 34 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 35 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 36 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 37 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 38 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 39 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 4 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 40 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 41 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 42 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 43 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 44 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 45 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 46 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 47 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 5 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 6 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 7 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 8 ci_actual_g_per_kwh",
+      "source lineage mismatch baseline_dispatch 9 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 0 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 1 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 10 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 11 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 12 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 13 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 14 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 15 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 16 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 17 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 18 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 19 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 2 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 20 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 21 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 22 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 23 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 24 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 25 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 26 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 27 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 28 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 29 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 3 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 30 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 31 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 32 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 33 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 34 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 35 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 36 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 37 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 38 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 39 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 4 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 40 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 41 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 42 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 43 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 44 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 45 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 46 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 47 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 5 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 6 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 7 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 8 ci_actual_g_per_kwh",
+      "source lineage mismatch dispatch 9 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 0 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 1 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 10 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 11 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 12 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 13 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 14 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 15 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 16 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 17 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 18 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 19 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 2 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 20 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 21 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 22 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 23 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 24 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 25 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 26 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 27 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 28 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 29 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 3 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 30 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 31 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 32 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 33 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 34 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 35 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 36 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 37 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 38 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 39 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 4 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 40 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 41 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 42 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 43 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 44 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 45 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 46 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 47 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 5 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 6 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 7 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 8 ci_actual_g_per_kwh",
+      "source lineage mismatch interval 9 ci_actual_g_per_kwh"
+    ],
+    "warnings": [],
+    "artifact_checks": [
+      {
+        "path": "data/sample/intervals.json",
+        "role": "derived_support",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "data/raw/neso_ci_2025.json",
+        "role": "original_input",
+        "required_for_lineage": true,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "data/raw/openmeteo_london_2025.json",
+        "role": "original_input",
+        "required_for_lineage": true,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "experiments/models_portable/carbon_model.json",
+        "role": "decision_model",
+        "required_for_lineage": true,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "data/sample/intervals.json",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "backend/app/domain/solver.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "backend/app/domain/schemas.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "backend/app/services/data.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "backend/app/services/simulator.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "backend/app/services/evidence.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "backend/app/ml/forecast.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "scripts/train_models.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "requirements.txt",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "requirements.lock.txt",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "experiments/models_portable/carbon_model.json",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "backend/app/services/lineage.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "scripts/verify_evidence.py",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      },
+      {
+        "path": "data/trust/source_anchors.v1.json",
+        "role": "reproduction_code",
+        "required_for_lineage": false,
+        "local_status": "MATCHED"
+      }
+    ],
+    "levels": {
+      "integrity": {
+        "verified": true,
+        "status": "VERIFIED"
+      },
+      "source_lineage": {
+        "verified": false,
+        "status": "MISMATCH",
+        "errors": [
+          "source lineage mismatch baseline_dispatch 0 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 1 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 10 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 11 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 12 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 13 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 14 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 15 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 16 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 17 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 18 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 19 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 2 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 20 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 21 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 22 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 23 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 24 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 25 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 26 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 27 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 28 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 29 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 3 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 30 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 31 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 32 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 33 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 34 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 35 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 36 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 37 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 38 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 39 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 4 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 40 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 41 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 42 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 43 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 44 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 45 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 46 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 47 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 5 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 6 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 7 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 8 ci_actual_g_per_kwh",
+          "source lineage mismatch baseline_dispatch 9 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 0 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 1 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 10 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 11 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 12 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 13 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 14 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 15 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 16 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 17 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 18 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 19 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 2 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 20 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 21 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 22 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 23 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 24 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 25 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 26 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 27 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 28 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 29 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 3 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 30 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 31 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 32 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 33 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 34 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 35 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 36 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 37 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 38 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 39 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 4 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 40 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 41 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 42 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 43 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 44 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 45 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 46 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 47 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 5 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 6 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 7 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 8 ci_actual_g_per_kwh",
+          "source lineage mismatch dispatch 9 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 0 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 1 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 10 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 11 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 12 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 13 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 14 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 15 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 16 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 17 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 18 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 19 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 2 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 20 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 21 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 22 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 23 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 24 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 25 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 26 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 27 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 28 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 29 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 3 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 30 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 31 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 32 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 33 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 34 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 35 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 36 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 37 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 38 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 39 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 4 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 40 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 41 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 42 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 43 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 44 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 45 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 46 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 47 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 5 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 6 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 7 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 8 ci_actual_g_per_kwh",
+          "source lineage mismatch interval 9 ci_actual_g_per_kwh"
+        ],
+        "warnings": [],
+        "source_checks": [
+          {
+            "source_id": "neso-national-ci-2025",
+            "status": "CHECK_FAILED",
+            "representation": "embedded_original_bytes",
+            "required_for_lineage": true
+          },
+          {
+            "source_id": "openmeteo-london-weather-2025",
+            "status": "CHECK_FAILED",
+            "representation": "embedded_original_bytes",
+            "required_for_lineage": true
+          },
+          {
+            "source_id": "gridproof-carbon-model-lightgbm-v1",
+            "status": "CHECK_FAILED",
+            "representation": "embedded_model_bytes",
+            "required_for_lineage": true
+          }
+        ],
+        "reconstructed_fields": [
+          "actual_ci",
+          "past_only_forecast",
+          "forecast_metadata",
+          "preceding_hour_radiation",
+          "decision_calendar_pv",
+          "realized_radiation_pv",
+          "synthetic_fixed_load",
+          "illustrative_utc_tariff",
+          "scenario_configuration",
+          "decision_energy_balance"
+        ],
+        "trust_boundary": "Consistency with separately trusted HTTPS snapshot digests and fixed transforms; no proof of upstream truth, historical availability or causal avoided emissions."
+      },
+      "physical_validity": {
+        "verified": true,
+        "status": "VERIFIED",
+        "errors": []
+      },
+      "onchain_attestation": {
+        "verified": false,
+        "status": "NOT_CHECKED",
+        "required_for_offline_verification": false
+      }
+    },
+    "checks": {
+      "digest": true,
+      "metrics_reproduced": true,
+      "physical_constraints_reconstructed": true,
+      "source_lineage_reconstructed": false
+    },
+    "verified_scope": "offline integrity/source-lineage/physical arithmetic only; onchain is a separate check",
+    "trust_boundary": "Pinned source consistency and modeled arithmetic; no proof of upstream truth, historical publication time, optimality or real avoided emissions certification",
+    "provenance_status": {
+      "grid_outcomes": "observed",
+      "decision_carbon": "forecast",
+      "facility": "synthetic",
+      "pv": "modeled",
+      "tariff": "synthetic"
+    },
+    "units": {
+      "energy": "kWh/30-minute interval",
+      "power": "kW",
+      "carbon_intensity": "gCO2/kWh",
+      "emissions": "kgCO2",
+      "tariff": "GBP/kWh (illustrative)",
+      "cost": "GBP (illustrative)",
+      "soc": "kWh",
+      "time": "UTC"
+    },
+    "data_timestamp": "2025-09-01T00:00:00Z",
+    "claim_limit": "Modeled location-based emissions exposure; average GB intensity. No measured facility, causal avoided emissions, or tradable credit."
+  },
+  "live_local_attestation": {
+    "network": "LOCAL DEV CHAIN",
+    "chain_id": 31337,
+    "contract_address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+    "claim_key": "0xe1ecb2c8e93fcd4400ee5be494e581fb214edb8832ef51dbfe19bac0d34aef02",
+    "trust_boundary": "Integrity and exact-scope registry status only; no meter truth or carbon certification. Local chain can reset; Sepolia is a testnet.",
+    "digest": "0xefd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2",
+    "onchain_digest": "0xefd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2",
+    "submitter": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "created_at_unix": 1791878664,
+    "record_status": 1,
+    "ok": true,
+    "status": "VERIFIED",
+    "record_id": "2",
+    "transaction_hash": "0x64d81cf5e6ea7d82a3b027443f479a23ac18234a038870d69c06305de011f70e",
+    "receipt": {
+      "blockHash": "0xd70c5535cd426e4151fe1126f436e6c66efe03ccbb95771c9b33ec94645ccfdf",
+      "blockNumber": "3",
+      "transactionHash": "0x64d81cf5e6ea7d82a3b027443f479a23ac18234a038870d69c06305de011f70e",
+      "transactionIndex": 0,
+      "type": "eip1559",
+      "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+      "to": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      "cumulativeGasUsed": "130115",
+      "gasUsed": "130115",
+      "contractAddress": null,
+      "logs": [
+        {
+          "address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+          "topics": [
+            "0xcee76ee0cf6a2438de37dcc59859ebb011132ea85ad0a7bdd88d3683c1ea81c2",
+            "0xe1ecb2c8e93fcd4400ee5be494e581fb214edb8832ef51dbfe19bac0d34aef02",
+            "0x0000000000000000000000000000000000000000000000000000000000000002",
+            "0x000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb92266"
+          ],
+          "data": "0xefd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2000000000000000000000000000000000000000000000000000000006acde6080000000000000000000000000000000000000000000000000000000000000000",
+          "transactionHash": "0x64d81cf5e6ea7d82a3b027443f479a23ac18234a038870d69c06305de011f70e",
+          "blockHash": "0xd70c5535cd426e4151fe1126f436e6c66efe03ccbb95771c9b33ec94645ccfdf",
+          "blockNumber": "3",
+          "blockTimestamp": "1791878664",
+          "logIndex": 0,
+          "transactionIndex": 0,
+          "removed": false
+        }
+      ],
+      "logsBloom": "0x04080000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000040000000000000000100000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000200000000000000000000000000000100000000000000000000000000000000000000000000000040000000200000000000000000000000102000000000000000000000000000000000000000000000000000000100000000008000000000000000000000",
+      "status": "success",
+      "effectiveGasPrice": "851227040"
+    },
+    "event": {
+      "name": "ClaimRegistered",
+      "args": {
+        "claimKey": "0xe1ecb2c8e93fcd4400ee5be494e581fb214edb8832ef51dbfe19bac0d34aef02",
+        "recordId": "2",
+        "submitter": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "digest": "0xefd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2",
+        "createdAt": "1791878664",
+        "previousRecordId": "0"
+      },
+      "block_number": "3",
+      "block_hash": "0xd70c5535cd426e4151fe1126f436e6c66efe03ccbb95771c9b33ec94645ccfdf",
+      "log_index": 0
+    },
+    "provenance_status": {
+      "grid_outcomes": "observed",
+      "decision_carbon": "forecast",
+      "facility": "synthetic",
+      "pv": "modeled",
+      "tariff": "synthetic"
+    },
+    "units": {
+      "energy": "kWh/30-minute interval",
+      "power": "kW",
+      "carbon_intensity": "gCO2/kWh",
+      "emissions": "kgCO2",
+      "tariff": "GBP/kWh (illustrative)",
+      "cost": "GBP (illustrative)",
+      "soc": "kWh",
+      "time": "UTC"
+    },
+    "data_timestamp": "2026-10-13T08:04:28Z",
+    "claim_limit": "Modeled location-based emissions exposure; average GB intensity. No measured facility, causal avoided emissions, or tradable credit."
+  },
+  "duplicate": {
+    "ok": false,
+    "status": "REJECTED",
+    "network": "LOCAL DEV CHAIN",
+    "error": {
+      "code": "DUPLICATE_ACTIVE_CLAIM",
+      "message": "An active claim already covers this site/time/category; model or scenario changes do not alter the scope"
+    },
+    "claim_key": "0xe1ecb2c8e93fcd4400ee5be494e581fb214edb8832ef51dbfe19bac0d34aef02",
+    "existing_claim": {
+      "network": "LOCAL DEV CHAIN",
+      "chain_id": 31337,
+      "contract_address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      "claim_key": "0xe1ecb2c8e93fcd4400ee5be494e581fb214edb8832ef51dbfe19bac0d34aef02",
+      "trust_boundary": "Integrity and exact-scope registry status only; no meter truth or carbon certification. Local chain can reset; Sepolia is a testnet.",
+      "digest": "0xefd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2",
+      "onchain_digest": "0xefd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2",
+      "submitter": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "created_at_unix": 1791878664,
+      "record_status": 1,
+      "ok": true,
+      "status": "VERIFIED",
+      "record_id": "2",
+      "transaction_hash": "0x64d81cf5e6ea7d82a3b027443f479a23ac18234a038870d69c06305de011f70e",
+      "receipt": {
+        "blockHash": "0xd70c5535cd426e4151fe1126f436e6c66efe03ccbb95771c9b33ec94645ccfdf",
+        "blockNumber": "3",
+        "transactionHash": "0x64d81cf5e6ea7d82a3b027443f479a23ac18234a038870d69c06305de011f70e",
+        "transactionIndex": 0,
+        "type": "eip1559",
+        "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+        "to": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+        "cumulativeGasUsed": "130115",
+        "gasUsed": "130115",
+        "contractAddress": null,
+        "logs": [
+          {
+            "address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+            "topics": [
+              "0xcee76ee0cf6a2438de37dcc59859ebb011132ea85ad0a7bdd88d3683c1ea81c2",
+              "0xe1ecb2c8e93fcd4400ee5be494e581fb214edb8832ef51dbfe19bac0d34aef02",
+              "0x0000000000000000000000000000000000000000000000000000000000000002",
+              "0x000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb92266"
+            ],
+            "data": "0xefd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2000000000000000000000000000000000000000000000000000000006acde6080000000000000000000000000000000000000000000000000000000000000000",
+            "transactionHash": "0x64d81cf5e6ea7d82a3b027443f479a23ac18234a038870d69c06305de011f70e",
+            "blockHash": "0xd70c5535cd426e4151fe1126f436e6c66efe03ccbb95771c9b33ec94645ccfdf",
+            "blockNumber": "3",
+            "blockTimestamp": "1791878664",
+            "logIndex": 0,
+            "transactionIndex": 0,
+            "removed": false
+          }
+        ],
+        "logsBloom": "0x04080000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000040000000000000000100000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000200000000000000000000000000000100000000000000000000000000000000000000000000000040000000200000000000000000000000102000000000000000000000000000000000000000000000000000000100000000008000000000000000000000",
+        "status": "success",
+        "effectiveGasPrice": "851227040"
+      },
+      "event": {
+        "name": "ClaimRegistered",
+        "args": {
+          "claimKey": "0xe1ecb2c8e93fcd4400ee5be494e581fb214edb8832ef51dbfe19bac0d34aef02",
+          "recordId": "2",
+          "submitter": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "digest": "0xefd8743f17511cf9c95d33abc21acea513ef5b0a5c4adb01cff36c6b940352a2",
+          "createdAt": "1791878664",
+          "previousRecordId": "0"
+        },
+        "block_number": "3",
+        "block_hash": "0xd70c5535cd426e4151fe1126f436e6c66efe03ccbb95771c9b33ec94645ccfdf",
+        "log_index": 0
+      },
+      "verification_subject": "existing registry record; does not authenticate a newly supplied report digest"
+    },
+    "requested_digest_matches_existing": true,
+    "provenance_status": {
+      "grid_outcomes": "observed",
+      "decision_carbon": "forecast",
+      "facility": "synthetic",
+      "pv": "modeled",
+      "tariff": "synthetic"
+    },
+    "units": {
+      "energy": "kWh/30-minute interval",
+      "power": "kW",
+      "carbon_intensity": "gCO2/kWh",
+      "emissions": "kgCO2",
+      "tariff": "GBP/kWh (illustrative)",
+      "cost": "GBP (illustrative)",
+      "soc": "kWh",
+      "time": "UTC"
+    },
+    "data_timestamp": "2026-10-13T08:04:30Z",
+    "claim_limit": "Modeled location-based emissions exposure; average GB intensity. No measured facility, causal avoided emissions, or tradable credit."
+  },
+  "public_deployed": false
+}
