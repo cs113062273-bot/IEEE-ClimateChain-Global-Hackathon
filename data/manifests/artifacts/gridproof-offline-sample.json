@@ -1,7 +1,7 @@
 {
   "attribution": "NESO; Open-Meteo / ECMWF ERA5",
-  "byte_size": 632873,
-  "checked_utc": "2026-10-13T05:21:20Z",
+  "byte_size": 2354999,
+  "checked_utc": "2026-10-13T06:48:56Z",
   "columns": [
     "start_utc",
     "end_utc",
@@ -26,16 +26,26 @@
     {
       "end_utc": "2025-08-13T00:00:00Z",
       "start_utc": "2025-08-12T00:00:00Z"
+    },
+    {
+      "end_utc": "2025-09-02T00:00:00Z",
+      "start_utc": "2025-09-01T00:00:00Z"
+    },
+    {
+      "end_utc": "2025-10-14T00:00:00Z",
+      "start_utc": "2025-10-13T00:00:00Z"
     }
   ],
   "dates": [
     "2025-01-15",
-    "2025-08-12"
+    "2025-08-12",
+    "2025-09-01",
+    "2025-10-13"
   ],
   "etag": null,
   "fetched_utc": "2026-10-13T05:12:22Z",
   "granularity_minutes": 30,
-  "history_row_count": 672,
+  "history_row_count": 2688,
   "http_status": null,
   "license": "NESO Open Data Licence and Open-Meteo CC-BY-4.0; attributed transformed subset",
   "license_urls": [
@@ -276,11 +286,231 @@
       "out_of_order": false,
       "row_count": 48,
       "timezone": "UTC"
+    },
+    "2025-09-01": {
+      "column_types": {
+        "cloud_cover_percent": "number",
+        "embedded_solar_generation_mw": "number",
+        "embedded_wind_generation_mw": "number",
+        "end_utc": "string",
+        "grid_ci_actual_g_per_kwh": "number",
+        "grid_ci_forecast_g_per_kwh": "number",
+        "grid_demand_mw": "number",
+        "quality_flags": "string",
+        "shortwave_radiation_w_per_m2": "number",
+        "source_refs": "string",
+        "start_utc": "string",
+        "temperature_2m": "number",
+        "wind_speed_10m_kmh": "number"
+      },
+      "columns": [
+        "start_utc",
+        "end_utc",
+        "grid_ci_actual_g_per_kwh",
+        "grid_ci_forecast_g_per_kwh",
+        "temperature_2m",
+        "cloud_cover_percent",
+        "wind_speed_10m_kmh",
+        "shortwave_radiation_w_per_m2",
+        "grid_demand_mw",
+        "embedded_wind_generation_mw",
+        "embedded_solar_generation_mw",
+        "source_refs",
+        "quality_flags"
+      ],
+      "coverage_end_utc_exclusive": "2025-09-02T00:00:00Z",
+      "coverage_start_utc": "2025-09-01T00:00:00Z",
+      "duplicate_timestamps": 0,
+      "gap_count": 0,
+      "gaps": [],
+      "granularity_minutes": 30,
+      "invalid_interval_duration": 0,
+      "missing_count": {
+        "cloud_cover_percent": 0,
+        "embedded_solar_generation_mw": 0,
+        "embedded_wind_generation_mw": 0,
+        "end_utc": 0,
+        "grid_ci_actual_g_per_kwh": 0,
+        "grid_ci_forecast_g_per_kwh": 0,
+        "grid_demand_mw": 0,
+        "quality_flags": 0,
+        "shortwave_radiation_w_per_m2": 0,
+        "source_refs": 0,
+        "start_utc": 0,
+        "temperature_2m": 0,
+        "wind_speed_10m_kmh": 0
+      },
+      "missing_rate": {
+        "cloud_cover_percent": 0.0,
+        "embedded_solar_generation_mw": 0.0,
+        "embedded_wind_generation_mw": 0.0,
+        "end_utc": 0.0,
+        "grid_ci_actual_g_per_kwh": 0.0,
+        "grid_ci_forecast_g_per_kwh": 0.0,
+        "grid_demand_mw": 0.0,
+        "quality_flags": 0.0,
+        "shortwave_radiation_w_per_m2": 0.0,
+        "source_refs": 0.0,
+        "start_utc": 0.0,
+        "temperature_2m": 0.0,
+        "wind_speed_10m_kmh": 0.0
+      },
+      "numeric_ranges": {
+        "cloud_cover_percent": {
+          "max": 87.0,
+          "min": 8.0
+        },
+        "embedded_solar_generation_mw": {
+          "max": 9676.0,
+          "min": 0.0
+        },
+        "embedded_wind_generation_mw": {
+          "max": 3752.0,
+          "min": 2159.0
+        },
+        "grid_ci_actual_g_per_kwh": {
+          "max": 105.0,
+          "min": 38.0
+        },
+        "grid_ci_forecast_g_per_kwh": {
+          "max": 104.0,
+          "min": 32.0
+        },
+        "grid_demand_mw": {
+          "max": 27883.0,
+          "min": 16660.0
+        },
+        "shortwave_radiation_w_per_m2": {
+          "max": 522.0,
+          "min": 0.0
+        },
+        "temperature_2m": {
+          "max": 19.7,
+          "min": 13.5
+        },
+        "wind_speed_10m_kmh": {
+          "max": 27.3,
+          "min": 12.6
+        }
+      },
+      "out_of_order": false,
+      "row_count": 48,
+      "timezone": "UTC"
+    },
+    "2025-10-13": {
+      "column_types": {
+        "cloud_cover_percent": "number",
+        "embedded_solar_generation_mw": "number",
+        "embedded_wind_generation_mw": "number",
+        "end_utc": "string",
+        "grid_ci_actual_g_per_kwh": "number",
+        "grid_ci_forecast_g_per_kwh": "number",
+        "grid_demand_mw": "number",
+        "quality_flags": "string",
+        "shortwave_radiation_w_per_m2": "number",
+        "source_refs": "string",
+        "start_utc": "string",
+        "temperature_2m": "number",
+        "wind_speed_10m_kmh": "number"
+      },
+      "columns": [
+        "start_utc",
+        "end_utc",
+        "grid_ci_actual_g_per_kwh",
+        "grid_ci_forecast_g_per_kwh",
+        "temperature_2m",
+        "cloud_cover_percent",
+        "wind_speed_10m_kmh",
+        "shortwave_radiation_w_per_m2",
+        "grid_demand_mw",
+        "embedded_wind_generation_mw",
+        "embedded_solar_generation_mw",
+        "source_refs",
+        "quality_flags"
+      ],
+      "coverage_end_utc_exclusive": "2025-10-14T00:00:00Z",
+      "coverage_start_utc": "2025-10-13T00:00:00Z",
+      "duplicate_timestamps": 0,
+      "gap_count": 0,
+      "gaps": [],
+      "granularity_minutes": 30,
+      "invalid_interval_duration": 0,
+      "missing_count": {
+        "cloud_cover_percent": 0,
+        "embedded_solar_generation_mw": 0,
+        "embedded_wind_generation_mw": 0,
+        "end_utc": 0,
+        "grid_ci_actual_g_per_kwh": 0,
+        "grid_ci_forecast_g_per_kwh": 0,
+        "grid_demand_mw": 0,
+        "quality_flags": 0,
+        "shortwave_radiation_w_per_m2": 0,
+        "source_refs": 0,
+        "start_utc": 0,
+        "temperature_2m": 0,
+        "wind_speed_10m_kmh": 0
+      },
+      "missing_rate": {
+        "cloud_cover_percent": 0.0,
+        "embedded_solar_generation_mw": 0.0,
+        "embedded_wind_generation_mw": 0.0,
+        "end_utc": 0.0,
+        "grid_ci_actual_g_per_kwh": 0.0,
+        "grid_ci_forecast_g_per_kwh": 0.0,
+        "grid_demand_mw": 0.0,
+        "quality_flags": 0.0,
+        "shortwave_radiation_w_per_m2": 0.0,
+        "source_refs": 0.0,
+        "start_utc": 0.0,
+        "temperature_2m": 0.0,
+        "wind_speed_10m_kmh": 0.0
+      },
+      "numeric_ranges": {
+        "cloud_cover_percent": {
+          "max": 100.0,
+          "min": 89.0
+        },
+        "embedded_solar_generation_mw": {
+          "max": 2780.0,
+          "min": 0.0
+        },
+        "embedded_wind_generation_mw": {
+          "max": 679.0,
+          "min": 379.0
+        },
+        "grid_ci_actual_g_per_kwh": {
+          "max": 277.0,
+          "min": 232.0
+        },
+        "grid_ci_forecast_g_per_kwh": {
+          "max": 285.0,
+          "min": 231.0
+        },
+        "grid_demand_mw": {
+          "max": 34775.0,
+          "min": 20284.0
+        },
+        "shortwave_radiation_w_per_m2": {
+          "max": 142.0,
+          "min": 0.0
+        },
+        "temperature_2m": {
+          "max": 14.9,
+          "min": 12.2
+        },
+        "wind_speed_10m_kmh": {
+          "max": 14.5,
+          "min": 9.8
+        }
+      },
+      "out_of_order": false,
+      "row_count": 48,
+      "timezone": "UTC"
     }
   },
   "provenance_status": "authentic_grid_estimates_with_historical_weather_reanalysis; facility simulated separately",
-  "row_count": 96,
-  "sha256": "134251a6f846bd492b2208041cd6615ad892678dc8e94b4be9a6fa5cc8e3d8d5",
+  "row_count": 192,
+  "sha256": "5c403ff1c82600b7c2838a98a5adbaf0bc82c20d66a2e67a8d018268d2bdb4f0",
   "source_id": "gridproof-offline-sample",
   "status": "verified",
   "timezone": "UTC",

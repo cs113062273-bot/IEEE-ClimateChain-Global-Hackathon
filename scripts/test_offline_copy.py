@@ -18,7 +18,7 @@ def main():
     if ROOT.resolve() not in runtime.resolve().parents: raise ValueError("Runtime path escapes workspace")
     destination=Path(tempfile.mkdtemp(prefix="offline-source-",dir=runtime))
     if runtime.resolve() not in destination.resolve().parents: raise ValueError("Copy path escapes runtime")
-    for folder in ["backend","scripts","data/sample","data/manifests"]:
+    for folder in ["backend","scripts","data/sample","data/manifests","data/trust","experiments/models_portable"]:
         shutil.copytree(ROOT/folder,destination/folder,ignore=shutil.ignore_patterns("__pycache__"))
     shutil.copy2(ROOT/"requirements.txt",destination/"requirements.txt")
     shutil.copy2(ROOT/"requirements.lock.txt",destination/"requirements.lock.txt")
@@ -48,14 +48,14 @@ runs=[]
 for date in dates:
     result=client.post("/api/compare",json={"date":date});assert result.status_code==200,result.text
     run=result.json();assert all(p["constraints"]["verified"] for p in run["plans"].values())
-    assert "seasonal" in run["forecast_model"]["version"]
+    assert ("lightgbm" if date>="2025-09-01" else "seasonal") in run["forecast_model"]["version"]
     proof=client.post("/api/evidence",json={"run_id":run["run_id"]});assert proof.status_code==200,proof.text
     p=proof.json();verified=inspect(p["evidence"],p["digest"],ROOT);assert verified["verified"],verified
     repeated=client.post("/api/compare",json={"date":date}).json()
     assert repeated["run_id"]==run["run_id"]
     for policy in run["plans"]:assert repeated["plans"][policy]["metrics"]==run["plans"][policy]["metrics"]
-    runs.append({"date":date,"policies":len(run["plans"]),"run_id":run["run_id"],"evidence_verified":True,"unavailable_source_warnings":len(verified["warnings"])})
-print(json.dumps({"status":"passed","network":"external denied; loopback IPC allowed","bulk_files":"absent","model":"past-only seasonal fallback","runs":runs},indent=2))
+    runs.append({"date":date,"policies":len(run["plans"]),"run_id":run["run_id"],"model":run["forecast_model"]["version"],"evidence_verified":True,"source_lineage":verified["levels"]["source_lineage"]["status"],"unavailable_source_warnings":len(verified["warnings"])})
+print(json.dumps({"status":"passed","network":"external denied; loopback IPC allowed","ignored_bulk_files":"absent","pinned_source_snapshots":"distributed separately under data/sample/upstream","model":"distributed portable trained model after September 1; seasonal before","runs":runs},indent=2))
 '''
     completed=subprocess.run([sys.executable,"-c",probe],cwd=destination,capture_output=True,text=True,timeout=180)
     print(completed.stdout,end="")

@@ -1,8 +1,9 @@
 from __future__ import annotations
-import json, sqlite3
+import json, sqlite3,os
+from pathlib import Path
 from .data import ROOT
 
-DB=ROOT/"data/processed/runs.sqlite3"
+DB=Path(os.environ.get("GRIDPROOF_STORAGE_PATH",str(ROOT/"data/processed/runs.sqlite3")))
 
 def connection():
     DB.parent.mkdir(parents=True,exist_ok=True)

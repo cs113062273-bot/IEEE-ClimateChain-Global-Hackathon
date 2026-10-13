@@ -1,7 +1,7 @@
 {
   "attribution": "NESO and Open-Meteo / ECMWF",
   "byte_size": 1648560,
-  "checked_utc": "2026-10-13T05:21:20Z",
+  "checked_utc": "2026-10-13T06:48:56Z",
   "column_types": {
     "cloud_cover_percent": "number",
     "embedded_solar_generation_mw": "number",

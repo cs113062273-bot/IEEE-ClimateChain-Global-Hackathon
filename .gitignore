@@ -23,5 +23,6 @@ experiments/models/
 experiments/forecast_predictions.csv
 .runtime/
 *.log
+!docs/validation/*.log
 *.zip
 GridProof_Codex_Starter_2026-10-13/

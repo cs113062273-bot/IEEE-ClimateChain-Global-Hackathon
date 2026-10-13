@@ -61,6 +61,10 @@ def _immediate_jobs(scenario):
 def solve(scenario:Scenario,intervals:list[dict],policy="hybrid",carbon_weight=.7,time_limit=10):
     validate_inputs(intervals)
     started=time.perf_counter()
+    if policy=="peak-first":
+        # No carbon, tariff or solar forecast enters this policy's decisions.
+        # Shared observed outcome PV is still applied after fixed decisions.
+        intervals=[{**x,"pv_available_kwh":0.0,"pv_forecast_kwh":0.0} for x in intervals]
     fixed=np.array([x["fixed_load_kwh"] for x in intervals]); pv=np.array([x["pv_available_kwh"] for x in intervals])
     ci=np.array([x["ci_forecast_g_per_kwh"] for x in intervals]); price=np.array([x["tariff_gbp_per_kwh"] for x in intervals])
     if policy=="oracle": ci=np.array([x["ci_actual_g_per_kwh"] for x in intervals])
@@ -69,6 +73,9 @@ def solve(scenario:Scenario,intervals:list[dict],policy="hybrid",carbon_weight=.
             ev,batch,starts=_immediate_jobs(scenario)
             load=fixed+ev.sum(axis=0)+batch; used=np.minimum(pv,load); grid=load-used
             if np.max(grid)>scenario.max_grid_import_kw*DT+TOL: raise ValueError("Immediate dispatch exceeds grid import cap")
+            if scenario.peak_cap_kw is not None:
+                envelope=load if scenario.peak_risk_mode=="zero-pv-guard" else grid
+                if np.max(envelope)>scenario.peak_cap_kw*DT+TOL: raise ValueError("Immediate dispatch exceeds configured peak cap/envelope")
             dispatch=_dispatch(intervals,grid,np.zeros(T),np.zeros(T),np.full(T+1,scenario.battery_capacity_kwh*scenario.soc_initial_fraction),ev,batch,used,pv-used)
             return _result(scenario,dispatch,starts,policy,started,"feasible_baseline",None,"Earliest workloads; battery idle; PV self-consumption and curtailment")
         except ValueError as e: return _failure(policy,str(e),started,"infeasible")
@@ -80,6 +87,8 @@ def solve(scenario:Scenario,intervals:list[dict],policy="hybrid",carbon_weight=.
     for job in scenario.batch_jobs:
         starts=list(range(job.earliest_start_slot,job.latest_end_slot-job.duration_slots+1))
         batch_indices[job.id]={s:offset+i for i,s in enumerate(starts)}; offset+=len(starts)
+    peak_enabled=scenario.peak_weight>0 or scenario.peak_cap_kw is not None or policy=="peak-first"
+    if peak_enabled: idx["peak"]=np.array([offset]);offset+=1
     n=offset; lower=np.zeros(n); upper=np.full(n,np.inf); integer=np.zeros(n)
     upper[idx["grid"]]=scenario.max_grid_import_kw*DT
     upper[idx["charge"]]=scenario.charge_kw*DT if scenario.battery_capacity_kwh else 0
@@ -97,6 +106,7 @@ def solve(scenario:Scenario,intervals:list[dict],policy="hybrid",carbon_weight=.
             return _failure(policy,f"EV {job.id}: energy exceeds arrival/deadline charging capacity",started,"infeasible")
     for starts in batch_indices.values():
         for i in starts.values(): upper[i]=1; integer[i]=1
+    if peak_enabled: upper[idx["peak"]]=scenario.peak_cap_kw if scenario.peak_cap_kw is not None else np.inf
     rows=[]; lo=[]; hi=[]
     def row(coeff,a,b): rows.append(coeff); lo.append(a); hi.append(b)
     for t in range(T):
@@ -112,6 +122,18 @@ def solve(scenario:Scenario,intervals:list[dict],policy="hybrid",carbon_weight=.
         row({int(idx["discharge"][t]):1,int(idx["mode"][t]):scenario.discharge_kw*DT},-np.inf,scenario.discharge_kw*DT)
         row({int(idx["ev"][j*T+t]):1 for j in range(len(scenario.ev_jobs))},0,scenario.charger_station_kw*DT)
         if occ: row(occ,0,scenario.max_batch_concurrency)
+        if peak_enabled:
+            z=int(idx["peak"][0])
+            if scenario.peak_risk_mode=="zero-pv-guard" or policy=="peak-first":
+                # The envelope ignores all PV: import under any nonnegative
+                # replay PV cannot exceed net demand. No future weather needed.
+                peak_coeff={int(idx["charge"][t]):1,int(idx["discharge"][t]):-1,z:-DT}
+                for j in range(len(scenario.ev_jobs)):peak_coeff[int(idx["ev"][j*T+t])]=1
+                for job in scenario.batch_jobs:
+                    for start,i in batch_indices[job.id].items():
+                        if start<=t<start+job.duration_slots:peak_coeff[i]=job.energy_kwh/job.duration_slots
+                row(peak_coeff,-np.inf,-fixed[t])
+            else: row({int(idx["grid"][t]):1,z:-DT},-np.inf,0)
     for j,job in enumerate(scenario.ev_jobs): row({int(i):1 for i in idx["ev"][j*T:(j+1)*T]},job.energy_kwh,job.energy_kwh)
     for starts in batch_indices.values(): row({i:1 for i in starts.values()},1,1)
     matrix=lil_matrix((len(rows),n),dtype=float)
@@ -121,6 +143,8 @@ def solve(scenario:Scenario,intervals:list[dict],policy="hybrid",carbon_weight=.
     # Disclosed fixed references across all policies: 50 kg and GBP100 per day.
     weight=1 if policy in ("carbon-first","oracle") else 0 if policy=="cost-first" else carbon_weight
     objective[idx["grid"]]=weight*ci/1000/50+(1-weight)*price/100
+    if policy=="peak-first": objective[idx["grid"]]=0
+    if peak_enabled: objective[idx["peak"]]=(1.0 if policy=="peak-first" else scenario.peak_weight)/scenario.peak_reference_kw
     # Physical battery losses already included. Small cycling tie-breaker (not a hidden cost model).
     objective[idx["charge"]]=1e-7; objective[idx["discharge"]]=1e-7
     try:
@@ -136,6 +160,9 @@ def solve(scenario:Scenario,intervals:list[dict],policy="hybrid",carbon_weight=.
     dispatch=_dispatch(intervals,x[idx["grid"]],x[idx["charge"]],x[idx["discharge"]],x[idx["soc"]],ev,batch,x[idx["pv"]],pv-x[idx["pv"]])
     plan=_result(scenario,dispatch,chosen,policy,started,"optimal" if result.status==0 else "feasible_time_limit",float(result.mip_gap) if result.mip_gap is not None else None,result.message)
     plan["solver"]["objective_value"]=float(result.fun)
+    if peak_enabled:
+        plan["solver"]["peak_epigraph_kw"]=float(x[idx["peak"][0]])
+        plan["solver"]["objective_references"].update({"peak_kw":scenario.peak_reference_kw,"peak_weight":1.0 if policy=="peak-first" else scenario.peak_weight,"peak_risk_mode":"zero-pv-guard" if policy=="peak-first" else scenario.peak_risk_mode})
     if not plan["constraints"]["verified"]: return _fallback(scenario,intervals,policy,started,"Solver candidate failed independent constraint verification")
     return plan
 
@@ -178,6 +205,10 @@ def check_constraints(scenario,dispatch,starts):
         if not scenario.battery_capacity_kwh*scenario.soc_min_fraction-TOL<=x["soc_end_kwh"]<=scenario.battery_capacity_kwh*scenario.soc_max_fraction+TOL: violations.append(f"SoC bounds at {t}")
         if min(x["battery_charge_kwh"],x["battery_discharge_kwh"])>TOL: violations.append(f"Simultaneous battery charge/discharge at {t}")
         if x["grid_import_kwh"]< -TOL or x["grid_import_kwh"]>scenario.max_grid_import_kw*DT+TOL: violations.append(f"Grid cap at {t}")
+        if scenario.peak_cap_kw is not None:
+            net=x["fixed_load_kwh"]+x["ev_charge_kwh"]+x["batch_load_kwh"]+x["battery_charge_kwh"]-x["battery_discharge_kwh"]
+            if x["grid_import_kwh"]>scenario.peak_cap_kw*DT+TOL:violations.append(f"Replay peak cap at {t}")
+            if scenario.peak_risk_mode=="zero-pv-guard" and net>scenario.peak_cap_kw*DT+TOL:violations.append(f"Zero-PV peak guard at {t}")
         if x["battery_charge_kwh"]>scenario.charge_kw*DT+TOL or x["battery_discharge_kwh"]>scenario.discharge_kw*DT+TOL: violations.append(f"Battery power at {t}")
         if abs(x["pv_used_kwh"]+x["pv_curtail_kwh"]-x["pv_available_kwh"])>TOL: violations.append(f"PV allocation at {t}")
         if x["ev_charge_kwh"]>scenario.charger_station_kw*DT+TOL: violations.append(f"Shared charger cap at {t}")
@@ -217,4 +248,7 @@ def _result(scenario,dispatch,starts,policy,started,status,gap,message):
     emissions=sum(x["grid_import_kwh"]*x["ci_actual_g_per_kwh"] for x in dispatch)/1000
     predicted=sum(x["grid_import_forecast_kwh"]*x["ci_forecast_g_per_kwh"] for x in dispatch)/1000
     metrics={"emissions_kgco2":emissions,"forecast_emissions_kgco2":predicted,"cost_gbp":sum(x["grid_import_kwh"]*x["tariff_gbp_per_kwh"] for x in dispatch),"grid_import_kwh":sum(x["grid_import_kwh"] for x in dispatch),"pv_used_kwh":sum(x["pv_used_kwh"] for x in dispatch),"peak_grid_kw":max(x["grid_import_kwh"] for x in dispatch)/DT,"workload_kwh":sum(j.energy_kwh for j in scenario.ev_jobs+scenario.batch_jobs)}
+    metrics["planning_peak_grid_kw"]=max(x["grid_import_forecast_kwh"] for x in dispatch)/DT
+    metrics["zero_pv_peak_envelope_kw"]=max(x["fixed_load_kwh"]+x["ev_charge_kwh"]+x["batch_load_kwh"]+x["battery_charge_kwh"]-x["battery_discharge_kwh"] for x in dispatch)/DT
+    metrics["peak_cap_exceedance_kw"]=max(0,metrics["peak_grid_kw"]-scenario.peak_cap_kw) if scenario.peak_cap_kw is not None else 0.0
     return {"policy":policy,"solver":{"name":"HiGHS/scipy.milp","scipy_version":scipy.__version__,"status":status,"success":constraints["verified"],"seconds":time.perf_counter()-started,"mip_gap":gap,"constraints_verified":constraints["verified"],"message":message,"objective_references":{"emissions_kgco2":50,"cost_gbp":100,"cycling_tie_breaker_per_kwh":1e-7}},"constraints":constraints,"dispatch":dispatch,"metrics":metrics,"batch_starts":starts}

@@ -1,0 +1,52 @@
+
+> gridproof-contracts@0.1.0 test
+> hardhat test
+
+No contracts to compile
+
+Running Solidity tests
+
+
+Running node:test tests
+
+  local bridge fails closed
+    ✔ scope never depends on model or scenario IDs
+    ✔ rejects impossible dates, timezone offsets, empty scope, and zero digests
+    ✔ rejects the wrong RPC chain and wrong expected chain
+    ✔ RPC failure remains UNVERIFIABLE
+    ✔ known rejected writes are distinct from unavailable verification
+    ✔ rejects missing bytecode and stale deployment receipts
+    ✔ rejects a repeated deterministic deployment hash after a local-node reset
+    ✔ does not verify digest mismatch or revoked evidence
+    ✔ rejects a matching digest when the registration event is missing
+    ✔ requires scope, digest, record, event and canonical successful receipt to agree
+    ✔ rejects an unrelated transaction hash and a reverted registration receipt
+    ✔ rejects stale registration blocks and missing receipt events
+
+  Sepolia preparation and public read-only bridge
+    ✔ constructs public clients without wallets and never reads signer secrets
+    ✔ requires HTTPS configured RPC and preserves local-loopback restrictions
+    ✔ rejects public writes before RPC, metadata or signer access
+    ✔ public error responses never echo provider secrets from transport errors
+    ✔ read-only service also blocks local writes
+    ✔ verifies public receipt directly with two confirmations and no log-range scan
+    ✔ rejects wrong public chain, missing tx, reorgs and insufficient confirmations
+    ✔ lookup exposes the current trusted receipt, without verifying an incoming digest
+    ✔ duplicate rejection includes a verified original receipt and explicit new-digest mismatch
+    ✔ fixed proof forbids caller tuple replacement and invalid network/digests
+    ✔ missing fixed proof remains unavailable, not a fabricated green badge
+    ✔ configuration flag checks actual fixed index instead of merely an environment path
+    ✔ signer preparation rejects absent/invalid keys and never enables broadcast
+
+  GridProofRegistry
+    ✔ registers the exact scope and emits a real event (4027ms)
+    ✔ rejects duplicate active evidence even when scenario and model change
+    ✔ accepts a different site, exact interval, or claim category
+    ✔ rejects non-owner revoke and replacement
+    ✔ requires revoke before explicit replacement and preserves record history
+    ✔ rejects zero evidence/reason/replacement digests and invalid scopes
+    ✔ rejects one-bit tamper, wrong digest, and unknown claims
+
+
+32 passing (32 nodejs)
+

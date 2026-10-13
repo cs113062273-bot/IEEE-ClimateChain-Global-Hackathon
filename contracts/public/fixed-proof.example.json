@@ -1,0 +1,11 @@
+{
+  "schema_version": "gridproof-public-proof-index/v1",
+  "status": "EXAMPLE_NOT_REGISTERED",
+  "network": "testnet",
+  "chain_id": 11155111,
+  "claim_key": null,
+  "digest": null,
+  "transaction_hash": null,
+  "evidence_id": null,
+  "evidence_url": null
+}

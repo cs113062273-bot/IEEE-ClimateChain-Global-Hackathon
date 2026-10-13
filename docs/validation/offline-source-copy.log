@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "network": "external denied; loopback IPC allowed",
+  "ignored_bulk_files": "absent",
+  "pinned_source_snapshots": "distributed separately under data/sample/upstream",
+  "model": "distributed portable trained model after September 1; seasonal before",
+  "runs": [
+    {
+      "date": "2025-01-15",
+      "policies": 7,
+      "run_id": "run-bec345ed5f77c21a3b9a",
+      "model": "past-only-seven-day-seasonal-median-v1",
+      "evidence_verified": true,
+      "source_lineage": "VERIFIED",
+      "unavailable_source_warnings": 2
+    },
+    {
+      "date": "2025-08-12",
+      "policies": 7,
+      "run_id": "run-1472b728a1bbfadb9f61",
+      "model": "past-only-seven-day-seasonal-median-v1",
+      "evidence_verified": true,
+      "source_lineage": "VERIFIED",
+      "unavailable_source_warnings": 2
+    },
+    {
+      "date": "2025-09-01",
+      "policies": 7,
+      "run_id": "run-e615c6e59940915ed1d8",
+      "model": "lightgbm-past-only-v1",
+      "evidence_verified": true,
+      "source_lineage": "VERIFIED",
+      "unavailable_source_warnings": 2
+    },
+    {
+      "date": "2025-10-13",
+      "policies": 7,
+      "run_id": "run-cdc3b71292a6c7164e96",
+      "model": "lightgbm-past-only-v1",
+      "evidence_verified": true,
+      "source_lineage": "VERIFIED",
+      "unavailable_source_warnings": 2
+    }
+  ]
+}
+Verified source-copy operation using installed dependencies; setup installation is a separate check.

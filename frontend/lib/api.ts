@@ -20,8 +20,10 @@ export type Plan = {
 };
 export type Comparison = {
   run_id: string; date: string; carbon_weight: number; scenario: Scenario; intervals: Slot[];
-  plans: Record<"immediate" | "cost_first" | "carbon_first" | "hybrid" | "oracle", Plan>;
-  forecast_model: unknown; provenance_status: unknown; units: unknown; data_timestamp: string;
+  plans: Record<"immediate" | "cost_first" | "carbon_first" | "hybrid" | "oracle" | "peak_aware" | "peak_first", Plan>;
+  forecast_model: {version:string;artifact_format?:string;decision_time?:string;weights_sha256?:string|null;feature_policy?:string};
+  forecast_accuracy?: {mae_g_per_kwh:number;rmse_g_per_kwh:number;status:string};
+  provenance_status: unknown; units: unknown; data_timestamp: string;
 };
 export async function api<T>(path: string, body?: unknown): Promise<T> {
   const response = await fetch(`/api${path}`, {

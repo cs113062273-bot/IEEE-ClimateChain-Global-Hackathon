@@ -9,5 +9,5 @@ try {
   }
   try { request = JSON.parse(raw); } catch { throw new ChainError('INVALID_INPUT','Bridge input must be valid JSON'); }
   output = await executeRequest(request);
-} catch (error) { output = errorResult(error, request?.action ?? request?.operation); }
+} catch (error) { output = errorResult(error, request?.action ?? request?.operation,request?.network??process.env.GRIDPROOF_CHAIN_NETWORK??'local'); }
 process.stdout.write(stringify(output)+'\n');

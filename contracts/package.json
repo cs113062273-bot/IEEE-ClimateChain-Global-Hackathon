@@ -12,6 +12,7 @@
     "node": "hardhat node --hostname 127.0.0.1 --port 8545",
     "start:local": "node scripts/start-local.mjs",
     "deploy": "node scripts/deploy.mjs",
+    "prepare:sepolia": "node scripts/prepare-sepolia.mjs",
     "bridge": "node scripts/bridge.mjs"
   },
   "devDependencies": {

@@ -1,0 +1,297 @@
+{
+  "version": "competition-v2",
+  "recorded_utc": "2026-10-13T06:55:46.643891+00:00",
+  "seed": 42,
+  "training_window": [
+    "2025-01-08",
+    "2025-06-30"
+  ],
+  "validation_window": [
+    "2025-07-01",
+    "2025-08-31"
+  ],
+  "locked_test_window": [
+    "2025-09-01",
+    "2025-12-31"
+  ],
+  "requested_days": 122,
+  "test_rule": "all 122 consecutive UTC days; --days only for development smoke",
+  "base_scenario": {
+    "site_id": "london-campus-hypothetical-v1",
+    "site_id_hash": "0xa08f99dedbd7e56bdf7cd1c5058eb1a6358adb2d53d4650d9d7ad5f4c22f379e",
+    "location": "London, GB (hypothetical campus; national GB carbon intensity)",
+    "solar_kwp": 20.0,
+    "battery_capacity_kwh": 40.0,
+    "soc_initial_fraction": 0.5,
+    "soc_min_fraction": 0.1,
+    "soc_max_fraction": 0.9,
+    "charge_kw": 10.0,
+    "discharge_kw": 10.0,
+    "eta_charge": 0.95,
+    "eta_discharge": 0.95,
+    "max_grid_import_kw": 60.0,
+    "peak_weight": 0.0,
+    "peak_cap_kw": null,
+    "peak_reference_kw": 60.0,
+    "peak_risk_mode": "zero-pv-guard",
+    "charger_station_kw": 22.0,
+    "max_batch_concurrency": 1,
+    "ev_jobs": [
+      {
+        "id": "fleet-a",
+        "energy_kwh": 24.0,
+        "arrival_slot": 14,
+        "deadline_slot": 36,
+        "max_kw": 11.0,
+        "interruptible": true
+      },
+      {
+        "id": "fleet-b",
+        "energy_kwh": 18.0,
+        "arrival_slot": 16,
+        "deadline_slot": 40,
+        "max_kw": 11.0,
+        "interruptible": true
+      }
+    ],
+    "batch_jobs": [
+      {
+        "id": "compute-lab",
+        "energy_kwh": 20.0,
+        "duration_slots": 4,
+        "earliest_start_slot": 12,
+        "latest_end_slot": 42,
+        "contiguous": true
+      }
+    ]
+  },
+  "policy_definitions": [
+    [
+      "immediate",
+      "immediate",
+      "lightgbm",
+      0.7,
+      0,
+      null
+    ],
+    [
+      "cost_first_no_ci",
+      "cost-first",
+      "lightgbm",
+      0,
+      0,
+      null
+    ],
+    [
+      "carbon_lightgbm",
+      "carbon-first",
+      "lightgbm",
+      1,
+      0,
+      null
+    ],
+    [
+      "hybrid_lightgbm",
+      "hybrid",
+      "lightgbm",
+      0.7,
+      0,
+      null
+    ],
+    [
+      "oracle_carbon",
+      "carbon-first",
+      "perfect_ci",
+      1,
+      0,
+      null
+    ],
+    [
+      "hybrid_latest",
+      "hybrid",
+      "latest",
+      0.7,
+      0,
+      null
+    ],
+    [
+      "hybrid_seasonal",
+      "hybrid",
+      "seasonal",
+      0.7,
+      0,
+      null
+    ],
+    [
+      "hybrid_perfect_ci_matched",
+      "hybrid",
+      "perfect_ci",
+      0.7,
+      0,
+      null
+    ],
+    [
+      "carbon_latest",
+      "carbon-first",
+      "latest",
+      1,
+      0,
+      null
+    ],
+    [
+      "carbon_seasonal",
+      "carbon-first",
+      "seasonal",
+      1,
+      0,
+      null
+    ],
+    [
+      "peak_aware_lightgbm",
+      "hybrid",
+      "lightgbm",
+      0.7,
+      0.2,
+      null
+    ],
+    [
+      "peak_aware_latest",
+      "hybrid",
+      "latest",
+      0.7,
+      0.2,
+      null
+    ],
+    [
+      "peak_aware_seasonal",
+      "hybrid",
+      "seasonal",
+      0.7,
+      0.2,
+      null
+    ],
+    [
+      "peak_aware_perfect_ci_matched",
+      "hybrid",
+      "perfect_ci",
+      0.7,
+      0.2,
+      null
+    ],
+    [
+      "peak_first_no_forecasts",
+      "peak-first",
+      "lightgbm",
+      0,
+      0,
+      null
+    ],
+    [
+      "peak_cap40_lightgbm",
+      "hybrid",
+      "lightgbm",
+      0.7,
+      0.2,
+      40
+    ],
+    [
+      "immediate_cap40",
+      "immediate",
+      "lightgbm",
+      0.7,
+      0,
+      40
+    ]
+  ],
+  "peak_default_weight": 0.2,
+  "peak_default_rationale": "engineering tradeoff at fixed 60kW reference; fixed before this Phase2 test execution, not selected from test metrics",
+  "peak_guard": "worst-case zero PV; net load envelope bounds imports for all nonnegative solar outcomes",
+  "tradeoff_grid": {
+    "carbon_weights": [
+      0,
+      0.35,
+      0.7,
+      1
+    ],
+    "peak_weights": [
+      0,
+      0.2,
+      0.5
+    ],
+    "reference_kw": 60,
+    "policy_selection": "exploratory reported grid; never automatically choose a test-best deployment policy"
+  },
+  "sensitivities": [
+    "battery_0kwh",
+    "battery_20kwh",
+    "battery_80kwh",
+    "battery_power_5kw",
+    "battery_power_20kw",
+    "fixed_load_half",
+    "fixed_load_150pct",
+    "fixed_load_double",
+    "ev_deadline_tighter",
+    "ev_deadline_infeasible",
+    "forecast_bias_plus30",
+    "forecast_noise_30g",
+    "forecast_timing_inverted",
+    "solar_20pct",
+    "efficiency_85pct",
+    "missing_forecast_rejected"
+  ],
+  "bootstrap": {
+    "replicates": 2000,
+    "units": "days",
+    "moving_block_days": 7,
+    "seed": 42,
+    "negative_results": "preserved without clipping"
+  },
+  "solver": {
+    "time_limit_seconds": 10,
+    "relative_mip_gap": 1e-06,
+    "native_threads": 1,
+    "persistent_worker": 1
+  },
+  "preregistration_limit": "config is saved before this execution, not immutable preregistration; Phase1 test outcomes were already examined",
+  "publication_latency": "past actual timestamps assumed available; historical point-in-time/revision archives unavailable",
+  "execution_snapshots": [
+    {
+      "path": "data/processed/neso_ci_2025.csv",
+      "sha256": "c7ce7ada691de06b00bf21f98d3c3dfc08c5531d115b307d9841fdb52be2ec6d"
+    },
+    {
+      "path": "data/processed/intervals_2025.csv",
+      "sha256": "8b7e5c77838fc56066278ed272db0434a525c46410a6f89daa62e1e3fb6c036d"
+    },
+    {
+      "path": "data/sample/intervals.json",
+      "sha256": "5c403ff1c82600b7c2838a98a5adbaf0bc82c20d66a2e67a8d018268d2bdb4f0"
+    },
+    {
+      "path": "backend/app/domain/solver.py",
+      "sha256": "096d1a42529390901b8f09b46ef6cfa9ace28ecf889b0f9c8dda907c33b1ffb1"
+    },
+    {
+      "path": "backend/app/domain/schemas.py",
+      "sha256": "ef41423ca960e9d29fe114aaaeb8717300d507446df274c51e8b4fc314d985a1"
+    },
+    {
+      "path": "backend/app/services/data.py",
+      "sha256": "a6d76ca55fa2560c525227238f02e1dd18d9dda62813bd737faa420888a259ea"
+    },
+    {
+      "path": "backend/app/ml/forecast.py",
+      "sha256": "65ae99bc146cee7daeeee833dbbaae207b9afe00b73962fcb8292faf32884eda"
+    },
+    {
+      "path": "scripts/run_competition_benchmark.py",
+      "sha256": "b08a81a942c365b186ea79d19466aacd194b02f962c8e05f1119362b249f2f31"
+    },
+    {
+      "path": "experiments/models_portable/carbon_model.json",
+      "sha256": "039425d1c48981a2a377b7eec4d33a72da809cda9cae1edf5dce21c62e2d5f49"
+    }
+  ],
+  "skip_sensitivity": false,
+  "skip_tradeoff": false
+}

@@ -47,6 +47,10 @@ class Scenario(StrictModel):
     eta_charge: float = Field(default=.95, gt=0, le=1)
     eta_discharge: float = Field(default=.95, gt=0, le=1)
     max_grid_import_kw: float = Field(default=60, gt=0, le=300)
+    peak_weight: float = Field(default=0, ge=0, le=5)
+    peak_cap_kw: float | None = Field(default=None, gt=0, le=300)
+    peak_reference_kw: float = Field(default=60, gt=0, le=300)
+    peak_risk_mode: Literal["forecast", "zero-pv-guard"] = "zero-pv-guard"
     charger_station_kw: float = Field(default=22, gt=0, le=200)
     max_batch_concurrency: int = Field(default=1, ge=1, le=8)
     ev_jobs: list[EVJob] = Field(default_factory=lambda:[EVJob(id="fleet-a",energy_kwh=24,arrival_slot=14,deadline_slot=36,max_kw=11),EVJob(id="fleet-b",energy_kwh=18,arrival_slot=16,deadline_slot=40,max_kw=11)])
@@ -67,7 +71,7 @@ class Scenario(StrictModel):
 
 class OptimizeRequest(StrictModel):
     date: str = Field(default="2025-08-12", pattern=r"^2025-\d{2}-\d{2}$")
-    policy: Literal["hybrid","carbon-first","cost-first","immediate"] = "hybrid"
+    policy: Literal["hybrid","carbon-first","cost-first","immediate","peak-first"] = "hybrid"
     carbon_weight: float = Field(default=.7, ge=0, le=1)
     scenario: Scenario = Field(default_factory=Scenario)
     solver_time_limit_seconds: float = Field(default=10, gt=0, le=30)
@@ -78,7 +82,7 @@ class ReplayRequest(OptimizeRequest):
 
 class EvidenceRequest(StrictModel):
     run_id: str
-    policy: Literal["hybrid","carbon_first","cost_first"] = "hybrid"
+    policy: Literal["hybrid","carbon_first","cost_first","peak_aware","peak_first"] = "hybrid"
 
 class AttestRequest(StrictModel):
     evidence_id: str

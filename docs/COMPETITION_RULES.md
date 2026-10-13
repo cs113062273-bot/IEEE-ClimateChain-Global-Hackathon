@@ -1,34 +1,49 @@
-# Competition verification
+# Confirmed competition requirements
 
-Verification recorded **2026-10-13T05:18:06Z** (2026-10-13 13:18 Asia/Taipei). Public official pages were independently read with the browser tool. Direct Python requests to Devpost returned HTTP 403 Cloudflare challenges, retained in the discovery error logs; no challenge was bypassed. This research does not verify the entrant's personal eligibility or authenticated submission state.
+Public pages re-read on **2026-10-13 at approximately 06:45 UTC / 14:45 Asia/Taipei**. This is a dated public-page check, not confirmation of personal eligibility, registration or successful submission. Direct anonymous HTTP access to Devpost Rules returned 403; the browser tool read the trailing-slash Rules page. No access challenge was bypassed.
 
-| Requirement | Verified public statement | GridProof preparation |
+| Item | Confirmed public statement | Source |
 |---|---|---|
-| Deadline | October 25, 2026, 5:00pm MSK, UTC+3 | **October 25, 2026, 22:00 Asia/Taipei**, 14:00 UTC. Prepare well before this deadline. |
-| Primary track | Renewable Energy & Energy Trading lists microgrid coordination | One primary track; emissions transparency is supporting capability. |
-| Deliverables | Track/problem/users/adoption description; public source repository; 3–5-minute demonstration; prototype/mockup/PoC | Prepare English repository, working local demo, evidence and recording script. Publishing and submission require the user's explicit instruction. |
-| Judging | Climate Impact; Innovation & Creativity; Technical Execution; Practical Usefulness; Presentation & Communication | No published percentage weights were found. Do not invent scoring weights. |
-| Awards | Overview lists $1,500, $1,000 and $500; three Certificates of Merit | Rules retain a prizes-TBD heading; verify again before submitting. |
+| Deadline | October 25, 2026, 17:00 MSK; conversion: **14:00 UTC /22:00 Asia/Taipei** | [Overview](https://ieee-climatechain-hack.devpost.com/) |
+| Entry | Solo allowed; ordinary teams 2–5; one team per person | [Rules](https://ieee-climatechain-hack.devpost.com/rules/) |
+| Deliverables | Chosen track, problem/solution/users/scalability/adoption; public source/documentation, 3–5-minute demo and prototype/mockup/PoC | [Overview](https://ieee-climatechain-hack.devpost.com/) |
+| Track | Renewable Energy & Energy Trading includes microgrid coordination | [Overview](https://ieee-climatechain-hack.devpost.com/) |
+| Judging | Climate Impact; Innovation & Creativity; Technical Execution; Practical Usefulness; Presentation. Rules says Storytelling; overview says Communication. No numerical weights found. | [Rules](https://ieee-climatechain-hack.devpost.com/rules/), [overview](https://ieee-climatechain-hack.devpost.com/) |
+| Opening announcement | Official Updates says submissions open October 5 | [Updates](https://ieee-climatechain-hack.devpost.com/updates) |
 
-These statements are supported by the [official overview](https://ieee-climatechain-hack.devpost.com/) and [official rules](https://ieee-climatechain-hack.devpost.com/rules).
+## Confirmed conflicts; interpretation unresolved
 
-The rules allow individual submissions, teams of 2–5 and membership of only one team. Organizers, judges and their immediate families are excluded; former grand-prize winners are described as eligible for smaller awards. Personal eligibility and excluded-territory conditions must be checked in the user's Devpost account before submission. [Official rules](https://ieee-climatechain-hack.devpost.com/rules).
+Overview says legal adult, students only, organizations excluded and territory restrictions; Rules also lists researchers, faculty, independent developers/startups and environmental professionals. Verify personal eligibility in the authenticated account/with organizers. [Overview](https://ieee-climatechain-hack.devpost.com/), [Rules](https://ieee-climatechain-hack.devpost.com/rules/).
 
-## Conflicts that remain unresolved
+Rules says not before October 25 at 08:00 PT; Updates says October 5. On October 25, 08:00 PDT converts to 15:00 UTC / 23:00 Taipei, after the displayed deadline. This conversion is our inference, not organizer clarification. Confirm logged-in submission availability rather than assuming a safe last-hour window. [Rules](https://ieee-climatechain-hack.devpost.com/rules/), [updates](https://ieee-climatechain-hack.devpost.com/updates).
 
-| Conflict | Public evidence | Operational response |
+Overview certificate text describes all eligible participants while its slot shows 10 winners; Rules says prizes TBD while overview lists cash prizes. No certificate/prize guarantee follows. [Overview](https://ieee-climatechain-hack.devpost.com/), [Rules](https://ieee-climatechain-hack.devpost.com/rules/).
+
+Rules excludes organizers/judges and immediate family, and limits earlier grand-prize winners to smaller awards. Personal circumstances are unverified. [Rules](https://ieee-climatechain-hack.devpost.com/rules/).
+
+Inspected public text does not expressly mandate hosted websites, public testnets, mainnet, paid services or PowerPoint. This is an observation about those pages, not an exemption from unknown logged-in form fields. AI-assistance disclosure and required upload fields remain unconfirmed; a forum participant's 35MB statement is not an official attachment rule.
+
+## Anonymous GitHub check
+
+At `2026-10-13T06:45:17Z`, requests without cookies/Authorization returned **404** for both:
+
+- `https://github.com/cs113062273-bot/IEEE-ClimateChain-Global-Hackathon`
+- `https://api.github.com/repos/cs113062273-bot/IEEE-ClimateChain-Global-Hackathon`
+
+Anonymous readability was unavailable; this does not distinguish private from nonexistent/renamed. A configured remote/authenticated push does not prove public access. No visibility setting, public service or submission was changed. See [minimal manual steps](SUBMISSION_CHECKLIST.md); re-check official pages/links before submission.
+
+## Local readiness versus formal compliance
+
+| Required or unresolved item | Prepared project material | Remaining confirmation |
 |---|---|---|
-| Eligibility | Overview widget says legal adult, students only, excludes companies/professional organizations; rules list researchers, faculty, developers, startups and environmental professionals | Apply the stricter student/adult constraints until the organizer or authenticated registration confirms otherwise. Coding can proceed. |
-| Submission opening | Rules say not before October 25 at 08:00 PT; organizer announcement says submissions open October 5 | Follow the recent organizer announcement and authenticated submission UI. Do not wait for the contradictory rule time. |
-| Participation certificate | Overview prize slot says 10 winners, accompanying description says all eligible participants | Do not promise a participation certificate for every entrant. |
-| Prize completeness | Overview publishes cash amounts; Rules heading still says TBD | Preserve both; reconfirm before public submission. |
+| Project problem, users, technical solution and adoption | [English description](SUBMISSION_DESCRIPTION.md) now includes actual all-122-day results, peak/cost tradeoffs and limitations | Entrant completes and previews actual Devpost fields |
+| 3–5-minute video | [4:35 storyboard and exact narration](DEMO_SCRIPT.md) | Record, upload and check anonymous playback; no video file exists yet |
+| Public source/documentation | Source, reproducible fixtures, verifier, benchmark and documents prepared locally | Authorize visibility/publication, then verify anonymous access; current 404 persists as last measured result |
+| Prototype/PoC | Local four-page app and self-contained offline recorded replay | Public hosting is optional in inspected text; account form may impose additional fields |
+| Blockchain component | Real historical local registry tests/receipts; public read-only Sepolia preparation | No public deployment or public-chain proof has occurred |
+| Eligibility and one-team rule | No automatic account action | Entrant confirms status/territory/age/team and resolves contradictory wording with organizer |
+| AI coding use | No explicit public prohibition, permission or disclosure requirement found | Do not infer blanket permission; answer actual form questions honestly and disclose AI-assisted development where appropriate |
+| Certificates/prizes | Public statements/conflicts recorded above | Eligibility, outcome and organizer interpretation remain unverified; no guarantee |
+| Submission deadline/opening | Displayed 22:00 Taipei deadline and conflicting opening wording documented | Confirm authenticated form works early; preserve actual submission confirmation |
 
-The eligibility, certificate and cash-prize widget evidence appears on the [overview](https://ieee-climatechain-hack.devpost.com/); the broader eligibility, stale opening time and TBD wording appear in the [rules](https://ieee-climatechain-hack.devpost.com/rules). The official [updates page](https://ieee-climatechain-hack.devpost.com/updates) contains the announcement that explicitly names October 5 as the submission opening. Its [individual announcement link](https://ieee-climatechain-hack.devpost.com/updates/46814-climatechain-hackathon-submissions-open-tomorrow-get-ready-to-submit) failed in the browser tool, so the updates list is the independently verified evidence.
-
-An additional time inconsistency follows from these statements: on October 25, 08:00 Pacific daylight time converts to 15:00 UTC, **one hour after** the overview's 14:00 UTC deadline. This is our timezone conversion, not an organizer clarification, and reinforces the need to use the authenticated UI and organizer update instead of the stale line.
-
-## History and competitive claims
-
-The [official 2026 gallery](https://ieee-climatechain-hack.devpost.com/project-gallery) currently says the managers have not published it. No winner claim for this competition can be inferred from that gallery. The starter specification's references to other submissions or other events are competitive context, not proof of earlier ClimateChain winners. No top-three or award outcome is promised.
-
-`data/manifests/rules_verification.json` records the verification time, official links, conflicts and browser/direct-fetch access differences. `data/manifests/discovery.json` records exact local HTTP attempts, dates, response statuses and retained error files. Revalidate these pages just before submission; this document is a dated research snapshot.
+Full-period evaluation does not replace official submission deliverables. No source visibility change, upload, hosted deployment, public transaction or formal submission was authorized or performed. The checklist identifies the minimum human account actions separately from completed local engineering.

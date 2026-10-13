@@ -1,6 +1,8 @@
 # Local chain demonstration
 
-This is a real Hardhat3 EVM development chain, labeled **LOCAL DEV CHAIN**, chain ID31337. It runs on loopback only, uses public development accounts and spends no money. No public explorer or public testnet is implemented.
+> Historical receipts and the lifecycle below describe the original local chain. A local node restart loses that in-memory chain; archived receipts do not establish live verification on a new node. The v2 upgrade adds Sepolia read-only configuration, fixed-proof and existing-scope lookup; actual public deployment remains pending. See [current deployment preparation](PUBLIC_DEPLOYMENT.md) and [release validation](VALIDATION.md) for current statuses. Duplicate lookup does not verify a changed new report.
+
+This is a real Hardhat3 EVM development chain, labeled **LOCAL DEV CHAIN**, chain ID31337. It runs on loopback only, uses public development accounts and spends no money. No public deployment exists; Sepolia verification and operator deployment preparation are now implemented locally.
 
 Install and build with Node24:
 
@@ -20,7 +22,7 @@ The backend invokes `node contracts/scripts/bridge.mjs` with a JSON request on s
 {"action":"health","network":"local","expected_chain_id":31337}
 ```
 
-Health/verification are read-only. The default RPC is `http://127.0.0.1:8545`; `GRIDPROOF_LOCAL_RPC_URL` accepts another HTTP loopback URL only. `network:"testnet"` returns `UNSUPPORTED_NETWORK`, never a fake receipt.
+Health/verification are read-only. The default RPC is `http://127.0.0.1:8545`; `GRIDPROOF_LOCAL_RPC_URL` accepts another HTTP loopback URL only. `network:"testnet"` now means Sepolia read-only mode, requiring operator RPC and real deployment metadata. Missing configuration remains UNVERIFIABLE; the HTTP bridge cannot deploy or sign public transactions.
 
 For a deliberate attestation, the backend prepares an evidence bundle and computes SHA256 of its exact canonical bytes:
 

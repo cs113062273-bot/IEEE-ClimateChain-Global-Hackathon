@@ -12,7 +12,9 @@ def main():
     if len(runs)<2:raise ValueError("Two authentic sourced windows required")
     value={"schema_version":"1.0.0","mode":"offline historical replay using downloaded official sources and modeled facility","runs":runs}
     output=ROOT/"data/sample/demo.json";output.write_text(json.dumps(value,indent=2),encoding="utf-8")
-    evidence=make_evidence(runs[-1]["run_id"])
+    proof_run=next((r for r in runs if r["date"]=="2025-09-01"),runs[-1])
+    evidence=make_evidence(proof_run["run_id"],"peak_aware")
+    evidence.pop("canonical_json",None)
     (ROOT/"data/sample/evidence.json").write_text(json.dumps(evidence,indent=2,ensure_ascii=False),encoding="utf-8")
     print(json.dumps({"path":str(output),"run_ids":[r["run_id"] for r in runs],"evidence_id":evidence["evidence_id"],"digest":evidence["digest"]}))
 if __name__=="__main__":main()

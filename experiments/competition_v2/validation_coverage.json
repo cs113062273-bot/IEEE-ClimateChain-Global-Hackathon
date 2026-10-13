@@ -1,0 +1,9 @@
+{
+  "expected_validation_days": 62,
+  "candidate_complete_days": 60,
+  "unavailable_actual_outcome_days": [
+    "2025-08-10",
+    "2025-08-11"
+  ],
+  "handling": "Complete-day candidate prediction table excludes unavailable actual outcomes; no actual imputation. These dates are explicitly counted rather than silently dropped."
+}

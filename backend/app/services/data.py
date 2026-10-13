@@ -15,7 +15,15 @@ def sources():
     path=ROOT/"data/manifests/sources.json"
     if not path.exists(): raise ValueError("Source manifest unavailable. Run acquisition scripts.")
     value=json.loads(path.read_text(encoding="utf-8-sig"))
-    return value if isinstance(value,dict) else {"sources":value}
+    value=value if isinstance(value,dict) else {"sources":value}
+    for item in value["sources"]:
+        checks=[]
+        if item.get("path"):
+            asset=ROOT/item["path"]
+            checks.append({"path":item["path"],"status":"hash_matches" if asset.exists() and snapshot_digest(asset)==item.get("sha256") else "hash_mismatch" if asset.exists() else "unavailable"})
+        item["current_local_checks"]=checks
+        item["current_local_status"]="verified" if checks and all(c["status"]=="hash_matches" for c in checks) else "unavailable" if not checks or all(c["status"]=="unavailable" for c in checks) else "mismatch"
+    return value
 
 def fixture():
     path=ROOT/"data/sample/intervals.json"
@@ -59,8 +67,9 @@ def forecast_day(date,frame=None):
     if past.empty: raise ValueError("No past-only observations preceding decision midnight")
     values,method=predict_day(past,issue)
     training=["2025-01-08T00:00:00Z","2025-06-30T23:30:00Z"] if method=="lightgbm-past-only-v1" else None
-    weights=ROOT/"experiments/models/carbon_model.pkl"
-    return values,{"version":method,"training_window_utc":training,"selection_end":"2025-08-31T23:30:00Z" if method=="lightgbm-past-only-v1" else None,"selection_usable_from":"2025-09-01T00:00:00Z" if method=="lightgbm-past-only-v1" else None,"weights_sha256":snapshot_digest(weights) if method=="lightgbm-past-only-v1" and weights.exists() else None,"decision_time":issue.isoformat().replace("+00:00","Z"),"latest_observation":past.index.max().isoformat().replace("+00:00","Z"),"feature_policy":"only carbon observations strictly before decision_time and calendar; no future actual/weather/demand; validation-selected model usable only from September1","uncertainty":None,"historical_neso_forecast":"secondary; publication/issuance time unverified","availability_assumption":"Past actual CI timestamps assumed available at issue; historical publication latency not independently archived"}
+    from backend.app.ml.forecast import model_artifact_path
+    weights=model_artifact_path()
+    return values,{"version":method,"training_window_utc":training,"selection_end":"2025-08-31T23:30:00Z" if method=="lightgbm-past-only-v1" else None,"selection_usable_from":"2025-09-01T00:00:00Z" if method=="lightgbm-past-only-v1" else None,"weights_sha256":snapshot_digest(weights) if method=="lightgbm-past-only-v1" and weights.exists() else None,"artifact_format":"portable-json" if method=="lightgbm-past-only-v1" and weights.suffix==".json" else "local-pickle" if method=="lightgbm-past-only-v1" else "rule-based","decision_time":issue.isoformat().replace("+00:00","Z"),"latest_observation":past.index.max().isoformat().replace("+00:00","Z"),"feature_policy":"only carbon observations strictly before decision_time and calendar; no future actual/weather/demand; validation-selected model usable only from September1","uncertainty":None,"historical_neso_forecast":"secondary; publication/issuance time unverified","availability_assumption":"Past actual CI timestamps assumed available at issue; historical publication latency not independently archived"}
 
 def prepare_intervals(date,scenario,frame=None):
     raw=[x for x in fixture()["intervals"] if x["start_utc"][:10]==date]

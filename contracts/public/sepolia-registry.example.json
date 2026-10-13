@@ -1,0 +1,11 @@
+{
+  "status": "EXAMPLE_NOT_DEPLOYED",
+  "chain_id": 11155111,
+  "contract_name": "GridProofRegistry",
+  "contract_address": null,
+  "deployment_transaction_hash": null,
+  "deployment_block_number": null,
+  "deployment_block_hash": null,
+  "runtime_code_sha256": null,
+  "abi": []
+}
