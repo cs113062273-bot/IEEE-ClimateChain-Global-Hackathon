@@ -1,6 +1,6 @@
 # GridProof
 
-**Trustworthy carbon-aware microgrid orchestration** — a working local prototype with source-lineage verification and peak-aware dispatch for the IEEE ClimateChain Global Hackathon 2026, Renewable Energy & Energy Trading track.
+**Microgrid scheduling + verifiable climate evidence** — for campus energy managers who need vehicles charged on time without creating a costly power peak. Choose a goal, inspect a feasible schedule and challenge its evidence. IEEE ClimateChain 2026 track: Renewable Energy & Energy Trading — Microgrid Coordination.
 
 GridProof turns authentic GB grid records into constrained campus energy schedules and independently verifiable evidence. It connects source acquisition, forecasts, a mixed-integer optimizer, numerical replay and a Solidity scope registry. The hypothetical London campus has 20 kWp PV, a 40 kWh battery, two EV jobs and a contiguous compute-lab batch.
 
@@ -28,10 +28,12 @@ PowerShell users with script execution restricted can invoke `.\.venv\Scripts\py
 
 ## Four working pages
 
-- **Control room:** numerical campus twin, carbon outlook, modeled exposure and independent constraint checks.
-- **Intelligent dispatch:** choose a source day, battery capacity, EV deadline and cost/carbon weight; recompute all policies. Infeasible inputs return an explicit error.
-- **Digital twin & replay:** inspect each half-hour, compare equal-workload policies, reproduce a day and export the dispatch. Held-out evaluation is shown separately from the selected-day outcome.
-- **Trust audit:** export evidence, independently recompute SHA256 in the browser, tamper with a copy, deliberately attest on the local chain and verify its receipt. Missing RPC or mismatched evidence never becomes a verified state.
+- **Control room:** operator problem, three-step walkthrough, four goals and same-workload Carbon/Cost/Peak deltas, plus the numerical campus twin.
+- **Intelligent dispatch:** select Lowest Carbon / Lowest Cost / Lowest Peak / Balanced; metrics and curves use that computed policy. Change source day, battery, EV deadline or hybrid preference and run a real recomputation. Export the selected 48-interval CSV/JSON. Infeasible inputs retain the previous usable plan and show an error.
+- **Digital twin & replay:** inspect each half-hour, the finite trade-off map and all equal-workload policies. Goal switching is labeled selection of computed results; full-period evaluation remains separate from the selected day.
+- **Trust audit:** scope/source values before technical JSON, generate the selected policy's evidence, verify local layers and forge CI plus new hashes to demonstrate rejection. Fixed receipt reads are separate from new reports; actual history/revocation fields are displayed. Missing RPC or mismatched evidence never becomes verified.
+
+Follow the [60-second judge path](docs/ACCEPTANCE_60_SECONDS.md): **choose a goal → compare schedules → challenge the evidence**. Human comprehension is pending a real teach-back, not inferred from browser tests. The [product iteration report](docs/CHAMPIONSHIP_ITERATION.md) includes the direct review answers and actual changes; [release operations](docs/RELEASE_OPERATIONS.md) prepares the existing app plus a static recorded backup. Nothing has been publicly deployed or submitted.
 
 ## Measured results and limits
 
@@ -127,6 +129,6 @@ The original implementation specification and architecture assets remain at the 
 
 [Architecture](docs/ARCHITECTURE.md) · [source attribution](ATTRIBUTION.md) · [competition conflicts](docs/COMPETITION_RULES.md) · [4:35 English demo script](docs/DEMO_SCRIPT.md) · [submission description](docs/SUBMISSION_DESCRIPTION.md) · [submission checklist](docs/SUBMISSION_CHECKLIST.md).
 
-The verified public deadline is **October 25, 2026, 22:00 Asia/Taipei**. Eligibility and submission-window contradictions remain recorded; personal eligibility and authenticated submission availability require the entrant's review. The local prototype is prepared without public upload, paid deployment or contest submission. The public repository, recorded video and optional hosting remain publication steps.
+The displayed public deadline is **October 25, 2026, 22:00 Asia/Taipei**. The Rules/submit-window conflict remains UNRESOLVED in the latest requirements audit. Eligibility and submission-window contradictions remain recorded; personal eligibility and authenticated submission availability require the entrant's review. The local prototype is prepared without public upload, paid deployment or contest submission. The public repository, recorded video and optional hosting remain publication steps.
 
 Original code: [MIT](LICENSE). Upstream datasets retain their own terms and attribution.

@@ -1,6 +1,6 @@
 # GridProof — Feasible energy schedules, independently checkable evidence
 
-**Primary track: Renewable Energy & Energy Trading.** The English description below is ready to copy into Devpost. Publication links remain a manual handoff: a script is not a recorded video, and deployment preparation is not a published service.
+**Primary track: Renewable Energy & Energy Trading — Microgrid Coordination.** The English description below is ready to copy into Devpost. Publication links remain a manual handoff: a script is not a recorded video, and deployment preparation is not a published service.
 
 ## Problem and users
 
@@ -12,7 +12,9 @@ GridProof turns these requirements into a feasible plan and independently inspec
 
 The SciPy/HiGHS mixed-integer optimizer enforces half-hourly energy balance, battery efficiency and state-of-charge bounds, equal starting and ending stored energy, vehicle demand/deadlines, shared charging power and contiguous work. Peak-aware scheduling adds a maximum-power objective or cap with an explicit conservative zero-PV guard. Carbon, cost and peak are tradeoffs.
 
-The four-page interface lets an operator compare the same workload, change limits, inspect the trained predictor, recompute dispatch, replay energy flows and challenge evidence. LightGBM uses past carbon observations and calendar features. The solver converts that forecast into a constrained decision. Dates before model selection use a labeled seasonal fallback. Future actual intensity is used for retrospective scoring, never as an ordinary decision feature.
+The four-page interface starts with a campus operator's decision: **Lowest Carbon, Lowest Cost, Lowest Peak or Balanced**. Selection updates the same-workload metrics, power and battery curves, interval replay, 48-row CSV/JSON export and generated evidence. Goal switching displays actual computed policies; changing battery capacity, EV deadline or hybrid preference sends a real recomputation. Goal names describe objectives, not guaranteed realized minima.
+
+LightGBM uses past carbon observations and calendar features. Its carbon forecast guides Carbon-first and positive-carbon-weight Hybrid/Balanced objectives. Cost-first uses tariff and calendar PV instead; Lowest Peak and Immediate do not use carbon predictions for decisions. The UI and exports state these roles. Dates before model selection use a labeled seasonal fallback. Future actual intensity is used for retrospective scoring, never as an ordinary decision feature.
 
 ## Measured prototype results
 
@@ -36,11 +38,11 @@ Version 2 evidence includes inputs, pinned upstream bytes, portable trained-mode
 
 The interface separates **Integrity**, **Source Lineage**, **Physical Validity** and **On-chain Attestation**. Missing necessary sources produce incomplete assurance. Older v1 reports retain their bytes and integrity checks but cannot silently acquire v2 source assurance.
 
-The Solidity registry commits a digest and enforces one active claim for an exact site, time interval and category. Authorized revocation/replacement preserves history. Real local EVM receipts have been exercised. Anonymous Sepolia read-only verification is prepared, but public deployment and a fixed published proof remain pending authorization. A hash, valid lineage or registry commitment does **not** prove that an external meter or provider told the truth, establish site ownership or certify a carbon credit.
+The Solidity registry commits a digest outside the scheduling database and enforces one active claim for an exact site, time interval and category. Authorized revocation/replacement preserves linked history, shown as actual fields before technical JSON. Real local EVM receipts have been exercised. Fixed-proof reading is separated from dynamically generated reports so a new digest cannot borrow an old attestation. Anonymous Sepolia read-only verification is prepared, but public deployment and a fixed published proof remain pending authorization. A hash, valid lineage or registry commitment does **not** prove that an external meter or provider told the truth, establish site ownership or certify a carbon credit.
 
 ## Adoption and limits
 
-Adoption starts with transparent replay, validated meters and point-in-time data, followed by operational trials and measured field evaluation. Current support is one 24-hour horizon with bounded jobs; daily battery states reset. Multi-site coordination, long continuous horizons and large fleets require further engineering.
+A facility manager can inspect constraints, compare goals and export the selected plan for review. The export is a planning artifact, not a command to connected chargers. The release provides existing-app hosting configuration, a static fallback and operator instructions. Adoption proceeds from transparent replay to validated meters and point-in-time data, followed by operational trials and measured field evaluation. Current support is one 24-hour horizon with bounded jobs; daily battery states reset. Multi-site coordination, long continuous horizons and large fleets require further engineering.
 
 A self-contained `offline/index.html` lets a judge inspect recorded comparisons, replay flows and challenge evidence without Python, Node or a wallet. Its lightweight browser checks are labeled separately from complete Python verification; it performs no new optimization or live chain query. Hosting/container settings are prepared but have not been validated in Docker or a Linux deployment.
 

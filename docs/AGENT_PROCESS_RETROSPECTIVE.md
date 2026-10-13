@@ -1,0 +1,17 @@
+# Agent process correction
+
+This iteration changes the work priorities: a facility manager must understand a scheduling decision, compare its consequences and check its evidence. Official judging asks about climate impact, innovation, execution, usefulness and communication; it does not impose statistical superiority of LightGBM over a seasonal predictor. The [current official audit](JUDGING_REQUIREMENTS_AUDIT.md) records that distinction.
+
+The earlier evaluation and source-lineage repair were authorized and useful. They established reproducibility, revealed a genuine evidence attack, and exposed the original carbon-versus-peak tradeoff. The workflow then gave measurable engineering outputs—test counts, confidence intervals and solver diagnostics—too much prominence relative to judge comprehension and external delivery. Repeating the AI caveat in every progress conclusion could imply a nonexistent qualification gate. Keep it in the technical evidence and avoid making it the product's headline.
+
+There was also a real reporting error: **195 sensitivity candidates failed replay constraints and were rejected; returned Immediate fallbacks had zero violations**. These are different populations. A statement that all candidate schedules had zero violations would be false. The [retained validation record](VALIDATION.md) preserves that correction and the actual failures. This is a reason to improve metric definitions, not to launch another benchmark without a decision it would change.
+
+Public delivery remains incomplete partly because visibility changes, account operations, uploads, hosting and contract publication require authorization. That boundary is valid. Preparing concrete release assets and a small manual action list earlier would have made the boundary easier to resolve. A passing local system should not be described as a completed external judge experience.
+
+## Three rules applied in this iteration
+
+1. **Start with a visible user decision and an official criterion.** Before a task, state what the judge will understand or what the operator can do, the loss if omitted, and whether an existing component already solves it. Prioritize the 60-second scheduling-to-proof path and prepare external handoff material early. Stop additions that cannot explain their product benefit.
+2. **Reuse sufficient evidence; investigate only a concrete failure.** Preserve the 122-day benchmark, trained forecast and disclosed baseline comparison. Do not repeat bootstrap, model searches, source audits or fresh clones merely to increase counts. Reopen research only for unused AI, leakage, harmful forecast behavior or a specific improvement that changes a product decision. Prefer existing solver policies and measured results over new parameter sweeps.
+3. **Verify the changed workflow once and label each evidence population.** Run affected regression and the actual judge path after integration; broaden checks only for a new failure or unresolved risk. Distinguish rejected candidates from returned schedules, replay from a fresh solve, local checks from current on-chain reads, and scripts from completed public delivery. Record failures rather than remove tests. Human 60-second comprehension remains pending until a non-engineer actually tries it; browser automation cannot prove it.
+
+These rules cap process changes at three. Success is a clearer, usable and honest scheduling-to-evidence demonstration with preserved regression behavior—not a larger test count, additional documents or a claim of guaranteed first place.

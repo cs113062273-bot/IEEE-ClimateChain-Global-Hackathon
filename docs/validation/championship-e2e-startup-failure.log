@@ -1,0 +1,207 @@
+
+> gridproof-dashboard@0.1.0 test:e2e
+> playwright test
+
+
+Running 6 tests using 1 worker
+
+npm.cmd : (node:18848) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+位於 線路:5 字元:1
++ npm.cmd --prefix frontend run test:e2e *> '.runtime/championship-brow ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:18848) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\competition.spec.ts:4:5 › trained AI, carbon-cost-peak comparison, source lineage and rehashed attack (542ms)
+(node:15164) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 tests\competition.spec.ts:58:5 › judge pages remain readable on desktop and phone (382ms)
+(node:21920) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 tests\competition.spec.ts:72:5 › offline recorded demo works without API, network, runtime or wallet (386ms)
+(node:23628) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  4 tests\workflow.spec.ts:3:5 › computed dispatch, deterministic replay, independent tamper check, and responsive audit (330ms)
+(node:9484) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  5 tests\workflow.spec.ts:49:5 › infeasible deadline retains the previous usable schedule and gives an explicit error (345ms)
+(node:9356) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  6 tests\workflow.spec.ts:60:5 › deliberate local-chain attestation verifies a real receipt and rejects duplicate scope (388ms)
+
+
+  1) tests\competition.spec.ts:4:5 › trained AI, carbon-cost-peak comparison, source lineage and rehashed attack
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000/dispatch
+    Call log:
+      - navigating to "http://127.0.0.1:3000/dispatch", waiting until "load"
+
+
+      4 | test("trained AI, carbon-cost-peak comparison, source lineage and rehashed attack",async({page})=>{
+      5 |   const initial=page.waitForResponse(r=>r.url().endsWith("/api/compare")&&r.request().method()==="POST");
+    > 6 |   await page.goto("/dispatch");
+        |              ^
+      7 |   const computed=await (await initial).json();
+      8 |   await expect(page.getByTestId("forecast-model")).toHaveText("lightgbm-past-only-v1");
+      9 |   await expect(page.getByRole("table",{name:"Carbon cost peak comparison"})).toBeVisible();
+        at C:\Users\c9408\Desktop\IEEE ClimateChain Global Hackathon\frontend\tests\competition.spec.ts:6:14
+
+    Error: page.waitForResponse: Test ended.
+
+      3 |
+      4 | test("trained AI, carbon-cost-peak comparison, source lineage and rehashed attack",async({page})=>{
+    > 5 |   const initial=page.waitForResponse(r=>r.url().endsWith("/api/compare")&&r.request().method()==="POST");
+        |                      ^
+      6 |   await page.goto("/dispatch");
+      7 |   const computed=await (await initial).json();
+      8 |   await expect(page.getByTestId("forecast-model")).toHaveText("lightgbm-past-only-v1");
+        at C:\Users\c9408\Desktop\IEEE ClimateChain Global Hackathon\frontend\tests\competition.spec.ts:5:22
+
+    Error Context: test-results\competition-trained-AI-car-0abfe-lineage-and-rehashed-attack\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\competition-trained-AI-car-0abfe-lineage-and-rehashed-attack\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\competition-trained-AI-car-0abfe-lineage-and-rehashed-attack\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\competition.spec.ts:58:5 › judge pages remain readable on desktop and phone ─────────────
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000/
+    Call log:
+      - navigating to "http://127.0.0.1:3000/", waiting until "load"
+
+
+      58 | test("judge pages remain readable on desktop and phone",async({page})=>{
+      59 |   for(const [path,title,name] of [["/","Control room","control-room"],["/dispatch","Intelligent dispatch","dispatch"],["/replay","Digital twin & replay","replay"],["/audit","Trust audit","trust-audit"]]){
+    > 60 |     await page.goto(path);
+         |                ^
+      61 |     await expect(page.getByRole("heading",{name:title,exact:true})).toBeVisible();
+      62 |     await expect(page.getByRole("button",{name:"Run optimization"}).or(page.getByRole("button",{name:"Generate evidence"}))).toBeEnabled();
+      63 |     await page.screenshot({path:"../docs/assets/"+name+".png",fullPage:true});
+        at C:\Users\c9408\Desktop\IEEE ClimateChain Global Hackathon\frontend\tests\competition.spec.ts:60:16
+
+    Error Context: test-results\competition-judge-pages-remain-readable-on-desktop-and-phone\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\competition-judge-pages-remain-readable-on-desktop-and-phone\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\competition-judge-pages-remain-readable-on-desktop-and-phone\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests\competition.spec.ts:72:5 › offline recorded demo works without API, network, runtime or wallet
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000/offline/index.html
+    Call log:
+      - navigating to "http://127.0.0.1:3000/offline/index.html", waiting until "load"
+
+
+      71 |
+      72 | test("offline recorded demo works without API, network, runtime or wallet",async({page})=>{
+    > 73 |   await page.goto("/offline/index.html");
+         |              ^
+      74 |   await page.context().setOffline(true);
+      75 |   await page.getByRole("button",{name:"Lowest Peak",exact:true}).click();
+      76 |   await expect(page.locator("#policy")).toHaveValue("peak_first");
+        at C:\Users\c9408\Desktop\IEEE ClimateChain Global Hackathon\frontend\tests\competition.spec.ts:73:14
+
+    Error Context: test-results\competition-offline-record-11382-I-network-runtime-or-wallet\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\competition-offline-record-11382-I-network-runtime-or-wallet\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\competition-offline-record-11382-I-network-runtime-or-wallet\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests\workflow.spec.ts:3:5 › computed dispatch, deterministic replay, independent tamper check, and responsive audit
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000/
+    Call log:
+      - navigating to "http://127.0.0.1:3000/", waiting until "load"
+
+
+      3 | test("computed dispatch, deterministic replay, independent tamper check, and responsive audit",async({page})=>{
+      4 |   const errors:string[]=[];page.on("pageerror",error=>errors.push(error.message));
+    > 5 |   await page.goto("/");
+        |              ^
+      6 |   await expect(page.getByRole("heading",{name:"Control room",exact:true})).toBeVisible();
+      7 |   await expect(page.getByText("All dispatch constraints satisfied")).toBeVisible();
+      8 |   await expect(page.getByText("Actual national intensity · scored after dispatch")).toBeVisible();
+        at C:\Users\c9408\Desktop\IEEE ClimateChain Global Hackathon\frontend\tests\workflow.spec.ts:5:14
+
+    Error Context: test-results\workflow-computed-dispatch-f33bb--check-and-responsive-audit\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\workflow-computed-dispatch-f33bb--check-and-responsive-audit\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\workflow-computed-dispatch-f33bb--check-and-responsive-audit\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) tests\workflow.spec.ts:49:5 › infeasible deadline retains the previous usable schedule and gives an explicit error
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000/dispatch
+    Call log:
+      - navigating to "http://127.0.0.1:3000/dispatch", waiting until "load"
+
+
+      48 |
+      49 | test("infeasible deadline retains the previous usable schedule and gives an explicit error",async({page})=>{
+    > 50 |   await page.goto("/dispatch");
+         |              ^
+      51 |   await expect(page.getByRole("heading",{name:"Demand & dispatch"})).toBeVisible();
+      52 |   await page.getByLabel("First EV deadline · UTC").selectOption("16");
+      53 |   const rejected=page.waitForResponse(r=>r.url().endsWith("/api/compare")&&r.request().method()==="POST");
+        at C:\Users\c9408\Desktop\IEEE ClimateChain Global Hackathon\frontend\tests\workflow.spec.ts:50:14
+
+    Error Context: test-results\workflow-infeasible-deadli-a0996-and-gives-an-explicit-error\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\workflow-infeasible-deadli-a0996-and-gives-an-explicit-error\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\workflow-infeasible-deadli-a0996-and-gives-an-explicit-error\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) tests\workflow.spec.ts:60:5 › deliberate local-chain attestation verifies a real receipt and rejects duplicate scope
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3000/dispatch
+    Call log:
+      - navigating to "http://127.0.0.1:3000/dispatch", waiting until "load"
+
+
+      59 |
+      60 | test("deliberate local-chain attestation verifies a real receipt and rejects duplicate scope",async({page})=>{
+    > 61 |   await page.goto("/dispatch");
+         |              ^
+      62 |   await expect(page.getByRole("heading",{name:"Scenario controls"})).toBeVisible();
+      63 |   await page.getByLabel("Historical day · UTC").selectOption("2025-01-15");
+      64 |   const comparison=page.waitForResponse(r=>r.url().endsWith("/api/compare")&&r.request().method()==="POST");
+        at C:\Users\c9408\Desktop\IEEE ClimateChain Global Hackathon\frontend\tests\workflow.spec.ts:61:14
+
+    Error Context: test-results\workflow-deliberate-local--9c850-and-rejects-duplicate-scope\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\workflow-deliberate-local--9c850-and-rejects-duplicate-scope\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\workflow-deliberate-local--9c850-and-rejects-duplicate-scope\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6 failed
+    tests\competition.spec.ts:4:5 › trained AI, carbon-cost-peak comparison, source lineage and rehashed attack
+    tests\competition.spec.ts:58:5 › judge pages remain readable on desktop and phone ──────────────
+    tests\competition.spec.ts:72:5 › offline recorded demo works without API, network, runtime or wallet
+    tests\workflow.spec.ts:3:5 › computed dispatch, deterministic replay, independent tamper check, and responsive audit
+    tests\workflow.spec.ts:49:5 › infeasible deadline retains the previous usable schedule and gives an explicit error
+    tests\workflow.spec.ts:60:5 › deliberate local-chain attestation verifies a real receipt and rejects duplicate scope

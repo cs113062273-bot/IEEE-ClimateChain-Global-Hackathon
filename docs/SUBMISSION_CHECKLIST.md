@@ -2,6 +2,8 @@
 
 Displayed deadline: **2026-10-25 22:00 Asia/Taipei / 14:00 UTC**. Leave several hours. [Official requirements and conflicts](COMPETITION_RULES.md).
 
+Latest checked [official audit](JUDGING_REQUIREMENTS_AUDIT.md): the Rules start-time conflict is still UNRESOLVED, and the 35 MB attachment requirement is UNCONFIRMED. The authenticated entrant form must be inspected. Current [60-second judge path](ACCEPTANCE_60_SECONDS.md) and [release operations](RELEASE_OPERATIONS.md) replace a manual search through technical JSON; public/account gates below remain pending.
+
 ## Prepared locally
 
 - [x] [English submission description](SUBMISSION_DESCRIPTION.md) with actual full-period figures and limitations.
@@ -13,6 +15,9 @@ Displayed deadline: **2026-10-25 22:00 Asia/Taipei / 14:00 UTC**. Leave several 
 - [x] Self-contained `offline/index.html` presents recorded replay without Python/Node/network/wallet; limited browser-check scope disclosed.
 - [x] Public read-only Sepolia preparation and duplicate-scope inspection; no deployment claimed.
 - [x] Dockerfiles/compose/public-service settings prepared; **Docker/Linux execution not verified**.
+- [x] Four genuine goal selections synchronize metrics, curves, selected CSV/JSON and evidence; source-rehashed rejection and actual registry history are visible. Existing affected regression passed without raising test counts.
+- [x] Render profile/static fallback prepared and schema-checked; no service created or deployed.
+- [ ] Non-engineer 60-second teach-back observed and recorded; automation is not substitute evidence.
 - [x] Final integrated tests/build/reproducibility/secrets logs reviewed: 91 Python/data, 32 contract/bridge and 6 browser tests, exact source-commit clone, independent benchmark consistency and actual local attestation/duplicate check. See [validation](VALIDATION.md); retained failures remain visible.
 
 ## Minimal account/publication actions for the entrant

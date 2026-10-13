@@ -1,0 +1,77 @@
+{
+  "record_type": "observed_check_summary",
+  "date_utc": "2026-10-13",
+  "scope": "Local release configuration and existing chain bridge checks. This summary records actual tool results; it is not a reconstructed full stdout log.",
+  "contract_bridge_tests": {
+    "command": "npm --prefix contracts test",
+    "exit_code": 0,
+    "passed": 32,
+    "wall_time_seconds": 8.4786415,
+    "observed_output": "32 passing (32 nodejs); No contracts to compile",
+    "changed_behavior": "Expose current getClaim lifecycle fields as record_history; extend assertions in existing tests without adding tests or changing Solidity.",
+    "stdout_record": "Actual tool output retained in the conversation; no separate complete stdout file was captured."
+  },
+  "contract_typecheck": {
+    "command": "npm --prefix contracts run typecheck",
+    "exit_code": 0,
+    "wall_time_seconds": 6.2662647,
+    "observed_output": "tsc --noEmit completed successfully",
+    "stdout_record": "Actual tool output retained in the conversation; no separate complete stdout file was captured."
+  },
+  "render_manifest": {
+    "path": "render.yaml",
+    "status": "passed",
+    "validation": "Local json.loads parsing and jsonschema.validate against the official downloaded Render schema",
+    "schema_url": "https://render.com/schema/render.yaml.json",
+    "schema_sha256": "8a3fb8da6b4f55fe686fbefa790e011d3dd7895f013f355953c572a21ab6494a",
+    "services": [
+      {"name": "gridproof-api", "runtime": "docker", "plan": "free"},
+      {"name": "gridproof-web", "runtime": "docker", "plan": "free"},
+      {"name": "gridproof-recorded-demo", "runtime": "static", "plan": "static/no-compute-plan"}
+    ],
+    "validation_packages": "Installed only into ignored .runtime/release-schema-tools; project runtime dependencies unchanged",
+    "limitations": "Schema compatibility only; no Render account/API validation, container execution, cloud build or service creation."
+  },
+  "anonymous_repository": {
+    "checked_at_utc": "2026-10-13T10:16:19.779519+00:00",
+    "authentication_headers_sent": false,
+    "checks": [
+      {
+        "url": "https://github.com/cs113062273-bot/IEEE-ClimateChain-Global-Hackathon",
+        "http_status": 404,
+        "response_bytes": 263841
+      },
+      {
+        "url": "https://api.github.com/repos/cs113062273-bot/IEEE-ClimateChain-Global-Hackathon",
+        "http_status": 404,
+        "response_bytes": 118
+      }
+    ],
+    "interpretation": "Anonymous access unavailable at check time. HTTP 404 alone does not establish why."
+  },
+  "source_scan": {
+    "command": ".venv/Scripts/python.exe scripts/scan_secrets.py",
+    "status": "passed",
+    "checked_text_files": 201,
+    "findings": [],
+    "limitations": "Bounded common credential patterns in tracked and nonignored untracked files; not every secret format or complete Git history. Final staged release still needs its existing final scan."
+  },
+  "fresh_clone": {
+    "action": "Reviewed existing validation/fresh-clone.json; did not repeat unchanged full clone",
+    "existing_verified_source_commit": "a29daadc79af054a4eeb33dddc86e6b74e24b74a",
+    "limitations": "Prior clone does not claim to contain this iteration's changed UI/bridge/config."
+  },
+  "external_actions": {
+    "public_chain_writes": false,
+    "public_contract_deployments": false,
+    "repository_push_or_visibility_change": false,
+    "public_service_creation": false,
+    "video_upload": false,
+    "devpost_submission": false
+  },
+  "remaining_manual_acceptance": [
+    "Non-engineer 60-second teach-back",
+    "Authorized anonymous source/video/demo publication checks",
+    "Actual Docker/Linux/cloud build and cold-start checks if the dynamic hosted profile is chosen"
+  ]
+}

@@ -1,0 +1,5 @@
+⚠ Warning: Next.js ignored package-lock.json in C:\Users\c9408 because it is outside the current Git repository (C:\Users\c9408\Desktop\IEEE ClimateChain Global Hackathon).
+ To use this directory, set `outputFileTracingRoot` in your Next.js config.
+
+Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at ignore-listed frames

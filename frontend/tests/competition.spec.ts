@@ -1,12 +1,40 @@
 import {expect,test} from "@playwright/test";
+import {readFile} from "node:fs/promises";
 
 test("trained AI, carbon-cost-peak comparison, source lineage and rehashed attack",async({page})=>{
+  const initial=page.waitForResponse(r=>r.url().endsWith("/api/compare")&&r.request().method()==="POST");
   await page.goto("/dispatch");
+  const computed=await (await initial).json();
   await expect(page.getByTestId("forecast-model")).toHaveText("lightgbm-past-only-v1");
   await expect(page.getByRole("table",{name:"Carbon cost peak comparison"})).toBeVisible();
   await expect(page.getByText("Peak-aware hybrid",{exact:true})).toBeVisible();
+  let extraSolves=0;page.on("request",r=>{if(r.url().endsWith("/api/compare")&&r.method()==="POST")extraSolves++;});
+  await page.getByRole("button",{name:"Lowest Peak",exact:true}).click();
+  await expect(page.getByTestId("active-operating-goal")).toContainText("Lowest Peak");
+  await expect(page.getByTestId("goal-peak_grid_kw")).toContainText(computed.plans.peak_first.metrics.peak_grid_kw.toLocaleString("en-GB",{minimumFractionDigits:2,maximumFractionDigits:2}));
+  await expect(page.locator(".decision-flow")).toContainText("No carbon forecast decision");
+  const csvReady=page.waitForEvent("download");await page.getByRole("button",{name:"Download schedule CSV"}).click();
+  const csvDownload=await csvReady;
+  const csv=await readFile((await csvDownload.path())!,"utf8");
+  expect(csv.trim().split(/\r?\n/)).toHaveLength(49);
+  expect(csv).toContain('"peak_first"');expect(csv).toContain('"simulated"');
+  const jsonReady=page.waitForEvent("download");await page.getByRole("button",{name:"Download schedule JSON"}).click();
+  const jsonDownload=await jsonReady;
+  const exported=JSON.parse(await readFile((await jsonDownload.path())!,"utf8"));
+  expect(exported.selected_policy).toBe("peak_first");
+  expect(exported.carbon_prediction_used_for_objective).toBe(false);
+  expect(exported.plan.metrics.peak_grid_kw).toBe(computed.plans.peak_first.metrics.peak_grid_kw);
+  await page.getByRole("button",{name:"Lowest Carbon",exact:true}).click();
+  await expect(page.getByTestId("active-operating-goal")).toContainText("Lowest Carbon");
+  await page.getByRole("button",{name:"Balanced",exact:true}).click();
+  await expect(page.getByTestId("active-operating-goal")).toContainText("Balanced");
+  await page.getByRole("button",{name:"Lowest Cost",exact:true}).click();
+  expect(extraSolves).toBe(0);
   await page.getByRole("link",{name:"Trust audit",exact:true}).click();
   await page.getByRole("button",{name:"Generate evidence",exact:true}).click();
+  await expect(page.getByTestId("evidence-policy")).toHaveText("cost_first");
+  await expect(page.getByLabel("Evidence subject")).toContainText("london-campus-hypothetical-v1");
+  await expect(page.getByRole("button",{name:"Read recorded attestation"})).toBeDisabled();
   await expect(page.getByRole("button",{name:"Verify all local layers"})).toBeVisible();
   await page.getByRole("button",{name:"Verify all local layers"}).click();
   await expect(page.getByTestId("full-verification")).toContainText("VERIFIED");
@@ -22,6 +50,11 @@ test("trained AI, carbon-cost-peak comparison, source lineage and rehashed attac
   await page.getByRole("button",{name:"Load recorded release proof"}).click();
   await page.getByRole("button",{name:"Verify all local layers"}).click();
   await expect(page.getByTestId("full-verification")).toContainText("VERIFIED");
+  const receipt=page.waitForResponse(r=>r.url().endsWith("/api/demo-attestation"));
+  await page.getByRole("button",{name:"Read recorded attestation"}).click();
+  const checked=await (await receipt).json();
+  expect(checked.status).toBe("VERIFIED");
+  await expect(page.getByLabel("Registry history")).toContainText("Active");
 });
 
 test("judge pages remain readable on desktop and phone",async({page})=>{
@@ -41,6 +74,12 @@ test("judge pages remain readable on desktop and phone",async({page})=>{
 test("offline recorded demo works without API, network, runtime or wallet",async({page})=>{
   await page.goto("/offline/index.html");
   await page.context().setOffline(true);
+  await page.getByRole("button",{name:"Lowest Peak",exact:true}).click();
+  await expect(page.locator("#policy")).toHaveValue("peak_first");
+  await expect(page.locator("#deltas")).toContainText("vs Immediate");
+  const exported=page.waitForEvent("download");await page.getByRole("button",{name:"Download schedule CSV"}).click();
+  const recordedDownload=await exported;
+  expect((await readFile((await recordedDownload.path())!,"utf8")).trim().split(/\r?\n/)).toHaveLength(49);
   await page.getByRole("button",{name:"Verify recorded hash and pinned source inputs"}).click();
   await expect(page.locator("#verification")).toContainText("Integrity: PASS");
   await expect(page.locator("#verification")).toContainText("Source Lineage (CI / radiation / PV / load / tariff): PASS");

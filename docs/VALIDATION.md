@@ -39,3 +39,9 @@ The final preview was restarted after another user interruption stopped local se
 The clone initially had no raw/processed bulk data, pickle models, chain runtime or node_modules. It used the genuinely new Windows Python environment installed from `requirements.lock.txt`; both npm packages were installed independently with `npm ci --offline --no-audit --no-fund` from cached packages. Pinned original source bytes and portable trained trees are intentional release assets. The fixture SHA256 stayed `5c403ff1c82600b7c2838a98a5adbaf0bc82c20d66a2e67a8d018268d2bdb4f0` throughout.
 
 This verifies packaging, clean dependency installation and local demo/evidence reproduction. It does not claim a new Linux/container installation, source reacquisition, model retraining, full benchmark rerun, public hosting, or browser/chain testing inside the clone. Those boundaries and the separate original-checkout tests are recorded explicitly.
+
+## Subsequent product-focused iteration
+
+The above full suite and exact clone belong to the preceding source-lineage/engine release. The subsequent UI/bridge iteration preserves those engine, source, model, benchmark and proof bytes and validates only affected behavior. [championship-validation.json](validation/championship-validation.json) records the final three affected browser workflows, three unchanged workflow passes from the integrated run, 32 existing chain/bridge cases, production build/typecheck, current actual local read, unchanged artifact fingerprints and retained failures. It does not pretend the older clone contains the new UI or that human 60-second understanding was measured.
+
+[Product changes and direct answers](CHAMPIONSHIP_ITERATION.md), [judge acceptance](ACCEPTANCE_60_SECONDS.md) and [release operations](RELEASE_OPERATIONS.md) provide the current handoff.

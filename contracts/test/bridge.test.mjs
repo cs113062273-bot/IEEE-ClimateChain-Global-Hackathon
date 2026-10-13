@@ -8,13 +8,13 @@ const scope = {site_hash:sha256('campus'),from_utc:'2025-09-12T00:00:00Z',to_utc
 const metadata = {chain_id:31337,contract_address:'0x'+'11'.repeat(20),runtime_code_sha256:sha256(Buffer.from('6000','hex')),deployment_transaction_hash:'0x'+'22'.repeat(32),deployment_block_number:'1',deployment_block_hash:'block1',abi:[]};
 const healthy = () => ({getChainId:async()=>31337,getCode:async()=>'0x6000',getTransactionReceipt:async()=>({status:'success',contractAddress:metadata.contract_address,blockNumber:1n,blockHash:'block1'}),getBlock:async()=>({hash:'block1'})});
 
-function registrationFixture() {
+function registrationFixture({recordId=1n,previousRecordId=0n}={}) {
   const abi = parseAbi(['event ClaimRegistered(bytes32 indexed claimKey, uint256 indexed recordId, address indexed submitter, bytes32 digest, uint64 createdAt, uint256 previousRecordId)']);
   const key=computeScope(scope).claimKey, digest=sha256('original'), transactionHash='0x'+'33'.repeat(32);
-  const args={claimKey:key,recordId:1n,submitter:metadata.contract_address,digest,createdAt:100n,previousRecordId:0n};
-  const log={address:metadata.contract_address,args,transactionHash,logIndex:0,blockNumber:2n,blockHash:'block2',topics:encodeEventTopics({abi,eventName:'ClaimRegistered',args}),data:encodeAbiParameters([{type:'bytes32'},{type:'uint64'},{type:'uint256'}],[digest,100n,0n])};
+  const args={claimKey:key,recordId,submitter:metadata.contract_address,digest,createdAt:100n,previousRecordId};
+  const log={address:metadata.contract_address,args,transactionHash,logIndex:0,blockNumber:2n,blockHash:'block2',topics:encodeEventTopics({abi,eventName:'ClaimRegistered',args}),data:encodeAbiParameters([{type:'bytes32'},{type:'uint64'},{type:'uint256'}],[digest,100n,previousRecordId])};
   const receipt={status:'success',to:metadata.contract_address,blockNumber:2n,blockHash:'block2',logs:[log]};
-  const client={...healthy(),readContract:async input=>input.functionName==='getClaim'?{digest,submitter:metadata.contract_address,createdAt:100n,status:1}:1n,getLogs:async()=>[log],getTransactionReceipt:async input=>input.hash===metadata.deployment_transaction_hash?{status:'success',contractAddress:metadata.contract_address,blockNumber:1n,blockHash:'block1'}:receipt,getBlock:async input=>({hash:input.blockNumber===1n?'block1':'block2'})};
+  const client={...healthy(),readContract:async input=>input.functionName==='getClaim'?{digest,submitter:metadata.contract_address,createdAt:100n,status:1,previousRecordId,replacedByRecordId:0n,reasonDigest:'0x'+'00'.repeat(32),revokedAt:0n}:recordId,getLogs:async()=>[log],getTransactionReceipt:async input=>input.hash===metadata.deployment_transaction_hash?{status:'success',contractAddress:metadata.contract_address,blockNumber:1n,blockHash:'block1'}:receipt,getBlock:async input=>({hash:input.blockNumber===1n?'block1':'block2'})};
   return {client,metadata:{...metadata,abi},request:{claim_scope:scope,digest},receipt,log,transactionHash};
 }
 
@@ -60,18 +60,27 @@ describe('local bridge fails closed', () => {
     const result = await verifyWithClient(client,metadata,{claim_scope:scope,digest:sha256('tampered')});
     assert.equal(result.status,'HASH_MISMATCH');
     assert.equal(result.ok,false);
-    client.readContract=async()=>({digest:sha256('original'),submitter:metadata.contract_address,createdAt:1n,status:2,reasonDigest:sha256('reason')});
-    assert.equal((await verifyWithClient(client,metadata,{claim_scope:scope,digest:sha256('original')})).status,'REVOKED');
+    assert.deepEqual(result.record_history,{previous_record_id:null,replaced_by_record_id:null,revoked_at_unix:null,reason_digest:null});
+    client.readContract=async()=>({digest:sha256('original'),submitter:metadata.contract_address,createdAt:1n,status:2,previousRecordId:7n,replacedByRecordId:0n,revokedAt:123n,reasonDigest:sha256('reason')});
+    const revoked=await verifyWithClient(client,metadata,{claim_scope:scope,digest:sha256('original')});
+    assert.equal(revoked.status,'REVOKED');
+    assert.equal(revoked.ok,false);
+    assert.deepEqual(revoked.record_history,{previous_record_id:'7',replaced_by_record_id:'0',revoked_at_unix:123,reason_digest:sha256('reason')});
+    const revokedLookup=await lookupWithClient(client,metadata,{claim_scope:scope});
+    assert.equal(revokedLookup.status,'REVOKED');
+    assert.deepEqual(revokedLookup.record_history,revoked.record_history);
   });
   it('rejects a matching digest when the registration event is missing',async()=>{
     const client = {...healthy(),readContract:async input=>input.functionName==='getClaim'?{digest:sha256('original'),submitter:metadata.contract_address,createdAt:1n,status:1}:1n,getLogs:async()=>[]};
     await assert.rejects(verifyWithClient(client,metadata,{claim_scope:scope,digest:sha256('original')}),/No matching ClaimRegistered event/);
   });
   it('requires scope, digest, record, event and canonical successful receipt to agree',async()=>{
-    const fixture=registrationFixture();
+    const fixture=registrationFixture({recordId:2n,previousRecordId:1n});
     const result=await verifyWithClient(fixture.client,fixture.metadata,fixture.request);
     assert.equal(result.status,'VERIFIED');
     assert.equal(result.transaction_hash,fixture.transactionHash);
+    assert.equal(result.record_id,2n);
+    assert.deepEqual(result.record_history,{previous_record_id:'1',replaced_by_record_id:'0',revoked_at_unix:0,reason_digest:'0x'+'00'.repeat(32)});
   });
   it('rejects an unrelated transaction hash and a reverted registration receipt',async()=>{
     const fixture=registrationFixture();
@@ -134,6 +143,7 @@ describe('Sepolia preparation and public read-only bridge',()=>{
     const fixture=registrationFixture();
     const result=await lookupWithClient(fixture.client,fixture.metadata,{claim_scope:scope});
     assert.equal(result.digest,sha256('original'));assert.equal(result.transaction_hash,fixture.transactionHash);assert.match(result.verification_subject,/does not authenticate/);
+    assert.deepEqual(result.record_history,{previous_record_id:'0',replaced_by_record_id:'0',revoked_at_unix:0,reason_digest:'0x'+'00'.repeat(32)});
   });
   it('duplicate rejection includes a verified original receipt and explicit new-digest mismatch',async()=>{
     const fixture=registrationFixture();const key=computeScope(scope).claimKey;

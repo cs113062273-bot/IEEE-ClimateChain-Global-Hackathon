@@ -12,6 +12,7 @@ export type Slot = {
   batch_load_kwh: number; pv_used_kwh: number; pv_curtail_kwh: number;
 };
 export type Plan = {
+  scenario_parameters?:Scenario;
   policy: string; solver: {status: string; success: boolean; seconds: number; constraints_verified: boolean; message: string};
   constraints: {verified: boolean; violations: string[]; max_balance_residual_kwh: number; terminal_soc_delta_kwh: number};
   dispatch: Slot[];
@@ -42,4 +43,9 @@ export const clock = (iso: string) => iso.slice(11,16);
 export function download(name: string, data: unknown) {
   const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], {type:"application/json"}));
   const link = document.createElement("a"); link.href = url; link.download = name; link.click(); URL.revokeObjectURL(url);
+}
+export function downloadText(name:string,text:string,type:string){
+  const url=URL.createObjectURL(new Blob([text],{type}));
+  const link=document.createElement("a");link.href=url;link.download=name;link.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
 }

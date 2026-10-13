@@ -1,0 +1,141 @@
+{
+  "iteration": "product-focused championship iteration",
+  "base_commit": "3379232",
+  "status": "affected regression and release preparation passed; human and publication gates pending",
+  "changed_code": "Frontend presentation/goal selection/export/receipt subject guard and bridge read metadata only; no solver/training/verifier changes",
+  "checks": {
+    "final_affected_browser_workflows": {
+      "passed": 3,
+      "seconds": 14.2,
+      "log": "championship-final-browser.log"
+    },
+    "unchanged_workflows": {
+      "passed": 3,
+      "source": "championship-e2e-selector-failure.log",
+      "names": [
+        "computed dispatch, deterministic replay and tamper",
+        "infeasible deadline retains previous plan",
+        "actual local attestation and duplicate rejection"
+      ],
+      "statement": "Three unchanged workflows passed in integrated run; not relabeled as a fresh final full suite"
+    },
+    "contract_bridge_tests": {
+      "passed": 32,
+      "record": "championship-release-preparation.json"
+    },
+    "production_build": {
+      "status": "passed",
+      "log": "championship-production-build.log"
+    },
+    "frontend_typecheck": {
+      "status": "passed",
+      "log": "championship-frontend-typecheck.log"
+    },
+    "local_fixed_receipt": {
+      "status": "VERIFIED",
+      "network": "LOCAL DEV CHAIN 31337",
+      "record": "championship-local-read.json"
+    },
+    "offline": {
+      "status": "passed with network disabled",
+      "new_solve": false,
+      "live_chain": false
+    },
+    "model_and_benchmark": {
+      "action": "preserved; no new run",
+      "python_91_tests": "Prior unchanged engine/source/lineage release; not rerun to inflate count",
+      "fresh_clone": "Prior a29daadc packaging/dependency check; not a fresh clone of changed UI"
+    },
+    "current_tree_secrets": {
+      "status": "passed",
+      "checked_text_files": 220,
+      "findings": [],
+      "scope": "tracked and nonignored untracked files; bounded common formats, no credential values printed"
+    },
+    "reachable_history_secrets": {
+      "status": "passed",
+      "scope": "All reachable local Git refs, unique UTF-8 blobs up to 16MB, bounded common credential patterns; includes known-format OpenAI keys. Does not prove every possible secret absent. New working files checked separately by staged scan.",
+      "checked_text_blobs": 288,
+      "skipped_binary_or_oversize_blobs": 21,
+      "findings": [],
+      "secret_values_printed": false
+    }
+  },
+  "failures_retained": [
+    {
+      "cause": "Preview launched from wrong working directory",
+      "logs": [
+        "championship-startup-failure.log",
+        "championship-e2e-startup-failure.log"
+      ],
+      "resolved": "Correct frontend working directory, HTTP200"
+    },
+    {
+      "cause": "Exact text selector excluded subtitle in parent node",
+      "log": "championship-e2e-selector-failure.log",
+      "resolved": "Scoped flow text assertion; final golden path passed"
+    }
+  ],
+  "presentation_defects_corrected": [
+    "Site name mapped from declared scenario, scope only contains hash",
+    "Cost/zero-carbon-weight hybrid not mislabeled as using carbon prediction; exports explicit",
+    "Immediate labeled earliest-job heuristic"
+  ],
+  "pending": [
+    "Non-engineer 60-second teach-back",
+    "Anonymous repository/video/actual authorized service links",
+    "Actual authenticated submission fields,35MB eligibility and officialtime conflict clarification",
+    "Docker/Linux/cloud execution"
+  ],
+  "external_actions": {
+    "public_push": false,
+    "visibility_change": false,
+    "service_publish": false,
+    "sepolia_deploy_or_write": false,
+    "video_upload": false,
+    "devpost_submit": false
+  },
+  "frozen_artifacts": {
+    "backend/app/domain/solver.py": {
+      "unchanged_from_base": true,
+      "sha256": "096d1a42529390901b8f09b46ef6cfa9ace28ecf889b0f9c8dda907c33b1ffb1"
+    },
+    "backend/app/services/lineage.py": {
+      "unchanged_from_base": true,
+      "sha256": "67baef64ca74fdf56b06f8a915516ba5689434a6bc795ac0aa71261957049e31"
+    },
+    "scripts/verify_evidence.py": {
+      "unchanged_from_base": true,
+      "sha256": "54160809b4022921c40a5b859b916dff79755996a18cb3e885795e4e4d2bc4e8"
+    },
+    "experiments/models_portable/carbon_model.json": {
+      "unchanged_from_base": true,
+      "sha256": "039425d1c48981a2a377b7eec4d33a72da809cda9cae1edf5dce21c62e2d5f49"
+    },
+    "data/trust/source_anchors.v1.json": {
+      "unchanged_from_base": true,
+      "sha256": "10703bcbe2a64d113e5136f287393bd436b9f29a44dbb77b7137e13579b8d86c"
+    },
+    "experiments/competition_v2/daily_results.csv": {
+      "unchanged_from_base": true,
+      "sha256": "12777ff40f77a3b1a4e4c94cd201b584b60320733ef4f2777c15534e25be29f2"
+    },
+    "experiments/competition_v2/summary.json": {
+      "unchanged_from_base": true,
+      "sha256": "26d32a72e310ac2f130d8fd65c4f4f89c34d4d4af565d0d282312f473070360a"
+    },
+    "data/sample/evidence.json": {
+      "unchanged_from_base": true,
+      "sha256": "86a112f89eaa0c5c62e0b711413a743e7bfb28d6a4f72ec6dd9dcb954c7ae345"
+    },
+    "data/sample/demo.json": {
+      "unchanged_from_base": true,
+      "sha256": "91bf7e32eb130e18534585f142966830bc85ce3e8921c19c12aa83bc9854b19c"
+    }
+  },
+  "offline_package": {
+    "bytes": 2483069,
+    "mirror_identical": true,
+    "proof_and_recorded_solver_outputs_preserved": true
+  }
+}

@@ -127,12 +127,23 @@ export function baseResult(metadata, claimKey) {
   };
 }
 
+// These are the current getClaim fields, not a computed revision number or
+// an independently fetched complete history. Zero IDs mean no linked record.
+function recordHistory(record) {
+  return {
+    previous_record_id: record.previousRecordId == null ? null : String(record.previousRecordId),
+    replaced_by_record_id: record.replacedByRecordId == null ? null : String(record.replacedByRecordId),
+    revoked_at_unix: record.revokedAt == null ? null : Number(record.revokedAt),
+    reason_digest: record.reasonDigest ?? null,
+  };
+}
+
 export async function verifyWithClient(client, metadata, request) {
   await assertDeployment(client, metadata, request.expected_chain_id ?? metadata.chain_id);
   const key = request.claim_key ? bytes32(request.claim_key, 'claim_key') : computeScope(request.claim_scope ?? request.scope).claimKey;
   const digest = bytes32(request.digest);
   const record = await client.readContract({address: metadata.contract_address, abi: metadata.abi, functionName:'getClaim', args:[key]});
-  const result = {...baseResult(metadata, key), digest, onchain_digest: record.digest, submitter:record.submitter, created_at_unix:Number(record.createdAt), record_status:Number(record.status)};
+  const result = {...baseResult(metadata, key), digest, onchain_digest: record.digest, submitter:record.submitter, created_at_unix:Number(record.createdAt), record_status:Number(record.status),record_history:recordHistory(record)};
   if (Number(record.status) === 0) return {...result, ok:false, status:'NOT_REGISTERED'};
   if (Number(record.status) === 2) return {...result, ok:false, status:'REVOKED', reason_digest:record.reasonDigest};
   if (record.digest.toLowerCase() !== digest) return {...result, ok:false, status:'HASH_MISMATCH'};
@@ -195,8 +206,8 @@ export async function lookupWithClient(client,metadata,request) {
   await assertDeployment(client,metadata,request.expected_chain_id??metadata.chain_id);
   const key=request.claim_key?bytes32(request.claim_key,'claim_key'):computeScope(request.claim_scope??request.scope).claimKey;
   const record=await client.readContract({address:metadata.contract_address,abi:metadata.abi,functionName:'getClaim',args:[key]});
-  if (Number(record.status)===0) return {...baseResult(metadata,key),ok:false,status:'NOT_REGISTERED'};
-  if (Number(record.status)===2) return {...baseResult(metadata,key),ok:false,status:'REVOKED',onchain_digest:record.digest,reason_digest:record.reasonDigest};
+  if (Number(record.status)===0) return {...baseResult(metadata,key),ok:false,status:'NOT_REGISTERED',record_history:recordHistory(record)};
+  if (Number(record.status)===2) return {...baseResult(metadata,key),ok:false,status:'REVOKED',onchain_digest:record.digest,reason_digest:record.reasonDigest,record_history:recordHistory(record)};
   const verified=await verifyWithClient(client,metadata,{...request,claim_key:key,digest:record.digest});
   return {...verified,verification_subject:'existing registry record; does not authenticate a newly supplied report digest'};
 }
