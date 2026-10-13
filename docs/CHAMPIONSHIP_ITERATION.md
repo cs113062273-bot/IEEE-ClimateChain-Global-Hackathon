@@ -62,7 +62,7 @@ The two bounded adoption improvements are exports and facility-manager release o
 
 - Product walkthrough: [60-second exact actions and human teach-back](ACCEPTANCE_60_SECONDS.md).
 - Actual screens: [first viewport](assets/championship-first-view.png), [Control](assets/control-room.png), [Dispatch](assets/dispatch.png), [Replay](assets/replay.png), [Audit](assets/trust-audit.png), [phone](assets/control-phone.png), [forged source rejection](assets/lineage-rejected.png), [actual local receipt](assets/registry-verified.png).
-- All six browser workflows ultimately pass across recorded runs. The integrated run had five passes and one failed selector: the text node also included a child subtitle. After correcting the selector and actual site/model-role labels, the final three affected workflows passed in 14.2 seconds: golden path, responsive pages and offline replay/export/attack. The three unchanged workflow tests had already passed in the integrated run. This is not a new final six-test run or a human comprehension measurement.
+- All six browser workflows ultimately pass across recorded runs. The integrated run had five passes and one failed selector: the text node also included a child subtitle. After correcting the selector and actual site/model-role labels, the final three affected workflows passed in 9.5 seconds: golden path, responsive pages and offline replay/export/attack. The three unchanged workflow tests had already passed in the integrated run. This is not a new final six-test run or a human comprehension measurement.
 - The initial web restart used the repository instead of frontend working directory, so six connection tests failed before the correct server ran. Both startup and selector failure logs are retained. No test was removed. See [iteration validation](validation/championship-validation.json).
 - Existing 32 contract/bridge tests and typecheck passed after actual lifecycle fields were exposed. Assertions were extended without increasing counts. [Observed release-preparation checks](validation/championship-release-preparation.json).
 - Production build and frontend typecheck passed. Existing 91 Python/data tests and exact source clone remain evidence for the preceding unchanged engine/lineage release; they were not relabeled as a new full clone or rerun merely to increase counts.
@@ -70,6 +70,10 @@ The two bounded adoption improvements are exports and facility-manager release o
 - Human 60-second comprehension, public links, actual video and authenticated form acceptance are **pending**, not passed by E2E.
 
 Visual review corrected two actual presentation errors before release: a claim scope stores a site hash, so the displayed site name now comes from the declared scenario; Cost-first and zero-carbon-weight hybrid policies do not use the carbon prediction in their objective. Their flow/export labels now say so. Immediate is labeled as the actual earliest-job heuristic, not MILP. The carbon prediction genuinely guides Carbon-first and positive-carbon-weight Hybrid/Balanced decisions.
+
+Read verification now clears its prior success while checking and becomes UNVERIFIABLE/INCOMPLETE on failure; the browser test verifies this after a genuine successful local read.
+
+A final screenshot navigation also encountered a real transient proxy `ECONNRESET` on GET `/api/scenarios`. A subsequent probe succeeded; the underlying cause is unresolved. The client now retries an idempotent GET once after 200 ms on a network error or HTTP 5xx. POST operations, validation failures and explicit chain states are not retried; persistent failures still show the real error and offline fallback. The responsive workflow injects one transport 503 then reads the real server response. [Observed incident](validation/championship-navigation-incident.json) preserves the failure; this is an existing reliability fix, not a new adoption feature or an assertion of cloud readiness.
 
 ## Release and remaining human steps
 

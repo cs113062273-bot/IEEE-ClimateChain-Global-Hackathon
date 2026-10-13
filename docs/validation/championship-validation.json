@@ -6,7 +6,7 @@
   "checks": {
     "final_affected_browser_workflows": {
       "passed": 3,
-      "seconds": 14.2,
+      "seconds": 9.5,
       "log": "championship-final-browser.log"
     },
     "unchanged_workflows": {
@@ -59,6 +59,22 @@
       "skipped_binary_or_oversize_blobs": 21,
       "findings": [],
       "secret_values_printed": false
+    },
+    "read_transport_reliability": {
+      "status": "passed",
+      "scenario": "one injected GET503 followed by actual server response",
+      "post_retries": false,
+      "read_retries": 1,
+      "delay_ms": 200
+    },
+    "receipt_fail_closed": {
+      "status": "passed",
+      "scenario": "actual local receipt VERIFIED, then simulated read transport failure; previous green/Active state cleared to UNVERIFIABLE"
+    },
+    "screen_capture": {
+      "status": "passed",
+      "record": "championship-screen-capture.log",
+      "operations": "actual existing local read/source challenge; no chain write"
     }
   },
   "failures_retained": [
@@ -74,6 +90,11 @@
       "cause": "Exact text selector excluded subtitle in parent node",
       "log": "championship-e2e-selector-failure.log",
       "resolved": "Scoped flow text assertion; final golden path passed"
+    },
+    {
+      "cause": "Transient GET /api/scenarios ECONNRESET during final screenshot navigation",
+      "record": "championship-navigation-incident.json",
+      "mitigation": "bounded GET retry and fail-closed read states; underlying cause unresolved"
     }
   ],
   "presentation_defects_corrected": [

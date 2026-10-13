@@ -55,9 +55,19 @@ test("trained AI, carbon-cost-peak comparison, source lineage and rehashed attac
   const checked=await (await receipt).json();
   expect(checked.status).toBe("VERIFIED");
   await expect(page.getByLabel("Registry history")).toContainText("Active");
+  await page.route("**/api/demo-attestation",route=>route.abort("failed"));
+  await page.getByRole("button",{name:"Read recorded attestation"}).click();
+  await expect(page.getByLabel("Evidence verification layers").first()).toContainText("UNVERIFIABLE");
+  await expect(page.getByLabel("Registry history")).not.toContainText("Active");
 });
 
 test("judge pages remain readable on desktop and phone",async({page})=>{
+  let scenarioReads=0;
+  await page.route("**/api/scenarios",async route=>{
+    scenarioReads++;
+    if(scenarioReads===1){await route.fulfill({status:503,contentType:"application/json",body:JSON.stringify({error:{message:"Injected transient GET failure"}})});return;}
+    await route.continue();
+  });
   for(const [path,title,name] of [["/","Control room","control-room"],["/dispatch","Intelligent dispatch","dispatch"],["/replay","Digital twin & replay","replay"],["/audit","Trust audit","trust-audit"]]){
     await page.goto(path);
     await expect(page.getByRole("heading",{name:title,exact:true})).toBeVisible();
@@ -69,6 +79,7 @@ test("judge pages remain readable on desktop and phone",async({page})=>{
   await expect(page.getByText("Peak grid import",{exact:true}).first()).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth)).toBe(false);
   await page.screenshot({path:"../docs/assets/control-phone.png",fullPage:true});
+  expect(scenarioReads).toBeGreaterThan(1);
 });
 
 test("offline recorded demo works without API, network, runtime or wallet",async({page})=>{

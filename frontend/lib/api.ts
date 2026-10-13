@@ -27,16 +27,27 @@ export type Comparison = {
   provenance_status: unknown; units: unknown; data_timestamp: string;
 };
 export async function api<T>(path: string, body?: unknown): Promise<T> {
-  const response = await fetch(`/api${path}`, {
+  const attempts=body===undefined?2:1;
+  for(let attempt=0;attempt<attempts;attempt++){
+  let response:Response;
+  try { response = await fetch(`/api${path}`, {
     method: body === undefined ? "GET" : "POST", cache: "no-store",
     headers: body === undefined ? undefined : {"Content-Type": "application/json"},
     body: body === undefined ? undefined : JSON.stringify(body),
     signal: AbortSignal.timeout(120000),
-  });
+  }); } catch(error){
+    if(attempt+1<attempts&&error instanceof Error&&["TypeError","NetworkError"].includes(error.name)){
+      await new Promise(resolve=>setTimeout(resolve,200));continue;
+    }
+    throw error;
+  }
+  if(response.status>=500&&attempt+1<attempts){await new Promise(resolve=>setTimeout(resolve,200));continue;}
   let result;
   try {result = await response.json();} catch {throw new Error(`Service returned HTTP ${response.status}. Start the local API and retry.`);}
   if (!response.ok) throw new Error(typeof result.detail === "string" ? result.detail : result.error?.message ?? JSON.stringify(result.detail ?? result));
   return result as T;
+  }
+  throw new Error("Service is unavailable. Retry or open the recorded offline demo.");
 }
 export const number = (value: number | undefined, digits = 1) => Number.isFinite(value) ? value!.toLocaleString("en-GB", {minimumFractionDigits: digits, maximumFractionDigits: digits}) : "—";
 export const clock = (iso: string) => iso.slice(11,16);
