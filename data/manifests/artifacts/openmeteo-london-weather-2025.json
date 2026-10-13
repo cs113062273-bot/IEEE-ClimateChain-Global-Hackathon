@@ -1,0 +1,85 @@
+{
+  "access_limitations": "Free API noncommercial only; <600 calls/min, <5000/hour, <10000/day; this script makes one cached request",
+  "attribution": "Weather data by Open-Meteo.com; ERA5 reanalysis, Copernicus Climate Change Service / ECMWF",
+  "byte_size": 318992,
+  "checked_utc": "2026-10-13T05:13:50Z",
+  "columns": [
+    "start_utc",
+    "end_utc",
+    "temperature_2m",
+    "shortwave_radiation_w_per_m2",
+    "cloud_cover_percent",
+    "wind_speed_10m_kmh"
+  ],
+  "content_type": "application/json; charset=utf-8",
+  "coordinates_requested": [
+    51.5074,
+    -0.1278
+  ],
+  "coordinates_returned": [
+    51.5,
+    -0.25
+  ],
+  "coverage_end_utc_exclusive": "2026-01-02T00:00:00Z",
+  "coverage_start_utc": "2025-01-01T00:00:00Z",
+  "duplicate_timestamps": 0,
+  "etag": null,
+  "fetched_utc": "2026-10-13T05:12:10Z",
+  "final_url": "https://archive-api.open-meteo.com/v1/archive?latitude=51.5074&longitude=-0.1278&start_date=2025-01-01&end_date=2026-01-01&hourly=temperature_2m%2Cshortwave_radiation%2Ccloud_cover%2Cwind_speed_10m&timezone=UTC&models=era5&wind_speed_unit=kmh",
+  "gap_count": 0,
+  "gaps": [],
+  "granularity_minutes": 60,
+  "http_date": "Tue, 13 Oct 2026 05:12:12 GMT",
+  "http_status": 200,
+  "invalid_interval_duration": 0,
+  "last_modified": null,
+  "license": "CC-BY-4.0",
+  "license_url": "https://open-meteo.com/en/terms",
+  "limitations": [
+    "Not observed site weather or historical issued forecast",
+    "Shortwave radiation timestamp denotes preceding-hour mean",
+    "Instantaneous variables at timestamp; half-hour values derived later",
+    "Grid cell differs from requested coordinates"
+  ],
+  "missing_count": {
+    "cloud_cover_percent": 0,
+    "end_utc": 0,
+    "shortwave_radiation_w_per_m2": 0,
+    "start_utc": 0,
+    "temperature_2m": 0,
+    "wind_speed_10m_kmh": 0
+  },
+  "missing_rate": {
+    "cloud_cover_percent": 0.0,
+    "end_utc": 0.0,
+    "shortwave_radiation_w_per_m2": 0.0,
+    "start_utc": 0.0,
+    "temperature_2m": 0.0,
+    "wind_speed_10m_kmh": 0.0
+  },
+  "model": "ERA5",
+  "original_url": "https://archive-api.open-meteo.com/v1/archive?latitude=51.5074&longitude=-0.1278&start_date=2025-01-01&end_date=2026-01-01&hourly=temperature_2m%2Cshortwave_radiation%2Ccloud_cover%2Cwind_speed_10m&timezone=UTC&models=era5&wind_speed_unit=kmh",
+  "out_of_order": false,
+  "path": "data/raw/openmeteo_london_2025.json",
+  "processed_path": "data/processed/weather_2025.csv",
+  "processed_sha256": "70da1dd883771aa4918e290fe3df716657dbce39b6b5de03e98f5ae2684d7d26",
+  "provenance_status": "historical_reanalysis",
+  "row_count": 8784,
+  "sha256": "6098ffc0ecac7610670f34efcd4322717b04a9fdaba5a666ed265ce066506edd",
+  "source_id": "openmeteo-london-weather-2025",
+  "source_page": "https://open-meteo.com/en/docs/historical-weather-api",
+  "status": "verified",
+  "timezone": "UTC",
+  "transformations": [
+    "Requested UTC; numeric conversion without imputation",
+    "Extra 2026-01-01 day provides preceding-hour radiation and next-hour interpolation at 2025 end"
+  ],
+  "units": {
+    "cloud_cover": "%",
+    "shortwave_radiation": "W/m²",
+    "temperature_2m": "°C",
+    "time": "iso8601",
+    "wind_speed_10m": "km/h"
+  },
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=51.5074&longitude=-0.1278&start_date=2025-01-01&end_date=2026-01-01&hourly=temperature_2m%2Cshortwave_radiation%2Ccloud_cover%2Cwind_speed_10m&timezone=UTC&models=era5&wind_speed_unit=kmh"
+}

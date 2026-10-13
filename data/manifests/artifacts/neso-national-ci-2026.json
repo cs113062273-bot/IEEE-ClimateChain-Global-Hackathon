@@ -1,0 +1,78 @@
+{
+  "access_limitations": "Public CKAN read; two selected-year queries, 250ms inter-request throttle, cache and bounded retry",
+  "attribution": "National Energy System Operator / Carbon Intensity API",
+  "byte_size": 1291221,
+  "checked_utc": "2026-10-13T05:15:20Z",
+  "client_context_date": "2026-10-13",
+  "columns": [
+    "start_utc",
+    "end_utc",
+    "grid_ci_actual_g_per_kwh",
+    "grid_ci_forecast_g_per_kwh",
+    "index"
+  ],
+  "content_type": "application/json;charset=utf-8",
+  "coverage_end_utc_exclusive": "2026-10-13T05:00:00Z",
+  "coverage_start_utc": "2026-01-01T00:00:00Z",
+  "duplicate_timestamps": 0,
+  "etag": null,
+  "fetched_utc": "2026-10-13T05:15:16Z",
+  "final_url": "https://api.neso.energy/api/3/action/datastore_search_sql?sql=SELECT+datetime%2C+forecast%2C+actual%2C+%22index%22+FROM+%220e5fde43-2de7-4fb4-833d-c7bca3b658b0%22+WHERE+datetime+%3E%3D+%272026-01-01T00%3A00%3A00%27+AND+datetime+%3C+%272026-10-13T05%3A00%3A00%27+ORDER+BY+datetime+LIMIT+20000",
+  "gap_count": 0,
+  "gaps": [],
+  "granularity_minutes": 30,
+  "http_date": "Tue, 13 Oct 2026 05:15:18 GMT",
+  "http_status": 200,
+  "invalid_interval_duration": 0,
+  "last_modified": null,
+  "license": "NESO Open Data Licence (portal); CC-BY-4.0 (Carbon Intensity API)",
+  "license_url": "https://www.neso.energy/data-portal/neso-open-licence",
+  "limitations": [
+    "National GB average intensity, not marginal or London-specific",
+    "Forecast issue timestamp absent; not point-in-time archive",
+    "Historical values can be revised"
+  ],
+  "missing_count": {
+    "end_utc": 0,
+    "grid_ci_actual_g_per_kwh": 1,
+    "grid_ci_forecast_g_per_kwh": 0,
+    "index": 0,
+    "start_utc": 0
+  },
+  "missing_rate": {
+    "end_utc": 0.0,
+    "grid_ci_actual_g_per_kwh": 7.304601899196493e-05,
+    "grid_ci_forecast_g_per_kwh": 0.0,
+    "index": 0.0,
+    "start_utc": 0.0
+  },
+  "original_url": "https://api.neso.energy/api/3/action/datastore_search_sql?sql=SELECT+datetime%2C+forecast%2C+actual%2C+%22index%22+FROM+%220e5fde43-2de7-4fb4-833d-c7bca3b658b0%22+WHERE+datetime+%3E%3D+%272026-01-01T00%3A00%3A00%27+AND+datetime+%3C+%272026-10-13T05%3A00%3A00%27+ORDER+BY+datetime+LIMIT+20000",
+  "out_of_order": false,
+  "path": "data/raw/neso_ci_2026.json",
+  "processed_path": "data/processed/neso_ci_2026.csv",
+  "processed_sha256": "27f6a77558971cae513edb461cd3713f4481d90aa1f8577e63af4974d6afdfca",
+  "provenance_status": {
+    "actual": "estimated_from_metered_generation",
+    "forecast": "historical_forecast_issuance_unverified"
+  },
+  "requested_coverage": [
+    "2026-01-01T00:00:00Z",
+    "2026-10-13T05:00:00Z"
+  ],
+  "row_count": 13690,
+  "sha256": "5312d125ee06556a7431f0e979fd0e6e504a147b2ea6058f5938b574875f13df",
+  "source_id": "neso-national-ci-2026",
+  "source_page": "https://www.neso.energy/data-portal/national-carbon-intensity-forecast",
+  "status": "verified",
+  "timezone": "UTC",
+  "transformations": [
+    "Explicit UTC from portal schema; datetime is interval start crosschecked against Carbon Intensity API",
+    "Finite numeric conversion; missing remains null",
+    "Append half-hour exclusive end; no value imputation"
+  ],
+  "units": {
+    "grid_ci_actual_g_per_kwh": "gCO2/kWh",
+    "grid_ci_forecast_g_per_kwh": "gCO2/kWh"
+  },
+  "url": "https://api.neso.energy/api/3/action/datastore_search_sql?sql=SELECT+datetime%2C+forecast%2C+actual%2C+%22index%22+FROM+%220e5fde43-2de7-4fb4-833d-c7bca3b658b0%22+WHERE+datetime+%3E%3D+%272026-01-01T00%3A00%3A00%27+AND+datetime+%3C+%272026-10-13T05%3A00%3A00%27+ORDER+BY+datetime+LIMIT+20000"
+}

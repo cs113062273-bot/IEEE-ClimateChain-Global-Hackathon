@@ -1,0 +1,6 @@
+# Evidence hashes cover exact file bytes. Preserve them across OS checkouts.
+* -text whitespace=cr-at-eol
+*.png binary
+*.zip binary
+# The original specification uses intentional Markdown two-space hard breaks.
+IMPLEMENTATION.md whitespace=-blank-at-eol,cr-at-eol

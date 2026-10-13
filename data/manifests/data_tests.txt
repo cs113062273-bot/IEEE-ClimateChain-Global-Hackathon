@@ -1,0 +1,13 @@
+test_changed_provider_schema_fails_loudly (test_acquisition.DataQualityTests.test_changed_provider_schema_fails_loudly) ... ok
+test_dst_settlement_days (test_acquisition.DataQualityTests.test_dst_settlement_days) ... ok
+test_fresh_clone_bulk_absence_is_visible_and_missing_sample_fails (test_acquisition.DataQualityTests.test_fresh_clone_bulk_absence_is_visible_and_missing_sample_fails) ... ok
+test_offline_sample_coverage_and_digest (test_acquisition.DataQualityTests.test_offline_sample_coverage_and_digest) ... ok
+test_preceding_hour_radiation_energy_alignment (test_acquisition.DataQualityTests.test_preceding_hour_radiation_energy_alignment) ... ok
+test_qc_detects_duplicate_gap_and_out_of_order (test_acquisition.DataQualityTests.test_qc_detects_duplicate_gap_and_out_of_order) ... ok
+test_rate_limit_retry_records_failure_and_never_success (test_acquisition.DataQualityTests.test_rate_limit_retry_records_failure_and_never_success) ... ok
+test_timezone_and_null_not_zero (test_acquisition.DataQualityTests.test_timezone_and_null_not_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.223s
+
+OK

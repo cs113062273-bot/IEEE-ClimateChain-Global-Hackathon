@@ -1,0 +1,131 @@
+{
+  "attribution": "Supported by National Energy SO Open Data. National Energy System Operator, Historic Demand Data",
+  "byte_size": 1869771,
+  "checked_utc": "2026-10-13T05:16:26Z",
+  "column_types": {
+    "embedded_solar_generation_mw": "number",
+    "embedded_wind_generation_mw": "number",
+    "end_utc": "string",
+    "grid_demand_mw": "number",
+    "settlement_date": "string",
+    "settlement_period": "number",
+    "start_utc": "string"
+  },
+  "columns": [
+    "start_utc",
+    "end_utc",
+    "settlement_date",
+    "settlement_period",
+    "grid_demand_mw",
+    "embedded_wind_generation_mw",
+    "embedded_solar_generation_mw"
+  ],
+  "content_type": "application/octet-stream",
+  "coverage_end_utc_exclusive": "2026-01-01T00:00:00Z",
+  "coverage_start_utc": "2025-01-01T00:00:00Z",
+  "duplicate_timestamps": 0,
+  "etag": "\"bd5451a8a2306071a1376af75855cafb\"",
+  "fetched_utc": "2026-10-13T05:12:22Z",
+  "final_url": "https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-national-grid/national-grid/resources/b2bde559-3455-4021-b179-dfe60c0337b0/demanddata_2025.csv?response-content-disposition=attachment%3B%20filename%3Ddemanddata_2025.csv&response-content-type=application%2Foctet-stream&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=604800&X-Amz-Credential=564ecf1b9cb7e605192d2953e7a993b9%2F20261013%2Fauto%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Date=20261013T051225Z&X-Amz-Signature=4fdd5a914e6b63d5c5ac82ee108cf7495605e2fba49efcc777d335ca48660aab",
+  "gap_count": 0,
+  "gaps": [],
+  "granularity_minutes": 30,
+  "http_date": "Tue, 13 Oct 2026 05:12:27 GMT",
+  "http_status": 200,
+  "invalid_interval_duration": 0,
+  "last_modified": "Tue, 09 Jun 2026 13:25:08 GMT",
+  "license": "NESO Open Data Licence",
+  "license_url": "https://www.neso.energy/data-portal/neso-open-licence",
+  "limitations": [
+    "Provider reports quality issues",
+    "21-day publication delay and retrospective demand/solar corrections",
+    "Context only; future observed demand excluded from decision features"
+  ],
+  "missing_count": {
+    "embedded_solar_generation_mw": 0,
+    "embedded_wind_generation_mw": 0,
+    "end_utc": 0,
+    "grid_demand_mw": 0,
+    "settlement_date": 0,
+    "settlement_period": 0,
+    "start_utc": 0
+  },
+  "missing_rate": {
+    "embedded_solar_generation_mw": 0.0,
+    "embedded_wind_generation_mw": 0.0,
+    "end_utc": 0.0,
+    "grid_demand_mw": 0.0,
+    "settlement_date": 0.0,
+    "settlement_period": 0.0,
+    "start_utc": 0.0
+  },
+  "numeric_ranges": {
+    "embedded_solar_generation_mw": {
+      "max": 14046.0,
+      "min": 0.0
+    },
+    "embedded_wind_generation_mw": {
+      "max": 5922.0,
+      "min": 125.0
+    },
+    "grid_demand_mw": {
+      "max": 45924.0,
+      "min": 12803.0
+    },
+    "settlement_period": {
+      "max": 50.0,
+      "min": 1.0
+    }
+  },
+  "original_url": "https://api.neso.energy/dataset/8f2fe0af-871c-488d-8bad-960426f24601/resource/b2bde559-3455-4021-b179-dfe60c0337b0/download/demanddata_2025.csv",
+  "out_of_order": false,
+  "path": "data/raw/neso_demand_2025.csv",
+  "processed_path": "data/processed/neso_demand_2025.csv",
+  "processed_sha256": "3600105af5c6bb55cffa99cedcb91fa8a020834da13b8bfba387e2522750de78",
+  "provenance_status": "observed_grid_context_revisable",
+  "raw_columns": [
+    "SETTLEMENT_DATE",
+    "SETTLEMENT_PERIOD",
+    "ND",
+    "TSD",
+    "ENGLAND_WALES_DEMAND",
+    "EMBEDDED_WIND_GENERATION",
+    "EMBEDDED_WIND_CAPACITY",
+    "EMBEDDED_SOLAR_GENERATION",
+    "EMBEDDED_SOLAR_CAPACITY",
+    "NON_BM_STOR",
+    "PUMP_STORAGE_PUMPING",
+    "SCOTTISH_TRANSFER",
+    "IFA_FLOW",
+    "IFA2_FLOW",
+    "BRITNED_FLOW",
+    "MOYLE_FLOW",
+    "EAST_WEST_FLOW",
+    "NEMO_FLOW",
+    "NSL_FLOW",
+    "ELECLINK_FLOW",
+    "VIKING_FLOW",
+    "GREENLINK_FLOW"
+  ],
+  "row_count": 17520,
+  "settlement_day_counts": {
+    "2025-03-30": 46,
+    "2025-10-26": 50
+  },
+  "sha256": "8b8be946bbb084bc28fbf95a71fad0fceb5543b98e02755235130a42beaee4e0",
+  "source_id": "neso-demand-2025",
+  "source_page": "https://www.neso.energy/data-portal/historic-demand-data",
+  "status": "verified",
+  "timezone": "UTC",
+  "transformations": [
+    "London midnight converted to UTC then half-hour period offsets; 46/48/50 slots",
+    "ND is national demand; embedded wind/solar not total generation",
+    "Sort ascending UTC; no imputation"
+  ],
+  "units": {
+    "embedded_solar_generation_mw": "MW",
+    "embedded_wind_generation_mw": "MW",
+    "grid_demand_mw": "MW"
+  },
+  "url": "https://api.neso.energy/dataset/8f2fe0af-871c-488d-8bad-960426f24601/resource/b2bde559-3455-4021-b179-dfe60c0337b0/download/demanddata_2025.csv"
+}

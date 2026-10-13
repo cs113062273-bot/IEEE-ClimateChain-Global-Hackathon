@@ -1,0 +1,1722 @@
+{
+  "checked_utc": "2026-10-13T05:23:25Z",
+  "client_context_date": "2026-10-13",
+  "schema_version": "1.0.0",
+  "sources": [
+    {
+      "attribution": "Supported by National Energy SO Open Data; Open-Meteo / ECMWF ERA5",
+      "byte_size": 3420160,
+      "checked_utc": "2026-10-13T05:21:53Z",
+      "content_type": "application/vnd.duckdb",
+      "duckdb_version": "1.4.1",
+      "etag": null,
+      "fetched_utc": "2026-10-13T05:21:53Z",
+      "http_status": null,
+      "license": "Upstream source licences apply",
+      "limitations": [
+        "Bulk files not distributed with source code",
+        "Database digest depends on storage serialization, not just logical values"
+      ],
+      "local_asset_checks": [
+        {
+          "path": "data/processed/gridproof.duckdb",
+          "status": "hash_matches"
+        },
+        {
+          "path": "data/processed/neso_ci_2025.parquet",
+          "status": "hash_matches"
+        },
+        {
+          "path": "data/processed/neso_ci_2026.parquet",
+          "status": "hash_matches"
+        },
+        {
+          "path": "data/processed/neso_demand_2025.parquet",
+          "status": "hash_matches"
+        },
+        {
+          "path": "data/processed/weather_2025.parquet",
+          "status": "hash_matches"
+        },
+        {
+          "path": "data/processed/intervals_2025.parquet",
+          "status": "hash_matches"
+        },
+        {
+          "path": "data/processed/gridproof.duckdb",
+          "status": "hash_matches"
+        }
+      ],
+      "original_url": null,
+      "path": "data/processed/gridproof.duckdb",
+      "provenance_status": "normalized_authentic_grid_estimates_and_weather_reanalysis",
+      "row_count": 75034,
+      "sha256": "3d1ebae826407602a495c19588f94bf2250982894fc181b1336b5ca299659412",
+      "source_id": "gridproof-columnar-storage",
+      "status": "verified",
+      "storage_artifacts": [
+        {
+          "byte_size": 172773,
+          "lineage_csv": "data/processed/neso_ci_2025.csv",
+          "lineage_csv_sha256": "c7ce7ada691de06b00bf21f98d3c3dfc08c5531d115b307d9841fdb52be2ec6d",
+          "path": "data/processed/neso_ci_2025.parquet",
+          "row_count": 17520,
+          "sha256": "1905dbb9117125ba19638e8bfe3a0a84cad9d0e93a080480c02c7151f5e3217f"
+        },
+        {
+          "byte_size": 133769,
+          "lineage_csv": "data/processed/neso_ci_2026.csv",
+          "lineage_csv_sha256": "27f6a77558971cae513edb461cd3713f4481d90aa1f8577e63af4974d6afdfca",
+          "path": "data/processed/neso_ci_2026.parquet",
+          "row_count": 13690,
+          "sha256": "2507d62e542e56dce1865f3835a3a470e9555a15953872fcb9f1f3c166d423ec"
+        },
+        {
+          "byte_size": 241016,
+          "lineage_csv": "data/processed/neso_demand_2025.csv",
+          "lineage_csv_sha256": "3600105af5c6bb55cffa99cedcb91fa8a020834da13b8bfba387e2522750de78",
+          "path": "data/processed/neso_demand_2025.parquet",
+          "row_count": 17520,
+          "sha256": "99f48b883b91b38dc67e60c0e51dc57205206a917a4679e8db7b690fb20136c5"
+        },
+        {
+          "byte_size": 110404,
+          "lineage_csv": "data/processed/weather_2025.csv",
+          "lineage_csv_sha256": "70da1dd883771aa4918e290fe3df716657dbce39b6b5de03e98f5ae2684d7d26",
+          "path": "data/processed/weather_2025.parquet",
+          "row_count": 8784,
+          "sha256": "c0524ac9aca40264a0abfbf29685119e3572c78ea7968dd0bd67ff4e2ca3e714"
+        },
+        {
+          "byte_size": 356080,
+          "lineage_csv": "data/processed/intervals_2025.csv",
+          "lineage_csv_sha256": "8b7e5c77838fc56066278ed272db0434a525c46410a6f89daa62e1e3fb6c036d",
+          "path": "data/processed/intervals_2025.parquet",
+          "row_count": 17520,
+          "sha256": "b7a2cd6b768f64c94f810c0b2482fd9f84d95c72ea2eb84b3b6555615f277567"
+        },
+        {
+          "byte_size": 3420160,
+          "path": "data/processed/gridproof.duckdb",
+          "sha256": "3d1ebae826407602a495c19588f94bf2250982894fc181b1336b5ca299659412"
+        }
+      ],
+      "tables": {
+        "intervals_2025": {
+          "coverage_end_utc_exclusive": "2026-01-01T00:00:00Z",
+          "coverage_start_utc": "2025-01-01T00:00:00Z",
+          "rows": 17520,
+          "schema": [
+            {
+              "column": "start_utc",
+              "type": "TIMESTAMP WITH TIME ZONE"
+            },
+            {
+              "column": "end_utc",
+              "type": "TIMESTAMP WITH TIME ZONE"
+            },
+            {
+              "column": "grid_ci_actual_g_per_kwh",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "grid_ci_forecast_g_per_kwh",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "temperature_2m",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "cloud_cover_percent",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "wind_speed_10m_kmh",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "shortwave_radiation_w_per_m2",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "grid_demand_mw",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "embedded_wind_generation_mw",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "embedded_solar_generation_mw",
+              "type": "DOUBLE"
+            }
+          ]
+        },
+        "neso_ci_2025": {
+          "coverage_end_utc_exclusive": "2026-01-01T00:00:00Z",
+          "coverage_start_utc": "2025-01-01T00:00:00Z",
+          "rows": 17520,
+          "schema": [
+            {
+              "column": "start_utc",
+              "type": "TIMESTAMP WITH TIME ZONE"
+            },
+            {
+              "column": "end_utc",
+              "type": "TIMESTAMP WITH TIME ZONE"
+            },
+            {
+              "column": "grid_ci_actual_g_per_kwh",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "grid_ci_forecast_g_per_kwh",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "index",
+              "type": "VARCHAR"
+            }
+          ]
+        },
+        "neso_ci_2026": {
+          "coverage_end_utc_exclusive": "2026-10-13T05:00:00Z",
+          "coverage_start_utc": "2026-01-01T00:00:00Z",
+          "rows": 13690,
+          "schema": [
+            {
+              "column": "start_utc",
+              "type": "TIMESTAMP WITH TIME ZONE"
+            },
+            {
+              "column": "end_utc",
+              "type": "TIMESTAMP WITH TIME ZONE"
+            },
+            {
+              "column": "grid_ci_actual_g_per_kwh",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "grid_ci_forecast_g_per_kwh",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "index",
+              "type": "VARCHAR"
+            }
+          ]
+        },
+        "neso_demand_2025": {
+          "coverage_end_utc_exclusive": "2026-01-01T00:00:00Z",
+          "coverage_start_utc": "2025-01-01T00:00:00Z",
+          "rows": 17520,
+          "schema": [
+            {
+              "column": "start_utc",
+              "type": "TIMESTAMP WITH TIME ZONE"
+            },
+            {
+              "column": "end_utc",
+              "type": "TIMESTAMP WITH TIME ZONE"
+            },
+            {
+              "column": "settlement_date",
+              "type": "DATE"
+            },
+            {
+              "column": "settlement_period",
+              "type": "BIGINT"
+            },
+            {
+              "column": "grid_demand_mw",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "embedded_wind_generation_mw",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "embedded_solar_generation_mw",
+              "type": "DOUBLE"
+            }
+          ]
+        },
+        "weather_2025": {
+          "coverage_end_utc_exclusive": "2026-01-02T00:00:00Z",
+          "coverage_start_utc": "2025-01-01T00:00:00Z",
+          "rows": 8784,
+          "schema": [
+            {
+              "column": "start_utc",
+              "type": "TIMESTAMP WITH TIME ZONE"
+            },
+            {
+              "column": "end_utc",
+              "type": "TIMESTAMP WITH TIME ZONE"
+            },
+            {
+              "column": "temperature_2m",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "shortwave_radiation_w_per_m2",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "cloud_cover_percent",
+              "type": "DOUBLE"
+            },
+            {
+              "column": "wind_speed_10m_kmh",
+              "type": "DOUBLE"
+            }
+          ]
+        }
+      },
+      "timezone": "UTC",
+      "transformations": [
+        "Typed UTC TIMESTAMPTZ interval endpoints",
+        "DuckDB tables and ZSTD Parquet from unchanged normalized CSV values"
+      ],
+      "units": "Inherited from normalized CSV/source manifest"
+    },
+    {
+      "attribution": "NESO and Open-Meteo / ECMWF",
+      "byte_size": 1648560,
+      "checked_utc": "2026-10-13T05:21:20Z",
+      "column_types": {
+        "cloud_cover_percent": "number",
+        "embedded_solar_generation_mw": "number",
+        "embedded_wind_generation_mw": "number",
+        "end_utc": "string",
+        "grid_ci_actual_g_per_kwh": "number_or_null",
+        "grid_ci_forecast_g_per_kwh": "number_or_null",
+        "grid_demand_mw": "number",
+        "shortwave_radiation_w_per_m2": "number",
+        "start_utc": "string",
+        "temperature_2m": "number",
+        "wind_speed_10m_kmh": "number"
+      },
+      "columns": [
+        "start_utc",
+        "end_utc",
+        "grid_ci_actual_g_per_kwh",
+        "grid_ci_forecast_g_per_kwh",
+        "temperature_2m",
+        "cloud_cover_percent",
+        "wind_speed_10m_kmh",
+        "shortwave_radiation_w_per_m2",
+        "grid_demand_mw",
+        "embedded_wind_generation_mw",
+        "embedded_solar_generation_mw"
+      ],
+      "coverage_end_utc_exclusive": "2026-01-01T00:00:00Z",
+      "coverage_start_utc": "2025-01-01T00:00:00Z",
+      "duplicate_timestamps": 0,
+      "fetched_utc": "2026-10-13T05:12:22Z",
+      "gap_count": 0,
+      "gaps": [],
+      "granularity_minutes": 30,
+      "invalid_interval_duration": 0,
+      "license": "Source licences apply; derived transformations by GridProof",
+      "limitations": [
+        "National GB average carbon estimate, not London marginal emissions",
+        "Historic published forecast issuance unverified",
+        "Weather reanalysis is retrospective; future weather unavailable at historical decision time",
+        "Half-hour weather resolution is derived; no new observational precision",
+        "No site meter, solar, fixed-load or tariff measurements"
+      ],
+      "lineage": [
+        "neso-national-ci-2025",
+        "neso-demand-2025",
+        "openmeteo-london-weather-2025"
+      ],
+      "local_asset_checks": [
+        {
+          "path": "data/processed/intervals_2025.csv",
+          "status": "hash_matches"
+        },
+        {
+          "path": "data/processed/intervals_2025.csv",
+          "status": "hash_matches"
+        }
+      ],
+      "missing_count": {
+        "cloud_cover_percent": 0,
+        "embedded_solar_generation_mw": 0,
+        "embedded_wind_generation_mw": 0,
+        "end_utc": 0,
+        "grid_ci_actual_g_per_kwh": 43,
+        "grid_ci_forecast_g_per_kwh": 43,
+        "grid_demand_mw": 0,
+        "shortwave_radiation_w_per_m2": 0,
+        "start_utc": 0,
+        "temperature_2m": 0,
+        "wind_speed_10m_kmh": 0
+      },
+      "missing_rate": {
+        "cloud_cover_percent": 0.0,
+        "embedded_solar_generation_mw": 0.0,
+        "embedded_wind_generation_mw": 0.0,
+        "end_utc": 0.0,
+        "grid_ci_actual_g_per_kwh": 0.002454337899543379,
+        "grid_ci_forecast_g_per_kwh": 0.002454337899543379,
+        "grid_demand_mw": 0.0,
+        "shortwave_radiation_w_per_m2": 0.0,
+        "start_utc": 0.0,
+        "temperature_2m": 0.0,
+        "wind_speed_10m_kmh": 0.0
+      },
+      "numeric_ranges": {
+        "cloud_cover_percent": {
+          "max": 100.0,
+          "min": 0.0
+        },
+        "embedded_solar_generation_mw": {
+          "max": 14046.0,
+          "min": 0.0
+        },
+        "embedded_wind_generation_mw": {
+          "max": 5922.0,
+          "min": 125.0
+        },
+        "grid_ci_actual_g_per_kwh": {
+          "max": 293.0,
+          "min": 24.0
+        },
+        "grid_ci_forecast_g_per_kwh": {
+          "max": 299.0,
+          "min": 20.0
+        },
+        "grid_demand_mw": {
+          "max": 45924.0,
+          "min": 12803.0
+        },
+        "shortwave_radiation_w_per_m2": {
+          "max": 873.0,
+          "min": 0.0
+        },
+        "temperature_2m": {
+          "max": 32.3,
+          "min": -4.0
+        },
+        "wind_speed_10m_kmh": {
+          "max": 42.8,
+          "min": 0.2
+        }
+      },
+      "original_url": null,
+      "out_of_order": false,
+      "path": "data/processed/intervals_2025.csv",
+      "processed_path": "data/processed/intervals_2025.csv",
+      "processed_sha256": "8b7e5c77838fc56066278ed272db0434a525c46410a6f89daa62e1e3fb6c036d",
+      "provenance_status": "authentic_grid_estimates_with_historical_weather_reanalysis; facility simulated separately",
+      "row_count": 17520,
+      "sha256": "8b7e5c77838fc56066278ed272db0434a525c46410a6f89daa62e1e3fb6c036d",
+      "source_id": "gridproof-normalized-2025",
+      "status": "verified",
+      "timezone": "UTC",
+      "transformations": [
+        "CI retained exactly; no imputation",
+        "GB settlement mapped with Europe/London DST",
+        "Radiation at hour h+1 copied to both half-hours starting hour h because source denotes preceding-hour mean; energy conserved",
+        "Temperature/cloud/wind linearly interpolated to half-hour interval starts from hourly endpoints",
+        "Seven prior days per sample date retained for offline past-only forecasts"
+      ],
+      "units": {
+        "cloud_cover_percent": "%",
+        "grid_ci_actual_g_per_kwh": "gCO2/kWh",
+        "grid_ci_forecast_g_per_kwh": "gCO2/kWh",
+        "grid_demand_mw": "MW",
+        "shortwave_radiation_w_per_m2": "W/m2",
+        "temperature_2m": "C",
+        "wind_speed_10m_kmh": "km/h"
+      },
+      "validation_profile": {
+        "column_types": {
+          "cloud_cover_percent": "number",
+          "embedded_solar_generation_mw": "number",
+          "embedded_wind_generation_mw": "number",
+          "end_utc": "string",
+          "grid_ci_actual_g_per_kwh": "number_or_null",
+          "grid_ci_forecast_g_per_kwh": "number_or_null",
+          "grid_demand_mw": "number",
+          "shortwave_radiation_w_per_m2": "number",
+          "start_utc": "string",
+          "temperature_2m": "number",
+          "wind_speed_10m_kmh": "number"
+        },
+        "columns": [
+          "start_utc",
+          "end_utc",
+          "grid_ci_actual_g_per_kwh",
+          "grid_ci_forecast_g_per_kwh",
+          "temperature_2m",
+          "cloud_cover_percent",
+          "wind_speed_10m_kmh",
+          "shortwave_radiation_w_per_m2",
+          "grid_demand_mw",
+          "embedded_wind_generation_mw",
+          "embedded_solar_generation_mw"
+        ],
+        "coverage_end_utc_exclusive": "2026-01-01T00:00:00Z",
+        "coverage_start_utc": "2025-01-01T00:00:00Z",
+        "duplicate_timestamps": 0,
+        "gap_count": 0,
+        "gaps": [],
+        "granularity_minutes": 30,
+        "invalid_interval_duration": 0,
+        "missing_count": {
+          "cloud_cover_percent": 0,
+          "embedded_solar_generation_mw": 0,
+          "embedded_wind_generation_mw": 0,
+          "end_utc": 0,
+          "grid_ci_actual_g_per_kwh": 43,
+          "grid_ci_forecast_g_per_kwh": 43,
+          "grid_demand_mw": 0,
+          "shortwave_radiation_w_per_m2": 0,
+          "start_utc": 0,
+          "temperature_2m": 0,
+          "wind_speed_10m_kmh": 0
+        },
+        "missing_rate": {
+          "cloud_cover_percent": 0.0,
+          "embedded_solar_generation_mw": 0.0,
+          "embedded_wind_generation_mw": 0.0,
+          "end_utc": 0.0,
+          "grid_ci_actual_g_per_kwh": 0.002454337899543379,
+          "grid_ci_forecast_g_per_kwh": 0.002454337899543379,
+          "grid_demand_mw": 0.0,
+          "shortwave_radiation_w_per_m2": 0.0,
+          "start_utc": 0.0,
+          "temperature_2m": 0.0,
+          "wind_speed_10m_kmh": 0.0
+        },
+        "numeric_ranges": {
+          "cloud_cover_percent": {
+            "max": 100.0,
+            "min": 0.0
+          },
+          "embedded_solar_generation_mw": {
+            "max": 14046.0,
+            "min": 0.0
+          },
+          "embedded_wind_generation_mw": {
+            "max": 5922.0,
+            "min": 125.0
+          },
+          "grid_ci_actual_g_per_kwh": {
+            "max": 293.0,
+            "min": 24.0
+          },
+          "grid_ci_forecast_g_per_kwh": {
+            "max": 299.0,
+            "min": 20.0
+          },
+          "grid_demand_mw": {
+            "max": 45924.0,
+            "min": 12803.0
+          },
+          "shortwave_radiation_w_per_m2": {
+            "max": 873.0,
+            "min": 0.0
+          },
+          "temperature_2m": {
+            "max": 32.3,
+            "min": -4.0
+          },
+          "wind_speed_10m_kmh": {
+            "max": 42.8,
+            "min": 0.2
+          }
+        },
+        "out_of_order": false,
+        "row_count": 17520,
+        "timezone": "UTC"
+      }
+    },
+    {
+      "attribution": "NESO; Open-Meteo / ECMWF ERA5",
+      "byte_size": 632873,
+      "checked_utc": "2026-10-13T05:21:20Z",
+      "columns": [
+        "start_utc",
+        "end_utc",
+        "grid_ci_actual_g_per_kwh",
+        "grid_ci_forecast_g_per_kwh",
+        "temperature_2m",
+        "cloud_cover_percent",
+        "wind_speed_10m_kmh",
+        "shortwave_radiation_w_per_m2",
+        "grid_demand_mw",
+        "embedded_wind_generation_mw",
+        "embedded_solar_generation_mw",
+        "source_refs",
+        "quality_flags"
+      ],
+      "content_type": "application/json",
+      "coverage_intervals": [
+        {
+          "end_utc": "2025-01-16T00:00:00Z",
+          "start_utc": "2025-01-15T00:00:00Z"
+        },
+        {
+          "end_utc": "2025-08-13T00:00:00Z",
+          "start_utc": "2025-08-12T00:00:00Z"
+        }
+      ],
+      "dates": [
+        "2025-01-15",
+        "2025-08-12"
+      ],
+      "etag": null,
+      "fetched_utc": "2026-10-13T05:12:22Z",
+      "granularity_minutes": 30,
+      "history_row_count": 672,
+      "http_status": null,
+      "license": "NESO Open Data Licence and Open-Meteo CC-BY-4.0; attributed transformed subset",
+      "license_urls": [
+        "https://www.neso.energy/data-portal/neso-open-licence",
+        "https://open-meteo.com/en/terms"
+      ],
+      "limitations": [
+        "National GB average carbon estimate, not London marginal emissions",
+        "Historic published forecast issuance unverified",
+        "Weather reanalysis is retrospective; future weather unavailable at historical decision time",
+        "Half-hour weather resolution is derived; no new observational precision",
+        "No site meter, solar, fixed-load or tariff measurements"
+      ],
+      "lineage": [
+        "neso-national-ci-2025",
+        "neso-demand-2025",
+        "openmeteo-london-weather-2025"
+      ],
+      "local_asset_checks": [
+        {
+          "path": "data/sample/intervals.json",
+          "status": "hash_matches"
+        }
+      ],
+      "original_url": null,
+      "path": "data/sample/intervals.json",
+      "profile_by_date": {
+        "2025-01-15": {
+          "column_types": {
+            "cloud_cover_percent": "number",
+            "embedded_solar_generation_mw": "number",
+            "embedded_wind_generation_mw": "number",
+            "end_utc": "string",
+            "grid_ci_actual_g_per_kwh": "number",
+            "grid_ci_forecast_g_per_kwh": "number",
+            "grid_demand_mw": "number",
+            "quality_flags": "string",
+            "shortwave_radiation_w_per_m2": "number",
+            "source_refs": "string",
+            "start_utc": "string",
+            "temperature_2m": "number",
+            "wind_speed_10m_kmh": "number"
+          },
+          "columns": [
+            "start_utc",
+            "end_utc",
+            "grid_ci_actual_g_per_kwh",
+            "grid_ci_forecast_g_per_kwh",
+            "temperature_2m",
+            "cloud_cover_percent",
+            "wind_speed_10m_kmh",
+            "shortwave_radiation_w_per_m2",
+            "grid_demand_mw",
+            "embedded_wind_generation_mw",
+            "embedded_solar_generation_mw",
+            "source_refs",
+            "quality_flags"
+          ],
+          "coverage_end_utc_exclusive": "2025-01-16T00:00:00Z",
+          "coverage_start_utc": "2025-01-15T00:00:00Z",
+          "duplicate_timestamps": 0,
+          "gap_count": 0,
+          "gaps": [],
+          "granularity_minutes": 30,
+          "invalid_interval_duration": 0,
+          "missing_count": {
+            "cloud_cover_percent": 0,
+            "embedded_solar_generation_mw": 0,
+            "embedded_wind_generation_mw": 0,
+            "end_utc": 0,
+            "grid_ci_actual_g_per_kwh": 0,
+            "grid_ci_forecast_g_per_kwh": 0,
+            "grid_demand_mw": 0,
+            "quality_flags": 0,
+            "shortwave_radiation_w_per_m2": 0,
+            "source_refs": 0,
+            "start_utc": 0,
+            "temperature_2m": 0,
+            "wind_speed_10m_kmh": 0
+          },
+          "missing_rate": {
+            "cloud_cover_percent": 0.0,
+            "embedded_solar_generation_mw": 0.0,
+            "embedded_wind_generation_mw": 0.0,
+            "end_utc": 0.0,
+            "grid_ci_actual_g_per_kwh": 0.0,
+            "grid_ci_forecast_g_per_kwh": 0.0,
+            "grid_demand_mw": 0.0,
+            "quality_flags": 0.0,
+            "shortwave_radiation_w_per_m2": 0.0,
+            "source_refs": 0.0,
+            "start_utc": 0.0,
+            "temperature_2m": 0.0,
+            "wind_speed_10m_kmh": 0.0
+          },
+          "numeric_ranges": {
+            "cloud_cover_percent": {
+              "max": 100.0,
+              "min": 83.0
+            },
+            "embedded_solar_generation_mw": {
+              "max": 3635.0,
+              "min": 0.0
+            },
+            "embedded_wind_generation_mw": {
+              "max": 1899.0,
+              "min": 1457.0
+            },
+            "grid_ci_actual_g_per_kwh": {
+              "max": 249.0,
+              "min": 189.0
+            },
+            "grid_ci_forecast_g_per_kwh": {
+              "max": 254.0,
+              "min": 184.0
+            },
+            "grid_demand_mw": {
+              "max": 41196.0,
+              "min": 23721.0
+            },
+            "shortwave_radiation_w_per_m2": {
+              "max": 90.0,
+              "min": 0.0
+            },
+            "temperature_2m": {
+              "max": 9.6,
+              "min": 6.9
+            },
+            "wind_speed_10m_kmh": {
+              "max": 10.1,
+              "min": 2.4
+            }
+          },
+          "out_of_order": false,
+          "row_count": 48,
+          "timezone": "UTC"
+        },
+        "2025-08-12": {
+          "column_types": {
+            "cloud_cover_percent": "number",
+            "embedded_solar_generation_mw": "number",
+            "embedded_wind_generation_mw": "number",
+            "end_utc": "string",
+            "grid_ci_actual_g_per_kwh": "number",
+            "grid_ci_forecast_g_per_kwh": "number",
+            "grid_demand_mw": "number",
+            "quality_flags": "string",
+            "shortwave_radiation_w_per_m2": "number",
+            "source_refs": "string",
+            "start_utc": "string",
+            "temperature_2m": "number",
+            "wind_speed_10m_kmh": "number"
+          },
+          "columns": [
+            "start_utc",
+            "end_utc",
+            "grid_ci_actual_g_per_kwh",
+            "grid_ci_forecast_g_per_kwh",
+            "temperature_2m",
+            "cloud_cover_percent",
+            "wind_speed_10m_kmh",
+            "shortwave_radiation_w_per_m2",
+            "grid_demand_mw",
+            "embedded_wind_generation_mw",
+            "embedded_solar_generation_mw",
+            "source_refs",
+            "quality_flags"
+          ],
+          "coverage_end_utc_exclusive": "2025-08-13T00:00:00Z",
+          "coverage_start_utc": "2025-08-12T00:00:00Z",
+          "duplicate_timestamps": 0,
+          "gap_count": 0,
+          "gaps": [],
+          "granularity_minutes": 30,
+          "invalid_interval_duration": 0,
+          "missing_count": {
+            "cloud_cover_percent": 0,
+            "embedded_solar_generation_mw": 0,
+            "embedded_wind_generation_mw": 0,
+            "end_utc": 0,
+            "grid_ci_actual_g_per_kwh": 0,
+            "grid_ci_forecast_g_per_kwh": 0,
+            "grid_demand_mw": 0,
+            "quality_flags": 0,
+            "shortwave_radiation_w_per_m2": 0,
+            "source_refs": 0,
+            "start_utc": 0,
+            "temperature_2m": 0,
+            "wind_speed_10m_kmh": 0
+          },
+          "missing_rate": {
+            "cloud_cover_percent": 0.0,
+            "embedded_solar_generation_mw": 0.0,
+            "embedded_wind_generation_mw": 0.0,
+            "end_utc": 0.0,
+            "grid_ci_actual_g_per_kwh": 0.0,
+            "grid_ci_forecast_g_per_kwh": 0.0,
+            "grid_demand_mw": 0.0,
+            "quality_flags": 0.0,
+            "shortwave_radiation_w_per_m2": 0.0,
+            "source_refs": 0.0,
+            "start_utc": 0.0,
+            "temperature_2m": 0.0,
+            "wind_speed_10m_kmh": 0.0
+          },
+          "numeric_ranges": {
+            "cloud_cover_percent": {
+              "max": 84.0,
+              "min": 0.0
+            },
+            "embedded_solar_generation_mw": {
+              "max": 12235.0,
+              "min": 0.0
+            },
+            "embedded_wind_generation_mw": {
+              "max": 799.0,
+              "min": 402.0
+            },
+            "grid_ci_actual_g_per_kwh": {
+              "max": 242.0,
+              "min": 123.0
+            },
+            "grid_ci_forecast_g_per_kwh": {
+              "max": 245.0,
+              "min": 121.0
+            },
+            "grid_demand_mw": {
+              "max": 29682.0,
+              "min": 19513.0
+            },
+            "shortwave_radiation_w_per_m2": {
+              "max": 786.0,
+              "min": 0.0
+            },
+            "temperature_2m": {
+              "max": 30.4,
+              "min": 18.2
+            },
+            "wind_speed_10m_kmh": {
+              "max": 16.2,
+              "min": 4.4
+            }
+          },
+          "out_of_order": false,
+          "row_count": 48,
+          "timezone": "UTC"
+        }
+      },
+      "provenance_status": "authentic_grid_estimates_with_historical_weather_reanalysis; facility simulated separately",
+      "row_count": 96,
+      "sha256": "134251a6f846bd492b2208041cd6615ad892678dc8e94b4be9a6fa5cc8e3d8d5",
+      "source_id": "gridproof-offline-sample",
+      "status": "verified",
+      "timezone": "UTC",
+      "transformations": [
+        "CI retained exactly; no imputation",
+        "GB settlement mapped with Europe/London DST",
+        "Radiation at hour h+1 copied to both half-hours starting hour h because source denotes preceding-hour mean; energy conserved",
+        "Temperature/cloud/wind linearly interpolated to half-hour interval starts from hourly endpoints",
+        "Seven prior days per sample date retained for offline past-only forecasts"
+      ],
+      "units": {
+        "cloud_cover_percent": "%",
+        "grid_ci_actual_g_per_kwh": "gCO2/kWh",
+        "grid_ci_forecast_g_per_kwh": "gCO2/kWh",
+        "grid_demand_mw": "MW",
+        "shortwave_radiation_w_per_m2": "W/m2",
+        "temperature_2m": "C",
+        "wind_speed_10m_kmh": "km/h"
+      }
+    },
+    {
+      "attribution": "Supported by National Energy SO Open Data. National Energy System Operator, Historic Demand Data",
+      "byte_size": 1869771,
+      "checked_utc": "2026-10-13T05:16:26Z",
+      "column_types": {
+        "embedded_solar_generation_mw": "number",
+        "embedded_wind_generation_mw": "number",
+        "end_utc": "string",
+        "grid_demand_mw": "number",
+        "settlement_date": "string",
+        "settlement_period": "number",
+        "start_utc": "string"
+      },
+      "columns": [
+        "start_utc",
+        "end_utc",
+        "settlement_date",
+        "settlement_period",
+        "grid_demand_mw",
+        "embedded_wind_generation_mw",
+        "embedded_solar_generation_mw"
+      ],
+      "content_type": "application/octet-stream",
+      "coverage_end_utc_exclusive": "2026-01-01T00:00:00Z",
+      "coverage_start_utc": "2025-01-01T00:00:00Z",
+      "duplicate_timestamps": 0,
+      "etag": "\"bd5451a8a2306071a1376af75855cafb\"",
+      "fetched_utc": "2026-10-13T05:12:22Z",
+      "final_url": "https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-national-grid/national-grid/resources/b2bde559-3455-4021-b179-dfe60c0337b0/demanddata_2025.csv?response-content-disposition=attachment%3B%20filename%3Ddemanddata_2025.csv&response-content-type=application%2Foctet-stream&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=604800&X-Amz-Credential=564ecf1b9cb7e605192d2953e7a993b9%2F20261013%2Fauto%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Date=20261013T051225Z&X-Amz-Signature=4fdd5a914e6b63d5c5ac82ee108cf7495605e2fba49efcc777d335ca48660aab",
+      "gap_count": 0,
+      "gaps": [],
+      "granularity_minutes": 30,
+      "http_date": "Tue, 13 Oct 2026 05:12:27 GMT",
+      "http_status": 200,
+      "invalid_interval_duration": 0,
+      "last_modified": "Tue, 09 Jun 2026 13:25:08 GMT",
+      "license": "NESO Open Data Licence",
+      "license_url": "https://www.neso.energy/data-portal/neso-open-licence",
+      "limitations": [
+        "Provider reports quality issues",
+        "21-day publication delay and retrospective demand/solar corrections",
+        "Context only; future observed demand excluded from decision features"
+      ],
+      "local_asset_checks": [
+        {
+          "path": "data/raw/neso_demand_2025.csv",
+          "status": "hash_matches"
+        },
+        {
+          "path": "data/processed/neso_demand_2025.csv",
+          "status": "hash_matches"
+        }
+      ],
+      "missing_count": {
+        "embedded_solar_generation_mw": 0,
+        "embedded_wind_generation_mw": 0,
+        "end_utc": 0,
+        "grid_demand_mw": 0,
+        "settlement_date": 0,
+        "settlement_period": 0,
+        "start_utc": 0
+      },
+      "missing_rate": {
+        "embedded_solar_generation_mw": 0.0,
+        "embedded_wind_generation_mw": 0.0,
+        "end_utc": 0.0,
+        "grid_demand_mw": 0.0,
+        "settlement_date": 0.0,
+        "settlement_period": 0.0,
+        "start_utc": 0.0
+      },
+      "numeric_ranges": {
+        "embedded_solar_generation_mw": {
+          "max": 14046.0,
+          "min": 0.0
+        },
+        "embedded_wind_generation_mw": {
+          "max": 5922.0,
+          "min": 125.0
+        },
+        "grid_demand_mw": {
+          "max": 45924.0,
+          "min": 12803.0
+        },
+        "settlement_period": {
+          "max": 50.0,
+          "min": 1.0
+        }
+      },
+      "original_url": "https://api.neso.energy/dataset/8f2fe0af-871c-488d-8bad-960426f24601/resource/b2bde559-3455-4021-b179-dfe60c0337b0/download/demanddata_2025.csv",
+      "out_of_order": false,
+      "path": "data/raw/neso_demand_2025.csv",
+      "processed_path": "data/processed/neso_demand_2025.csv",
+      "processed_sha256": "3600105af5c6bb55cffa99cedcb91fa8a020834da13b8bfba387e2522750de78",
+      "provenance_status": "observed_grid_context_revisable",
+      "raw_columns": [
+        "SETTLEMENT_DATE",
+        "SETTLEMENT_PERIOD",
+        "ND",
+        "TSD",
+        "ENGLAND_WALES_DEMAND",
+        "EMBEDDED_WIND_GENERATION",
+        "EMBEDDED_WIND_CAPACITY",
+        "EMBEDDED_SOLAR_GENERATION",
+        "EMBEDDED_SOLAR_CAPACITY",
+        "NON_BM_STOR",
+        "PUMP_STORAGE_PUMPING",
+        "SCOTTISH_TRANSFER",
+        "IFA_FLOW",
+        "IFA2_FLOW",
+        "BRITNED_FLOW",
+        "MOYLE_FLOW",
+        "EAST_WEST_FLOW",
+        "NEMO_FLOW",
+        "NSL_FLOW",
+        "ELECLINK_FLOW",
+        "VIKING_FLOW",
+        "GREENLINK_FLOW"
+      ],
+      "row_count": 17520,
+      "settlement_day_counts": {
+        "2025-03-30": 46,
+        "2025-10-26": 50
+      },
+      "sha256": "8b8be946bbb084bc28fbf95a71fad0fceb5543b98e02755235130a42beaee4e0",
+      "source_id": "neso-demand-2025",
+      "source_page": "https://www.neso.energy/data-portal/historic-demand-data",
+      "status": "verified",
+      "timezone": "UTC",
+      "transformations": [
+        "London midnight converted to UTC then half-hour period offsets; 46/48/50 slots",
+        "ND is national demand; embedded wind/solar not total generation",
+        "Sort ascending UTC; no imputation"
+      ],
+      "units": {
+        "embedded_solar_generation_mw": "MW",
+        "embedded_wind_generation_mw": "MW",
+        "grid_demand_mw": "MW"
+      },
+      "url": "https://api.neso.energy/dataset/8f2fe0af-871c-488d-8bad-960426f24601/resource/b2bde559-3455-4021-b179-dfe60c0337b0/download/demanddata_2025.csv",
+      "validation_profile": {
+        "column_types": {
+          "embedded_solar_generation_mw": "number",
+          "embedded_wind_generation_mw": "number",
+          "end_utc": "string",
+          "grid_demand_mw": "number",
+          "settlement_date": "string",
+          "settlement_period": "number",
+          "start_utc": "string"
+        },
+        "columns": [
+          "start_utc",
+          "end_utc",
+          "settlement_date",
+          "settlement_period",
+          "grid_demand_mw",
+          "embedded_wind_generation_mw",
+          "embedded_solar_generation_mw"
+        ],
+        "coverage_end_utc_exclusive": "2026-01-01T00:00:00Z",
+        "coverage_start_utc": "2025-01-01T00:00:00Z",
+        "duplicate_timestamps": 0,
+        "gap_count": 0,
+        "gaps": [],
+        "granularity_minutes": 30,
+        "invalid_interval_duration": 0,
+        "missing_count": {
+          "embedded_solar_generation_mw": 0,
+          "embedded_wind_generation_mw": 0,
+          "end_utc": 0,
+          "grid_demand_mw": 0,
+          "settlement_date": 0,
+          "settlement_period": 0,
+          "start_utc": 0
+        },
+        "missing_rate": {
+          "embedded_solar_generation_mw": 0.0,
+          "embedded_wind_generation_mw": 0.0,
+          "end_utc": 0.0,
+          "grid_demand_mw": 0.0,
+          "settlement_date": 0.0,
+          "settlement_period": 0.0,
+          "start_utc": 0.0
+        },
+        "numeric_ranges": {
+          "embedded_solar_generation_mw": {
+            "max": 14046.0,
+            "min": 0.0
+          },
+          "embedded_wind_generation_mw": {
+            "max": 5922.0,
+            "min": 125.0
+          },
+          "grid_demand_mw": {
+            "max": 45924.0,
+            "min": 12803.0
+          },
+          "settlement_period": {
+            "max": 50.0,
+            "min": 1.0
+          }
+        },
+        "out_of_order": false,
+        "row_count": 17520,
+        "timezone": "UTC"
+      }
+    },
+    {
+      "access_limitations": "Public CKAN read; two selected-year queries, 250ms inter-request throttle, cache and bounded retry",
+      "attribution": "Supported by National Energy SO Open Data. National Energy System Operator / Carbon Intensity API",
+      "byte_size": 1657882,
+      "checked_utc": "2026-10-13T05:16:25Z",
+      "client_context_date": "2026-10-13",
+      "column_types": {
+        "end_utc": "string",
+        "grid_ci_actual_g_per_kwh": "number_or_null",
+        "grid_ci_forecast_g_per_kwh": "number_or_null",
+        "index": "string_or_null",
+        "start_utc": "string"
+      },
+      "columns": [
+        "start_utc",
+        "end_utc",
+        "grid_ci_actual_g_per_kwh",
+        "grid_ci_forecast_g_per_kwh",
+        "index"
+      ],
+      "content_type": "application/json;charset=utf-8",
+      "coverage_end_utc_exclusive": "2026-01-01T00:00:00Z",
+      "coverage_start_utc": "2025-01-01T00:00:00Z",
+      "duplicate_timestamps": 0,
+      "etag": null,
+      "fetched_utc": "2026-10-13T05:12:00Z",
+      "final_url": "https://api.neso.energy/api/3/action/datastore_search_sql?sql=SELECT+datetime%2C+forecast%2C+actual%2C+%22index%22+FROM+%220e5fde43-2de7-4fb4-833d-c7bca3b658b0%22+WHERE+datetime+%3E%3D+%272025-01-01T00%3A00%3A00%27+AND+datetime+%3C+%272026-01-01T00%3A00%3A00%27+ORDER+BY+datetime+LIMIT+20000",
+      "gap_count": 0,
+      "gaps": [],
+      "granularity_minutes": 30,
+      "http_date": "Tue, 13 Oct 2026 05:12:02 GMT",
+      "http_status": 200,
+      "invalid_interval_duration": 0,
+      "last_modified": null,
+      "license": "NESO Open Data Licence (portal); CC-BY-4.0 (Carbon Intensity API)",
+      "license_url": "https://www.neso.energy/data-portal/neso-open-licence",
+      "limitations": [
+        "National GB average intensity, not marginal or London-specific",
+        "Forecast issue timestamp absent; not point-in-time archive",
+        "Historical values can be revised"
+      ],
+      "local_asset_checks": [
+        {
+          "path": "data/raw/neso_ci_2025.json",
+          "status": "hash_matches"
+        },
+        {
+          "path": "data/processed/neso_ci_2025.csv",
+          "status": "hash_matches"
+        }
+      ],
+      "missing_count": {
+        "end_utc": 0,
+        "grid_ci_actual_g_per_kwh": 43,
+        "grid_ci_forecast_g_per_kwh": 43,
+        "index": 43,
+        "start_utc": 0
+      },
+      "missing_rate": {
+        "end_utc": 0.0,
+        "grid_ci_actual_g_per_kwh": 0.002454337899543379,
+        "grid_ci_forecast_g_per_kwh": 0.002454337899543379,
+        "index": 0.002454337899543379,
+        "start_utc": 0.0
+      },
+      "numeric_ranges": {
+        "grid_ci_actual_g_per_kwh": {
+          "max": 293.0,
+          "min": 24.0
+        },
+        "grid_ci_forecast_g_per_kwh": {
+          "max": 299.0,
+          "min": 20.0
+        }
+      },
+      "original_url": "https://api.neso.energy/api/3/action/datastore_search_sql?sql=SELECT+datetime%2C+forecast%2C+actual%2C+%22index%22+FROM+%220e5fde43-2de7-4fb4-833d-c7bca3b658b0%22+WHERE+datetime+%3E%3D+%272025-01-01T00%3A00%3A00%27+AND+datetime+%3C+%272026-01-01T00%3A00%3A00%27+ORDER+BY+datetime+LIMIT+20000",
+      "out_of_order": false,
+      "path": "data/raw/neso_ci_2025.json",
+      "processed_path": "data/processed/neso_ci_2025.csv",
+      "processed_sha256": "c7ce7ada691de06b00bf21f98d3c3dfc08c5531d115b307d9841fdb52be2ec6d",
+      "provenance_status": {
+        "actual": "estimated_from_metered_generation",
+        "forecast": "historical_forecast_issuance_unverified"
+      },
+      "requested_coverage": [
+        "2025-01-01T00:00:00Z",
+        "2026-01-01T00:00:00Z"
+      ],
+      "row_count": 17520,
+      "sha256": "0c07bc094561e19c61826b693395b92e8334a34b613e5525ca016ae6c91fc815",
+      "source_id": "neso-national-ci-2025",
+      "source_page": "https://www.neso.energy/data-portal/national-carbon-intensity-forecast",
+      "status": "verified",
+      "timezone": "UTC",
+      "transformations": [
+        "Explicit UTC from portal schema; datetime is interval start crosschecked against Carbon Intensity API",
+        "Finite numeric conversion; missing remains null",
+        "Append half-hour exclusive end; no value imputation"
+      ],
+      "units": {
+        "grid_ci_actual_g_per_kwh": "gCO2/kWh",
+        "grid_ci_forecast_g_per_kwh": "gCO2/kWh"
+      },
+      "url": "https://api.neso.energy/api/3/action/datastore_search_sql?sql=SELECT+datetime%2C+forecast%2C+actual%2C+%22index%22+FROM+%220e5fde43-2de7-4fb4-833d-c7bca3b658b0%22+WHERE+datetime+%3E%3D+%272025-01-01T00%3A00%3A00%27+AND+datetime+%3C+%272026-01-01T00%3A00%3A00%27+ORDER+BY+datetime+LIMIT+20000",
+      "validation_profile": {
+        "column_types": {
+          "end_utc": "string",
+          "grid_ci_actual_g_per_kwh": "number_or_null",
+          "grid_ci_forecast_g_per_kwh": "number_or_null",
+          "index": "string_or_null",
+          "start_utc": "string"
+        },
+        "columns": [
+          "start_utc",
+          "end_utc",
+          "grid_ci_actual_g_per_kwh",
+          "grid_ci_forecast_g_per_kwh",
+          "index"
+        ],
+        "coverage_end_utc_exclusive": "2026-01-01T00:00:00Z",
+        "coverage_start_utc": "2025-01-01T00:00:00Z",
+        "duplicate_timestamps": 0,
+        "gap_count": 0,
+        "gaps": [],
+        "granularity_minutes": 30,
+        "invalid_interval_duration": 0,
+        "missing_count": {
+          "end_utc": 0,
+          "grid_ci_actual_g_per_kwh": 43,
+          "grid_ci_forecast_g_per_kwh": 43,
+          "index": 43,
+          "start_utc": 0
+        },
+        "missing_rate": {
+          "end_utc": 0.0,
+          "grid_ci_actual_g_per_kwh": 0.002454337899543379,
+          "grid_ci_forecast_g_per_kwh": 0.002454337899543379,
+          "index": 0.002454337899543379,
+          "start_utc": 0.0
+        },
+        "numeric_ranges": {
+          "grid_ci_actual_g_per_kwh": {
+            "max": 293.0,
+            "min": 24.0
+          },
+          "grid_ci_forecast_g_per_kwh": {
+            "max": 299.0,
+            "min": 20.0
+          }
+        },
+        "out_of_order": false,
+        "row_count": 17520,
+        "timezone": "UTC"
+      }
+    },
+    {
+      "access_limitations": "Public CKAN read; two selected-year queries, 250ms inter-request throttle, cache and bounded retry",
+      "attribution": "National Energy System Operator / Carbon Intensity API",
+      "byte_size": 1291221,
+      "checked_utc": "2026-10-13T05:15:20Z",
+      "client_context_date": "2026-10-13",
+      "columns": [
+        "start_utc",
+        "end_utc",
+        "grid_ci_actual_g_per_kwh",
+        "grid_ci_forecast_g_per_kwh",
+        "index"
+      ],
+      "content_type": "application/json;charset=utf-8",
+      "coverage_end_utc_exclusive": "2026-10-13T05:00:00Z",
+      "coverage_start_utc": "2026-01-01T00:00:00Z",
+      "duplicate_timestamps": 0,
+      "etag": null,
+      "fetched_utc": "2026-10-13T05:15:16Z",
+      "final_url": "https://api.neso.energy/api/3/action/datastore_search_sql?sql=SELECT+datetime%2C+forecast%2C+actual%2C+%22index%22+FROM+%220e5fde43-2de7-4fb4-833d-c7bca3b658b0%22+WHERE+datetime+%3E%3D+%272026-01-01T00%3A00%3A00%27+AND+datetime+%3C+%272026-10-13T05%3A00%3A00%27+ORDER+BY+datetime+LIMIT+20000",
+      "gap_count": 0,
+      "gaps": [],
+      "granularity_minutes": 30,
+      "http_date": "Tue, 13 Oct 2026 05:15:18 GMT",
+      "http_status": 200,
+      "invalid_interval_duration": 0,
+      "last_modified": null,
+      "license": "NESO Open Data Licence (portal); CC-BY-4.0 (Carbon Intensity API)",
+      "license_url": "https://www.neso.energy/data-portal/neso-open-licence",
+      "limitations": [
+        "National GB average intensity, not marginal or London-specific",
+        "Forecast issue timestamp absent; not point-in-time archive",
+        "Historical values can be revised"
+      ],
+      "local_asset_checks": [
+        {
+          "path": "data/raw/neso_ci_2026.json",
+          "status": "hash_matches"
+        },
+        {
+          "path": "data/processed/neso_ci_2026.csv",
+          "status": "hash_matches"
+        }
+      ],
+      "missing_count": {
+        "end_utc": 0,
+        "grid_ci_actual_g_per_kwh": 1,
+        "grid_ci_forecast_g_per_kwh": 0,
+        "index": 0,
+        "start_utc": 0
+      },
+      "missing_rate": {
+        "end_utc": 0.0,
+        "grid_ci_actual_g_per_kwh": 7.304601899196493e-05,
+        "grid_ci_forecast_g_per_kwh": 0.0,
+        "index": 0.0,
+        "start_utc": 0.0
+      },
+      "original_url": "https://api.neso.energy/api/3/action/datastore_search_sql?sql=SELECT+datetime%2C+forecast%2C+actual%2C+%22index%22+FROM+%220e5fde43-2de7-4fb4-833d-c7bca3b658b0%22+WHERE+datetime+%3E%3D+%272026-01-01T00%3A00%3A00%27+AND+datetime+%3C+%272026-10-13T05%3A00%3A00%27+ORDER+BY+datetime+LIMIT+20000",
+      "out_of_order": false,
+      "path": "data/raw/neso_ci_2026.json",
+      "processed_path": "data/processed/neso_ci_2026.csv",
+      "processed_sha256": "27f6a77558971cae513edb461cd3713f4481d90aa1f8577e63af4974d6afdfca",
+      "provenance_status": {
+        "actual": "estimated_from_metered_generation",
+        "forecast": "historical_forecast_issuance_unverified"
+      },
+      "requested_coverage": [
+        "2026-01-01T00:00:00Z",
+        "2026-10-13T05:00:00Z"
+      ],
+      "row_count": 13690,
+      "sha256": "5312d125ee06556a7431f0e979fd0e6e504a147b2ea6058f5938b574875f13df",
+      "source_id": "neso-national-ci-2026",
+      "source_page": "https://www.neso.energy/data-portal/national-carbon-intensity-forecast",
+      "status": "verified",
+      "timezone": "UTC",
+      "transformations": [
+        "Explicit UTC from portal schema; datetime is interval start crosschecked against Carbon Intensity API",
+        "Finite numeric conversion; missing remains null",
+        "Append half-hour exclusive end; no value imputation"
+      ],
+      "units": {
+        "grid_ci_actual_g_per_kwh": "gCO2/kWh",
+        "grid_ci_forecast_g_per_kwh": "gCO2/kWh"
+      },
+      "url": "https://api.neso.energy/api/3/action/datastore_search_sql?sql=SELECT+datetime%2C+forecast%2C+actual%2C+%22index%22+FROM+%220e5fde43-2de7-4fb4-833d-c7bca3b658b0%22+WHERE+datetime+%3E%3D+%272026-01-01T00%3A00%3A00%27+AND+datetime+%3C+%272026-10-13T05%3A00%3A00%27+ORDER+BY+datetime+LIMIT+20000",
+      "validation_profile": {
+        "column_types": {
+          "end_utc": "string",
+          "grid_ci_actual_g_per_kwh": "number_or_null",
+          "grid_ci_forecast_g_per_kwh": "number",
+          "index": "string",
+          "start_utc": "string"
+        },
+        "columns": [
+          "start_utc",
+          "end_utc",
+          "grid_ci_actual_g_per_kwh",
+          "grid_ci_forecast_g_per_kwh",
+          "index"
+        ],
+        "coverage_end_utc_exclusive": "2026-10-13T05:00:00Z",
+        "coverage_start_utc": "2026-01-01T00:00:00Z",
+        "duplicate_timestamps": 0,
+        "gap_count": 0,
+        "gaps": [],
+        "granularity_minutes": 30,
+        "invalid_interval_duration": 0,
+        "missing_count": {
+          "end_utc": 0,
+          "grid_ci_actual_g_per_kwh": 1,
+          "grid_ci_forecast_g_per_kwh": 0,
+          "index": 0,
+          "start_utc": 0
+        },
+        "missing_rate": {
+          "end_utc": 0.0,
+          "grid_ci_actual_g_per_kwh": 7.304601899196493e-05,
+          "grid_ci_forecast_g_per_kwh": 0.0,
+          "index": 0.0,
+          "start_utc": 0.0
+        },
+        "numeric_ranges": {
+          "grid_ci_actual_g_per_kwh": {
+            "max": 286.0,
+            "min": 0.0
+          },
+          "grid_ci_forecast_g_per_kwh": {
+            "max": 319.0,
+            "min": 5.0
+          }
+        },
+        "out_of_order": false,
+        "row_count": 13690,
+        "timezone": "UTC"
+      }
+    },
+    {
+      "access_limitations": "Free API noncommercial only; <600 calls/min, <5000/hour, <10000/day; this script makes one cached request",
+      "attribution": "Weather data by Open-Meteo.com; ERA5 reanalysis, Copernicus Climate Change Service / ECMWF",
+      "byte_size": 318992,
+      "checked_utc": "2026-10-13T05:13:50Z",
+      "columns": [
+        "start_utc",
+        "end_utc",
+        "temperature_2m",
+        "shortwave_radiation_w_per_m2",
+        "cloud_cover_percent",
+        "wind_speed_10m_kmh"
+      ],
+      "content_type": "application/json; charset=utf-8",
+      "coordinates_requested": [
+        51.5074,
+        -0.1278
+      ],
+      "coordinates_returned": [
+        51.5,
+        -0.25
+      ],
+      "coverage_end_utc_exclusive": "2026-01-02T00:00:00Z",
+      "coverage_start_utc": "2025-01-01T00:00:00Z",
+      "duplicate_timestamps": 0,
+      "etag": null,
+      "fetched_utc": "2026-10-13T05:12:10Z",
+      "final_url": "https://archive-api.open-meteo.com/v1/archive?latitude=51.5074&longitude=-0.1278&start_date=2025-01-01&end_date=2026-01-01&hourly=temperature_2m%2Cshortwave_radiation%2Ccloud_cover%2Cwind_speed_10m&timezone=UTC&models=era5&wind_speed_unit=kmh",
+      "gap_count": 0,
+      "gaps": [],
+      "granularity_minutes": 60,
+      "http_date": "Tue, 13 Oct 2026 05:12:12 GMT",
+      "http_status": 200,
+      "invalid_interval_duration": 0,
+      "last_modified": null,
+      "license": "CC-BY-4.0",
+      "license_url": "https://open-meteo.com/en/terms",
+      "limitations": [
+        "Not observed site weather or historical issued forecast",
+        "Shortwave radiation timestamp denotes preceding-hour mean",
+        "Instantaneous variables at timestamp; half-hour values derived later",
+        "Grid cell differs from requested coordinates"
+      ],
+      "local_asset_checks": [
+        {
+          "path": "data/raw/openmeteo_london_2025.json",
+          "status": "hash_matches"
+        },
+        {
+          "path": "data/processed/weather_2025.csv",
+          "status": "hash_matches"
+        }
+      ],
+      "missing_count": {
+        "cloud_cover_percent": 0,
+        "end_utc": 0,
+        "shortwave_radiation_w_per_m2": 0,
+        "start_utc": 0,
+        "temperature_2m": 0,
+        "wind_speed_10m_kmh": 0
+      },
+      "missing_rate": {
+        "cloud_cover_percent": 0.0,
+        "end_utc": 0.0,
+        "shortwave_radiation_w_per_m2": 0.0,
+        "start_utc": 0.0,
+        "temperature_2m": 0.0,
+        "wind_speed_10m_kmh": 0.0
+      },
+      "model": "ERA5",
+      "original_url": "https://archive-api.open-meteo.com/v1/archive?latitude=51.5074&longitude=-0.1278&start_date=2025-01-01&end_date=2026-01-01&hourly=temperature_2m%2Cshortwave_radiation%2Ccloud_cover%2Cwind_speed_10m&timezone=UTC&models=era5&wind_speed_unit=kmh",
+      "out_of_order": false,
+      "path": "data/raw/openmeteo_london_2025.json",
+      "processed_path": "data/processed/weather_2025.csv",
+      "processed_sha256": "70da1dd883771aa4918e290fe3df716657dbce39b6b5de03e98f5ae2684d7d26",
+      "provenance_status": "historical_reanalysis",
+      "row_count": 8784,
+      "sha256": "6098ffc0ecac7610670f34efcd4322717b04a9fdaba5a666ed265ce066506edd",
+      "source_id": "openmeteo-london-weather-2025",
+      "source_page": "https://open-meteo.com/en/docs/historical-weather-api",
+      "status": "verified",
+      "timezone": "UTC",
+      "transformations": [
+        "Requested UTC; numeric conversion without imputation",
+        "Extra 2026-01-01 day provides preceding-hour radiation and next-hour interpolation at 2025 end"
+      ],
+      "units": {
+        "cloud_cover": "%",
+        "shortwave_radiation": "W/m²",
+        "temperature_2m": "°C",
+        "time": "iso8601",
+        "wind_speed_10m": "km/h"
+      },
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=51.5074&longitude=-0.1278&start_date=2025-01-01&end_date=2026-01-01&hourly=temperature_2m%2Cshortwave_radiation%2Ccloud_cover%2Cwind_speed_10m&timezone=UTC&models=era5&wind_speed_unit=kmh",
+      "validation_profile": {
+        "column_types": {
+          "cloud_cover_percent": "number",
+          "end_utc": "string",
+          "shortwave_radiation_w_per_m2": "number",
+          "start_utc": "string",
+          "temperature_2m": "number",
+          "wind_speed_10m_kmh": "number"
+        },
+        "columns": [
+          "start_utc",
+          "end_utc",
+          "temperature_2m",
+          "shortwave_radiation_w_per_m2",
+          "cloud_cover_percent",
+          "wind_speed_10m_kmh"
+        ],
+        "coverage_end_utc_exclusive": "2026-01-02T00:00:00Z",
+        "coverage_start_utc": "2025-01-01T00:00:00Z",
+        "duplicate_timestamps": 0,
+        "gap_count": 0,
+        "gaps": [],
+        "granularity_minutes": 60,
+        "invalid_interval_duration": 0,
+        "missing_count": {
+          "cloud_cover_percent": 0,
+          "end_utc": 0,
+          "shortwave_radiation_w_per_m2": 0,
+          "start_utc": 0,
+          "temperature_2m": 0,
+          "wind_speed_10m_kmh": 0
+        },
+        "missing_rate": {
+          "cloud_cover_percent": 0.0,
+          "end_utc": 0.0,
+          "shortwave_radiation_w_per_m2": 0.0,
+          "start_utc": 0.0,
+          "temperature_2m": 0.0,
+          "wind_speed_10m_kmh": 0.0
+        },
+        "numeric_ranges": {
+          "cloud_cover_percent": {
+            "max": 100.0,
+            "min": 0.0
+          },
+          "shortwave_radiation_w_per_m2": {
+            "max": 873.0,
+            "min": 0.0
+          },
+          "temperature_2m": {
+            "max": 32.3,
+            "min": -4.0
+          },
+          "wind_speed_10m_kmh": {
+            "max": 42.8,
+            "min": 0.2
+          }
+        },
+        "out_of_order": false,
+        "row_count": 8784,
+        "timezone": "UTC"
+      }
+    },
+    {
+      "access_limitations": "Public GET; 30 calls/second official limit; one cached request with bounded retry",
+      "attribution": "European Commission Joint Research Centre, PVGIS 5.3 / CM SAF SARAH3",
+      "byte_size": 824475,
+      "checked_utc": "2026-10-13T05:13:44Z",
+      "column_types": {
+        "G(i)": "number",
+        "H_sun": "number",
+        "Int": "number",
+        "P": "number",
+        "T2m": "number",
+        "WS10m": "number",
+        "time": "string"
+      },
+      "columns": [
+        "time",
+        "P",
+        "G(i)",
+        "H_sun",
+        "T2m",
+        "WS10m",
+        "Int"
+      ],
+      "content_type": "application/json",
+      "coverage_end_utc_exclusive": "2024-01-01T00:10:00Z",
+      "coverage_start_utc": "2023-01-01T00:10:00Z",
+      "etag": null,
+      "fetched_utc": "2026-10-13T05:13:23Z",
+      "final_url": "https://re.jrc.ec.europa.eu/api/v5_3/seriescalc?lat=51.5074&lon=-0.1278&startyear=2023&endyear=2023&raddatabase=PVGIS-SARAH3&pvcalculation=1&peakpower=20&loss=14&angle=35&aspect=0&pvtechchoice=crystSi&outputformat=json",
+      "gap_count": 0,
+      "granularity_minutes": 60,
+      "http_date": "Tue, 13 Oct 2026 05:13:27 GMT",
+      "http_status": 200,
+      "last_modified": null,
+      "license": "PVGIS results freely usable per official manual; EC reuse policy subject to third-party rights",
+      "license_url": "https://joint-research-centre.ec.europa.eu/photovoltaic-geographical-information-system-pvgis/using-pvgis-5/pvgis-5-user-manual_en",
+      "limitations": [
+        "2023 climate baseline, not 2025 production",
+        "Hypothetical 20-kWp system, not a metered campus",
+        "PVGIS SARAH3 hourly timestamp minute preserved in raw; monthly energy assumes one-hour spacing"
+      ],
+      "local_asset_checks": [
+        {
+          "path": "data/raw/pvgis_london_2023.json",
+          "status": "hash_matches"
+        },
+        {
+          "path": "data/sample/pvgis_seasonal.json",
+          "status": "hash_matches"
+        }
+      ],
+      "missing_count": {
+        "G(i)": 0,
+        "H_sun": 0,
+        "Int": 0,
+        "P": 0,
+        "T2m": 0,
+        "WS10m": 0,
+        "time": 0
+      },
+      "missing_rate": {
+        "G(i)": 0.0,
+        "H_sun": 0.0,
+        "Int": 0.0,
+        "P": 0.0,
+        "T2m": 0.0,
+        "WS10m": 0.0,
+        "time": 0.0
+      },
+      "original_url": "https://re.jrc.ec.europa.eu/api/v5_3/seriescalc?lat=51.5074&lon=-0.1278&startyear=2023&endyear=2023&raddatabase=PVGIS-SARAH3&pvcalculation=1&peakpower=20&loss=14&angle=35&aspect=0&pvtechchoice=crystSi&outputformat=json",
+      "parameters": {
+        "angle": 35,
+        "aspect": 0,
+        "endyear": 2023,
+        "lat": 51.5074,
+        "lon": -0.1278,
+        "loss": 14,
+        "outputformat": "json",
+        "peakpower": 20,
+        "pvcalculation": 1,
+        "pvtechchoice": "crystSi",
+        "raddatabase": "PVGIS-SARAH3",
+        "startyear": 2023
+      },
+      "path": "data/raw/pvgis_london_2023.json",
+      "processed_path": "data/sample/pvgis_seasonal.json",
+      "processed_sha256": "ea4dc6a16b813b15d1166c683c8e0d0cfcfa75c5a547a8d3fbafaf805d4db820",
+      "provenance_status": "modeled_pv_potential",
+      "row_count": 8760,
+      "sha256": "e91e05bf4ae36d1bc7f68aa207591b4cfabe346fdf609b23c5066ce626cd8c65",
+      "source_id": "pvgis-london-pv-model-2023",
+      "status": "verified",
+      "supported_years": [
+        2005,
+        2023
+      ],
+      "timezone": "UTC",
+      "transformations": [
+        "Raw full JSON inputs/meta retained",
+        "Hourly modeled P [W] integrated over one-hour steps into monthly kWh"
+      ],
+      "units": {
+        "G(i)": "W/m2",
+        "P": "W",
+        "T2m": "C",
+        "WS10m": "m/s"
+      },
+      "url": "https://re.jrc.ec.europa.eu/api/v5_3/seriescalc?lat=51.5074&lon=-0.1278&startyear=2023&endyear=2023&raddatabase=PVGIS-SARAH3&pvcalculation=1&peakpower=20&loss=14&angle=35&aspect=0&pvtechchoice=crystSi&outputformat=json"
+    },
+    {
+      "access_limitations": "Metadata explicitly says register/login; recordsHTTP403. No accounts, credentials or subscription; optional source omitted",
+      "catalog_description": "Description advertises10000 sample records, metadata records_count30000 at inspection; consumption inaccessible",
+      "catalog_records_count": 30000,
+      "checked_utc": "2026-10-13T05:20:07Z",
+      "columns": [
+        {
+          "column": "dataset_id",
+          "description": "Unique dataset identifier",
+          "type": "text"
+        },
+        {
+          "column": "dno",
+          "description": "Distribution Network Operator",
+          "type": "text"
+        },
+        {
+          "column": "dno_alias",
+          "description": "Distribution Network Operator and Licence Area",
+          "type": "text"
+        },
+        {
+          "column": "secondary_substation_id",
+          "description": "Site reference",
+          "type": "text"
+        },
+        {
+          "column": "lv_feeder_id",
+          "description": "Feeder ID Number",
+          "type": "int"
+        },
+        {
+          "column": "geopoint",
+          "description": "Geo point (Latitude and Longitude) of secondary substation location.",
+          "type": "geo_point_2d"
+        },
+        {
+          "column": "aggregated_device_count_active",
+          "description": "Number of Active Smart Meters",
+          "type": "int"
+        },
+        {
+          "column": "primary_consumption_active_import",
+          "description": "Single Element meter aggregated value (Wh)",
+          "type": "int"
+        },
+        {
+          "column": "secondary_consumption_active_import",
+          "description": "Twin or Dual Tariff meters where we have a secondary measurement - aggregated value (Wh)",
+          "type": "int"
+        },
+        {
+          "column": "total_consumption_active_import",
+          "description": "Sum of Primary and Secondary Consumption (Wh)",
+          "type": "int"
+        },
+        {
+          "column": "aggregated_device_count_reactive",
+          "description": null,
+          "type": "int"
+        },
+        {
+          "column": "total_consumption_reactive_import",
+          "description": null,
+          "type": "int"
+        },
+        {
+          "column": "data_collection_log_timestamp",
+          "description": "Interval read time",
+          "type": "datetime"
+        },
+        {
+          "column": "insert_time",
+          "description": "Record insertion timestamp",
+          "type": "datetime"
+        },
+        {
+          "column": "last_modified_time",
+          "description": "Last update of the record",
+          "type": "datetime"
+        }
+      ],
+      "error": "HTTP Error 403: Forbidden (HTTP 403) from https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-smart-meter-consumption-lv-feeder/records?limit=100; response {\n  \"error_code\": \"ForbiddenAccess\",\n  \"message\": \"You don't have permission to access the requested resource\"\n}",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "local_asset_checks": [],
+      "metadata_snapshot": {
+        "byte_size": 12584,
+        "content_type": "application/json; charset=utf-8",
+        "etag": null,
+        "fetched_utc": "2026-10-13T05:13:33Z",
+        "final_url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-smart-meter-consumption-lv-feeder",
+        "http_date": "Tue, 13 Oct 2026 05:13:34 GMT",
+        "http_status": 200,
+        "last_modified": null,
+        "path": "data/raw/ukpn_sample_metadata.json",
+        "sha256": "2635a37e43253b074d58e161084a4a53b234f32696fff41736d7d3c06859ebdb",
+        "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-smart-meter-consumption-lv-feeder"
+      },
+      "original_url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-smart-meter-consumption-lv-feeder",
+      "provenance_status": "not_used",
+      "source_id": "ukpn-feeder-sample",
+      "source_page": "https://ukpowernetworks.opendatasoft.com/explore/dataset/ukpn-smart-meter-consumption-lv-feeder/?tab=metas",
+      "status": "restricted"
+    }
+  ],
+  "trust_boundary": "Hashes establish local snapshot integrity; they do not authenticate provider truth, certify meter readings, or create carbon credits.",
+  "validation_errors": []
+}

@@ -1,0 +1,104 @@
+{
+  "access_limitations": "Metadata explicitly says register/login; recordsHTTP403. No accounts, credentials or subscription; optional source omitted",
+  "catalog_description": "Description advertises10000 sample records, metadata records_count30000 at inspection; consumption inaccessible",
+  "catalog_records_count": 30000,
+  "checked_utc": "2026-10-13T05:20:07Z",
+  "columns": [
+    {
+      "column": "dataset_id",
+      "description": "Unique dataset identifier",
+      "type": "text"
+    },
+    {
+      "column": "dno",
+      "description": "Distribution Network Operator",
+      "type": "text"
+    },
+    {
+      "column": "dno_alias",
+      "description": "Distribution Network Operator and Licence Area",
+      "type": "text"
+    },
+    {
+      "column": "secondary_substation_id",
+      "description": "Site reference",
+      "type": "text"
+    },
+    {
+      "column": "lv_feeder_id",
+      "description": "Feeder ID Number",
+      "type": "int"
+    },
+    {
+      "column": "geopoint",
+      "description": "Geo point (Latitude and Longitude) of secondary substation location.",
+      "type": "geo_point_2d"
+    },
+    {
+      "column": "aggregated_device_count_active",
+      "description": "Number of Active Smart Meters",
+      "type": "int"
+    },
+    {
+      "column": "primary_consumption_active_import",
+      "description": "Single Element meter aggregated value (Wh)",
+      "type": "int"
+    },
+    {
+      "column": "secondary_consumption_active_import",
+      "description": "Twin or Dual Tariff meters where we have a secondary measurement - aggregated value (Wh)",
+      "type": "int"
+    },
+    {
+      "column": "total_consumption_active_import",
+      "description": "Sum of Primary and Secondary Consumption (Wh)",
+      "type": "int"
+    },
+    {
+      "column": "aggregated_device_count_reactive",
+      "description": null,
+      "type": "int"
+    },
+    {
+      "column": "total_consumption_reactive_import",
+      "description": null,
+      "type": "int"
+    },
+    {
+      "column": "data_collection_log_timestamp",
+      "description": "Interval read time",
+      "type": "datetime"
+    },
+    {
+      "column": "insert_time",
+      "description": "Record insertion timestamp",
+      "type": "datetime"
+    },
+    {
+      "column": "last_modified_time",
+      "description": "Last update of the record",
+      "type": "datetime"
+    }
+  ],
+  "error": "HTTP Error 403: Forbidden (HTTP 403) from https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-smart-meter-consumption-lv-feeder/records?limit=100; response {\n  \"error_code\": \"ForbiddenAccess\",\n  \"message\": \"You don't have permission to access the requested resource\"\n}",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "metadata_snapshot": {
+    "byte_size": 12584,
+    "content_type": "application/json; charset=utf-8",
+    "etag": null,
+    "fetched_utc": "2026-10-13T05:13:33Z",
+    "final_url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-smart-meter-consumption-lv-feeder",
+    "http_date": "Tue, 13 Oct 2026 05:13:34 GMT",
+    "http_status": 200,
+    "last_modified": null,
+    "path": "data/raw/ukpn_sample_metadata.json",
+    "sha256": "2635a37e43253b074d58e161084a4a53b234f32696fff41736d7d3c06859ebdb",
+    "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-smart-meter-consumption-lv-feeder"
+  },
+  "original_url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-smart-meter-consumption-lv-feeder",
+  "provenance_status": "not_used",
+  "source_id": "ukpn-feeder-sample",
+  "source_page": "https://ukpowernetworks.opendatasoft.com/explore/dataset/ukpn-smart-meter-consumption-lv-feeder/?tab=metas",
+  "status": "restricted"
+}

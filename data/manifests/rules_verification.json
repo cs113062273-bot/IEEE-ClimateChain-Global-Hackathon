@@ -1,0 +1,23 @@
+{
+  "authenticated_submission_status_verified": false,
+  "client_context_date": "2026-10-13",
+  "conflicts": [
+    "student-only widget vs broader eligibility categories",
+    "Oct5 submissions-open update vs Oct25 08:00PT stale rules",
+    "participation certificate10winners slot vs all eligible participants",
+    "overview cash prizes vs rules prizesTBD"
+  ],
+  "deadline_asia_taipei": "2026-10-25T22:00:00+08:00",
+  "deadline_utc": "2026-10-25T14:00:00Z",
+  "gallery": "not published",
+  "method": "Official pages read via browser tool; direct urllib pages HTTP403",
+  "personal_eligibility_verified": false,
+  "quantitative_judging_weights": null,
+  "urls": [
+    "https://ieee-climatechain-hack.devpost.com/",
+    "https://ieee-climatechain-hack.devpost.com/rules",
+    "https://ieee-climatechain-hack.devpost.com/updates",
+    "https://ieee-climatechain-hack.devpost.com/project-gallery"
+  ],
+  "verification_recorded_utc": "2026-10-13T05:18:06Z"
+}

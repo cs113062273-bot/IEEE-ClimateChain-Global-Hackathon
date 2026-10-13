@@ -1,0 +1,121 @@
+date,case,difference_percent,emissions_kgco2,violations,status,reason
+2025-09-01,forecast_bias_plus30,17.743576065045733,12.493809782229741,0.0,optimal,
+2025-09-01,forecast_timing_inverted,14.518477482104363,12.983665361850747,0.0,optimal,
+2025-09-01,battery_efficiency_85,12.89628248410534,13.230058224136021,0.0,optimal,
+2025-09-01,solar_low_20pct,15.405371467747246,15.032271937671236,0.0,optimal,
+2025-09-01,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-09-06,forecast_bias_plus30,7.801914918070139,15.450263752080948,0.0,optimal,
+2025-09-06,forecast_timing_inverted,9.347823286533993,15.19120531276422,0.0,optimal,
+2025-09-06,battery_efficiency_85,3.6979059002242862,16.13800061462306,0.0,optimal,
+2025-09-06,solar_low_20pct,6.309773091280425,19.198192564096132,0.0,optimal,
+2025-09-06,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-09-11,forecast_bias_plus30,14.580913086004449,10.977551952428701,0.0,optimal,
+2025-09-11,forecast_timing_inverted,15.437797674897295,10.867430252096343,0.0,optimal,
+2025-09-11,battery_efficiency_85,10.00719602515277,11.565338809735676,0.0,optimal,
+2025-09-11,solar_low_20pct,12.581667588271417,13.308812397038972,0.0,optimal,
+2025-09-11,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-09-16,forecast_bias_plus30,8.83387668843288,16.199078712601615,0.0,optimal,
+2025-09-16,forecast_timing_inverted,5.596865693736662,16.77425503898148,0.0,optimal,
+2025-09-16,battery_efficiency_85,5.8294585488406785,16.73292620069204,0.0,optimal,
+2025-09-16,solar_low_20pct,7.894113466645538,18.672211531994005,0.0,optimal,
+2025-09-16,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-09-22,forecast_bias_plus30,18.534098526554985,24.833938318358683,0.0,optimal,
+2025-09-22,forecast_timing_inverted,17.731835639095475,25.078498885441736,0.0,optimal,
+2025-09-22,battery_efficiency_85,13.593796650796017,26.33993223529412,0.0,optimal,
+2025-09-22,solar_low_20pct,16.878750170610015,29.129317341380798,0.0,optimal,
+2025-09-22,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-09-27,forecast_bias_plus30,9.215391632871606,28.66058828858806,0.0,optimal,
+2025-09-27,forecast_timing_inverted,7.286252191747986,29.26961521801788,0.0,optimal,
+2025-09-27,battery_efficiency_85,6.571866812755312,29.495145796327996,0.0,optimal,
+2025-09-27,solar_low_20pct,8.488608701740601,32.01651871034919,0.0,optimal,
+2025-09-27,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-10-02,forecast_bias_plus30,19.944855058081675,23.384396036056135,0.0,optimal,
+2025-10-02,forecast_timing_inverted,20.066368877303763,23.348901412011614,0.0,optimal,
+2025-10-02,battery_efficiency_85,15.62465938864034,24.64634074380436,0.0,optimal,
+2025-10-02,solar_low_20pct,18.64698021293919,25.99104674782358,0.0,optimal,
+2025-10-02,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-10-07,forecast_bias_plus30,6.565232202859606,43.51095307295004,0.0,optimal,
+2025-10-07,forecast_timing_inverted,5.401469693917291,44.05289711699782,0.0,optimal,
+2025-10-07,battery_efficiency_85,2.897203321589692,45.21909059269721,0.0,optimal,
+2025-10-07,solar_low_20pct,6.223295662396251,48.38695416843031,0.0,optimal,
+2025-10-07,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-10-13,forecast_bias_plus30,-0.898440574770954,74.81051915789473,0.0,optimal,
+2025-10-13,forecast_timing_inverted,-0.5912458678963888,74.58275155937756,0.0,optimal,
+2025-10-13,battery_efficiency_85,0.44238014761902233,73.81637599999999,0.0,optimal,
+2025-10-13,solar_low_20pct,-0.83649529657358,78.19111435789475,0.0,optimal,
+2025-10-13,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-10-18,forecast_bias_plus30,3.850429364780687,37.60086260387811,0.0,optimal,
+2025-10-18,forecast_timing_inverted,2.784810445497107,38.01759031578948,0.0,optimal,
+2025-10-18,battery_efficiency_85,3.1695387964334403,37.867136,0.0,optimal,
+2025-10-18,solar_low_20pct,3.5890114211151585,40.239755403878114,0.0,optimal,
+2025-10-18,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-10-23,forecast_bias_plus30,18.751913476138213,17.23750303904561,0.0,optimal,
+2025-10-23,forecast_timing_inverted,11.262194187979864,18.826513494735682,0.0,optimal,
+2025-10-23,battery_efficiency_85,16.709566364125816,17.670805114901395,0.0,optimal,
+2025-10-23,solar_low_20pct,17.92980901305805,18.054767071876558,0.0,optimal,
+2025-10-23,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-10-28,forecast_bias_plus30,10.604264060441476,14.000831186545398,0.0,optimal,
+2025-10-28,forecast_timing_inverted,13.937729544687407,13.478756089555782,0.0,optimal,
+2025-10-28,battery_efficiency_85,6.589322073621505,14.62963662553463,0.0,optimal,
+2025-10-28,solar_low_20pct,9.983277378604685,15.128144151443845,0.0,optimal,
+2025-10-28,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-11-03,forecast_bias_plus30,6.221669407017783,17.044226589807415,0.0,optimal,
+2025-11-03,forecast_timing_inverted,3.6498336785760257,17.51165814494542,0.0,optimal,
+2025-11-03,battery_efficiency_85,3.6764030975877833,17.506829148788928,0.0,optimal,
+2025-11-03,solar_low_20pct,6.002015239468309,17.89176742322464,0.0,optimal,
+2025-11-03,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-11-08,forecast_bias_plus30,3.9446937835913207,51.45160597368421,0.0,optimal,
+2025-11-08,forecast_timing_inverted,1.6619354475736805,52.674355523545714,0.0,optimal,
+2025-11-08,battery_efficiency_85,2.175878814210084,52.399064,0.0,optimal,
+2025-11-08,solar_low_20pct,3.8356460492200837,53.210922773684224,0.0,optimal,
+2025-11-08,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-11-13,forecast_bias_plus30,6.161835376302763,29.004344465373958,0.0,optimal,
+2025-11-13,forecast_timing_inverted,-13.952457998155058,35.22145129019175,0.0,optimal,
+2025-11-13,battery_efficiency_85,4.830665395184505,29.41579446366782,0.0,optimal,
+2025-11-13,solar_low_20pct,5.665637439933347,30.89391886537396,0.0,optimal,
+2025-11-13,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-11-18,forecast_bias_plus30,3.9670664620212515,52.22191410526315,0.0,optimal,
+2025-11-18,forecast_timing_inverted,2.6052632854517133,52.962451396951366,0.0,optimal,
+2025-11-18,battery_efficiency_85,0.5722887475243953,54.06796611764707,0.0,optimal,
+2025-11-18,solar_low_20pct,3.798661736853337,54.56177650526317,0.0,optimal,
+2025-11-18,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-11-24,forecast_bias_plus30,3.411814541512704,44.93805509141273,0.0,optimal,
+2025-11-24,forecast_timing_inverted,1.408285380143548,45.87020536842104,0.0,optimal,
+2025-11-24,battery_efficiency_85,-0.6349976411122153,46.82085129411765,0.0,optimal,
+2025-11-24,solar_low_20pct,3.3040236339735283,46.20161135069251,0.0,optimal,
+2025-11-24,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-11-29,forecast_bias_plus30,-0.8139917853778998,24.16913026038781,0.0,optimal,
+2025-11-29,forecast_timing_inverted,2.649582673934329,23.33877347368421,0.0,optimal,
+2025-11-29,battery_efficiency_85,-2.169704901289476,24.494148705882353,0.0,optimal,
+2025-11-29,solar_low_20pct,-0.8028993222873866,24.500343060387817,0.0,optimal,
+2025-11-29,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-12-04,forecast_bias_plus30,-1.0552588431388676,44.791179146814414,0.0,optimal,
+2025-12-04,forecast_timing_inverted,-5.85911755676145,46.92041515789474,0.0,optimal,
+2025-12-04,battery_efficiency_85,-2.8751891622414782,45.59783508823531,0.0,optimal,
+2025-12-04,solar_low_20pct,-1.1983354046031875,45.57759538614958,0.0,optimal,
+2025-12-04,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-12-09,forecast_bias_plus30,-0.006173333031747046,22.019931279778394,0.0,optimal,
+2025-12-09,forecast_timing_inverted,-2.92942894322408,22.663590421052632,0.0,optimal,
+2025-12-09,battery_efficiency_85,-0.6878885483314555,22.170035235294115,0.0,optimal,
+2025-12-09,solar_low_20pct,-0.006078820186329259,22.362273679778397,0.0,optimal,
+2025-12-09,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-12-15,forecast_bias_plus30,-1.1129054716665836,44.872249196675895,0.0,optimal,
+2025-12-15,forecast_timing_inverted,-2.7767332953739947,45.610628698060935,0.0,optimal,
+2025-12-15,battery_efficiency_85,-2.1539114745008274,45.334230588235286,0.0,optimal,
+2025-12-15,solar_low_20pct,-1.1102705476471595,46.00807698614958,0.0,optimal,
+2025-12-15,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-12-20,forecast_bias_plus30,3.850144237489123,37.00006827700831,0.0,optimal,
+2025-12-20,forecast_timing_inverted,4.018605211680208,36.93524168421053,0.0,optimal,
+2025-12-20,battery_efficiency_85,0.7960207411579444,38.17534594117647,0.0,optimal,
+2025-12-20,solar_low_20pct,3.693294883187484,38.63433387700832,0.0,optimal,
+2025-12-20,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-12-25,forecast_bias_plus30,-1.3473380953257494,20.672821916897504,0.0,optimal,
+2025-12-25,forecast_timing_inverted,-6.436553321419793,21.71091963157895,0.0,optimal,
+2025-12-25,battery_efficiency_85,-2.144386392081525,20.835403764705884,0.0,optimal,
+2025-12-25,solar_low_20pct,-1.284948558361912,21.66322831689751,0.0,optimal,
+2025-12-25,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh
+2025-12-31,forecast_bias_plus30,5.051758094510081,31.828967423822718,0.0,optimal,
+2025-12-31,forecast_timing_inverted,3.5578681340806817,32.32975578947369,0.0,optimal,
+2025-12-31,battery_efficiency_85,3.7935256292238178,32.250757647058826,0.0,optimal,
+2025-12-31,solar_low_20pct,4.711711396544569,33.42988356786703,0.0,optimal,
+2025-12-31,missing_ci_rejected,,,,rejected,Invalid or missing ci_forecast_g_per_kwh

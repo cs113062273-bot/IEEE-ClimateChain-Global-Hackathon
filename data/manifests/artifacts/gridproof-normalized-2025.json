@@ -1,0 +1,143 @@
+{
+  "attribution": "NESO and Open-Meteo / ECMWF",
+  "byte_size": 1648560,
+  "checked_utc": "2026-10-13T05:21:20Z",
+  "column_types": {
+    "cloud_cover_percent": "number",
+    "embedded_solar_generation_mw": "number",
+    "embedded_wind_generation_mw": "number",
+    "end_utc": "string",
+    "grid_ci_actual_g_per_kwh": "number_or_null",
+    "grid_ci_forecast_g_per_kwh": "number_or_null",
+    "grid_demand_mw": "number",
+    "shortwave_radiation_w_per_m2": "number",
+    "start_utc": "string",
+    "temperature_2m": "number",
+    "wind_speed_10m_kmh": "number"
+  },
+  "columns": [
+    "start_utc",
+    "end_utc",
+    "grid_ci_actual_g_per_kwh",
+    "grid_ci_forecast_g_per_kwh",
+    "temperature_2m",
+    "cloud_cover_percent",
+    "wind_speed_10m_kmh",
+    "shortwave_radiation_w_per_m2",
+    "grid_demand_mw",
+    "embedded_wind_generation_mw",
+    "embedded_solar_generation_mw"
+  ],
+  "coverage_end_utc_exclusive": "2026-01-01T00:00:00Z",
+  "coverage_start_utc": "2025-01-01T00:00:00Z",
+  "duplicate_timestamps": 0,
+  "fetched_utc": "2026-10-13T05:12:22Z",
+  "gap_count": 0,
+  "gaps": [],
+  "granularity_minutes": 30,
+  "invalid_interval_duration": 0,
+  "license": "Source licences apply; derived transformations by GridProof",
+  "limitations": [
+    "National GB average carbon estimate, not London marginal emissions",
+    "Historic published forecast issuance unverified",
+    "Weather reanalysis is retrospective; future weather unavailable at historical decision time",
+    "Half-hour weather resolution is derived; no new observational precision",
+    "No site meter, solar, fixed-load or tariff measurements"
+  ],
+  "lineage": [
+    "neso-national-ci-2025",
+    "neso-demand-2025",
+    "openmeteo-london-weather-2025"
+  ],
+  "missing_count": {
+    "cloud_cover_percent": 0,
+    "embedded_solar_generation_mw": 0,
+    "embedded_wind_generation_mw": 0,
+    "end_utc": 0,
+    "grid_ci_actual_g_per_kwh": 43,
+    "grid_ci_forecast_g_per_kwh": 43,
+    "grid_demand_mw": 0,
+    "shortwave_radiation_w_per_m2": 0,
+    "start_utc": 0,
+    "temperature_2m": 0,
+    "wind_speed_10m_kmh": 0
+  },
+  "missing_rate": {
+    "cloud_cover_percent": 0.0,
+    "embedded_solar_generation_mw": 0.0,
+    "embedded_wind_generation_mw": 0.0,
+    "end_utc": 0.0,
+    "grid_ci_actual_g_per_kwh": 0.002454337899543379,
+    "grid_ci_forecast_g_per_kwh": 0.002454337899543379,
+    "grid_demand_mw": 0.0,
+    "shortwave_radiation_w_per_m2": 0.0,
+    "start_utc": 0.0,
+    "temperature_2m": 0.0,
+    "wind_speed_10m_kmh": 0.0
+  },
+  "numeric_ranges": {
+    "cloud_cover_percent": {
+      "max": 100.0,
+      "min": 0.0
+    },
+    "embedded_solar_generation_mw": {
+      "max": 14046.0,
+      "min": 0.0
+    },
+    "embedded_wind_generation_mw": {
+      "max": 5922.0,
+      "min": 125.0
+    },
+    "grid_ci_actual_g_per_kwh": {
+      "max": 293.0,
+      "min": 24.0
+    },
+    "grid_ci_forecast_g_per_kwh": {
+      "max": 299.0,
+      "min": 20.0
+    },
+    "grid_demand_mw": {
+      "max": 45924.0,
+      "min": 12803.0
+    },
+    "shortwave_radiation_w_per_m2": {
+      "max": 873.0,
+      "min": 0.0
+    },
+    "temperature_2m": {
+      "max": 32.3,
+      "min": -4.0
+    },
+    "wind_speed_10m_kmh": {
+      "max": 42.8,
+      "min": 0.2
+    }
+  },
+  "original_url": null,
+  "out_of_order": false,
+  "path": "data/processed/intervals_2025.csv",
+  "processed_path": "data/processed/intervals_2025.csv",
+  "processed_sha256": "8b7e5c77838fc56066278ed272db0434a525c46410a6f89daa62e1e3fb6c036d",
+  "provenance_status": "authentic_grid_estimates_with_historical_weather_reanalysis; facility simulated separately",
+  "row_count": 17520,
+  "sha256": "8b7e5c77838fc56066278ed272db0434a525c46410a6f89daa62e1e3fb6c036d",
+  "source_id": "gridproof-normalized-2025",
+  "status": "verified",
+  "timezone": "UTC",
+  "transformations": [
+    "CI retained exactly; no imputation",
+    "GB settlement mapped with Europe/London DST",
+    "Radiation at hour h+1 copied to both half-hours starting hour h because source denotes preceding-hour mean; energy conserved",
+    "Temperature/cloud/wind linearly interpolated to half-hour interval starts from hourly endpoints",
+    "Seven prior days per sample date retained for offline past-only forecasts"
+  ],
+  "units": {
+    "cloud_cover_percent": "%",
+    "grid_ci_actual_g_per_kwh": "gCO2/kWh",
+    "grid_ci_forecast_g_per_kwh": "gCO2/kWh",
+    "grid_demand_mw": "MW",
+    "shortwave_radiation_w_per_m2": "W/m2",
+    "temperature_2m": "C",
+    "wind_speed_10m_kmh": "km/h"
+  }
+}
