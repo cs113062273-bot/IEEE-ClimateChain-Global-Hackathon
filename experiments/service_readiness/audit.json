@@ -1,0 +1,188 @@
+{
+  "protected_vs_immediate_carbon_percent": 3.392439887481602,
+  "protected_vs_immediate_cost_percent": 6.932202073795302,
+  "protected_vs_immediate_peak_percent": 44.255635702743746,
+  "service_protection_extra_carbon_kg_per_day": 0.26876349515254816,
+  "service_protection_extra_gbp_per_day": 0.6403856498947462,
+  "service_protection_extra_peak_kw": 0.4660001910486322,
+  "old_unserved_kwh_per_day": 27.53288921836976,
+  "old_regression_max_absolute_difference": {
+    "emissions_kgco2": 0.0,
+    "cost_gbp": 0.0,
+    "peak_grid_kw": 0.0
+  },
+  "legacy_comparison_rows": 122,
+  "new_scenario_validity": [
+    {
+      "case": "shared-11kw",
+      "policy": "immediate",
+      "attempts": 122,
+      "valid": 0
+    },
+    {
+      "case": "shared-11kw",
+      "policy": "greedy_cost",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "shared-11kw",
+      "policy": "greedy_carbon",
+      "attempts": 122,
+      "valid": 41
+    },
+    {
+      "case": "shared-11kw",
+      "policy": "peak_heuristic",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "shared-11kw",
+      "policy": "protected_lightgbm",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "shared-11kw",
+      "policy": "protected_seasonal",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "shared-11kw",
+      "policy": "protected_latest",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "four-vehicle-shifts",
+      "policy": "immediate",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "four-vehicle-shifts",
+      "policy": "greedy_cost",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "four-vehicle-shifts",
+      "policy": "greedy_carbon",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "four-vehicle-shifts",
+      "policy": "peak_heuristic",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "four-vehicle-shifts",
+      "policy": "protected_lightgbm",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "four-vehicle-shifts",
+      "policy": "protected_seasonal",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "four-vehicle-shifts",
+      "policy": "protected_latest",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "no-storage",
+      "policy": "immediate",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "no-storage",
+      "policy": "greedy_cost",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "no-storage",
+      "policy": "greedy_carbon",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "no-storage",
+      "policy": "peak_heuristic",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "no-storage",
+      "policy": "protected_lightgbm",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "no-storage",
+      "policy": "protected_seasonal",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "no-storage",
+      "policy": "protected_latest",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "no-solar",
+      "policy": "immediate",
+      "attempts": 122,
+      "valid": 0
+    },
+    {
+      "case": "no-solar",
+      "policy": "greedy_cost",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "no-solar",
+      "policy": "greedy_carbon",
+      "attempts": 122,
+      "valid": 120
+    },
+    {
+      "case": "no-solar",
+      "policy": "peak_heuristic",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "no-solar",
+      "policy": "protected_lightgbm",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "no-solar",
+      "policy": "protected_seasonal",
+      "attempts": 122,
+      "valid": 122
+    },
+    {
+      "case": "no-solar",
+      "policy": "protected_latest",
+      "attempts": 122,
+      "valid": 122
+    }
+  ],
+  "failed_update_rule": "retain original controls; count 6kWh unmet new demand, not zero prior delivery",
+  "rows": 6160,
+  "execution_seconds": 305.81303079996724
+}

@@ -57,3 +57,26 @@ Final original-checkout tests: 91 Python/data, 32 contract/bridge and 6 Edge E2E
 User interruptions stopped local services. Prior chain deployment metadata and receipts were archived rather than reused as current verification. Final startup created a fresh local registry, then deliberately registered the same fixed September 1 v2 report at block 2 and read its real receipt, followed by duplicate rejection. [Final preview capture](validation/local-preview-attestation.json) records these actual loopback-only actions. API/dashboard/node were healthy at capture. Startup never auto-attests.
 
 The four-page dashboard, standalone offline HTML, 4:35 storyboard/verbatim narration, English Devpost text, Docker/readonly Sepolia preparation and minimal human submission checklist are delivered. Linux/Docker/cloud, actual video, anonymous repository publication, personal eligibility/account fields and formal Devpost submission remain pending. No public push, visibility change, hosting, Sepolia deployment, public transaction or contest submission was performed.
+
+
+## 2026-10-19 — Service-first GridProof
+
+Preserved the user's pending competitiveness audit, optional import guard, original benchmark and model artifacts. Inspected source, raw outcomes, official scoring criteria and mature ready-by/adaptive scheduling references, then operated the old UI before changing it. Main product is now the protected-departure workspace; old pages are retained under the research navigation.
+
+Added full-energy earliest-departure constraints, future-outcome isolation, mandatory zero-PV cap protection, fixed executed controls/SoC in event replanning, quantified refusal and separately solved later-deadline proposals, disconnect shortfall assessment, matched battery-equipped baselines and independent event-history verification. Implemented and visually checked desktop/mobile workflow with exports tied to the selected service run. No model retraining, external publication, account action or formal contest work.
+
+Completed 104 Python/data checks, 32 contract/bridge checks, optimized frontend build/typecheck and 8 production-browser workflows. Main experiment: 6,160 rows, 305.813 s; original 122-day results exactly reproduced. Protected early service improves from 0/122 old interrupted plans to 122/122, with an explicit +£0.640/day and +0.269 kgCO₂/day cost relative to relaxed service. Against same-service Immediate: −3.392% carbon exposure, −6.932% illustrative cost, −44.256% mean daily peak. Four new fixed synthetic sites complete 488/488 site-days. Subsequent recovery study preserves 86 same-deadline failures and shows completion only after explicit acceptance of a 30-minute extension. Full boundaries, negative results and commands: [READINESS_ENGINEERING.md](READINESS_ENGINEERING.md).
+
+
+## 2026-10-19 — Workplace car-park controller on real sessions
+
+Verified the inherited state: 104 Python tests passed; the readiness study's 122/122 completion is deterministic (no feasibility input varies by day); LightGBM carbon forecasting has no resolved carbon value. Chose a new core: departure-risk-aware charging for a workplace car park on a capped connection.
+
+Downloaded the 4TU Utrecht office car-park sessions (CC BY-NC-SA 4.0, no account; kept out of git). Built UTC session normalisation, leakage-free per-driver history features, an 8-level LightGBM quantile departure model with conformal calibration, an online controller (earliest-promise-first, least-laxity, equal share, an expected-shortfall LP), operator events, an exact shortfall bound, an evidence record with a standard-library verifier including decision replay and session lineage, API routes, and a new main UI.
+
+Wrote the protocol before any 2024 simulation, selected on 2023 H2 and tested once on 185 held-out days. Fixed during development, all before the test: a whole-slot presence inconsistency, quantile rearrangement order, a coverage-print broadcast bug, missing lower-tail risk mass. Found on the test and reported rather than tuned: LP myopia at tight caps, a suboptimal tie-break. Corrected a mis-built sensitivity case (unknown requests) and a wrong hand calculation in a test. Restored line endings of files changed by a bulk rewrite and re-ran the frozen pipeline; results identical.
+
+
+## 2026-10-19 — Review follow-ups
+
+External review reproduced a 34-to-1 session-omission forgery that passed all four record layers; source correspondence now checks completeness in both directions, with a third built-in forgery and a regression test. Overclaiming copy replaced ("requests met in full"). Old fleet and research pages unlinked and bannered as archives. A second review asked for decision-time inputs and simple personal-history baselines: under decision-time inputs the gain over equal share halves but stays significant at 100-150 kW (slightly negative at 80 kW); a simple personal quantile is statistically indistinguishable from LightGBM at 120-150 kW. The product switched to decision-time inputs, carbon-flex is labelled experimental and not recommended, and the docs claim personal history rather than LightGBM.

@@ -1,5 +1,6 @@
 from __future__ import annotations
-import csv,json,hashlib,os,copy,asyncio
+import csv,json,hashlib,os,copy,asyncio,threading
+from contextlib import asynccontextmanager
 from typing import Literal
 from datetime import datetime,timezone
 from fastapi import FastAPI,HTTPException,Query
@@ -14,8 +15,21 @@ from backend.app.services.simulator import compare
 from backend.app.services import storage
 from backend.app.services.evidence import make_evidence,verify_evidence,digest
 from backend.app.services.chain import call_bridge
+from backend.app.services.readiness import ReadinessRequest,UpdateRequest,DepartureRequest,create_readiness,update_readiness,departure_assessment
+from backend.app.fleet import service as carpark
+from backend.app.fleet import evidence as carpark_evidence
 
-app=FastAPI(title="GridProof",version="1.0.0",description="Modeled dispatch and reproducible evidence. No real carbon credits.")
+@asynccontextmanager
+async def lifespan(app):
+    # Build the frozen departure model and quantile table once, off the request path.
+    def warm():
+        try:
+            if carpark.available():carpark.selection();carpark.default_day();carpark.promises(carpark.day_sessions(carpark.default_day()))
+        except Exception:pass
+    threading.Thread(target=warm,daemon=True).start()
+    yield
+
+app=FastAPI(title="GridProof",version="1.0.0",description="Modeled dispatch and reproducible evidence. No real carbon credits.",lifespan=lifespan)
 app.add_middleware(CORSMiddleware,allow_origins=os.environ.get("GRIDPROOF_CORS_ORIGINS","http://localhost:3000,http://127.0.0.1:3000").split(","),allow_methods=["GET","POST"],allow_headers=["Content-Type"])
 COMPUTE_SLOTS=asyncio.Semaphore(2)
 
@@ -23,7 +37,7 @@ COMPUTE_SLOTS=asyncio.Semaphore(2)
 async def bounded_compute(request,call_next):
     if int(request.headers.get("content-length","0"))>12_000_000:
         return JSONResponse(status_code=413,content={"error":{"code":"REQUEST_TOO_LARGE","message":"Evidence requests are limited to 12 MB"}})
-    if os.environ.get("GRIDPROOF_READ_ONLY")=="1" and request.url.path in ("/api/compare","/api/optimize","/api/replay"):
+    if os.environ.get("GRIDPROOF_READ_ONLY")=="1" and request.url.path in ("/api/compare","/api/optimize","/api/replay","/api/service/plan","/api/service/update","/api/carpark/day"):
         if COMPUTE_SLOTS.locked():
             return JSONResponse(status_code=429,content={"error":{"code":"COMPUTE_BUSY","message":"Two dispatch requests are already running; retry shortly"}})
         await COMPUTE_SLOTS.acquire()
@@ -97,6 +111,15 @@ def optimize(request:OptimizeRequest):
 
 @app.post("/api/compare")
 def comparison(request:OptimizeRequest): return compare(request)
+
+@app.post("/api/service/plan")
+def service_plan(request:ReadinessRequest): return create_readiness(request)
+
+@app.post("/api/service/update")
+def service_update(request:UpdateRequest): return update_readiness(request)
+
+@app.post("/api/service/departure")
+def service_departure(request:DepartureRequest): return departure_assessment(request)
 
 @app.post("/api/replay")
 def replay(request:ReplayRequest):
@@ -184,3 +207,72 @@ def verify_chain(claim_key:str,digest:str|None=None,transaction_hash:str|None=No
 @app.get("/api/registry/{claim_key}")
 def lookup_chain(claim_key:str,network:Literal["local","testnet"]="local",expected_chain_id:int|None=None,transaction_hash:str|None=None):
     return call_bridge({"action":"lookup","network":network,"expected_chain_id":expected_chain_id if expected_chain_id is not None else 11155111 if network=="testnet" else 31337,"claim_key":claim_key,"transaction_hash":transaction_hash})
+
+
+class CarparkEvidenceRequest(BaseModel):
+    model_config=ConfigDict(extra="forbid")
+    run_id:str
+
+class CarparkForgeRequest(BaseModel):
+    model_config=ConfigDict(extra="forbid")
+    evidence_id:str
+    attack:Literal["hide_shortfall","move_departure","drop_sessions"]
+
+class CarparkAttestRequest(BaseModel):
+    model_config=ConfigDict(extra="forbid")
+    evidence_id:str
+
+@app.get("/api/carpark/config")
+def carpark_config():
+    if not carpark.available():
+        return {"available":False,"message":"Real workplace session data is not downloaded. Run scripts/fetch_workplace_sessions.py (public, no account).","source":carpark.SOURCE}
+    selection=carpark.selection()
+    return {"available":True,"days":carpark.replay_days(),"day_sessions":carpark.day_counts(),"default_day":carpark.default_day(),"default_connection_kw":120,
+            "modes":carpark.MODES,"selection":{"service_policy":selection["service_policy"],"carbon_flex":selection["carbon_flex"]},
+            "source":carpark.SOURCE,"model":carpark.frozen()[3] | {"fingerprint":carpark.model_fingerprint()}}
+
+@app.post("/api/carpark/day")
+def carpark_day(request:carpark.DayRequest): return carpark.run_day(request)
+
+@app.get("/api/carpark/results")
+def carpark_results():
+    path=ROOT/"experiments/carpark/test_results.json"
+    if not path.exists():return {"status":"unavailable","message":"Run scripts/evaluate_carpark.py --stage test"}
+    import pandas as pd
+    summary=pd.read_csv(ROOT/"experiments/carpark/test_summary.csv")
+    daily=pd.read_csv(ROOT/"experiments/carpark/test_daily.csv").groupby(["policy_name","cap"])[["emissions_kgco2","delivered_kwh"]].sum()
+    intensity=(1000*daily.emissions_kgco2/daily.delivered_kwh).rename("g_per_delivered_kwh").reset_index()
+    summary=summary.merge(intensity,on=["policy_name","cap"],how="left")
+    result=json.loads(path.read_text(encoding="utf-8"))
+    followup=None
+    fpath=ROOT/"experiments/carpark_followup/test_results.json"
+    if fpath.exists():
+        fres=json.loads(fpath.read_text(encoding="utf-8"))
+        fsum=pd.read_csv(ROOT/"experiments/carpark_followup/test_summary.csv")
+        fsum=fsum.astype(object).where(pd.notna(fsum),None)
+        followup={"status":"exploratory_post_review","days":fres["days"],"sessions":fres["sessions"],"impossible_requests":fres["infeasible_requests_decision_time"],
+                  "capacity_needed_kw":fres["capacity_needed_kw"],"paired":fres["paired"],"selection":fres["selection"],"summary":fsum.to_dict("records")}
+    return {"status":"ready","followup":followup,"days":result["days"],"sessions":result["sessions"],"capacity_needed_kw":result["capacity_needed_kw"],
+            "paired":result["paired"],"coverage":result["departure_coverage_test"],"selection":result["selection"]["service_policy"],
+            "carbon_flex":result["selection"]["carbon_flex"],"summary":summary.to_dict("records")}
+
+@app.post("/api/carpark/evidence")
+def carpark_build_evidence(request:CarparkEvidenceRequest): return carpark_evidence.build(request.run_id)
+
+@app.post("/api/carpark/verify")
+def carpark_verify(request:VerifyRequest): return carpark_evidence.verify(request.evidence,request.expected_digest)
+
+@app.post("/api/carpark/forge")
+def carpark_forge(request:CarparkForgeRequest): return carpark_evidence.forge(request.evidence_id,request.attack)
+
+@app.post("/api/carpark/attest")
+def carpark_attest(request:CarparkAttestRequest):
+    if os.environ.get("GRIDPROOF_CHAIN_NETWORK","local")!="local" or os.environ.get("GRIDPROOF_READ_ONLY")=="1" or os.environ.get("GRIDPROOF_ALLOW_CHAIN_WRITES","1")!="1":
+        raise HTTPException(status_code=403,detail="Chain writes are disabled. Reviewers use read-only verification.")
+    proof=storage.get(request.evidence_id,"carpark-evidence")
+    if not carpark_evidence.verify(proof["evidence"],proof["digest"])["verified"]:raise ValueError("Only a fully verified record can be registered")
+    scope=proof["evidence"]["claim_scope"]
+    result=call_bridge({"action":"attest","network":"local","expected_chain_id":31337,"digest":proof["digest"],"claim_scope":scope})
+    if result.get("status")=="ATTESTED" and result.get("claim_key"):
+        result["readback"]=call_bridge({"action":"verify","network":"local","expected_chain_id":31337,"claim_key":result["claim_key"],"digest":proof["digest"],"transaction_hash":result.get("transaction_hash")})
+    return result

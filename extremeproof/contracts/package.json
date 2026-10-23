@@ -1,0 +1,19 @@
+{
+  "name": "extremeproof-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24.0.0 <25" },
+  "scripts": {
+    "build": "hardhat build",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-node-test-runner": "3.1.0",
+    "@nomicfoundation/hardhat-viem": "3.0.9",
+    "@types/node": "24.19.2",
+    "hardhat": "3.19.0",
+    "typescript": "5.9.3",
+    "viem": "2.57.5"
+  }
+}

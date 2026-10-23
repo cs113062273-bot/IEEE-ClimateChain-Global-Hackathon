@@ -1,0 +1,351 @@
+{
+  "schema": "extremeproof.inseason.v1",
+  "years": [
+    2021,
+    2025
+  ],
+  "rule": "graded, p90 of 1991-2020, 6+ days, quantile-mapped gaps",
+  "publication_lag_days": 5,
+  "check_every_days": 7,
+  "summers_with_payment_agreed_by_both": 19,
+  "share_of_agreed_payout_released_before_october": 0.963,
+  "first_release_months": {
+    "06": 6,
+    "07": 4,
+    "08": 8,
+    "09": 0
+  },
+  "rows": [
+    {
+      "site": "antalya",
+      "year": 2021,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 4000,
+      "first_release": "2021-08-10"
+    },
+    {
+      "site": "antalya",
+      "year": 2022,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "antalya",
+      "year": 2023,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 4000,
+      "first_release": "2023-07-27"
+    },
+    {
+      "site": "antalya",
+      "year": 2024,
+      "final_share_bps": 10000,
+      "released_in_season_bps": 10000,
+      "first_release": "2024-06-15"
+    },
+    {
+      "site": "antalya",
+      "year": 2025,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 4000,
+      "first_release": "2025-08-24"
+    },
+    {
+      "site": "mugla",
+      "year": 2021,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "mugla",
+      "year": 2022,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "mugla",
+      "year": 2023,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "mugla",
+      "year": 2024,
+      "final_share_bps": 10000,
+      "released_in_season_bps": 10000,
+      "first_release": "2024-06-15"
+    },
+    {
+      "site": "mugla",
+      "year": 2025,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 4000,
+      "first_release": "2025-08-03"
+    },
+    {
+      "site": "izmir",
+      "year": 2021,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "izmir",
+      "year": 2022,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "izmir",
+      "year": 2023,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "izmir",
+      "year": 2024,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "izmir",
+      "year": 2025,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "finike",
+      "year": 2021,
+      "final_share_bps": 7000,
+      "released_in_season_bps": 7000,
+      "first_release": "2021-08-10"
+    },
+    {
+      "site": "finike",
+      "year": 2022,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "finike",
+      "year": 2023,
+      "final_share_bps": 10000,
+      "released_in_season_bps": 10000,
+      "first_release": "2023-07-27"
+    },
+    {
+      "site": "finike",
+      "year": 2024,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 4000,
+      "first_release": "2024-06-15"
+    },
+    {
+      "site": "finike",
+      "year": 2025,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "isparta",
+      "year": 2021,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "isparta",
+      "year": 2022,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "isparta",
+      "year": 2023,
+      "final_share_bps": 10000,
+      "released_in_season_bps": 10000,
+      "first_release": "2023-08-24"
+    },
+    {
+      "site": "isparta",
+      "year": 2024,
+      "final_share_bps": 7000,
+      "released_in_season_bps": 7000,
+      "first_release": "2024-06-15"
+    },
+    {
+      "site": "isparta",
+      "year": 2025,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 4000,
+      "first_release": "2025-08-24"
+    },
+    {
+      "site": "afyon",
+      "year": 2021,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "afyon",
+      "year": 2022,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "afyon",
+      "year": 2023,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 4000,
+      "first_release": "2023-08-24"
+    },
+    {
+      "site": "afyon",
+      "year": 2024,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 4000,
+      "first_release": "2024-06-29"
+    },
+    {
+      "site": "afyon",
+      "year": 2025,
+      "final_share_bps": 7000,
+      "released_in_season_bps": 7000,
+      "first_release": "2025-07-20"
+    },
+    {
+      "site": "konya",
+      "year": 2021,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "konya",
+      "year": 2022,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "konya",
+      "year": 2023,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "konya",
+      "year": 2024,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "konya",
+      "year": 2025,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "mersin",
+      "year": 2021,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "mersin",
+      "year": 2022,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "mersin",
+      "year": 2023,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "mersin",
+      "year": 2024,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "mersin",
+      "year": 2025,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "adana",
+      "year": 2021,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "adana",
+      "year": 2022,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "adana",
+      "year": 2023,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "adana",
+      "year": 2024,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "adana",
+      "year": 2025,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "iskenderun",
+      "year": 2021,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "iskenderun",
+      "year": 2022,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "iskenderun",
+      "year": 2023,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 4000,
+      "first_release": "2023-07-27"
+    },
+    {
+      "site": "iskenderun",
+      "year": 2024,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 4000,
+      "first_release": "2024-06-15"
+    },
+    {
+      "site": "iskenderun",
+      "year": 2025,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 4000,
+      "first_release": "2025-08-24"
+    }
+  ],
+  "scope": "Retrospective replay on pinned final data with an assumed 5-day publication lag; data revisions are not modelled."
+}

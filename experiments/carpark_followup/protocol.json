@@ -1,0 +1,24 @@
+{
+  "version": "carpark-followup-v1",
+  "design_date": "2026-10-19",
+  "status": "Exploratory, written after two external reviews and after the 2024 test year had been examined once. 2024 results below are NOT independent validation. Original experiments/carpark outputs are preserved unchanged.",
+  "questions": [
+    "Q1: Does the service gain survive when no decision input or request is derived from the real departure time?",
+    "Q2: Is the gain from personal history, or from LightGBM specifically? Compare simple personal-history estimators under the same scheduler, information and equipment limits."
+  ],
+  "input_regimes": {
+    "original": "As published: request = session energy capped to the as-soon-as-possible amount before the real departure; sessions with nothing servable dropped; power limit max(11 kW, session energy / dwell).",
+    "decision_time": "Every car has a fixed 11 kW limit. The request is declared at plug-in as the session's energy, never capped or dropped. Requests that cannot be met even at full power before the real departure stay in the denominator and are reported separately as physically infeasible.",
+    "decision_time_past_requests": "As decision_time for the physics and the scored target, but the controller only knows each driver's median past session energy (first-time drivers: 2021-22 population median). Cars stop drawing when their real energy is reached."
+  },
+  "departure_models": {
+    "population": "Arrival-hour quantile (as published).",
+    "personal_quantile": "The driver's own past dwell quantile when at least 3 earlier sessions exist, else population.",
+    "shrinkage_k": "Mixture of the driver's past dwell distribution with k population pseudo-sessions from the same arrival hour, k in {2, 4, 8, 16, 32}.",
+    "lightgbm": "As published (frozen fit and features)."
+  },
+  "scheduler": "Earliest ready-by target first (EDF), as selected originally. Ready-by target = arrival + predicted dwell quantile at the chosen level.",
+  "selection": "For each model family separately, choose the level in {0.05, 0.1, 0.2, 0.35, 0.5} (and k for shrinkage) that maximises mean share of requests met in full over caps 100..160 kW on 2023-07-01..2023-12-31 under the decision_time regime; tie-break lower unserved energy. The original LightGBM choice is also reported unchanged.",
+  "evaluation": "2024 site days, caps 80..200 kW in 10 kW steps, both regimes, plus the past-requests regime for equal share and every selected EDF variant. Paired moving-block bootstrap (5-day blocks, 2000 resamples, seed 42) at 100/120/150 kW. Carbon-flex LP rerun under decision_time at 100/120/150 kW.",
+  "reporting": "All rows retained. Report requests met in full among all sessions and among physically feasible sessions, unserved energy, and the number of physically infeasible requests. No changes to the published headline unless both questions are answered on these terms."
+}

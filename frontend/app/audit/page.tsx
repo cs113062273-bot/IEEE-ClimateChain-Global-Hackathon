@@ -1,2 +1,3 @@
 import { Dashboard } from "@/components/dashboard";
-export default function Page() {return <Dashboard page="audit" />;}
+import { ArchiveNotice } from "@/components/archive-notice";
+export default function Page() {return <><ArchiveNotice what="research workspace" /><Dashboard page="audit" /></>;}

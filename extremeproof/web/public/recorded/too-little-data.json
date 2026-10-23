@@ -1,0 +1,985 @@
+{
+ "id": "too-little-data",
+ "agreement": 1,
+ "spec": {
+  "schema": "extremeproof.trigger.v2",
+  "title": "Antalya summer heat spell 2023",
+  "site": {
+   "id": "antalya",
+   "name": "Antalya",
+   "country": "TR",
+   "station": "TUM00017300"
+  },
+  "rule": {
+   "kind": "heat_spell",
+   "variable": "TX",
+   "base_period": [
+    "1991-01-01",
+    "2020-12-31"
+   ],
+   "percentile": 90,
+   "percentile_window_days": 5,
+   "quantile_method": "hyndman_fan_type8",
+   "season": [
+    "06-01",
+    "09-30"
+   ],
+   "min_spell_days": 6,
+   "min_base_coverage_permille": 600,
+   "max_missing_days": 0,
+   "max_filled_days": 60
+  },
+  "observation_year": 2023,
+  "sources": [
+   {
+    "id": "station",
+    "kind": "ghcn_daily",
+    "station": "TUM00017300",
+    "history": {
+     "file": "history/TUM00017300_ghcn_to_2022.csv",
+     "through": "2022-12-31",
+     "sha256": "d67d5866bb1b5e9c06afaa711fbf1d95f59de3895a84e3c69c57cd3c036014cf"
+    },
+    "season_data": {
+     "from": "2023-01-01",
+     "to": "2023-09-30",
+     "publisher": "NOAA NCEI GHCN-Daily",
+     "url": "https://www.ncei.noaa.gov/data/global-historical-climatology-network-daily/access/TUM00017300.csv",
+     "fetched": "by the provider after the season ends"
+    },
+    "fill": {
+     "method": "era5_quantile_map",
+     "from": "era5",
+     "fit_period": [
+      "1963-01-01",
+      "2022-12-31"
+     ]
+    },
+    "season_normal_mdegc": [
+     32864,
+     32843,
+     32839,
+     32800,
+     33091,
+     33753,
+     34153,
+     34587,
+     35117,
+     35693,
+     36119,
+     36274,
+     36596,
+     37372,
+     37976,
+     38334,
+     38784,
+     39055,
+     39087,
+     39005,
+     38737,
+     38496,
+     38465,
+     38582,
+     38990,
+     39454,
+     39613,
+     39649,
+     39375,
+     39014,
+     38823,
+     39184,
+     40032,
+     40373,
+     40254,
+     40251,
+     40247,
+     40028,
+     39900,
+     39950,
+     40065,
+     40159,
+     40137,
+     40186,
+     40436,
+     40444,
+     40209,
+     40106,
+     40107,
+     40069,
+     40087,
+     40263,
+     40401,
+     40484,
+     40487,
+     40705,
+     40812,
+     40036,
+     39451,
+     39352,
+     39426,
+     39481,
+     39644,
+     39679,
+     39896,
+     40072,
+     40089,
+     40210,
+     40448,
+     40500,
+     40481,
+     40359,
+     39987,
+     39839,
+     40095,
+     39962,
+     39885,
+     39941,
+     40084,
+     39818,
+     39810,
+     40209,
+     40029,
+     39590,
+     39566,
+     39443,
+     39228,
+     39234,
+     39265,
+     39081,
+     38855,
+     38880,
+     38634,
+     37983,
+     37628,
+     37165,
+     36941,
+     36816,
+     36791,
+     36684,
+     36579,
+     36430,
+     36197,
+     36195,
+     36185,
+     36137,
+     35949,
+     35749,
+     36113,
+     35956,
+     35636,
+     35441,
+     34888,
+     33704,
+     33164,
+     33607,
+     33739,
+     34036,
+     33992,
+     34055,
+     34386,
+     34577
+    ]
+   },
+   {
+    "id": "era5",
+    "kind": "open_meteo",
+    "station": "TUM00017300",
+    "model": "era5",
+    "history": {
+     "file": "history/TUM00017300_era5_to_2022.json",
+     "through": "2022-12-31",
+     "sha256": "e505e893783a5a30509ad0f4d1861c6096347199c107b9c18ca6d3e7b20a54f4"
+    },
+    "season_data": {
+     "from": "2023-01-01",
+     "to": "2023-09-30",
+     "publisher": "Open-Meteo historical API (ERA5)",
+     "url": "https://archive-api.open-meteo.com/v1/archive?latitude=36.899&longitude=30.8&start_date=2023-01-01&end_date=2023-09-30&daily=temperature_2m_max&timezone=Europe%2FIstanbul&models=era5",
+     "fetched": "by the provider after the season ends"
+    },
+    "season_normal_mdegc": [
+     34869,
+     34771,
+     34437,
+     33916,
+     33893,
+     34313,
+     34707,
+     35430,
+     36032,
+     36311,
+     36614,
+     36839,
+     37045,
+     37438,
+     37877,
+     38187,
+     38334,
+     38437,
+     38568,
+     38505,
+     38727,
+     39147,
+     39678,
+     40287,
+     40598,
+     40755,
+     40615,
+     40259,
+     39756,
+     39325,
+     39396,
+     39727,
+     40057,
+     40312,
+     40431,
+     40463,
+     40529,
+     40630,
+     40681,
+     40791,
+     40942,
+     41000,
+     40905,
+     40893,
+     40965,
+     40712,
+     40388,
+     40345,
+     40581,
+     40828,
+     40924,
+     41000,
+     40911,
+     40755,
+     40596,
+     40506,
+     40579,
+     40584,
+     40392,
+     40178,
+     40153,
+     40136,
+     40200,
+     40200,
+     40200,
+     40200,
+     40277,
+     40500,
+     40718,
+     40850,
+     40955,
+     40921,
+     40800,
+     40800,
+     40785,
+     40777,
+     40748,
+     40639,
+     40460,
+     40166,
+     40063,
+     40245,
+     40500,
+     40429,
+     40500,
+     40381,
+     40128,
+     40063,
+     39925,
+     39607,
+     39466,
+     39375,
+     39184,
+     38875,
+     38575,
+     38128,
+     38263,
+     38243,
+     38200,
+     38176,
+     37962,
+     37639,
+     37726,
+     37676,
+     37593,
+     37614,
+     37448,
+     37326,
+     37326,
+     37269,
+     36880,
+     36217,
+     36069,
+     35906,
+     35690,
+     35628,
+     35526,
+     35716,
+     35779,
+     35937,
+     36281,
+     36319
+    ]
+   }
+  ],
+  "settlement": {
+   "quorum": 2,
+   "providers": 2,
+   "on_dispute": "pay",
+   "amount_cents": 5000000,
+   "payout_ladder": [
+    [
+     6,
+     4000
+    ],
+    [
+     9,
+     7000
+    ],
+    [
+     12,
+     10000
+    ]
+   ],
+   "unit": "DEMO (demo relief units, not money)",
+   "timing": {
+    "window_start": 1685566800,
+    "window_end": 1696107600,
+    "report_deadline": 1697317200,
+    "dispute_window": 2592000
+   },
+   "parties": {
+    "funder": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+    "community": "0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc",
+    "checker": "0x90f79bf6eb2c4f870365e785982e1f101e93b906",
+    "beneficiary": "0x15d34aaf54267db7d7c367839aaf71a00a2c6a65"
+   },
+   "provider_addresses": {
+    "station": "0x9965507d1a55bcc2695c58ba16fb37d819b0a4dc",
+    "era5": "0x976ea74026e726554db657fa54763abd0c3a0aa9"
+   },
+   "token": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+   "contract": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+   "chain_id": 31337,
+   "normal_keccak": {
+    "station": "0x019a379639f82b0f20e95a092318a8ba6f696e586bee806aa71b82d3791bd820",
+    "era5": "0x4815dbbd596d0939552280c910ec0890858debbcdecf6eb46d6e14ea8796527f"
+   }
+  }
+ },
+ "log": [
+  {
+   "date": "2021-05-01",
+   "text": "Relief fund proposed agreement #1 with rule 0x8d6e1754… — contract terms match the signed text",
+   "tx": {
+    "hash": "0x45a02e582e4e879de05ff3bda6e34d1285a9f54cd6698e46c6460d5066b8110a",
+    "block": 5,
+    "gas": 520679,
+    "events": [
+     "Proposed"
+    ]
+   }
+  },
+  {
+   "date": "2021-05-01",
+   "text": "Relief fund signed 0x8d6e1754… and deposited 50,000.00 DEMO",
+   "tx": {
+    "hash": "0xb428a810e792335800bdce3618e181b95fe44f9ede7073dea6cba77cc5aae2eb",
+    "block": 6,
+    "gas": 80036,
+    "events": [
+     "Approved",
+     "Transfer",
+     "Funded"
+    ]
+   }
+  },
+  {
+   "date": "2021-05-01",
+   "text": "Farmers' cooperative signed 0x8d6e1754…",
+   "tx": {
+    "hash": "0x8f998282c6fd6b0e13372e4e208704d16e45bd9214efb634463f5515dd732660",
+    "block": 7,
+    "gas": 40455,
+    "events": [
+     "Approved"
+    ]
+   }
+  },
+  {
+   "date": "2021-05-01",
+   "text": "Independent checker signed 0x8d6e1754…",
+   "tx": {
+    "hash": "0xf485eabd37f5cf318837a47b988bf2eeb2a020b069fb9ae6df37bb899d660d69",
+    "block": 8,
+    "gas": 44344,
+    "events": [
+     "Approved",
+     "Locked"
+    ]
+   }
+  },
+  {
+   "date": "2023-08-10",
+   "text": "ERA5 provider posted 66 days of readings (published to 2023-08-05); the contract computed a 11-day hot spell against the signed thresholds",
+   "tx": {
+    "hash": "0x3252c189748b0d829597faf4cb591f20ba22c5d072378d8d03ce122d14b1dbcf",
+    "block": 19,
+    "gas": 228898,
+    "events": [
+     "DaysPosted"
+    ]
+   }
+  },
+  {
+   "date": "2023-09-28",
+   "text": "During the season the two records never both showed a qualifying spell, so nothing was released early."
+  },
+  {
+   "date": "2023-10-01",
+   "text": "Season over. Chain clock moved to 1 October (simulated clock)."
+  },
+  {
+   "date": "2023-10-01",
+   "text": "Station provider fetched station data 14435a152f… + ERA5 data a0f50e553b… and posted the remaining 122 days of readings; the contract computed NO VERDICT: more filled days than the agreed limit",
+   "tx": {
+    "hash": "0x3c514bd97b932dd7ea5b06c1cb8a9b1da68d43f9c1b3b5613175fbfc180396af",
+    "block": 28,
+    "gas": 331239,
+    "events": [
+     "DaysPosted"
+    ]
+   }
+  },
+  {
+   "date": "2023-10-01",
+   "text": "ERA5 provider fetched ERA5 data a0f50e553b… and posted the remaining 56 days of readings; the contract computed: heatwave rule MET, longest spell 11 days",
+   "tx": {
+    "hash": "0xa89c899f7766dbbe81535c92fc9fe425172363575e52730755bbdc136661ca16",
+    "block": 29,
+    "gas": 168720,
+    "events": [
+     "DaysPosted"
+    ]
+   }
+  },
+  {
+   "date": "2023-10-01",
+   "text": "Settled: the providers did not agree → all 50,000.00 DEMO goes to dispute. Nobody can decide alone.",
+   "tx": {
+    "hash": "0x53200db72b45ba8a7d1e87b56f2b7dcb8ffec6d054dcdb8fb94dba3428e1e2db",
+    "block": 30,
+    "gas": 109973,
+    "events": [
+     "Disputed"
+    ]
+   }
+  },
+  {
+   "date": "2023-10-31",
+   "text": "30 days passed without a unanimous decision → the signed fallback applied: 50,000.00 DEMO paid to the cooperative (pay).",
+   "tx": {
+    "hash": "0x0160bb64de01f854c8e0f4e813f6eeaa08b00022d8f527a5d0df80e5286bb5a2",
+    "block": 32,
+    "gas": 89066,
+    "events": [
+     "Settled",
+     "Transfer"
+    ]
+   }
+  },
+  {
+   "date": "2023-10-31",
+   "text": "Fund tried to sign a different base period after the season → contract refused (WrongStatus)."
+  }
+ ],
+ "contractRefusal": "refused · WrongStatus",
+ "status": "Settled: the providers did not agree → all 50,000.00 DEMO goes to dispute. Nobody can decide alone.",
+ "outcome": "30 days passed without a unanimous decision → the signed fallback applied: 50,000.00 DEMO paid to the cooperative (pay).",
+ "verifier": {
+  "live": {
+   "tamper": "none",
+   "what_was_changed": "untouched",
+   "passed": true,
+   "checks": [
+    {
+     "check": "chain id matches bundle",
+     "ok": true,
+     "detail": "live 31337, bundle 31337"
+    },
+    {
+     "check": "bundle snapshot matches the live chain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "spec hash equals the hash approved on chain",
+     "ok": true,
+     "detail": "spec 0x8d6e1754ff3d4d3e09bc143fab16d38b0838bef06516418e6ca107c9a798a8ce vs chain 0x8d6e1754ff3d4d3e09bc143fab16d38b0838bef06516418e6ca107c9a798a8ce (live chain http://127.0.0.1:8545)"
+    },
+    {
+     "check": "amount: spec 5000000 = chain 5000000 (cents)",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "quorum: spec 2 of 2 = chain 2 of 2",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "dispute fallback: spec 'pay' = chain 'pay'",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "payout ladder: spec [[6, 4000], [9, 7000], [12, 10000]] = chain [[6, 4000], [9, 7000], [12, 10000]], starting at the rule's 6 days",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "contract windows equal the spec and the observation season",
+     "ok": true,
+     "detail": "spec {'dispute_window': 2592000, 'report_deadline': 1697317200, 'window_end': 1696107600, 'window_start': 1685566800} chain {'window_start': 1685566800, 'window_end': 1696107600, 'report_deadline': 1697317200, 'dispute_window': 2592000}"
+    },
+    {
+     "check": "data limits: 122 season days, at most 0 missing and 60 filled = chain",
+     "ok": true,
+     "detail": "chain {'season_days': 122, 'max_missing': 0, 'max_filled': 60}"
+    },
+    {
+     "check": "funder, community, checker and beneficiary on chain equal the spec",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "payout token on chain equals the spec",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "contract and chain id equal the spec",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "providers on chain are exactly the spec's provider per data source",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "station: spec pins history to 2022-12-31 (before the lock deadline 2023-06-01) and only names where 2023 data will come from",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "pinned history hash matches spec: history/TUM00017300_ghcn_to_2022.csv",
+     "ok": true,
+     "detail": "file d67d5866bb1b5e9c... spec d67d5866bb1b5e9c..."
+    },
+    {
+     "check": "era5: spec pins history to 2022-12-31 (before the lock deadline 2023-06-01) and only names where 2023 data will come from",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "pinned history hash matches spec: history/TUM00017300_era5_to_2022.json",
+     "ok": true,
+     "detail": "file e505e893783a5a30... spec e505e893783a5a30..."
+    },
+    {
+     "check": "station provider 0x9965507d: the daily thresholds' fingerprint on chain is the signed one",
+     "ok": true,
+     "detail": "chain 0x019a379639f8…"
+    },
+    {
+     "check": "station provider 0x9965507d: the contract computed 'abstain' from its readings (last post 2023-10-01 00:00 (UTC+3)); its evidence is in the bundle",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "station provider 0x9965507d: evidence sha256 equals the digest reported on chain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "station provider 0x9965507d: evidence is for this spec",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "station provider 0x9965507d: fetched era5 data is exactly what it reported on chain (sha256 a0f50e553bfc…)",
+     "ok": true,
+     "detail": "file a0f50e553bfc483a..."
+    },
+    {
+     "check": "station provider 0x9965507d: fetched station data is exactly what it reported on chain (sha256 14435a152f1c…)",
+     "ok": true,
+     "detail": "file 14435a152f1c9324..."
+    },
+    {
+     "check": "station provider 0x9965507d: the signed daily thresholds equal the normal recomputed from the pinned history",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "station provider 0x9965507d: the 122 readings on chain are exactly the recomputed days (day log, longest spell 7, 72 filled, 0 missing)",
+     "ok": true,
+     "detail": "chain posted 122 log 0xcd3e4a3b3d20…, recomputed 122 0xcd3e4a3b3d20…"
+    },
+    {
+     "check": "station provider 0x9965507d: abstention is justified by the data (too_many_filled_days_in_season)",
+     "ok": true,
+     "detail": "recomputed None (too_many_filled_days_in_season), evidence says too_many_filled_days_in_season"
+    },
+    {
+     "check": "station provider 0x9965507d: all 122 season days match (values, thresholds, gaps, exceedances)",
+     "ok": true,
+     "detail": "0 mismatched values"
+    },
+    {
+     "check": "era5 provider 0x976ea740: the daily thresholds' fingerprint on chain is the signed one",
+     "ok": true,
+     "detail": "chain 0x4815dbbd596d…"
+    },
+    {
+     "check": "era5 provider 0x976ea740: readings posted through 2023-08-05: digest on chain, data as fetched, the contract saw the 11-day spell the data hold",
+     "ok": true,
+     "detail": "on chain True, files True, recomputed True / 11"
+    },
+    {
+     "check": "era5 provider 0x976ea740: the contract computed 'met' from its readings (last post 2023-10-01 00:00 (UTC+3)); its evidence is in the bundle",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "era5 provider 0x976ea740: evidence sha256 equals the digest reported on chain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "era5 provider 0x976ea740: evidence is for this spec",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "era5 provider 0x976ea740: fetched era5 data is exactly what it reported on chain (sha256 a0f50e553bfc…)",
+     "ok": true,
+     "detail": "file a0f50e553bfc483a..."
+    },
+    {
+     "check": "era5 provider 0x976ea740: the signed daily thresholds equal the normal recomputed from the pinned history",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "era5 provider 0x976ea740: the 122 readings on chain are exactly the recomputed days (day log, longest spell 11, 0 filled, 0 missing)",
+     "ok": true,
+     "detail": "chain posted 122 log 0x95afabe672fd…, recomputed 122 0x95afabe672fd…"
+    },
+    {
+     "check": "era5 provider 0x976ea740: recomputed verdict equals evidence (True / True)",
+     "ok": true,
+     "detail": "spell_meets_minimum"
+    },
+    {
+     "check": "era5 provider 0x976ea740: the verdict the contract computed from the readings equals recomputation",
+     "ok": true,
+     "detail": "chain met, recomputed True"
+    },
+    {
+     "check": "era5 provider 0x976ea740: longest spell on chain equals recomputation (11)",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "era5 provider 0x976ea740: all 122 season days match (values, thresholds, gaps, exceedances)",
+     "ok": true,
+     "detail": "0 mismatched values"
+    },
+    {
+     "check": "station and era5 providers fetched identical era5 season values",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "station provider 0x9965507d: its era5 season values match what Open-Meteo historical API (ERA5) serves today (simulated publisher: the pinned October 2026 download)",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "era5 provider 0x976ea740: its era5 season values match what Open-Meteo historical API (ERA5) serves today (simulated publisher: the pinned October 2026 download)",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "station provider 0x9965507d: its station season values match what NOAA NCEI GHCN-Daily serves today (simulated publisher: the pinned October 2026 download)",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "settlement: spells [11] on chain, quorum 2 -> pay 0 now, return 0 now, contest 5000000; chain says Paid, paid 5000000 via signed fallback",
+     "ok": true,
+     "detail": ""
+    }
+   ]
+  },
+  "offline": {
+   "tamper": "none",
+   "what_was_changed": "untouched",
+   "passed": true,
+   "checks": [
+    {
+     "check": "spec hash equals the hash approved on chain",
+     "ok": true,
+     "detail": "spec 0x8d6e1754ff3d4d3e09bc143fab16d38b0838bef06516418e6ca107c9a798a8ce vs chain 0x8d6e1754ff3d4d3e09bc143fab16d38b0838bef06516418e6ca107c9a798a8ce (snapshot in bundle)"
+    },
+    {
+     "check": "amount: spec 5000000 = chain 5000000 (cents)",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "quorum: spec 2 of 2 = chain 2 of 2",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "dispute fallback: spec 'pay' = chain 'pay'",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "payout ladder: spec [[6, 4000], [9, 7000], [12, 10000]] = chain [[6, 4000], [9, 7000], [12, 10000]], starting at the rule's 6 days",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "contract windows equal the spec and the observation season",
+     "ok": true,
+     "detail": "spec {'dispute_window': 2592000, 'report_deadline': 1697317200, 'window_end': 1696107600, 'window_start': 1685566800} chain {'window_start': 1685566800, 'window_end': 1696107600, 'report_deadline': 1697317200, 'dispute_window': 2592000}"
+    },
+    {
+     "check": "data limits: 122 season days, at most 0 missing and 60 filled = chain",
+     "ok": true,
+     "detail": "chain {'season_days': 122, 'max_missing': 0, 'max_filled': 60}"
+    },
+    {
+     "check": "funder, community, checker and beneficiary on chain equal the spec",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "payout token on chain equals the spec",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "contract and chain id equal the spec",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "providers on chain are exactly the spec's provider per data source",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "station: spec pins history to 2022-12-31 (before the lock deadline 2023-06-01) and only names where 2023 data will come from",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "pinned history hash matches spec: history/TUM00017300_ghcn_to_2022.csv",
+     "ok": true,
+     "detail": "file d67d5866bb1b5e9c... spec d67d5866bb1b5e9c..."
+    },
+    {
+     "check": "era5: spec pins history to 2022-12-31 (before the lock deadline 2023-06-01) and only names where 2023 data will come from",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "pinned history hash matches spec: history/TUM00017300_era5_to_2022.json",
+     "ok": true,
+     "detail": "file e505e893783a5a30... spec e505e893783a5a30..."
+    },
+    {
+     "check": "station provider 0x9965507d: the daily thresholds' fingerprint on chain is the signed one",
+     "ok": true,
+     "detail": "chain 0x019a379639f8…"
+    },
+    {
+     "check": "station provider 0x9965507d: the contract computed 'abstain' from its readings (last post 2023-10-01 00:00 (UTC+3)); its evidence is in the bundle",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "station provider 0x9965507d: evidence sha256 equals the digest reported on chain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "station provider 0x9965507d: evidence is for this spec",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "station provider 0x9965507d: fetched era5 data is exactly what it reported on chain (sha256 a0f50e553bfc…)",
+     "ok": true,
+     "detail": "file a0f50e553bfc483a..."
+    },
+    {
+     "check": "station provider 0x9965507d: fetched station data is exactly what it reported on chain (sha256 14435a152f1c…)",
+     "ok": true,
+     "detail": "file 14435a152f1c9324..."
+    },
+    {
+     "check": "station provider 0x9965507d: the signed daily thresholds equal the normal recomputed from the pinned history",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "station provider 0x9965507d: the 122 readings on chain are exactly the recomputed days (day log, longest spell 7, 72 filled, 0 missing)",
+     "ok": true,
+     "detail": "chain posted 122 log 0xcd3e4a3b3d20…, recomputed 122 0xcd3e4a3b3d20…"
+    },
+    {
+     "check": "station provider 0x9965507d: abstention is justified by the data (too_many_filled_days_in_season)",
+     "ok": true,
+     "detail": "recomputed None (too_many_filled_days_in_season), evidence says too_many_filled_days_in_season"
+    },
+    {
+     "check": "station provider 0x9965507d: all 122 season days match (values, thresholds, gaps, exceedances)",
+     "ok": true,
+     "detail": "0 mismatched values"
+    },
+    {
+     "check": "era5 provider 0x976ea740: the daily thresholds' fingerprint on chain is the signed one",
+     "ok": true,
+     "detail": "chain 0x4815dbbd596d…"
+    },
+    {
+     "check": "era5 provider 0x976ea740: readings posted through 2023-08-05: digest on chain, data as fetched, the contract saw the 11-day spell the data hold",
+     "ok": true,
+     "detail": "on chain True, files True, recomputed True / 11"
+    },
+    {
+     "check": "era5 provider 0x976ea740: the contract computed 'met' from its readings (last post 2023-10-01 00:00 (UTC+3)); its evidence is in the bundle",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "era5 provider 0x976ea740: evidence sha256 equals the digest reported on chain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "era5 provider 0x976ea740: evidence is for this spec",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "era5 provider 0x976ea740: fetched era5 data is exactly what it reported on chain (sha256 a0f50e553bfc…)",
+     "ok": true,
+     "detail": "file a0f50e553bfc483a..."
+    },
+    {
+     "check": "era5 provider 0x976ea740: the signed daily thresholds equal the normal recomputed from the pinned history",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "era5 provider 0x976ea740: the 122 readings on chain are exactly the recomputed days (day log, longest spell 11, 0 filled, 0 missing)",
+     "ok": true,
+     "detail": "chain posted 122 log 0x95afabe672fd…, recomputed 122 0x95afabe672fd…"
+    },
+    {
+     "check": "era5 provider 0x976ea740: recomputed verdict equals evidence (True / True)",
+     "ok": true,
+     "detail": "spell_meets_minimum"
+    },
+    {
+     "check": "era5 provider 0x976ea740: the verdict the contract computed from the readings equals recomputation",
+     "ok": true,
+     "detail": "chain met, recomputed True"
+    },
+    {
+     "check": "era5 provider 0x976ea740: longest spell on chain equals recomputation (11)",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "era5 provider 0x976ea740: all 122 season days match (values, thresholds, gaps, exceedances)",
+     "ok": true,
+     "detail": "0 mismatched values"
+    },
+    {
+     "check": "station and era5 providers fetched identical era5 season values",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "settlement: spells [11] on chain, quorum 2 -> pay 0 now, return 0 now, contest 5000000; chain says Paid, paid 5000000 via signed fallback",
+     "ok": true,
+     "detail": ""
+    }
+   ]
+  }
+ },
+ "tampered": [
+  {
+   "kind": "spec_base_period",
+   "what": "changed the base period after the fact: ['1991-01-01', '2020-12-31'] -> ['1961-01-01', '1990-12-31']",
+   "passed": false,
+   "failed": [
+    "spec hash equals the hash approved on chain",
+    "station provider 0x9965507d: evidence is for this spec",
+    "station provider 0x9965507d: the signed daily thresholds equal the normal recomputed from the pinned history",
+    "station provider 0x9965507d: the 122 readings on chain are exactly the recomputed days (day log, longest spell 6, 72 filled, 0 missing)",
+    "station provider 0x9965507d: all 122 season days match (values, thresholds, gaps, exceedances)",
+    "era5 provider 0x976ea740: readings posted through 2023-08-05: digest on chain, data as fetched, the contract saw the 4-day spell the data hold",
+    "era5 provider 0x976ea740: evidence is for this spec",
+    "era5 provider 0x976ea740: the signed daily thresholds equal the normal recomputed from the pinned history",
+    "era5 provider 0x976ea740: the 122 readings on chain are exactly the recomputed days (day log, longest spell 4, 0 filled, 0 missing)",
+    "era5 provider 0x976ea740: recomputed verdict equals evidence (False / True)",
+    "era5 provider 0x976ea740: the verdict the contract computed from the readings equals recomputation",
+    "era5 provider 0x976ea740: longest spell on chain equals recomputation (4)",
+    "era5 provider 0x976ea740: all 122 season days match (values, thresholds, gaps, exceedances)"
+   ]
+  },
+  {
+   "kind": "observation",
+   "what": "edited one reading the station provider fetched: 2023-06-01 TMAX 24.6 -> 45.0 degC",
+   "passed": false,
+   "failed": [
+    "station provider 0x9965507d: fetched station data is exactly what it reported on chain (sha256 14435a152f1c…)",
+    "station provider 0x9965507d: its station season values match what NOAA NCEI GHCN-Daily serves today (simulated publisher: the pinned October 2026 download)"
+   ]
+  },
+  {
+   "kind": "evidence_outcome",
+   "what": "flipped the verdict in evidence/station.json to True",
+   "passed": false,
+   "failed": [
+    "station provider 0x9965507d: evidence sha256 equals the digest reported on chain",
+    "station provider 0x9965507d: abstention is justified by the data (too_many_filled_days_in_season)"
+   ]
+  },
+  {
+   "kind": "drop_evidence",
+   "what": "removed every provider's evidence from the bundle",
+   "passed": false,
+   "failed": [
+    "station provider 0x9965507d: the contract computed 'abstain' from its readings (last post 2023-10-01 00:00 (UTC+3)); its evidence is in the bundle",
+    "era5 provider 0x976ea740: the contract computed 'met' from its readings (last post 2023-10-01 00:00 (UTC+3)); its evidence is in the bundle"
+   ]
+  }
+ ],
+ "bundle": {
+  "file": "too-little-data.zip",
+  "sha256": "daaac63d4dcad7f70877057ce4e647e8a41999cdce579226c41e3c5f3b27984c",
+  "bytes": 403664
+ }
+}

@@ -1,5 +1,9 @@
 # GridProof threat model
 
+**Service-readiness extension (2026-10-19).** The new controller simulation masks future outcomes before solving, requires the zero-PV import envelope, and freezes previously executed controls during event replanning. Evidence includes the original service request and ordered parent/child history; independent checks reject a rewritten executed prefix even after the parent is rehashed. This verifies self-consistency, not real execution, telemetry authenticity or that a parent was externally committed before the event. An attacker controlling an entire self-consistent history still needs an independent prior digest/receipt or signed device telemetry to be caught as a historical fabrication. Current source, local-chain and meter-truth limitations below remain.
+
+Service promises assume declared fixed loads, continued connection through the promised time, functioning chargers/battery and the modeled efficiency/capacity. Unknown departure before that time, additional base load and hardware outages are not guaranteed. A rejected revised request must not silently inherit a green promise from the old plan; the UI labels it as the previous plan and disables plan/evidence exports until a new accepted plan is computed. The disconnect tool assesses a simulated outcome and sends no hardware command.
+
 GridProof handles public grid snapshots, a hypothetical campus schedule, deterministic report bytes, and a registry commitment. The local demonstration is a development environment controlled by the operator. It is not a decentralized deployment or a regulatory certification system.
 
 | Boundary / attack | Implemented defense | Residual limitation |
@@ -19,3 +23,7 @@ GridProof handles public grid snapshots, a hypothetical campus schedule, determi
 The contract has no external calls, token minting, transfers, fees, delegate calls, upgrade mechanism, or owner powers. This substantially limits its attack surface but is not a security audit. Solidity tests cover replay, changed model/scenario, unauthorized lifecycle changes, zero digests, invalid intervals, tampering and linked history. Bridge tests cover wrong network, unavailable RPC, stale deployment and missing events.
 
 Technical references: [Hardhat node support](https://hardhat.org/docs/reference/nodejs-support), [Hardhat viem testing](https://hardhat.org/docs/guides/testing/using-viem), [ABI specification](https://docs.soliditylang.org/en/latest/abi-spec.html).
+
+## Car-park control records (October 19)
+
+Covered: rewriting recorded charging or results after the fact (physics checks and decision replay), a consistent rewrite of a departure or session, or omitting servable sessions from the day (source correspondence against the pinned raw session file, in both directions), forged grid values (pinned NESO/ERA5 reconstruction), and ready-by targets edited after the fact for the replayable policies (decision replay mismatch). Not covered: a producer who fabricates the whole day before hashing *and* controls the raw-file digest; ready-by targets that came from a different model (only the model fingerprint is committed); LP decisions (constraint-checked, not re-solved); physical execution; when the record was first written unless a counterparty-witnessed registry entry exists. Session-derived records fall under CC BY-NC-SA 4.0 and should not be published without consulting the dataset contacts.

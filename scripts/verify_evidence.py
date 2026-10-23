@@ -390,6 +390,7 @@ def inspect(evidence,expected,root,expected_config_digest=None,check_local_files
         drift=[x for x in errors if x.startswith("source digest mismatch:")]
         warnings.extend("Historical artifact differs from current checkout: "+x for x in drift)
         errors=[x for x in errors if x not in drift]
+    if evidence.get("operational_context"): errors.extend(verify_service_context(evidence))
     physical_errors=[x for x in errors if x!="SHA256 mismatch" and not x.startswith("source digest mismatch:") and x!="source path outside root"]
     lineage=verify_lineage(evidence,root,expected_config_digest)
     complete=not errors and lineage["verified"]
@@ -402,6 +403,43 @@ def inspect(evidence,expected,root,expected_config_digest=None,check_local_files
             "checks":{"digest":actual==expected.removeprefix("0x").lower(),"source_lineage_reconstructed":lineage["verified"],"physical_constraints_reconstructed":not physical_errors,"metrics_reproduced":not physical_errors},
             "verified_scope":"offline integrity/source-lineage/physical arithmetic only; onchain is a separate check",
             "trust_boundary":"Consistency with separately trusted source snapshot digests, fixed transforms and modeled arithmetic; no upstream meter truth, historical publication proof, optimality proof or real avoided emissions certification"}
+
+def verify_service_context(evidence):
+    """Independent event-prefix and readiness-envelope checks, stdlib only.
+
+    Self-consistency is not proof that a parent digest was published in advance.
+    """
+    errors=[]
+    try:
+        context=evidence["operational_context"]
+        if context["schema"]!="gridproof-service-v1":raise ValueError("unknown service schema")
+        expected=json.loads(json.dumps(context["original_scenario"]))
+        for job in expected["ev_jobs"]:
+            job["deadline_slot"]=min(job["deadline_slot"],job["arrival_slot"]+context["protection_slots"])
+        events=context["events"]; previous_slot=0
+        for i,event in enumerate(events):
+            at=event["at_slot"]
+            if not previous_slot<at<48 or event["deadline_slot"]<=at:raise ValueError("event order/deadline")
+            if sha(event["parent_scenario"])!=sha(expected):raise ValueError("parent scenario differs from preceding request")
+            parent=event["parent_dispatch"]
+            if len(parent)!=48 or sha(parent)!=event["parent_dispatch_sha256"]:raise ValueError("parent dispatch digest")
+            child=events[i+1]["parent_dispatch"] if i+1<len(events) else evidence["inputs"]["dispatch"]
+            for t in range(at):
+                for field in ["battery_charge_kwh","battery_discharge_kwh","soc_start_kwh","soc_end_kwh","batch_load_kwh"]:
+                    if abs(finite(parent[t][field])-finite(child[t][field]))>1e-5:raise ValueError("executed prefix changed: "+field)
+                if len(parent[t]["ev_by_job_kwh"])!=len(child[t]["ev_by_job_kwh"]):raise ValueError("prefix vehicle count")
+                if any(abs(finite(a)-finite(b))>1e-5 for a,b in zip(parent[t]["ev_by_job_kwh"],child[t]["ev_by_job_kwh"])):raise ValueError("executed prefix changed: EV energy")
+            job=next(j for j in expected["ev_jobs"] if j["id"]==event["job_id"])
+            job.update(energy_kwh=event["energy_kwh"],deadline_slot=event["deadline_slot"])
+            previous_slot=at
+        if context["at_slot"]!=previous_slot or sha(expected)!=sha(evidence["inputs"]["scenario"]):raise ValueError("current service request differs from event history")
+        for x in evidence["inputs"]["dispatch"]:
+            net=sum(finite(x[k]) for k in ["fixed_load_kwh","ev_charge_kwh","batch_load_kwh","battery_charge_kwh"])-finite(x["battery_discharge_kwh"])
+            if net>finite(expected["max_grid_import_kw"])*.5+1e-5 or net< -1e-5:raise ValueError("zero-PV service envelope")
+    except (KeyError,ValueError,TypeError,IndexError,StopIteration) as exc:
+        errors.append("Service verification: "+str(exc))
+    return errors
+
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument("path");parser.add_argument("--digest");parser.add_argument("--expected-config-digest");parser.add_argument("--root",default=str(Path(__file__).resolve().parents[1]));args=parser.parse_args()

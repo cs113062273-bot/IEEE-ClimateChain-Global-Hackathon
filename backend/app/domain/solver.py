@@ -58,9 +58,16 @@ def _immediate_jobs(scenario):
         batch[start:start+job.duration_slots]+=job.energy_kwh/job.duration_slots
     return ev,batch,starts
 
-def solve(scenario:Scenario,intervals:list[dict],policy="hybrid",carbon_weight=.7,time_limit=10):
+def solve(scenario:Scenario,intervals:list[dict],policy="hybrid",carbon_weight=.7,time_limit=10,*,robust_import_cap=False,frozen_prefix=None,frozen_starts=None):
     validate_inputs(intervals)
     started=time.perf_counter()
+    frozen_prefix=frozen_prefix or []
+    if len(frozen_prefix)>T: raise ValueError("Frozen prefix exceeds one day")
+    if frozen_prefix and policy=="immediate": raise ValueError("Immediate cannot rewrite an executed prefix")
+    def fallback(reason):
+        # A late fallback must never rewrite actions already executed.
+        if frozen_prefix: return _failure(policy,reason+"; executed prefix retained, no replacement plan",started,"unavailable")
+        return _fallback(scenario,intervals,policy,started,reason)
     if policy=="peak-first":
         # No carbon, tariff or solar forecast enters this policy's decisions.
         # Shared observed outcome PV is still applied after fixed decisions.
@@ -106,6 +113,21 @@ def solve(scenario:Scenario,intervals:list[dict],policy="hybrid",carbon_weight=.
             return _failure(policy,f"EV {job.id}: energy exceeds arrival/deadline charging capacity",started,"infeasible")
     for starts in batch_indices.values():
         for i in starts.values(): upper[i]=1; integer[i]=1
+    for t,record in enumerate(frozen_prefix):
+        for name,field in [("charge","battery_charge_kwh"),("discharge","battery_discharge_kwh")]:
+            lower[idx[name][t]]=upper[idx[name][t]]=record[field]
+        for j in range(len(scenario.ev_jobs)):
+            i=idx["ev"][j*T+t]; value=record["ev_by_job_kwh"][j]
+            if value>upper[i]+TOL:
+                return _failure(policy,"Updated request conflicts with already delivered energy/window",started,"infeasible")
+            lower[i]=upper[i]=value
+    if frozen_prefix:
+        if frozen_starts is None: raise ValueError("Executed batch starts required with prefix")
+        for job in scenario.batch_jobs:
+            original=frozen_starts[job.id]
+            for start,i in batch_indices[job.id].items():
+                if original<len(frozen_prefix): lower[i]=upper[i]=int(start==original)
+                elif start<len(frozen_prefix): upper[i]=0
     if peak_enabled: upper[idx["peak"]]=scenario.peak_cap_kw if scenario.peak_cap_kw is not None else np.inf
     rows=[]; lo=[]; hi=[]
     def row(coeff,a,b): rows.append(coeff); lo.append(a); hi.append(b)
@@ -122,6 +144,16 @@ def solve(scenario:Scenario,intervals:list[dict],policy="hybrid",carbon_weight=.
         row({int(idx["discharge"][t]):1,int(idx["mode"][t]):scenario.discharge_kw*DT},-np.inf,scenario.discharge_kw*DT)
         row({int(idx["ev"][j*T+t]):1 for j in range(len(scenario.ev_jobs))},0,scenario.charger_station_kw*DT)
         if occ: row(occ,0,scenario.max_batch_concurrency)
+        if robust_import_cap:
+            # Optional conservative feasibility protection: every nonnegative
+            # realized PV outcome respects the unchanged physical import cap.
+            # The original formulation/default remains available for comparison.
+            import_coeff={int(idx["charge"][t]):1,int(idx["discharge"][t]):-1}
+            for j in range(len(scenario.ev_jobs)):import_coeff[int(idx["ev"][j*T+t])]=1
+            for job in scenario.batch_jobs:
+                for start,i in batch_indices[job.id].items():
+                    if start<=t<start+job.duration_slots:import_coeff[i]=job.energy_kwh/job.duration_slots
+            row(import_coeff,-np.inf,scenario.max_grid_import_kw*DT-fixed[t])
         if peak_enabled:
             z=int(idx["peak"][0])
             if scenario.peak_risk_mode=="zero-pv-guard" or policy=="peak-first":
@@ -149,10 +181,10 @@ def solve(scenario:Scenario,intervals:list[dict],policy="hybrid",carbon_weight=.
     objective[idx["charge"]]=1e-7; objective[idx["discharge"]]=1e-7
     try:
         result=SOLVER_WORKER.submit(_run_milp,objective,integrality=integer,bounds=Bounds(lower,upper),constraints=LinearConstraint(matrix.tocsc(),lo,hi),options={"time_limit":time_limit,"mip_rel_gap":1e-6,"presolve":True,"threads":1}).result()
-    except Exception as e: return _fallback(scenario,intervals,policy,started,f"Solver error: {type(e).__name__}: {e}")
+    except Exception as e: return fallback(f"Solver error: {type(e).__name__}: {e}")
     if result.x is None:
         if result.status==2: return _failure(policy,result.message,started,"infeasible")
-        return _fallback(scenario,intervals,policy,started,result.message)
+        return fallback(result.message)
     x=np.maximum(result.x,0); ev=x[idx["ev"]].reshape((len(scenario.ev_jobs),T)); batch=np.zeros(T); chosen={}
     for job in scenario.batch_jobs:
         start=max(batch_indices[job.id],key=lambda s:x[batch_indices[job.id][s]])
@@ -160,10 +192,16 @@ def solve(scenario:Scenario,intervals:list[dict],policy="hybrid",carbon_weight=.
     dispatch=_dispatch(intervals,x[idx["grid"]],x[idx["charge"]],x[idx["discharge"]],x[idx["soc"]],ev,batch,x[idx["pv"]],pv-x[idx["pv"]])
     plan=_result(scenario,dispatch,chosen,policy,started,"optimal" if result.status==0 else "feasible_time_limit",float(result.mip_gap) if result.mip_gap is not None else None,result.message)
     plan["solver"]["objective_value"]=float(result.fun)
+    if robust_import_cap:plan["solver"]["robust_import_cap"]="zero-PV net demand bounded by unchanged max_grid_import_kw"
     if peak_enabled:
         plan["solver"]["peak_epigraph_kw"]=float(x[idx["peak"][0]])
         plan["solver"]["objective_references"].update({"peak_kw":scenario.peak_reference_kw,"peak_weight":1.0 if policy=="peak-first" else scenario.peak_weight,"peak_risk_mode":"zero-pv-guard" if policy=="peak-first" else scenario.peak_risk_mode})
-    if not plan["constraints"]["verified"]: return _fallback(scenario,intervals,policy,started,"Solver candidate failed independent constraint verification")
+    if not plan["constraints"]["verified"]:
+        rejected=fallback("Solver candidate failed independent constraint verification")
+        # Keep discarded-candidate evidence separate from returned-plan checks.
+        # Metrics of a rejected candidate never become a valid savings result.
+        rejected["solver"]["rejected_candidate"]={"constraints":plan["constraints"],"metrics":plan["metrics"],"max_grid_import_exceedance_kw":max(0,plan["metrics"]["peak_grid_kw"]-scenario.max_grid_import_kw),"mip_gap":plan["solver"].get("mip_gap"),"status":plan["solver"]["status"]}
+        return rejected
     return plan
 
 def _fallback(scenario,intervals,policy,started,reason):

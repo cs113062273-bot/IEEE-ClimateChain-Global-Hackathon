@@ -1,0 +1,8 @@
+-r requirements.txt
+# xclim cross-check and the gap-filling evaluation
+xclim==0.58.1
+xarray==2026.9.0
+numpy==2.4.6
+pandas==3.0.6
+scipy==1.17.1
+lightgbm==4.7.0

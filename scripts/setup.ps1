@@ -12,6 +12,9 @@ if ($LASTEXITCODE -ne 0) { throw 'Frontend dependencies failed to install.' }
 if ($LASTEXITCODE -ne 0) { throw 'Contract dependencies failed to install.' }
 & npm.cmd --prefix contracts run build
 if ($LASTEXITCODE -ne 0) { throw 'Contract compilation failed.' }
+# Real workplace sessions (4TU.ResearchData, CC BY-NC-SA 4.0, no account). Not redistributed in this repository.
+& '.\.venv\Scripts\python.exe' scripts/fetch_workplace_sessions.py
+if ($LASTEXITCODE -ne 0) { throw 'Workplace session download failed; the car-park workspace needs it. Retry when online.' }
 if ($DownloadData) {
     & '.\.venv\Scripts\python.exe' scripts/discover_sources.py
     if ($LASTEXITCODE -ne 0) { throw 'Source discovery failed.' }

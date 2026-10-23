@@ -2,6 +2,8 @@
 
 The full run is complete: all **122 consecutive UTC days from 2025-09-01 through 2025-12-31** were evaluated. Outputs are in [competition_v2](../experiments/competition_v2/). This September-to-December period includes September and Q4; it is not a four-season test. Original Phase 1 files and their 24-day results remain unchanged.
 
+The subsequent [model/scheduler audit](MODEL_SCHEDULER_AUDIT.md) preserves these files and adds three battery-equipped heuristics, explicit delivered-energy checks, unannounced departure failures, and an optional import-guard before/after comparison. New outputs are separate in competitiveness_audit. The historical statements below about missing discarded-candidate residuals describe this original execution; the follow-up reproduces all 195 rejections and now retains their actual Grid-cap violations and magnitudes.
+
 The fixed peak-aware engineering policy trades some modeled carbon benefit for much lower peak imports. Relative to Immediate, its **aggregate exposure improvement is 4.162%**, its **mean daily relative improvement is 4.302%**, illustrative mean tariff expense falls **7.970%**, and the ratio of mean daily peaks falls **45.624%**. This is a modeled London campus, not measured campus abatement or a carbon credit.
 
 ## Measured nominal results

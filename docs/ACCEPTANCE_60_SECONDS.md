@@ -1,5 +1,13 @@
 # GridProof: 60-second judge path and acceptance
 
+> **Current entry, October 19:** `/` now opens **Departure readiness**. The previous path below remains available at `/research` → `/dispatch` → `/audit` as a research regression.
+>
+> Current product check: inspect **42 kWh ready by 10:00 / 11:00** → **Respond to a change** → at 08:30 request **28 kWh by 11:00** for fleet-a → **Replan remaining hours** → inspect **46 kWh** and the retained executed state → **Check the evidence** → **Build & verify this plan** → **Forge carbon + rehash**. The original 48-interval plan, new dispatch and evidence are computed, not recorded selections. All devices remain simulated.
+>
+> Failure branch: choose **2 hours** in the earliest-departure control and compute. Fleet-a's 24 kWh request exceeds its 22 kWh individual window limit; the UI must refuse and display at least **2 kWh short**. For a rejected event request, a later deadline is a separately solved proposal requiring explicit acceptance. No automatic relaxation or savings claim is allowed for missing service.
+>
+> This is an operational acceptance path, not proof of a human completing it within 60 seconds. Results and screenshots are in [validation](VALIDATION.md#service-readiness-release--2026-10-19).
+
 **Purpose:** a campus facilities manager chooses a feasible energy schedule, sees Carbon/Cost/Peak tradeoffs and checks that the report corresponds to its declared sources. Benchmark impact is modeled, not measured site abatement.
 
 This is the acceptance script for the current product iteration. Passing technical steps alone does not establish that a non-engineer understood the product; the teach-back below needs an actual person. Public access remains pending authorization.
@@ -38,3 +46,13 @@ With no RPC, local verification and the deliberate source forgery still work; th
 Before filming, ask one person unfamiliar with the code to use the page for 60 seconds, then answer: **“Who is this for? What changes in the schedule? Why might Balanced beat Lowest Carbon for this user? What does the blockchain prove?”** Record elapsed time and their words. Pass only if they identify the manager, operational tradeoff and report commitment without calling modeled results measured abatement or a hash proof of truthful meters. If they miss a point, change the relevant label/first screen rather than commissioning another benchmark.
 
 Keep success/forge/chain-unavailable screenshots and the actual 4:35 video once recorded. The release handoff is [RELEASE_OPERATIONS.md](RELEASE_OPERATIONS.md); account/publication actions remain explicit human steps.
+
+## Current main path (car park, October 19)
+
+1. Read the four tiles: requests met in full, energy short, connection limit, modelled carbon, each against equal share on the same day.
+2. Press **Go to 09:30, the busiest hour**: the controller's view shows only cars already plugged in, the charging order and the exact gap bound.
+3. **Apply grid request** (70 kW): the effect line states what changed; earlier energy is untouched.
+4. Open **Across 185 held-out days**: GridProof needs 130 kW for 95% of requests met in full, equal share 160 kW (10 kW steps).
+5. **Record & verify** → **Build & verify** → forge all three: moving a departure or leaving short drivers out is caught only by source correspondence.
+
+This is an operational path verified by the browser test, not proof that a person completes it in 60 seconds.

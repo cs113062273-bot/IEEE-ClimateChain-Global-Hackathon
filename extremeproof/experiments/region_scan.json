@@ -1,0 +1,241 @@
+{
+  "schema": "extremeproof.region-scan.v1",
+  "rule": {
+    "variant": "station_qm",
+    "base": "1991-2020",
+    "percentile": 90,
+    "minSpell": 6,
+    "maxMissing": 0,
+    "maxFilled": 122,
+    "onDispute": "refund"
+  },
+  "summary": {
+    "usable": 6,
+    "noNormal": [
+      "İzmir",
+      "Konya",
+      "Mersin",
+      "Adana"
+    ],
+    "decidable": 358,
+    "contested": 46,
+    "placesWithConflict": 6,
+    "recentOpen": 3
+  },
+  "rows": [
+    {
+      "id": "iskenderun",
+      "name": "İskenderun",
+      "station": "TUM00017370",
+      "baseCoverage": 822,
+      "noNormal": false,
+      "history": {
+        "total": 60,
+        "first": 1966,
+        "contested": 13,
+        "thin": 1
+      },
+      "recent": {
+        "2021": "dispute (disagreement)",
+        "2022": "dispute (disagreement)",
+        "2023": "pay",
+        "2024": "pay",
+        "2025": "pay"
+      }
+    },
+    {
+      "id": "finike",
+      "name": "Finike",
+      "station": "TU000017375",
+      "baseCoverage": 793,
+      "noNormal": false,
+      "history": {
+        "total": 60,
+        "first": 1966,
+        "contested": 10,
+        "thin": 0
+      },
+      "recent": {
+        "2021": "pay",
+        "2022": "refund",
+        "2023": "pay",
+        "2024": "pay",
+        "2025": "dispute (disagreement)"
+      }
+    },
+    {
+      "id": "mugla",
+      "name": "Muğla",
+      "station": "TUM00017292",
+      "baseCoverage": 929,
+      "noNormal": false,
+      "history": {
+        "total": 60,
+        "first": 1966,
+        "contested": 8,
+        "thin": 1
+      },
+      "recent": {
+        "2021": "dispute (disagreement)",
+        "2022": "refund",
+        "2023": "pay",
+        "2024": "pay",
+        "2025": "pay"
+      }
+    },
+    {
+      "id": "antalya",
+      "name": "Antalya",
+      "station": "TUM00017300",
+      "baseCoverage": 710,
+      "noNormal": false,
+      "history": {
+        "total": 60,
+        "first": 1966,
+        "contested": 7,
+        "thin": 0
+      },
+      "recent": {
+        "2021": "pay",
+        "2022": "refund",
+        "2023": "pay",
+        "2024": "pay",
+        "2025": "pay"
+      }
+    },
+    {
+      "id": "isparta",
+      "name": "Isparta",
+      "station": "TU000017240",
+      "baseCoverage": 764,
+      "noNormal": false,
+      "history": {
+        "total": 60,
+        "first": 1966,
+        "contested": 4,
+        "thin": 0
+      },
+      "recent": {
+        "2021": "refund",
+        "2022": "refund",
+        "2023": "pay",
+        "2024": "pay",
+        "2025": "pay"
+      }
+    },
+    {
+      "id": "afyon",
+      "name": "Afyon",
+      "station": "TUM00017190",
+      "baseCoverage": 708,
+      "noNormal": false,
+      "history": {
+        "total": 60,
+        "first": 1966,
+        "contested": 4,
+        "thin": 0
+      },
+      "recent": {
+        "2021": "refund",
+        "2022": "refund",
+        "2023": "pay",
+        "2024": "pay",
+        "2025": "pay"
+      }
+    },
+    {
+      "id": "izmir",
+      "name": "İzmir",
+      "station": "TUM00017220",
+      "baseCoverage": 244,
+      "noNormal": true,
+      "history": {
+        "total": 60,
+        "first": 1966,
+        "contested": 0,
+        "thin": 60
+      },
+      "recent": {
+        "2021": "dispute (missing)",
+        "2022": "dispute (missing)",
+        "2023": "dispute (missing)",
+        "2024": "dispute (missing)",
+        "2025": "dispute (missing)"
+      }
+    },
+    {
+      "id": "konya",
+      "name": "Konya",
+      "station": "TUM00017244",
+      "baseCoverage": 462,
+      "noNormal": true,
+      "history": {
+        "total": 60,
+        "first": 1966,
+        "contested": 0,
+        "thin": 60
+      },
+      "recent": {
+        "2021": "dispute (missing)",
+        "2022": "dispute (missing)",
+        "2023": "dispute (missing)",
+        "2024": "dispute (missing)",
+        "2025": "dispute (missing)"
+      }
+    },
+    {
+      "id": "mersin",
+      "name": "Mersin",
+      "station": "TUM00017340",
+      "baseCoverage": 94,
+      "noNormal": true,
+      "history": {
+        "total": 60,
+        "first": 1966,
+        "contested": 0,
+        "thin": 60
+      },
+      "recent": {
+        "2021": "dispute (missing)",
+        "2022": "dispute (missing)",
+        "2023": "dispute (missing)",
+        "2024": "dispute (missing)",
+        "2025": "dispute (missing)"
+      }
+    },
+    {
+      "id": "adana",
+      "name": "Adana",
+      "station": "TUW00033308",
+      "baseCoverage": 0,
+      "noNormal": true,
+      "history": {
+        "total": 60,
+        "first": 1966,
+        "contested": 0,
+        "thin": 60
+      },
+      "recent": {
+        "2021": "dispute (missing)",
+        "2022": "dispute (missing)",
+        "2023": "dispute (missing)",
+        "2024": "dispute (missing)",
+        "2025": "dispute (missing)"
+      }
+    }
+  ],
+  "audited_source_verdicts_2021_2025": 100,
+  "input_sha256": {
+    "antalya": "bd09a15fa2d50137aadcad56b4621aae7a3c2aa6167d458c0f9dc10ef0a18718",
+    "mugla": "c70ef99d7616a02f9dc4152a6a16ca5e5c0ba6023bc54ef48d89e170be4c72dd",
+    "izmir": "00bddb7c64ff114d1066ceeb795a75f03f245c7a2bbb8705a08271a94c1fed50",
+    "finike": "63f5bb736046b25a4f1f6f9c527f2563153e10fe944577a04eed5dc04e6c7be7",
+    "isparta": "ea4d34d7219b188aff7fbed2a0806073122907fa2e4c5b3fdcb2a261c7b542ba",
+    "afyon": "474d734c226ee46b2ea05c523eb7b5e4add0f0e15d5abaa557bf6f1a9452510f",
+    "konya": "6da85eea2df4afee275600d08f63885444f52015ab11e2c197b077aca8544881",
+    "mersin": "f1caafdac4729b61802946744b1bc4382322e1ce57182c5a870184473022467f",
+    "adana": "feeb58d326efe19493bf9e5efcde8fc1ab75d00bc2fd346b6628dae18fa9d57f",
+    "iskenderun": "71a978b463fa763212175bee041ee3c3d028967d3795949d088e784d2bed6bff"
+  },
+  "scope": "Exploratory scan over summers already seen; shows where the choice of record changes the decision, not which record is right. 1966-2025 counts include bootstrapped base-period years from the precomputed tables."
+}

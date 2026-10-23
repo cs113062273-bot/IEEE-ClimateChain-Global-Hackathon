@@ -1,0 +1,37 @@
+{
+  "version": "carpark-departure-risk-v1",
+  "design_date": "2026-10-19",
+  "status_at_writing": "Written after exploratory development on the 2021-2023 data; before any simulation or model scoring on 2024 sessions.",
+  "question": "On a capped connection, does departure-risk-aware charging serve more workplace drivers fully than industry-default equal-share load balancing, and how much connection capacity does it need for the same service? What carbon/cost/peak change follows, and what does the opt-in carbon-flex mode trade?",
+  "data": {
+    "sessions": "Utrecht a.s.r. office parking lot, 4TU.ResearchData doi:10.4121/80ef3824-3f5d-4e45-8794-3b8791efbd13.v2, CC BY-NC-SA 4.0. Local Europe/Amsterdam times converted to UTC.",
+    "site": "Rails E and M (one shared transformer per README). Weekday days with >=3 site sessions.",
+    "grid": "Pinned NESO GB national carbon intensity and Open-Meteo ERA5 London radiation, 2025. Session day D is replayed on the GB grid day with the same weekday: 2023 +728 d, 2024 +364 d. Constructed scenario; driver behaviour is Dutch, grid is British.",
+    "facility": "Existing synthetic campus base load, illustrative UTC tariff, 20 kWp PV (calendar forecast for decisions, radiation-derived outcome). No stationary battery."
+  },
+  "splits": {
+    "model_fit": "2021-01-01 to 2022-12-31 sessions (all rails)",
+    "calibration": "2023-01-01 to 2023-06-30 sessions (all rails): per-level conformal shifts",
+    "selection": "2023-07-01 to 2023-12-31 site days: all policy/parameter choices",
+    "test": "2024-01-01 to 2024-10-02 site days: evaluated once with the frozen selection"
+  },
+  "information_boundary": "At each half-hour the controller sees only cars plugged in by the slot start (arrival, requested kWh, power limit, departure-risk quantiles from that driver's sessions on earlier dates) and whether each is still connected. True departure times and future arrivals are simulator-only. Carbon decisions use the past-only seven-day seasonal median.",
+  "request_model": "Requested energy = the session's real delivered energy, clipped to the as-soon-as-possible amount under whole-half-hour presence. Assumes the request is declared at plug-in.",
+  "candidates": {
+    "service_policies": ["edf", "llf"],
+    "departure_models": ["lightgbm (personal history)", "population (arrival-hour only)"],
+    "promise_levels": [0.05, 0.1, 0.2, 0.35, 0.5],
+    "carbon_flex_lp": {"risk_penalty": [0.3, 1.0, 3.0], "hard_promise_level": [null, 0.05]}
+  },
+  "selection_rules": {
+    "service_default": "Maximise mean fully-served share over caps 100,110,...,160 kW on the selection window; tie-break lower unserved energy.",
+    "carbon_flex": "Among LP variants with served share >= equal_share served share at 150 kW on the selection window, maximise mean carbon reduction versus equal_share at 150 kW. If none qualifies, take the highest-served variant and flag it.",
+    "fixed": "carbon_weight 0.7, peak_weight 0.2, peak_reference 60 kW, charger 11 kW, solar 20 kWp. Not tuned."
+  },
+  "baselines": ["uncontrolled (full power, ignores the cap; reference only)", "equal_share (dynamic load balancing)", "same service policy with population model (AI ablation)", "oracle (true departures; not deployable)"],
+  "test_metrics": ["fully-served share", "unserved kWh", "cap-exceeded slots", "modelled kgCO2 (location-based GB average)", "illustrative GBP", "peak import kW", "minimum cap for >=99% and >=98% served", "departure-quantile coverage drift", "solve time"],
+  "caps_kw": [80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200],
+  "lp_caps_kw": [100, 120, 150],
+  "uncertainty": "Paired day-level differences with moving-block bootstrap (blocks of 5 site days, 2000 resamples, seed 42). Exploratory; no multiple-comparison correction.",
+  "limits": "One site, one operator population, Dutch behaviour on GB grid days; all chargers working; 11 kW assumed unless the session shows more; requests known at plug-in; no stationary battery; modelled average-intensity exposure, not causal abatement; no hardware control."
+}

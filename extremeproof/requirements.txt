@@ -1,0 +1,5 @@
+# Runtime: provider services, hub, scripted demo. The engine and verifier need only the standard library.
+fastapi==0.118.0
+uvicorn==0.37.0
+web3==7.13.0
+pydantic==2.14.1

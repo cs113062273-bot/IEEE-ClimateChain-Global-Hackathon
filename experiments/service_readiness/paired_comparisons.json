@@ -1,0 +1,827 @@
+[
+  {
+    "case": "historical_protected",
+    "other": "protected_seasonal",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": 0.010585483208582222,
+    "block95": [
+      -0.12967920324545937,
+      0.15113519696247651
+    ]
+  },
+  {
+    "case": "historical_protected",
+    "other": "protected_seasonal",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -1.0655209789269822,
+    "block95": [
+      -1.7192494901590047,
+      -0.46080889052793067
+    ]
+  },
+  {
+    "case": "historical_protected",
+    "other": "protected_seasonal",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": 0.32550015067192933,
+    "block95": [
+      -0.2634648370095803,
+      0.9283262520257364
+    ]
+  },
+  {
+    "case": "historical_protected",
+    "other": "protected_latest",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.6753397878761428,
+    "block95": [
+      -0.9196199570797744,
+      -0.45461584752099615
+    ]
+  },
+  {
+    "case": "historical_protected",
+    "other": "protected_latest",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -1.6603426731450357,
+    "block95": [
+      -1.7450709224678147,
+      -1.5585736607705074
+    ]
+  },
+  {
+    "case": "historical_protected",
+    "other": "protected_latest",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": 1.6419710316118994,
+    "block95": [
+      1.2753909790157154,
+      1.9726914855202073
+    ]
+  },
+  {
+    "case": "historical_protected",
+    "other": "greedy_cost",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.38293976670790364,
+    "block95": [
+      -0.5937727841527949,
+      -0.1904957444792918
+    ]
+  },
+  {
+    "case": "historical_protected",
+    "other": "greedy_cost",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": 0.769611782576897,
+    "block95": [
+      0.6477399385889107,
+      0.9168447649612156
+    ]
+  },
+  {
+    "case": "historical_protected",
+    "other": "greedy_cost",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": -15.07042241101105,
+    "block95": [
+      -15.573314020939367,
+      -14.54274216466243
+    ]
+  },
+  {
+    "case": "historical_protected",
+    "other": "greedy_carbon",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": 0.2637546817174696,
+    "block95": [
+      -0.08021730002468576,
+      0.6042556603741287
+    ]
+  },
+  {
+    "case": "historical_protected",
+    "other": "greedy_carbon",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -3.81869018795842,
+    "block95": [
+      -4.089783750975448,
+      -3.545406021125312
+    ]
+  },
+  {
+    "case": "historical_protected",
+    "other": "greedy_carbon",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": -18.807495743060436,
+    "block95": [
+      -19.911042564990264,
+      -17.756366435284924
+    ]
+  },
+  {
+    "case": "historical_protected",
+    "other": "peak_heuristic",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.6498418829027468,
+    "block95": [
+      -0.97950882323185,
+      -0.3494398140395484
+    ]
+  },
+  {
+    "case": "historical_protected",
+    "other": "peak_heuristic",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -3.180084804292562,
+    "block95": [
+      -3.302516059879583,
+      -3.0318902614078636
+    ]
+  },
+  {
+    "case": "historical_protected",
+    "other": "peak_heuristic",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": -2.7068814274044946,
+    "block95": [
+      -2.9810099378882575,
+      -2.3974108530513645
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "protected_seasonal",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.06329383693077191,
+    "block95": [
+      -0.18464336800942507,
+      0.05480134526283819
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "protected_seasonal",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -0.6330293440675434,
+    "block95": [
+      -1.0470868526576054,
+      -0.24464168667832023
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "protected_seasonal",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": 0.28119971458236415,
+    "block95": [
+      -0.18486144505415086,
+      0.7406329409046117
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "protected_latest",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.4042519885472788,
+    "block95": [
+      -0.5709166974962536,
+      -0.2682146864942549
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "protected_latest",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": 0.16571670627357,
+    "block95": [
+      0.07145595079668433,
+      0.2748327227843944
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "protected_latest",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": 0.23424620221040704,
+    "block95": [
+      0.07078791932407588,
+      0.4106173133603227
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "greedy_cost",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.3296806548477718,
+    "block95": [
+      -0.5170622202021176,
+      -0.15979346632077873
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "greedy_cost",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": 0.6359337899656492,
+    "block95": [
+      0.5048156727648999,
+      0.8011167700863189
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "greedy_cost",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": -4.6439177322158525,
+    "block95": [
+      -4.89744383276203,
+      -4.343411980536279
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "greedy_carbon",
+    "metric": "emissions_kgco2",
+    "pairs": 41,
+    "mean_difference": 0.3161942169215765,
+    "block95": [
+      0.07131876546985182,
+      0.5694343558325167
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "greedy_carbon",
+    "metric": "cost_gbp",
+    "pairs": 41,
+    "mean_difference": -1.924254440075434,
+    "block95": [
+      -2.2681746973613994,
+      -1.5303541704020867
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "greedy_carbon",
+    "metric": "peak_grid_kw",
+    "pairs": 41,
+    "mean_difference": -4.153624015604131,
+    "block95": [
+      -4.4700973249827625,
+      -3.842353568054877
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "peak_heuristic",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.3643554798968297,
+    "block95": [
+      -0.5584628409903856,
+      -0.1996188733373886
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "peak_heuristic",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -1.340066210034361,
+    "block95": [
+      -1.4711843272351142,
+      -1.174883229913689
+    ]
+  },
+  {
+    "case": "shared-11kw",
+    "other": "peak_heuristic",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": -1.2633931420518347,
+    "block95": [
+      -1.7098266086964078,
+      -0.778619633918336
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "protected_seasonal",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.07705288062370522,
+    "block95": [
+      -0.26088354172137407,
+      0.11911809614096412
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "protected_seasonal",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -0.8597289391170316,
+    "block95": [
+      -1.3907798348490235,
+      -0.3545278316872685
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "protected_seasonal",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": 1.0228781138337668,
+    "block95": [
+      0.45674069790583616,
+      1.5372470238426728
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "protected_latest",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.5628323792455494,
+    "block95": [
+      -0.8547017318395036,
+      -0.3202102516519281
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "protected_latest",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -1.1709680498819506,
+    "block95": [
+      -1.5884569214660538,
+      -0.8112395469480561
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "protected_latest",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": 2.427059618440163,
+    "block95": [
+      2.017428534237689,
+      2.8965222732670264
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "greedy_cost",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.5054450723664324,
+    "block95": [
+      -0.6364248975090088,
+      -0.3741064383189086
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "greedy_cost",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": 1.2763259277439256,
+    "block95": [
+      1.2080919550111744,
+      1.3547135778000325
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "greedy_cost",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": -7.911744772020951,
+    "block95": [
+      -8.120997462500505,
+      -7.650263898051563
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "greedy_carbon",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.04201986630662515,
+    "block95": [
+      -0.509059760108047,
+      0.4507917563130682
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "greedy_carbon",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -5.8888267546419515,
+    "block95": [
+      -6.597730045163914,
+      -5.185730059144918
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "greedy_carbon",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": -15.904597231037346,
+    "block95": [
+      -16.63072811308768,
+      -15.100307262094264
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "peak_heuristic",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -1.3872411494781245,
+    "block95": [
+      -1.8119682461093427,
+      -1.011855503485994
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "peak_heuristic",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -5.087946430078468,
+    "block95": [
+      -5.161372506975165,
+      -5.004264958644878
+    ]
+  },
+  {
+    "case": "four-vehicle-shifts",
+    "other": "peak_heuristic",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": 0.07776342470036078,
+    "block95": [
+      -0.13269202633013033,
+      0.3423475668727831
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "protected_seasonal",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.027462511412319274,
+    "block95": [
+      -0.08984582567619269,
+      0.037458784979545356
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "protected_seasonal",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -0.18524590163934992,
+    "block95": [
+      -0.4885655737705058,
+      0.11723360655737021
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "protected_seasonal",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": 0.19891523149571363,
+    "block95": [
+      -0.07058032786884792,
+      0.510855737704917
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "protected_latest",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.3165075933795373,
+    "block95": [
+      -0.47486085698451774,
+      -0.15804959016394507
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "protected_latest",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": 0.8385245901639191,
+    "block95": [
+      0.7481352459016202,
+      0.9286885245901488
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "protected_latest",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": -0.6511831291600141,
+    "block95": [
+      -0.8362206289232076,
+      -0.4743765717829651
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "greedy_cost",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.5121428392811721,
+    "block95": [
+      -0.7603916892605616,
+      -0.2660642947950057
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "greedy_cost",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": 0.8385245901639297,
+    "block95": [
+      0.7481352459016314,
+      0.928688524590159
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "greedy_cost",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": -14.628101161946907,
+    "block95": [
+      -14.814392075521186,
+      -14.452958266753587
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "greedy_carbon",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": 0.08045142301390987,
+    "block95": [
+      -0.023989651639347645,
+      0.17930119160001778
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "greedy_carbon",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -0.25245901639344653,
+    "block95": [
+      -0.3426229508196745,
+      -0.17131147540983926
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "greedy_carbon",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": -11.038986407848547,
+    "block95": [
+      -11.4149533487208,
+      -10.695789686537069
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "peak_heuristic",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.31650759337953055,
+    "block95": [
+      -0.47486085698451086,
+      -0.15804959016393874
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "peak_heuristic",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": 0.8385245901639322,
+    "block95": [
+      0.7481352459016342,
+      0.9286885245901617
+    ]
+  },
+  {
+    "case": "no-storage",
+    "other": "peak_heuristic",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": -0.6511831291600214,
+    "block95": [
+      -0.8362206289232094,
+      -0.47437657178297227
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "protected_seasonal",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": 0.011181722684272656,
+    "block95": [
+      -0.12892754110514437,
+      0.15282107139512724
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "protected_seasonal",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -1.0718124021078563,
+    "block95": [
+      -1.724590737731767,
+      -0.466952787877914
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "protected_seasonal",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": 0.49442522331756766,
+    "block95": [
+      -0.11202719817535399,
+      1.0885846885061146
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "protected_latest",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.700027270802413,
+    "block95": [
+      -0.9392962626828242,
+      -0.4862853641533094
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "protected_latest",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -1.667439655193542,
+    "block95": [
+      -1.7477538042508896,
+      -1.571194919222726
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "protected_latest",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": 2.4230498092192625,
+    "block95": [
+      2.147644578795753,
+      2.772900979112707
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "greedy_cost",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.38347706620808825,
+    "block95": [
+      -0.5928415414176017,
+      -0.18851864399494406
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "greedy_cost",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": 0.7651491152982964,
+    "block95": [
+      0.6470032751693999,
+      0.9087982255400832
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "greedy_cost",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": -15.176950190779745,
+    "block95": [
+      -15.452355421204148,
+      -14.827099020887147
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "greedy_carbon",
+    "metric": "emissions_kgco2",
+    "pairs": 120,
+    "mean_difference": 0.32515260029367393,
+    "block95": [
+      -0.031413698139918504,
+      0.6720709016700616
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "greedy_carbon",
+    "metric": "cost_gbp",
+    "pairs": 120,
+    "mean_difference": -3.6980827961071023,
+    "block95": [
+      -3.9535496521762092,
+      -3.4552394617387274
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "greedy_carbon",
+    "metric": "peak_grid_kw",
+    "pairs": 120,
+    "mean_difference": -15.16604718245672,
+    "block95": [
+      -15.447736755642103,
+      -14.824300522842329
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "peak_heuristic",
+    "metric": "emissions_kgco2",
+    "pairs": 122,
+    "mean_difference": -0.6568543310916003,
+    "block95": [
+      -0.9885513316751641,
+      -0.35232091206376676
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "peak_heuristic",
+    "metric": "cost_gbp",
+    "pairs": 122,
+    "mean_difference": -3.1868508847017236,
+    "block95": [
+      -3.3049967248306196,
+      -3.0432017744599364
+    ]
+  },
+  {
+    "case": "no-solar",
+    "other": "peak_heuristic",
+    "metric": "peak_grid_kw",
+    "pairs": 122,
+    "mean_difference": -2.77695019077975,
+    "block95": [
+      -3.052355421204146,
+      -2.427099020887146
+    ]
+  }
+]

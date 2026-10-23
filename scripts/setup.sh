@@ -6,6 +6,8 @@ python3.11 -m venv .venv
 npm --prefix frontend ci --no-audit --no-fund
 npm --prefix contracts ci --no-audit --no-fund
 npm --prefix contracts run build
+# Real workplace sessions (4TU.ResearchData, CC BY-NC-SA 4.0, no account). Not redistributed in this repository.
+.venv/bin/python scripts/fetch_workplace_sessions.py
 if [ "${1:-}" = "--download-data" ]; then
   .venv/bin/python scripts/discover_sources.py
   .venv/bin/python scripts/fetch_neso.py

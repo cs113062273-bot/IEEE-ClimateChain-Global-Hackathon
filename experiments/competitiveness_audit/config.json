@@ -1,0 +1,108 @@
+{
+  "base_scenario": {
+    "site_id": "london-campus-hypothetical-v1",
+    "site_id_hash": "0xa08f99dedbd7e56bdf7cd1c5058eb1a6358adb2d53d4650d9d7ad5f4c22f379e",
+    "location": "London, GB (hypothetical campus; national GB carbon intensity)",
+    "solar_kwp": 20.0,
+    "battery_capacity_kwh": 40.0,
+    "soc_initial_fraction": 0.5,
+    "soc_min_fraction": 0.1,
+    "soc_max_fraction": 0.9,
+    "charge_kw": 10.0,
+    "discharge_kw": 10.0,
+    "eta_charge": 0.95,
+    "eta_discharge": 0.95,
+    "max_grid_import_kw": 60.0,
+    "peak_weight": 0.2,
+    "peak_cap_kw": null,
+    "peak_reference_kw": 60.0,
+    "peak_risk_mode": "zero-pv-guard",
+    "charger_station_kw": 22.0,
+    "max_batch_concurrency": 1,
+    "ev_jobs": [
+      {
+        "id": "fleet-a",
+        "energy_kwh": 24.0,
+        "arrival_slot": 14,
+        "deadline_slot": 36,
+        "max_kw": 11.0,
+        "interruptible": true
+      },
+      {
+        "id": "fleet-b",
+        "energy_kwh": 18.0,
+        "arrival_slot": 16,
+        "deadline_slot": 40,
+        "max_kw": 11.0,
+        "interruptible": true
+      }
+    ],
+    "batch_jobs": [
+      {
+        "id": "compute-lab",
+        "energy_kwh": 20.0,
+        "duration_slots": 4,
+        "earliest_start_slot": 12,
+        "latest_end_slot": 42,
+        "contiguous": true
+      }
+    ]
+  },
+  "days": 122,
+  "policies": [
+    "immediate",
+    "greedy_carbon",
+    "greedy_cost",
+    "peak_heuristic",
+    "gridproof_lightgbm",
+    "gridproof_seasonal",
+    "gridproof_oracle"
+  ],
+  "cases": [
+    "nominal",
+    "solar_20pct",
+    "unforecast_carbon_spike",
+    "demand_surge",
+    "early_departure_known",
+    "short_window",
+    "early_departure_unannounced",
+    "impossible_window"
+  ],
+  "source_hashes": {
+    "neso-national-ci-2025": "0c07bc094561e19c61826b693395b92e8334a34b613e5525ca016ae6c91fc815",
+    "openmeteo-london-weather-2025": "6098ffc0ecac7610670f34efcd4322717b04a9fdaba5a666ed265ce066506edd"
+  },
+  "execution_hashes": {
+    "backend/app/domain/solver.py": "91daa87c180b647ff15468decd182ab5e43e3e76f2ee8182573aa3eeb42ce2f1",
+    "backend/app/domain/schemas.py": "ef41423ca960e9d29fe114aaaeb8717300d507446df274c51e8b4fc314d985a1",
+    "backend/app/ml/forecast.py": "65ae99bc146cee7daeeee833dbbaae207b9afe00b73962fcb8292faf32884eda",
+    "backend/app/services/data.py": "a6d76ca55fa2560c525227238f02e1dd18d9dda62813bd737faa420888a259ea",
+    "scripts/audit_scheduler_competitiveness.py": "fc8b5b0cf4029c3933f7df982abba48be62b2169652dd6fb24d86da646a5421a",
+    "experiments/models_portable/carbon_model.json": "039425d1c48981a2a377b7eec4d33a72da809cda9cae1edf5dce21c62e2d5f49",
+    "experiments/competition_v2/daily_results.csv": "12777ff40f77a3b1a4e4c94cd201b584b60320733ef4f2777c15534e25be29f2",
+    "data/sample/upstream/neso_ci_2025.json": "0c07bc094561e19c61826b693395b92e8334a34b613e5525ca016ae6c91fc815",
+    "data/sample/upstream/openmeteo_london_2025.json": "6098ffc0ecac7610670f34efcd4322717b04a9fdaba5a666ed265ce066506edd"
+  },
+  "training": "unchanged Jan8-Jun30",
+  "validation": "unchanged Jul1-Aug31",
+  "test": "all Sep1-Dec31 2025",
+  "selection": "No retraining/test-best deployment selection; exploratory follow-up after prior test inspection",
+  "heuristics": "same assets, EDF and battery greedy pair transfers; conservative import guard",
+  "guard_comparison": {
+    "cases": [
+      "nominal",
+      "battery_power_20kw",
+      "fixed_load_150pct",
+      "fixed_load_double"
+    ],
+    "policy": "original hybrid, carbon_weight .7, peak_weight 0",
+    "change": "optional robust_import_cap=False versus True; unchanged physical 60-kW cap"
+  },
+  "environment": {
+    "python": "3.11.14 (main, Oct 14 2025, 21:21:22) [MSC v.1944 64 bit (AMD64)]",
+    "scipy": "1.16.3",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "platform": "Windows-10-10.0.26200-SP0"
+  }
+}

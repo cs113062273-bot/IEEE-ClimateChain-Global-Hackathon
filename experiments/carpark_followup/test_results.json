@@ -1,0 +1,4394 @@
+{
+  "days": 185,
+  "selection": {
+    "lightgbm": {
+      "model": "lightgbm",
+      "level": 0.35,
+      "selection_mean_served_pct": 93.29726755914176,
+      "selection_mean_unserved_pct": 1.9520823629113484
+    },
+    "personal_0": {
+      "model": "personal_0",
+      "level": 0.2,
+      "selection_mean_served_pct": 93.13222079589217,
+      "selection_mean_unserved_pct": 1.9124368271637426
+    },
+    "personal_k": {
+      "model": "personal_8",
+      "level": 0.2,
+      "selection_mean_served_pct": 93.13680542820465,
+      "selection_mean_unserved_pct": 1.8798886792495941
+    },
+    "population": {
+      "model": "population",
+      "level": 0.35,
+      "selection_mean_served_pct": 91.39006051714652,
+      "selection_mean_unserved_pct": 2.770956470756411
+    }
+  },
+  "capacity_needed_kw": {
+    "decision_time": {
+      "edf_lightgbm": {
+        ">=90%": 130,
+        ">=95%": null,
+        ">=98%": null
+      },
+      "edf_lightgbm_original_choice": {
+        ">=90%": 130,
+        ">=95%": null,
+        ">=98%": null
+      },
+      "edf_oracle_departures": {
+        ">=90%": 120,
+        ">=95%": null,
+        ">=98%": null
+      },
+      "edf_personal_quantile": {
+        ">=90%": 130,
+        ">=95%": null,
+        ">=98%": null
+      },
+      "edf_population": {
+        ">=90%": 150,
+        ">=95%": null,
+        ">=98%": null
+      },
+      "edf_shrinkage": {
+        ">=90%": 130,
+        ">=95%": null,
+        ">=98%": null
+      },
+      "equal_share": {
+        ">=90%": 150,
+        ">=95%": null,
+        ">=98%": null
+      }
+    },
+    "original": {
+      "edf_lightgbm": {
+        ">=90%": 110,
+        ">=95%": 130,
+        ">=98%": 150
+      },
+      "edf_lightgbm_original_choice": {
+        ">=90%": 110,
+        ">=95%": 130,
+        ">=98%": 150
+      },
+      "edf_oracle_departures": {
+        ">=90%": 100,
+        ">=95%": 110,
+        ">=98%": 120
+      },
+      "edf_personal_quantile": {
+        ">=90%": 110,
+        ">=95%": 130,
+        ">=98%": 150
+      },
+      "edf_population": {
+        ">=90%": 130,
+        ">=95%": 150,
+        ">=98%": 190
+      },
+      "edf_shrinkage": {
+        ">=90%": 110,
+        ">=95%": 130,
+        ">=98%": 150
+      },
+      "equal_share": {
+        ">=90%": 130,
+        ">=95%": 160,
+        ">=98%": null
+      }
+    }
+  },
+  "paired": [
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.335135135135135,
+      "block_ci95": [
+        0.9945945945945946,
+        1.681081081081081
+      ],
+      "days_a_better": 94,
+      "days_a_worse": 25
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -17.56760212171462,
+      "block_ci95": [
+        -21.60111294648338,
+        -13.346707856424386
+      ],
+      "days_a_better": 132,
+      "days_a_worse": 19
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.4214442598807957,
+      "block_ci95": [
+        1.767244139511411,
+        3.1331495019123947
+      ],
+      "days_a_better": 24,
+      "days_a_worse": 143
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.4810810810810811,
+      "block_ci95": [
+        0.15675675675675677,
+        0.7837837837837838
+      ],
+      "days_a_better": 77,
+      "days_a_worse": 39
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -15.011510229822731,
+      "block_ci95": [
+        -18.375456645869107,
+        -11.56418735178754
+      ],
+      "days_a_better": 126,
+      "days_a_worse": 26
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.062633108529444,
+      "block_ci95": [
+        1.4778021108274315,
+        2.693314283872819
+      ],
+      "days_a_better": 33,
+      "days_a_worse": 134
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.8594594594594595,
+      "block_ci95": [
+        0.5459459459459459,
+        1.172972972972973
+      ],
+      "days_a_better": 90,
+      "days_a_worse": 30
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -14.781796716309216,
+      "block_ci95": [
+        -17.980204742824878,
+        -11.402357971258095
+      ],
+      "days_a_better": 127,
+      "days_a_worse": 25
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.9791597842051205,
+      "block_ci95": [
+        1.4563988584010146,
+        2.5698772569282315
+      ],
+      "days_a_better": 33,
+      "days_a_worse": 134
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "served",
+      "mean_diff_per_day": 0.8540540540540541,
+      "block_ci95": [
+        0.5025675675675676,
+        1.2
+      ],
+      "days_a_better": 74,
+      "days_a_worse": 35
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -2.556091891891891,
+      "block_ci95": [
+        -4.371750810810809,
+        -0.6051501351351327
+      ],
+      "days_a_better": 72,
+      "days_a_worse": 60
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.3588111513513518,
+      "block_ci95": [
+        0.10076813054054216,
+        0.6165163351351342
+      ],
+      "days_a_better": 69,
+      "days_a_worse": 90
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": 0.4756756756756757,
+      "block_ci95": [
+        0.1837837837837838,
+        0.7783783783783784
+      ],
+      "days_a_better": 74,
+      "days_a_worse": 40
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -2.7858054054054042,
+      "block_ci95": [
+        -4.618648648648645,
+        -0.8718848648648655
+      ],
+      "days_a_better": 78,
+      "days_a_worse": 56
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.4422844756756751,
+      "block_ci95": [
+        0.18305143108108088,
+        0.7119925343243237
+      ],
+      "days_a_better": 67,
+      "days_a_worse": 92
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 1.3567567567567567,
+      "block_ci95": [
+        0.9458108108108109,
+        1.8054054054054054
+      ],
+      "days_a_better": 100,
+      "days_a_worse": 19
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -16.76914054054054,
+      "block_ci95": [
+        -19.96063608108108,
+        -13.342817702702707
+      ],
+      "days_a_better": 119,
+      "days_a_worse": 25
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.168355043243244,
+      "block_ci95": [
+        1.6079334632432434,
+        2.7753487370270276
+      ],
+      "days_a_better": 38,
+      "days_a_worse": 123
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 2.210810810810811,
+      "block_ci95": [
+        1.654054054054054,
+        2.7893243243243235
+      ],
+      "days_a_better": 113,
+      "days_a_worse": 12
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -19.32523243243243,
+      "block_ci95": [
+        -22.974534324324328,
+        -15.417849594594596
+      ],
+      "days_a_better": 124,
+      "days_a_worse": 19
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.527166194594596,
+      "block_ci95": [
+        1.8655837756756788,
+        3.1875383149999994
+      ],
+      "days_a_better": 32,
+      "days_a_worse": 128
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "carbon_flex",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": -0.44324324324324327,
+      "block_ci95": [
+        -0.8108108108108109,
+        -0.0972972972972973
+      ],
+      "days_a_better": 50,
+      "days_a_worse": 72
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "carbon_flex",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -13.793975026114662,
+      "block_ci95": [
+        -17.600023569300895,
+        -9.92451018092132
+      ],
+      "days_a_better": 112,
+      "days_a_worse": 54
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "carbon_flex",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.2059699586072314,
+      "block_ci95": [
+        0.4758771370663447,
+        1.9906215319338825
+      ],
+      "days_a_better": 97,
+      "days_a_worse": 88
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.7675675675675676,
+      "block_ci95": [
+        0.43243243243243246,
+        1.0864864864864865
+      ],
+      "days_a_better": 86,
+      "days_a_worse": 31
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -19.151921040633543,
+      "block_ci95": [
+        -22.725092641899764,
+        -15.30400813807544
+      ],
+      "days_a_better": 135,
+      "days_a_worse": 16
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.5283806977186325,
+      "block_ci95": [
+        1.8956497198818738,
+        3.177986683484093
+      ],
+      "days_a_better": 21,
+      "days_a_worse": 146
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": -0.0918918918918919,
+      "block_ci95": [
+        -0.3891891891891892,
+        0.21081081081081082
+      ],
+      "days_a_better": 54,
+      "days_a_worse": 47
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -4.370124324324325,
+      "block_ci95": [
+        -6.101988378378379,
+        -2.4840043243243297
+      ],
+      "days_a_better": 87,
+      "days_a_worse": 43
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.5492209135135121,
+      "block_ci95": [
+        0.27058312135134927,
+        0.8189101420270238
+      ],
+      "days_a_better": 57,
+      "days_a_worse": 101
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 1.7351351351351352,
+      "block_ci95": [
+        1.1945945945945946,
+        2.324324324324324
+      ],
+      "days_a_better": 105,
+      "days_a_worse": 20
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -16.539427027027028,
+      "block_ci95": [
+        -19.765020000000003,
+        -12.987198918918924
+      ],
+      "days_a_better": 117,
+      "days_a_worse": 27
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.084881718918921,
+      "block_ci95": [
+        1.5434304227027045,
+        2.6624268387837855
+      ],
+      "days_a_better": 44,
+      "days_a_worse": 119
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 1.6432432432432433,
+      "block_ci95": [
+        1.2108108108108109,
+        2.097297297297297
+      ],
+      "days_a_better": 111,
+      "days_a_worse": 16
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -20.90955135135135,
+      "block_ci95": [
+        -24.455435675675677,
+        -16.954344459459463
+      ],
+      "days_a_better": 125,
+      "days_a_worse": 18
+    },
+    {
+      "regime": "decision_time",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.6341026324324326,
+      "block_ci95": [
+        1.9893062606756753,
+        3.2691294810810803
+      ],
+      "days_a_better": 34,
+      "days_a_worse": 127
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.8432432432432433,
+      "block_ci95": [
+        0.5351351351351351,
+        1.1624324324324309
+      ],
+      "days_a_better": 74,
+      "days_a_worse": 25
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -14.141386815987387,
+      "block_ci95": [
+        -17.421947541022035,
+        -10.68864379348135
+      ],
+      "days_a_better": 115,
+      "days_a_worse": 16
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.8954082661483243,
+      "block_ci95": [
+        1.3473752797373744,
+        2.4410996998142145
+      ],
+      "days_a_better": 19,
+      "days_a_worse": 128
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.6918918918918919,
+      "block_ci95": [
+        0.4486486486486487,
+        0.9567567567567568
+      ],
+      "days_a_better": 72,
+      "days_a_worse": 19
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -13.048338167338738,
+      "block_ci95": [
+        -16.1679400910292,
+        -9.970405951158645
+      ],
+      "days_a_better": 113,
+      "days_a_worse": 17
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.7828786877699485,
+      "block_ci95": [
+        1.2439315155077189,
+        2.309217862054019
+      ],
+      "days_a_better": 24,
+      "days_a_worse": 123
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.7567567567567568,
+      "block_ci95": [
+        0.5025675675675676,
+        1.027027027027027
+      ],
+      "days_a_better": 73,
+      "days_a_worse": 17
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -12.6973003295009,
+      "block_ci95": [
+        -15.83309221197369,
+        -9.538576933425983
+      ],
+      "days_a_better": 110,
+      "days_a_worse": 20
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.7373510715537317,
+      "block_ci95": [
+        1.2207598939674686,
+        2.2586177293686864
+      ],
+      "days_a_better": 25,
+      "days_a_worse": 122
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "served",
+      "mean_diff_per_day": 0.15135135135135136,
+      "block_ci95": [
+        -0.010810810810810811,
+        0.31891891891891894
+      ],
+      "days_a_better": 42,
+      "days_a_worse": 28
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -1.0930486486486486,
+      "block_ci95": [
+        -2.6639728378378376,
+        0.6186918918918911
+      ],
+      "days_a_better": 54,
+      "days_a_worse": 42
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.11252957837837586,
+      "block_ci95": [
+        -0.09087580797297659,
+        0.29502668554053896
+      ],
+      "days_a_better": 59,
+      "days_a_worse": 85
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": 0.08648648648648649,
+      "block_ci95": [
+        -0.08108108108108109,
+        0.24864864864864866
+      ],
+      "days_a_better": 37,
+      "days_a_worse": 30
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -1.444086486486486,
+      "block_ci95": [
+        -3.035164459459459,
+        0.28429837837837896
+      ],
+      "days_a_better": 52,
+      "days_a_worse": 43
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.15805719459459286,
+      "block_ci95": [
+        -0.07195074837837993,
+        0.3626933345945937
+      ],
+      "days_a_better": 63,
+      "days_a_worse": 82
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 1.1567567567567567,
+      "block_ci95": [
+        0.8162162162162162,
+        1.4972972972972973
+      ],
+      "days_a_better": 84,
+      "days_a_worse": 12
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -14.893924324324322,
+      "block_ci95": [
+        -18.144162972972975,
+        -11.588172432432433
+      ],
+      "days_a_better": 107,
+      "days_a_worse": 14
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.8476990648648655,
+      "block_ci95": [
+        1.354744938513513,
+        2.3691872812162185
+      ],
+      "days_a_better": 35,
+      "days_a_worse": 110
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 1.308108108108108,
+      "block_ci95": [
+        0.9459459459459459,
+        1.664864864864865
+      ],
+      "days_a_better": 93,
+      "days_a_worse": 13
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -15.986972972972971,
+      "block_ci95": [
+        -19.59870135135135,
+        -12.326099864864865
+      ],
+      "days_a_better": 104,
+      "days_a_worse": 18
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.960228643243241,
+      "block_ci95": [
+        1.419785178783782,
+        2.5165740949999997
+      ],
+      "days_a_better": 34,
+      "days_a_worse": 110
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "carbon_flex",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": -0.16756756756756758,
+      "block_ci95": [
+        -0.42702702702702705,
+        0.10810810810810811
+      ],
+      "days_a_better": 48,
+      "days_a_worse": 69
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "carbon_flex",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -10.026385188641836,
+      "block_ci95": [
+        -13.583729086601455,
+        -6.451345792295738
+      ],
+      "days_a_better": 97,
+      "days_a_worse": 56
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "carbon_flex",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.3869505199239975,
+      "block_ci95": [
+        -0.2570974657608282,
+        1.0609813995153135
+      ],
+      "days_a_better": 123,
+      "days_a_worse": 62
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.8810810810810811,
+      "block_ci95": [
+        0.6054054054054054,
+        1.172972972972973
+      ],
+      "days_a_better": 80,
+      "days_a_worse": 17
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -14.316711140311707,
+      "block_ci95": [
+        -17.78225750675966,
+        -10.905502203894065
+      ],
+      "days_a_better": 116,
+      "days_a_worse": 14
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.9099748499321092,
+      "block_ci95": [
+        1.3619777701659075,
+        2.4562113069577305
+      ],
+      "days_a_better": 19,
+      "days_a_worse": 128
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": 0.12432432432432433,
+      "block_ci95": [
+        -0.005405405405405406,
+        0.25405405405405407
+      ],
+      "days_a_better": 33,
+      "days_a_worse": 25
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -1.6194108108108096,
+      "block_ci95": [
+        -3.0368699999999986,
+        -0.1777794594594601
+      ],
+      "days_a_better": 57,
+      "days_a_worse": 33
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.17262377837837786,
+      "block_ci95": [
+        -0.017910407027026804,
+        0.3540022785135128
+      ],
+      "days_a_better": 61,
+      "days_a_worse": 83
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 1.2216216216216216,
+      "block_ci95": [
+        0.8702702702702703,
+        1.5568918918918913
+      ],
+      "days_a_better": 88,
+      "days_a_worse": 16
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -14.542886486486488,
+      "block_ci95": [
+        -17.977310810810813,
+        -11.049265405405407
+      ],
+      "days_a_better": 104,
+      "days_a_worse": 17
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.8021714486486484,
+      "block_ci95": [
+        1.296126628378377,
+        2.342348968783784
+      ],
+      "days_a_better": 39,
+      "days_a_worse": 106
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 1.345945945945946,
+      "block_ci95": [
+        1.0,
+        1.6864864864864866
+      ],
+      "days_a_better": 95,
+      "days_a_worse": 11
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -16.162297297297297,
+      "block_ci95": [
+        -19.77805635135135,
+        -12.425591351351354
+      ],
+      "days_a_better": 106,
+      "days_a_worse": 16
+    },
+    {
+      "regime": "decision_time",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.9747952270270264,
+      "block_ci95": [
+        1.431604081891891,
+        2.5360931891891902
+      ],
+      "days_a_better": 29,
+      "days_a_worse": 115
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.2972972972972973,
+      "block_ci95": [
+        0.16202702702702704,
+        0.4486486486486487
+      ],
+      "days_a_better": 45,
+      "days_a_worse": 15
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -6.852880655651675,
+      "block_ci95": [
+        -8.987008537308109,
+        -4.777225578352451
+      ],
+      "days_a_better": 100,
+      "days_a_worse": 13
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.8603231882883349,
+      "block_ci95": [
+        0.5871403643853792,
+        1.1519170922573776
+      ],
+      "days_a_better": 23,
+      "days_a_worse": 110
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.3621621621621622,
+      "block_ci95": [
+        0.2106756756756757,
+        0.5243243243243243
+      ],
+      "days_a_better": 48,
+      "days_a_worse": 14
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -7.071977952948973,
+      "block_ci95": [
+        -9.330821516608479,
+        -4.874420566850038
+      ],
+      "days_a_better": 98,
+      "days_a_worse": 15
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.8850942909910398,
+      "block_ci95": [
+        0.5884266639092615,
+        1.2001938848419145
+      ],
+      "days_a_better": 26,
+      "days_a_worse": 107
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.31891891891891894,
+      "block_ci95": [
+        0.16756756756756758,
+        0.4756756756756757
+      ],
+      "days_a_better": 46,
+      "days_a_worse": 18
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -7.0504698448408645,
+      "block_ci95": [
+        -9.23917107273822,
+        -4.8467533344300024
+      ],
+      "days_a_better": 99,
+      "days_a_worse": 14
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.8794849936937422,
+      "block_ci95": [
+        0.5851113594957661,
+        1.181150489019749
+      ],
+      "days_a_better": 25,
+      "days_a_worse": 108
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "served",
+      "mean_diff_per_day": -0.06486486486486487,
+      "block_ci95": [
+        -0.15675675675675677,
+        0.021621621621621623
+      ],
+      "days_a_better": 13,
+      "days_a_worse": 20
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": 0.21909729729729707,
+      "block_ci95": [
+        -0.6882544594594598,
+        1.2253378378378357
+      ],
+      "days_a_better": 28,
+      "days_a_worse": 27
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": -0.024771102702704842,
+      "block_ci95": [
+        -0.11797761716216429,
+        0.0657628891891878
+      ],
+      "days_a_better": 58,
+      "days_a_worse": 70
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": -0.021621621621621623,
+      "block_ci95": [
+        -0.11351351351351352,
+        0.07027027027027027
+      ],
+      "days_a_better": 15,
+      "days_a_worse": 18
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": 0.19758918918918933,
+      "block_ci95": [
+        -0.5696451351351349,
+        1.1043891891891888
+      ],
+      "days_a_better": 30,
+      "days_a_worse": 28
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": -0.019161805405407274,
+      "block_ci95": [
+        -0.10308114067567811,
+        0.05985002459459276
+      ],
+      "days_a_better": 60,
+      "days_a_worse": 66
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.5405405405405406,
+      "block_ci95": [
+        0.3675675675675676,
+        0.7135135135135136
+      ],
+      "days_a_better": 55,
+      "days_a_worse": 9
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -8.407102702702701,
+      "block_ci95": [
+        -10.921504594594596,
+        -6.030217027027027
+      ],
+      "days_a_better": 73,
+      "days_a_worse": 8
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.8739774810810826,
+      "block_ci95": [
+        0.5792017733783795,
+        1.1749153821621636
+      ],
+      "days_a_better": 44,
+      "days_a_worse": 83
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.4756756756756757,
+      "block_ci95": [
+        0.3187837837837838,
+        0.6325675675675668
+      ],
+      "days_a_better": 55,
+      "days_a_worse": 9
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -8.188005405405406,
+      "block_ci95": [
+        -10.712339459459459,
+        -5.726089864864867
+      ],
+      "days_a_better": 75,
+      "days_a_worse": 7
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.8492063783783778,
+      "block_ci95": [
+        0.5595732736486474,
+        1.1447024832432433
+      ],
+      "days_a_better": 46,
+      "days_a_worse": 84
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "carbon_flex",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": -0.32432432432432434,
+      "block_ci95": [
+        -0.4540540540540541,
+        -0.18905405405405482
+      ],
+      "days_a_better": 23,
+      "days_a_worse": 70
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "carbon_flex",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -2.2346581577065723,
+      "block_ci95": [
+        -4.3679002977215875,
+        -0.1268333676612778
+      ],
+      "days_a_better": 67,
+      "days_a_worse": 78
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "carbon_flex",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": -1.0213745823279572,
+      "block_ci95": [
+        -1.3921516915288406,
+        -0.6137782300434376
+      ],
+      "days_a_better": 150,
+      "days_a_worse": 35
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.3567567567567568,
+      "block_ci95": [
+        0.1945945945945946,
+        0.518918918918919
+      ],
+      "days_a_better": 51,
+      "days_a_worse": 18
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -7.106448223219244,
+      "block_ci95": [
+        -9.19069446165437,
+        -5.054983112603539
+      ],
+      "days_a_better": 101,
+      "days_a_worse": 12
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.9034572315315808,
+      "block_ci95": [
+        0.6084387643768491,
+        1.2126809376520735
+      ],
+      "days_a_better": 21,
+      "days_a_worse": 112
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": 0.03783783783783784,
+      "block_ci95": [
+        -0.04864864864864865,
+        0.11905405405405332
+      ],
+      "days_a_better": 18,
+      "days_a_worse": 14
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -0.05597837837837848,
+      "block_ci95": [
+        -1.0601605405405399,
+        1.0913874324324315
+      ],
+      "days_a_better": 31,
+      "days_a_worse": 25
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.023972237837838438,
+      "block_ci95": [
+        -0.09182619770270221,
+        0.131408132972974
+      ],
+      "days_a_better": 49,
+      "days_a_worse": 76
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.4972972972972973,
+      "block_ci95": [
+        0.32432432432432434,
+        0.6756756756756757
+      ],
+      "days_a_better": 54,
+      "days_a_worse": 12
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -8.385594594594595,
+      "block_ci95": [
+        -10.843970540540543,
+        -6.001592432432433
+      ],
+      "days_a_better": 73,
+      "days_a_worse": 9
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.8683681837837851,
+      "block_ci95": [
+        0.5725018512162189,
+        1.1634199439189217
+      ],
+      "days_a_better": 45,
+      "days_a_worse": 84
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.5351351351351351,
+      "block_ci95": [
+        0.3567567567567568,
+        0.7189189189189189
+      ],
+      "days_a_better": 56,
+      "days_a_worse": 9
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -8.441572972972972,
+      "block_ci95": [
+        -11.056444324324325,
+        -5.981337837837839
+      ],
+      "days_a_better": 73,
+      "days_a_worse": 11
+    },
+    {
+      "regime": "decision_time",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.8923404216216234,
+      "block_ci95": [
+        0.5890428056756777,
+        1.2051520777027054
+      ],
+      "days_a_better": 42,
+      "days_a_worse": 82
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 2.5135135135135136,
+      "block_ci95": [
+        2.0917567567567565,
+        2.9082432432432426
+      ],
+      "days_a_better": 132,
+      "days_a_worse": 8
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -19.07305176310275,
+      "block_ci95": [
+        -23.14308890855714,
+        -14.745453301731875
+      ],
+      "days_a_better": 135,
+      "days_a_worse": 16
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.5729450576396595,
+      "block_ci95": [
+        1.8941796709842553,
+        3.29692200818236
+      ],
+      "days_a_better": 22,
+      "days_a_worse": 145
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.4594594594594594,
+      "block_ci95": [
+        1.107972972972973,
+        1.7891891891891891
+      ],
+      "days_a_better": 115,
+      "days_a_worse": 20
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -16.374693558856574,
+      "block_ci95": [
+        -19.825023099265152,
+        -12.712761738457518
+      ],
+      "days_a_better": 128,
+      "days_a_worse": 24
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.222498880596681,
+      "block_ci95": [
+        1.6217894221420912,
+        2.8738376096549105
+      ],
+      "days_a_better": 30,
+      "days_a_worse": 137
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.8486486486486486,
+      "block_ci95": [
+        1.4863513513513513,
+        2.1837837837837837
+      ],
+      "days_a_better": 123,
+      "days_a_worse": 15
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -15.916262949683832,
+      "block_ci95": [
+        -19.20403605978168,
+        -12.445571972288928
+      ],
+      "days_a_better": 131,
+      "days_a_worse": 21
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.119685730144796,
+      "block_ci95": [
+        1.5771242277577504,
+        2.730674245667349
+      ],
+      "days_a_better": 29,
+      "days_a_worse": 138
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "served",
+      "mean_diff_per_day": 1.054054054054054,
+      "block_ci95": [
+        0.6917567567567569,
+        1.4163513513513506
+      ],
+      "days_a_better": 81,
+      "days_a_worse": 31
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -2.6983582042461736,
+      "block_ci95": [
+        -4.53735924953582,
+        -0.7761729293724114
+      ],
+      "days_a_better": 77,
+      "days_a_worse": 56
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.3504461770429783,
+      "block_ci95": [
+        0.10696748060175364,
+        0.6043128092452646
+      ],
+      "days_a_better": 65,
+      "days_a_worse": 94
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": 0.6648648648648648,
+      "block_ci95": [
+        0.3675675675675676,
+        0.9675675675675676
+      ],
+      "days_a_better": 76,
+      "days_a_worse": 43
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -3.1567888134189186,
+      "block_ci95": [
+        -5.021244499469927,
+        -1.1730555544578531
+      ],
+      "days_a_better": 75,
+      "days_a_worse": 59
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.4532593274948631,
+      "block_ci95": [
+        0.1975012590394826,
+        0.711379867784295
+      ],
+      "days_a_better": 69,
+      "days_a_worse": 89
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 1.6756756756756757,
+      "block_ci95": [
+        1.2972972972972974,
+        2.0702702702702704
+      ],
+      "days_a_better": 113,
+      "days_a_worse": 17
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -18.14766745999081,
+      "block_ci95": [
+        -21.408616435739408,
+        -14.440225274635317
+      ],
+      "days_a_better": 119,
+      "days_a_worse": 25
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.3465206543188315,
+      "block_ci95": [
+        1.7636590154203875,
+        2.96183768819099
+      ],
+      "days_a_better": 36,
+      "days_a_worse": 124
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 2.72972972972973,
+      "block_ci95": [
+        2.1566216216216216,
+        3.3027027027027027
+      ],
+      "days_a_better": 124,
+      "days_a_worse": 5
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -20.846025664236983,
+      "block_ci95": [
+        -24.699280295669883,
+        -16.759725753883764
+      ],
+      "days_a_better": 127,
+      "days_a_worse": 16
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.69696683136181,
+      "block_ci95": [
+        1.9993098138708836,
+        3.3793344769322564
+      ],
+      "days_a_better": 28,
+      "days_a_worse": 132
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.8918918918918919,
+      "block_ci95": [
+        1.491891891891892,
+        2.2594594594594595
+      ],
+      "days_a_better": 123,
+      "days_a_worse": 15
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -20.224899435886996,
+      "block_ci95": [
+        -23.866056447879966,
+        -16.199017134545816
+      ],
+      "days_a_better": 135,
+      "days_a_worse": 16
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.6505253462185117,
+      "block_ci95": [
+        1.9807895191286615,
+        3.311127680732713
+      ],
+      "days_a_better": 19,
+      "days_a_worse": 148
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": 0.043243243243243246,
+      "block_ci95": [
+        -0.2702702702702703,
+        0.3460810810810804
+      ],
+      "days_a_better": 61,
+      "days_a_worse": 45
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -4.308636486203167,
+      "block_ci95": [
+        -6.06736845001073,
+        -2.412663604563103
+      ],
+      "days_a_better": 89,
+      "days_a_worse": 41
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.5308396160737152,
+      "block_ci95": [
+        0.2599925063597564,
+        0.7959426810309721
+      ],
+      "days_a_better": 57,
+      "days_a_worse": 101
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 2.0648648648648646,
+      "block_ci95": [
+        1.545945945945946,
+        2.610945945945945
+      ],
+      "days_a_better": 116,
+      "days_a_worse": 17
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -17.68923685081807,
+      "block_ci95": [
+        -20.998417718143504,
+        -14.089854597124587
+      ],
+      "days_a_better": 121,
+      "days_a_worse": 23
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.2437075038669465,
+      "block_ci95": [
+        1.6781911275746304,
+        2.8540768638024074
+      ],
+      "days_a_better": 40,
+      "days_a_worse": 123
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 2.108108108108108,
+      "block_ci95": [
+        1.681081081081081,
+        2.5405405405405403
+      ],
+      "days_a_better": 124,
+      "days_a_worse": 11
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -21.997873337021232,
+      "block_ci95": [
+        -25.65792168391111,
+        -17.925057324532652
+      ],
+      "days_a_better": 126,
+      "days_a_worse": 17
+    },
+    {
+      "regime": "original",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.7745471199406615,
+      "block_ci95": [
+        2.113682131340148,
+        3.427493057556625
+      ],
+      "days_a_better": 33,
+      "days_a_worse": 127
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.9675675675675677,
+      "block_ci95": [
+        1.572972972972973,
+        2.346216216216215
+      ],
+      "days_a_better": 119,
+      "days_a_worse": 4
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -14.782941246966589,
+      "block_ci95": [
+        -18.141046610073555,
+        -11.27842314056713
+      ],
+      "days_a_better": 116,
+      "days_a_worse": 15
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.9609674054270383,
+      "block_ci95": [
+        1.403641286906326,
+        2.51343598733909
+      ],
+      "days_a_better": 19,
+      "days_a_worse": 128
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.6432432432432433,
+      "block_ci95": [
+        1.3297297297297297,
+        1.9460810810810805
+      ],
+      "days_a_better": 114,
+      "days_a_worse": 7
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -13.636096912397955,
+      "block_ci95": [
+        -16.84612353248021,
+        -10.483138501362703
+      ],
+      "days_a_better": 114,
+      "days_a_worse": 16
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.8560292610783713,
+      "block_ci95": [
+        1.3108560382379775,
+        2.3927547942906737
+      ],
+      "days_a_better": 24,
+      "days_a_worse": 123
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.7297297297297298,
+      "block_ci95": [
+        1.4162162162162162,
+        2.021756756756756
+      ],
+      "days_a_better": 116,
+      "days_a_worse": 4
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -13.327293879124703,
+      "block_ci95": [
+        -16.62474430530747,
+        -10.044856609584334
+      ],
+      "days_a_better": 112,
+      "days_a_worse": 18
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.8127904007950488,
+      "block_ci95": [
+        1.2807079123511032,
+        2.351402477355799
+      ],
+      "days_a_better": 23,
+      "days_a_worse": 124
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "served",
+      "mean_diff_per_day": 0.32432432432432434,
+      "block_ci95": [
+        0.15121621621621623,
+        0.5027027027027027
+      ],
+      "days_a_better": 46,
+      "days_a_worse": 23
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -1.1468443345686319,
+      "block_ci95": [
+        -2.719251917658841,
+        0.5184311326431816
+      ],
+      "days_a_better": 54,
+      "days_a_worse": 41
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.10493814434866706,
+      "block_ci95": [
+        -0.09610115629929983,
+        0.28601743854146766
+      ],
+      "days_a_better": 59,
+      "days_a_worse": 85
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": 0.23783783783783785,
+      "block_ci95": [
+        0.05945945945945946,
+        0.40540540540540543
+      ],
+      "days_a_better": 42,
+      "days_a_worse": 30
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -1.4556473678418858,
+      "block_ci95": [
+        -3.0435159552051867,
+        0.19892670271660817
+      ],
+      "days_a_better": 51,
+      "days_a_worse": 44
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.1481770046319895,
+      "block_ci95": [
+        -0.08175983191358434,
+        0.3583672857461157
+      ],
+      "days_a_better": 63,
+      "days_a_worse": 82
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 1.4,
+      "block_ci95": [
+        1.0486486486486486,
+        1.7244594594594587
+      ],
+      "days_a_better": 96,
+      "days_a_worse": 12
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -15.74988773978916,
+      "block_ci95": [
+        -19.19904429261828,
+        -12.142682656381101
+      ],
+      "days_a_better": 106,
+      "days_a_worse": 14
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.9423986726503264,
+      "block_ci95": [
+        1.4260638971198603,
+        2.4868213542159614
+      ],
+      "days_a_better": 35,
+      "days_a_worse": 110
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 1.7243243243243243,
+      "block_ci95": [
+        1.308108108108108,
+        2.1135135135135137
+      ],
+      "days_a_better": 104,
+      "days_a_worse": 9
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -16.896732074357793,
+      "block_ci95": [
+        -20.749554159803637,
+        -12.989001158503372
+      ],
+      "days_a_better": 105,
+      "days_a_worse": 16
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.0473368169989934,
+      "block_ci95": [
+        1.4839593994942324,
+        2.621390214077346
+      ],
+      "days_a_better": 34,
+      "days_a_worse": 110
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.9297297297297298,
+      "block_ci95": [
+        1.5783783783783785,
+        2.2756756756756755
+      ],
+      "days_a_better": 120,
+      "days_a_worse": 1
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -14.915521158812131,
+      "block_ci95": [
+        -18.294353097340096,
+        -11.369952826471712
+      ],
+      "days_a_better": 117,
+      "days_a_worse": 13
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.9757708211964944,
+      "block_ci95": [
+        1.4195031123256359,
+        2.5392486636751954
+      ],
+      "days_a_better": 17,
+      "days_a_worse": 130
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": 0.2,
+      "block_ci95": [
+        0.06486486486486487,
+        0.34594594594594597
+      ],
+      "days_a_better": 36,
+      "days_a_worse": 26
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -1.588227279687429,
+      "block_ci95": [
+        -2.968684064754357,
+        -0.15238243795827922
+      ],
+      "days_a_better": 57,
+      "days_a_worse": 33
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.1629804204014454,
+      "block_ci95": [
+        -0.024875447132225482,
+        0.34702317878931443
+      ],
+      "days_a_better": 61,
+      "days_a_worse": 83
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 1.4864864864864864,
+      "block_ci95": [
+        1.1297297297297297,
+        1.8162162162162163
+      ],
+      "days_a_better": 94,
+      "days_a_worse": 13
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -15.441084706515909,
+      "block_ci95": [
+        -19.17058953526889,
+        -11.596795954080443
+      ],
+      "days_a_better": 103,
+      "days_a_worse": 17
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.8991598123670042,
+      "block_ci95": [
+        1.3555488940815907,
+        2.4647651368154535
+      ],
+      "days_a_better": 38,
+      "days_a_worse": 107
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 1.6864864864864866,
+      "block_ci95": [
+        1.3135135135135134,
+        2.0432432432432432
+      ],
+      "days_a_better": 107,
+      "days_a_worse": 8
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -17.029311986203336,
+      "block_ci95": [
+        -21.006572143946272,
+        -13.04722488664018
+      ],
+      "days_a_better": 105,
+      "days_a_worse": 16
+    },
+    {
+      "regime": "original",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.0621402327684497,
+      "block_ci95": [
+        1.4869318585269156,
+        2.654014486361658
+      ],
+      "days_a_better": 29,
+      "days_a_worse": 115
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.2324324324324325,
+      "block_ci95": [
+        0.9783783783783784,
+        1.491891891891892
+      ],
+      "days_a_better": 103,
+      "days_a_worse": 2
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -7.002812441065459,
+      "block_ci95": [
+        -9.161622136604489,
+        -4.939095964112414
+      ],
+      "days_a_better": 101,
+      "days_a_worse": 12
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.8869527899866279,
+      "block_ci95": [
+        0.607409299903249,
+        1.1840307933611924
+      ],
+      "days_a_better": 23,
+      "days_a_worse": 110
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.3027027027027027,
+      "block_ci95": [
+        1.0324324324324323,
+        1.5731081081081073
+      ],
+      "days_a_better": 105,
+      "days_a_worse": 3
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -7.157379820895092,
+      "block_ci95": [
+        -9.469092343452619,
+        -4.949114441436294
+      ],
+      "days_a_better": 98,
+      "days_a_worse": 15
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.9058438525788629,
+      "block_ci95": [
+        0.60597477622243,
+        1.2214476511877899
+      ],
+      "days_a_better": 25,
+      "days_a_worse": 108
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.2486486486486486,
+      "block_ci95": [
+        0.9836486486486488,
+        1.5243243243243243
+      ],
+      "days_a_better": 104,
+      "days_a_worse": 3
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -7.1921189908554375,
+      "block_ci95": [
+        -9.421575904628595,
+        -4.949449266181962
+      ],
+      "days_a_better": 99,
+      "days_a_worse": 14
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.9056007640006233,
+      "block_ci95": [
+        0.6105531825625172,
+        1.2111204285084316
+      ],
+      "days_a_better": 24,
+      "days_a_worse": 109
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "served",
+      "mean_diff_per_day": -0.07027027027027027,
+      "block_ci95": [
+        -0.16756756756756758,
+        0.02702702702702703
+      ],
+      "days_a_better": 14,
+      "days_a_worse": 22
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": 0.1545673798296331,
+      "block_ci95": [
+        -0.7097819114605205,
+        1.0708147638645773
+      ],
+      "days_a_better": 27,
+      "days_a_worse": 26
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": -0.018891062592235098,
+      "block_ci95": [
+        -0.10666848893076372,
+        0.06519210964142963
+      ],
+      "days_a_better": 56,
+      "days_a_worse": 72
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": -0.016216216216216217,
+      "block_ci95": [
+        -0.11891891891891893,
+        0.08108108108108109
+      ],
+      "days_a_better": 17,
+      "days_a_worse": 21
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": 0.18930654978997766,
+      "block_ci95": [
+        -0.5488258910765955,
+        1.0171995101036972
+      ],
+      "days_a_better": 28,
+      "days_a_worse": 28
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": -0.018647974013995542,
+      "block_ci95": [
+        -0.09703200295878937,
+        0.05462033492662848
+      ],
+      "days_a_better": 61,
+      "days_a_worse": 66
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.8,
+      "block_ci95": [
+        0.5783783783783784,
+        1.0324324324324323
+      ],
+      "days_a_better": 68,
+      "days_a_worse": 6
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -8.734250588496948,
+      "block_ci95": [
+        -11.312860838340834,
+        -6.267121843758071
+      ],
+      "days_a_better": 72,
+      "days_a_worse": 10
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.9145674731760858,
+      "block_ci95": [
+        0.6009115034497091,
+        1.2306258500404448
+      ],
+      "days_a_better": 45,
+      "days_a_worse": 83
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.7297297297297297,
+      "block_ci95": [
+        0.5404054054054055,
+        0.9297297297297298
+      ],
+      "days_a_better": 64,
+      "days_a_worse": 5
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -8.579683208667316,
+      "block_ci95": [
+        -11.177121297217836,
+        -6.055849420159765
+      ],
+      "days_a_better": 74,
+      "days_a_worse": 8
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.8956764105838508,
+      "block_ci95": [
+        0.5977752092437376,
+        1.1977543947754867
+      ],
+      "days_a_better": 47,
+      "days_a_worse": 84
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.2918918918918918,
+      "block_ci95": [
+        1.027027027027027,
+        1.5675675675675675
+      ],
+      "days_a_better": 103,
+      "days_a_worse": 2
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -7.317852000216246,
+      "block_ci95": [
+        -9.418650339816486,
+        -5.214913588527883
+      ],
+      "days_a_better": 101,
+      "days_a_worse": 12
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.9311440293914514,
+      "block_ci95": [
+        0.6355955618322496,
+        1.2386050546465326
+      ],
+      "days_a_better": 21,
+      "days_a_worse": 112
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": 0.043243243243243246,
+      "block_ci95": [
+        -0.05405405405405406,
+        0.13513513513513514
+      ],
+      "days_a_better": 23,
+      "days_a_worse": 18
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -0.12573300936080825,
+      "block_ci95": [
+        -1.0461573175245156,
+        0.9456831358682506
+      ],
+      "days_a_better": 29,
+      "days_a_worse": 26
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.025543265390828036,
+      "block_ci95": [
+        -0.08286459770105002,
+        0.12778061369796428
+      ],
+      "days_a_better": 48,
+      "days_a_worse": 77
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.745945945945946,
+      "block_ci95": [
+        0.5295945945945947,
+        0.9675675675675676
+      ],
+      "days_a_better": 65,
+      "days_a_worse": 6
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -8.768989758457293,
+      "block_ci95": [
+        -11.35624193570097,
+        -6.2757335321216345
+      ],
+      "days_a_better": 73,
+      "days_a_worse": 10
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.9143243845978463,
+      "block_ci95": [
+        0.6020511491222855,
+        1.2231752635981146
+      ],
+      "days_a_better": 45,
+      "days_a_worse": 84
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.7891891891891892,
+      "block_ci95": [
+        0.5567567567567567,
+        1.0108108108108107
+      ],
+      "days_a_better": 66,
+      "days_a_worse": 7
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -8.894722767818102,
+      "block_ci95": [
+        -11.5614764595949,
+        -6.3529015427553155
+      ],
+      "days_a_better": 73,
+      "days_a_worse": 12
+    },
+    {
+      "regime": "original",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.9398676499886743,
+      "block_ci95": [
+        0.6256633776668855,
+        1.2625712164128164
+      ],
+      "days_a_better": 42,
+      "days_a_worse": 83
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.5675675675675675,
+      "block_ci95": [
+        1.2054054054054053,
+        1.9135135135135135
+      ],
+      "days_a_better": 103,
+      "days_a_worse": 16
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -19.109412932525434,
+      "block_ci95": [
+        -23.072302298478977,
+        -14.974655830656411
+      ],
+      "days_a_better": 141,
+      "days_a_worse": 11
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.556933265286201,
+      "block_ci95": [
+        1.8941838278272323,
+        3.27153232685344
+      ],
+      "days_a_better": 15,
+      "days_a_worse": 152
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.0918918918918918,
+      "block_ci95": [
+        0.8431081081081082,
+        1.3567567567567567
+      ],
+      "days_a_better": 92,
+      "days_a_worse": 23
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -15.198153473065972,
+      "block_ci95": [
+        -18.539810946482618,
+        -11.821763434064293
+      ],
+      "days_a_better": 129,
+      "days_a_worse": 23
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.0869322274483633,
+      "block_ci95": [
+        1.4951664512681098,
+        2.7179729990945427
+      ],
+      "days_a_better": 30,
+      "days_a_worse": 137
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.2,
+      "block_ci95": [
+        0.9243243243243243,
+        1.481081081081081
+      ],
+      "days_a_better": 99,
+      "days_a_worse": 19
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -14.986088608201106,
+      "block_ci95": [
+        -18.124902348059152,
+        -11.668497993907227
+      ],
+      "days_a_better": 132,
+      "days_a_worse": 20
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.0068748652862016,
+      "block_ci95": [
+        1.466337082259992,
+        2.6001739168685853
+      ],
+      "days_a_better": 28,
+      "days_a_worse": 139
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "served",
+      "mean_diff_per_day": 0.4756756756756757,
+      "block_ci95": [
+        0.25405405405405407,
+        0.6972972972972973
+      ],
+      "days_a_better": 65,
+      "days_a_worse": 31
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -3.9112594594594587,
+      "block_ci95": [
+        -5.826402162162162,
+        -2.001103108108109
+      ],
+      "days_a_better": 77,
+      "days_a_worse": 54
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.4700010378378377,
+      "block_ci95": [
+        0.222198850135135,
+        0.7185079398648662
+      ],
+      "days_a_better": 66,
+      "days_a_worse": 93
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": 0.3675675675675676,
+      "block_ci95": [
+        0.14594594594594595,
+        0.5785135135135128
+      ],
+      "days_a_better": 69,
+      "days_a_worse": 35
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -4.123324324324325,
+      "block_ci95": [
+        -6.013625810810813,
+        -2.221763243243245
+      ],
+      "days_a_better": 79,
+      "days_a_worse": 53
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.5500583999999993,
+      "block_ci95": [
+        0.27293796040540386,
+        0.8373127670270255
+      ],
+      "days_a_better": 62,
+      "days_a_worse": 97
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.7513513513513513,
+      "block_ci95": [
+        0.46472972972972976,
+        1.0433783783783777
+      ],
+      "days_a_better": 89,
+      "days_a_worse": 28
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -17.53122702702703,
+      "block_ci95": [
+        -21.016515135135137,
+        -13.903608243243243
+      ],
+      "days_a_better": 121,
+      "days_a_worse": 21
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.2444306918918926,
+      "block_ci95": [
+        1.6678421622972976,
+        2.8732028836486507
+      ],
+      "days_a_better": 37,
+      "days_a_worse": 128
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 1.227027027027027,
+      "block_ci95": [
+        0.8864864864864865,
+        1.5621621621621622
+      ],
+      "days_a_better": 101,
+      "days_a_worse": 19
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -21.442486486486487,
+      "block_ci95": [
+        -25.367785270270275,
+        -17.255922432432435
+      ],
+      "days_a_better": 127,
+      "days_a_worse": 13
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.7144317297297307,
+      "block_ci95": [
+        2.041397351756756,
+        3.429213999864867
+      ],
+      "days_a_better": 29,
+      "days_a_worse": 136
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 1.3675675675675676,
+      "block_ci95": [
+        1.0756756756756756,
+        1.664864864864865
+      ],
+      "days_a_better": 101,
+      "days_a_worse": 17
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -19.09617509468759,
+      "block_ci95": [
+        -22.52637019254573,
+        -15.368125030028567
+      ],
+      "days_a_better": 134,
+      "days_a_worse": 17
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.4891784382591737,
+      "block_ci95": [
+        1.8735403723692374,
+        3.0951801309768037
+      ],
+      "days_a_better": 22,
+      "days_a_worse": 145
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": 0.16756756756756758,
+      "block_ci95": [
+        -0.02702702702702703,
+        0.3675675675675676
+      ],
+      "days_a_better": 55,
+      "days_a_worse": 39
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -4.1100864864864874,
+      "block_ci95": [
+        -5.716987162162164,
+        -2.3183341891891907
+      ],
+      "days_a_better": 86,
+      "days_a_worse": 43
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.482303572972972,
+      "block_ci95": [
+        0.19745016013513192,
+        0.738193833513513
+      ],
+      "days_a_better": 59,
+      "days_a_worse": 98
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.8594594594594595,
+      "block_ci95": [
+        0.5621621621621622,
+        1.1568918918918911
+      ],
+      "days_a_better": 93,
+      "days_a_worse": 26
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -17.31916216216216,
+      "block_ci95": [
+        -20.81538202702703,
+        -13.604861621621625
+      ],
+      "days_a_better": 117,
+      "days_a_worse": 23
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.1643733297297314,
+      "block_ci95": [
+        1.613559377702703,
+        2.7744472379729745
+      ],
+      "days_a_better": 39,
+      "days_a_worse": 127
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 1.027027027027027,
+      "block_ci95": [
+        0.7351351351351352,
+        1.329864864864864
+      ],
+      "days_a_better": 91,
+      "days_a_worse": 21
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -21.429248648648652,
+      "block_ci95": [
+        -25.240346756756757,
+        -17.30095094594595
+      ],
+      "days_a_better": 125,
+      "days_a_worse": 14
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 100,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 2.646676902702703,
+      "block_ci95": [
+        2.001448487702703,
+        3.273665183243245
+      ],
+      "days_a_better": 32,
+      "days_a_worse": 133
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.9405405405405406,
+      "block_ci95": [
+        0.6432432432432432,
+        1.248783783783783
+      ],
+      "days_a_better": 79,
+      "days_a_worse": 19
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -14.818835464636033,
+      "block_ci95": [
+        -18.13708525459792,
+        -11.33812275831197
+      ],
+      "days_a_better": 119,
+      "days_a_worse": 12
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.987994325607787,
+      "block_ci95": [
+        1.4280978932892558,
+        2.551086103537061
+      ],
+      "days_a_better": 15,
+      "days_a_worse": 132
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.7513513513513513,
+      "block_ci95": [
+        0.5025675675675676,
+        1.0108108108108107
+      ],
+      "days_a_better": 74,
+      "days_a_worse": 17
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -13.361938167338735,
+      "block_ci95": [
+        -16.498818633914638,
+        -10.202741076084495
+      ],
+      "days_a_better": 112,
+      "days_a_worse": 18
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.814030379661841,
+      "block_ci95": [
+        1.2816674297084778,
+        2.336534019926348
+      ],
+      "days_a_better": 24,
+      "days_a_worse": 123
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.7567567567567568,
+      "block_ci95": [
+        0.4918918918918919,
+        1.0271621621621614
+      ],
+      "days_a_better": 73,
+      "days_a_worse": 19
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -13.047159788960357,
+      "block_ci95": [
+        -16.128258218410753,
+        -9.959012930174312
+      ],
+      "days_a_better": 111,
+      "days_a_worse": 19
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.7656715580402182,
+      "block_ci95": [
+        1.2531831839007037,
+        2.289676211562933
+      ],
+      "days_a_better": 27,
+      "days_a_worse": 120
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "served",
+      "mean_diff_per_day": 0.1891891891891892,
+      "block_ci95": [
+        0.04864864864864865,
+        0.32432432432432434
+      ],
+      "days_a_better": 40,
+      "days_a_worse": 24
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -1.4568972972972971,
+      "block_ci95": [
+        -2.8792390540540542,
+        0.06699310810810803
+      ],
+      "days_a_better": 54,
+      "days_a_worse": 43
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.17396394594594616,
+      "block_ci95": [
+        -0.0028323602702712285,
+        0.33133597310810875
+      ],
+      "days_a_better": 59,
+      "days_a_worse": 83
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": 0.1837837837837838,
+      "block_ci95": [
+        0.043243243243243246,
+        0.31905405405405335
+      ],
+      "days_a_better": 39,
+      "days_a_worse": 25
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -1.7716756756756753,
+      "block_ci95": [
+        -3.176980540540541,
+        -0.25792689189189316
+      ],
+      "days_a_better": 52,
+      "days_a_worse": 45
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.22232276756756875,
+      "block_ci95": [
+        0.01502782513513552,
+        0.4199992408108112
+      ],
+      "days_a_better": 66,
+      "days_a_worse": 78
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.7621621621621621,
+      "block_ci95": [
+        0.5081081081081081,
+        1.0108108108108107
+      ],
+      "days_a_better": 78,
+      "days_a_worse": 18
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -14.65970810810811,
+      "block_ci95": [
+        -17.876193513513513,
+        -11.26654
+      ],
+      "days_a_better": 106,
+      "days_a_worse": 12
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.7786504756756751,
+      "block_ci95": [
+        1.2850377847297283,
+        2.269532320810812
+      ],
+      "days_a_better": 35,
+      "days_a_worse": 111
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.9513513513513514,
+      "block_ci95": [
+        0.6810810810810811,
+        1.2001351351351344
+      ],
+      "days_a_better": 83,
+      "days_a_worse": 13
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -16.116605405405405,
+      "block_ci95": [
+        -19.53567162162162,
+        -12.506167567567571
+      ],
+      "days_a_better": 101,
+      "days_a_worse": 18
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.952614421621621,
+      "block_ci95": [
+        1.409153298243243,
+        2.478927390405403
+      ],
+      "days_a_better": 35,
+      "days_a_worse": 111
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.9621621621621622,
+      "block_ci95": [
+        0.6702702702702703,
+        1.2704054054054046
+      ],
+      "days_a_better": 81,
+      "days_a_worse": 19
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -14.81454357274414,
+      "block_ci95": [
+        -18.22185587012605,
+        -11.431210153378053
+      ],
+      "days_a_better": 116,
+      "days_a_worse": 14
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.9689240283104887,
+      "block_ci95": [
+        1.3917063542244914,
+        2.5496680072890268
+      ],
+      "days_a_better": 17,
+      "days_a_worse": 130
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": 0.20540540540540542,
+      "block_ci95": [
+        0.07027027027027027,
+        0.33527027027026957
+      ],
+      "days_a_better": 34,
+      "days_a_worse": 21
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -1.7673837837837838,
+      "block_ci95": [
+        -3.292146081081081,
+        -0.25377459459459556
+      ],
+      "days_a_better": 57,
+      "days_a_worse": 32
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.20325247027027013,
+      "block_ci95": [
+        0.014635608648647765,
+        0.4129977985135131
+      ],
+      "days_a_better": 66,
+      "days_a_worse": 79
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.7675675675675676,
+      "block_ci95": [
+        0.5135135135135135,
+        1.0054054054054054
+      ],
+      "days_a_better": 77,
+      "days_a_worse": 19
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -14.344929729729731,
+      "block_ci95": [
+        -17.581841891891894,
+        -11.009011891891893
+      ],
+      "days_a_better": 102,
+      "days_a_worse": 16
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.7302916540540525,
+      "block_ci95": [
+        1.2281255951351335,
+        2.2400775666216184
+      ],
+      "days_a_better": 36,
+      "days_a_worse": 110
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.972972972972973,
+      "block_ci95": [
+        0.6917567567567569,
+        1.2486486486486486
+      ],
+      "days_a_better": 84,
+      "days_a_worse": 18
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -16.112313513513516,
+      "block_ci95": [
+        -19.668721891891895,
+        -12.545199054054056
+      ],
+      "days_a_better": 101,
+      "days_a_worse": 18
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 120,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 1.9335441243243225,
+      "block_ci95": [
+        1.378005871216213,
+        2.4759085877027003
+      ],
+      "days_a_better": 33,
+      "days_a_worse": 113
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.34054054054054056,
+      "block_ci95": [
+        0.2,
+        0.4918918918918919
+      ],
+      "days_a_better": 49,
+      "days_a_worse": 12
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -7.2988157907868105,
+      "block_ci95": [
+        -9.479952297177729,
+        -5.187472411234065
+      ],
+      "days_a_better": 103,
+      "days_a_worse": 8
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.9070196261261748,
+      "block_ci95": [
+        0.6140888010230711,
+        1.2165868554111532
+      ],
+      "days_a_better": 21,
+      "days_a_worse": 112
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.3945945945945946,
+      "block_ci95": [
+        0.24864864864864866,
+        0.5567567567567567
+      ],
+      "days_a_better": 51,
+      "days_a_worse": 9
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -7.268599574570595,
+      "block_ci95": [
+        -9.512154560751378,
+        -5.033675803293102
+      ],
+      "days_a_better": 99,
+      "days_a_worse": 14
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.8971349504504993,
+      "block_ci95": [
+        0.5987565324442132,
+        1.2128256528586607
+      ],
+      "days_a_better": 27,
+      "days_a_worse": 106
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.34594594594594597,
+      "block_ci95": [
+        0.20540540540540542,
+        0.5027027027027027
+      ],
+      "days_a_better": 47,
+      "days_a_worse": 13
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -7.167275250246269,
+      "block_ci95": [
+        -9.402086023767376,
+        -4.930084640960618
+      ],
+      "days_a_better": 100,
+      "days_a_worse": 13
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.891912772072121,
+      "block_ci95": [
+        0.5968757140601486,
+        1.198851072077859
+      ],
+      "days_a_better": 24,
+      "days_a_worse": 109
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "served",
+      "mean_diff_per_day": -0.05405405405405406,
+      "block_ci95": [
+        -0.13513513513513514,
+        0.021621621621621623
+      ],
+      "days_a_better": 13,
+      "days_a_worse": 16
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -0.03021621621621639,
+      "block_ci95": [
+        -0.9336206756756765,
+        0.9208533783783782
+      ],
+      "days_a_better": 27,
+      "days_a_worse": 25
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_shrinkage",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.009884675675675603,
+      "block_ci95": [
+        -0.08533233648648568,
+        0.11966361540540621
+      ],
+      "days_a_better": 62,
+      "days_a_worse": 67
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": -0.005405405405405406,
+      "block_ci95": [
+        -0.07567567567567568,
+        0.05959459459459386
+      ],
+      "days_a_better": 15,
+      "days_a_worse": 15
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -0.13154054054054048,
+      "block_ci95": [
+        -0.9769006756756754,
+        0.761374594594593
+      ],
+      "days_a_better": 28,
+      "days_a_worse": 26
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.015106854054053773,
+      "block_ci95": [
+        -0.07152416756756964,
+        0.11348297635134982
+      ],
+      "days_a_better": 59,
+      "days_a_worse": 66
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.4486486486486487,
+      "block_ci95": [
+        0.2971621621621622,
+        0.6109459459459452
+      ],
+      "days_a_better": 50,
+      "days_a_worse": 7
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -7.826535135135136,
+      "block_ci95": [
+        -10.396735,
+        -5.384395135135136
+      ],
+      "days_a_better": 70,
+      "days_a_worse": 10
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_shrinkage",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.8322887351351358,
+      "block_ci95": [
+        0.5397087786486476,
+        1.1299644486486475
+      ],
+      "days_a_better": 44,
+      "days_a_worse": 87
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.3945945945945946,
+      "block_ci95": [
+        0.24864864864864866,
+        0.5567567567567567
+      ],
+      "days_a_better": 48,
+      "days_a_worse": 9
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -7.856751351351352,
+      "block_ci95": [
+        -10.541250810810812,
+        -5.379521756756757
+      ],
+      "days_a_better": 71,
+      "days_a_worse": 10
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.8421734108108113,
+      "block_ci95": [
+        0.5445200890540548,
+        1.1438186714864873
+      ],
+      "days_a_better": 43,
+      "days_a_worse": 88
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "served",
+      "mean_diff_per_day": 0.35135135135135137,
+      "block_ci95": [
+        0.20540540540540542,
+        0.5081081081081081
+      ],
+      "days_a_better": 48,
+      "days_a_worse": 14
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -7.500221196192217,
+      "block_ci95": [
+        -9.658370273041486,
+        -5.419725950038643
+      ],
+      "days_a_better": 102,
+      "days_a_worse": 11
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "equal_share",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.9283875234234721,
+      "block_ci95": [
+        0.6372161996060176,
+        1.234082737912484
+      ],
+      "days_a_better": 20,
+      "days_a_worse": 113
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "served",
+      "mean_diff_per_day": 0.005405405405405406,
+      "block_ci95": [
+        -0.05945945945945946,
+        0.07027027027027027
+      ],
+      "days_a_better": 14,
+      "days_a_worse": 14
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -0.33294594594594584,
+      "block_ci95": [
+        -1.2833628378378377,
+        0.736443378378378
+      ],
+      "days_a_better": 30,
+      "days_a_worse": 23
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_personal_quantile",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.036474751351350906,
+      "block_ci95": [
+        -0.06756959986486383,
+        0.14295598878378393
+      ],
+      "days_a_better": 56,
+      "days_a_worse": 70
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.4,
+      "block_ci95": [
+        0.25405405405405407,
+        0.5622972972972966
+      ],
+      "days_a_better": 47,
+      "days_a_worse": 11
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -7.725210810810811,
+      "block_ci95": [
+        -10.412642567567568,
+        -5.269185270270271
+      ],
+      "days_a_better": 68,
+      "days_a_worse": 14
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_personal_quantile",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.8270665567567576,
+      "block_ci95": [
+        0.5297520478378391,
+        1.1350219087837852
+      ],
+      "days_a_better": 44,
+      "days_a_worse": 87
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "served",
+      "mean_diff_per_day": 0.40540540540540543,
+      "block_ci95": [
+        0.25405405405405407,
+        0.572972972972973
+      ],
+      "days_a_better": 47,
+      "days_a_worse": 9
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "unserved_kwh",
+      "mean_diff_per_day": -8.058156756756757,
+      "block_ci95": [
+        -10.687633243243242,
+        -5.592262432432434
+      ],
+      "days_a_better": 70,
+      "days_a_worse": 12
+    },
+    {
+      "regime": "decision_time_past_requests",
+      "cap": 150,
+      "a": "edf_lightgbm_original_choice",
+      "b": "edf_population",
+      "metric": "emissions_kgco2",
+      "mean_diff_per_day": 0.8635413081081086,
+      "block_ci95": [
+        0.5683618745945936,
+        1.169932925945946
+      ],
+      "days_a_better": 44,
+      "days_a_worse": 87
+    }
+  ],
+  "infeasible_requests_decision_time": 380,
+  "sessions": 5671,
+  "wall_seconds": 124.66545660002157
+}

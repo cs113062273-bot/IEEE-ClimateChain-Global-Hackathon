@@ -1,0 +1,343 @@
+{
+  "note": "Subset of ghcnd-stations.txt and ghcnd-inventory.txt; see manifest.json for the pinned hashes of the full files.",
+  "source": [
+    "https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt",
+    "https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt"
+  ],
+  "stations": {
+    "TU000017240": {
+      "elev_m": 997.0,
+      "ghcn_name": "ISPARTA",
+      "inventory": {
+        "PRCP": [
+          1931,
+          2025
+        ],
+        "SNWD": [
+          1973,
+          2025
+        ],
+        "TAVG": [
+          1963,
+          2025
+        ],
+        "TMAX": [
+          1929,
+          2025
+        ],
+        "TMIN": [
+          1929,
+          2025
+        ]
+      },
+      "lat": 37.75,
+      "lon": 30.55,
+      "name": "Isparta"
+    },
+    "TU000017375": {
+      "elev_m": 2.0,
+      "ghcn_name": "FINIKE",
+      "inventory": {
+        "PRCP": [
+          1953,
+          2026
+        ],
+        "SNWD": [
+          2016,
+          2026
+        ],
+        "TAVG": [
+          1998,
+          2026
+        ],
+        "TMAX": [
+          1960,
+          2026
+        ],
+        "TMIN": [
+          1960,
+          2026
+        ]
+      },
+      "lat": 36.3164,
+      "lon": 30.15,
+      "name": "Finike"
+    },
+    "TUM00017190": {
+      "elev_m": 1008.9,
+      "ghcn_name": "AFYON",
+      "inventory": {
+        "PRCP": [
+          1963,
+          2025
+        ],
+        "SNWD": [
+          1981,
+          2025
+        ],
+        "TAVG": [
+          1963,
+          2025
+        ],
+        "TMAX": [
+          1963,
+          2025
+        ],
+        "TMIN": [
+          1963,
+          2025
+        ]
+      },
+      "lat": 38.726,
+      "lon": 30.601,
+      "name": "Afyon"
+    },
+    "TUM00017220": {
+      "elev_m": 29.0,
+      "ghcn_name": "IZMIR/GUZELYALI",
+      "inventory": {
+        "PRCP": [
+          1950,
+          2026
+        ],
+        "SNWD": [
+          2017,
+          2026
+        ],
+        "TAVG": [
+          1950,
+          2026
+        ],
+        "TMAX": [
+          1950,
+          2026
+        ],
+        "TMIN": [
+          1950,
+          2026
+        ]
+      },
+      "lat": 38.433,
+      "lon": 27.167,
+      "name": "Izmir"
+    },
+    "TUM00017244": {
+      "elev_m": 1030.5,
+      "ghcn_name": "KONYA",
+      "inventory": {
+        "PRCP": [
+          1963,
+          2025
+        ],
+        "SNWD": [
+          1982,
+          2025
+        ],
+        "TAVG": [
+          1950,
+          2025
+        ],
+        "TMAX": [
+          1963,
+          2025
+        ],
+        "TMIN": [
+          1963,
+          2025
+        ]
+      },
+      "lat": 37.979,
+      "lon": 32.562,
+      "name": "Konya"
+    },
+    "TUM00017292": {
+      "elev_m": 646.0,
+      "ghcn_name": "MUGLA",
+      "inventory": {
+        "PRCP": [
+          1963,
+          2026
+        ],
+        "SNWD": [
+          1973,
+          2026
+        ],
+        "TAVG": [
+          1963,
+          2026
+        ],
+        "TMAX": [
+          1963,
+          2026
+        ],
+        "TMIN": [
+          1963,
+          2026
+        ]
+      },
+      "lat": 37.217,
+      "lon": 28.367,
+      "name": "Mugla"
+    },
+    "TUM00017300": {
+      "elev_m": 53.9,
+      "ghcn_name": "ANTALYA",
+      "inventory": {
+        "PRCP": [
+          1963,
+          2025
+        ],
+        "SNWD": [
+          1986,
+          2025
+        ],
+        "TAVG": [
+          1951,
+          2025
+        ],
+        "TMAX": [
+          1963,
+          2025
+        ],
+        "TMIN": [
+          1963,
+          2025
+        ]
+      },
+      "lat": 36.899,
+      "lon": 30.8,
+      "name": "Antalya"
+    },
+    "TUM00017340": {
+      "elev_m": 3.0,
+      "ghcn_name": "MERSIN",
+      "inventory": {
+        "PRCP": [
+          1974,
+          2026
+        ],
+        "SNWD": [
+          2020,
+          2026
+        ],
+        "TAVG": [
+          1974,
+          2026
+        ],
+        "TMAX": [
+          1974,
+          2026
+        ],
+        "TMIN": [
+          1974,
+          2026
+        ]
+      },
+      "lat": 36.8,
+      "lon": 34.633,
+      "name": "Mersin"
+    },
+    "TUM00017370": {
+      "elev_m": 7.6,
+      "ghcn_name": "ISKENDERUN",
+      "inventory": {
+        "PRCP": [
+          1963,
+          2025
+        ],
+        "SNWD": [
+          1989,
+          2025
+        ],
+        "TAVG": [
+          1963,
+          2025
+        ],
+        "TMAX": [
+          1963,
+          2025
+        ],
+        "TMIN": [
+          1963,
+          2025
+        ]
+      },
+      "lat": 36.573,
+      "lon": 36.154,
+      "name": "Iskenderun"
+    },
+    "TUW00033308": {
+      "elev_m": 76.2,
+      "ghcn_name": "INCIRLIK",
+      "inventory": {
+        "PGTM": [
+          1955,
+          1967
+        ],
+        "PRCP": [
+          1955,
+          2026
+        ],
+        "SNOW": [
+          1955,
+          1967
+        ],
+        "SNWD": [
+          1955,
+          2026
+        ],
+        "TAVG": [
+          2025,
+          2026
+        ],
+        "TMAX": [
+          1955,
+          2026
+        ],
+        "TMIN": [
+          1955,
+          2026
+        ],
+        "WDFG": [
+          1955,
+          1967
+        ],
+        "WSFG": [
+          1955,
+          1967
+        ],
+        "WT01": [
+          1955,
+          1967
+        ],
+        "WT03": [
+          1955,
+          1967
+        ],
+        "WT05": [
+          1955,
+          1967
+        ],
+        "WT07": [
+          1959,
+          1966
+        ],
+        "WT08": [
+          1956,
+          1967
+        ],
+        "WT16": [
+          1955,
+          1967
+        ],
+        "WT18": [
+          1956,
+          1965
+        ]
+      },
+      "lat": 37.0,
+      "lon": 35.4333,
+      "name": "Adana"
+    }
+  }
+}

@@ -1,0 +1,1436 @@
+{
+  "protocol_sha256": "31455daad06771f6a424849676e6d3250c3c197e3f208b7fd30e845d3679e5cb",
+  "gap_pattern_sizes": {
+    "antalya_2023": 72,
+    "antalya_2024": 91,
+    "whole_season": 122
+  },
+  "temporal": {
+    "per_station": {
+      "TUM00017300": {
+        "fit_days": 13238,
+        "layer1": {
+          "test_days": 2390,
+          "hot_days": 86,
+          "hot_cutoff_degC": 39.6,
+          "era5_raw": {
+            "mae": 1.377,
+            "mae_hot": 0.629,
+            "bias_hot": -0.08
+          },
+          "era5_monthly_linear": {
+            "mae": 1.244,
+            "mae_hot": 3.062,
+            "bias_hot": -3.062
+          },
+          "era5_quantile_map": {
+            "mae": 1.168,
+            "mae_hot": 1.207,
+            "bias_hot": -1.111
+          },
+          "lightgbm_gap_fill": {
+            "mae": 0.971,
+            "mae_hot": 0.862,
+            "bias_hot": -0.423
+          }
+        },
+        "layer2": {
+          "base_coverage_permille": 651,
+          "eligible_seasons": [],
+          "rows": []
+        },
+        "explore": {
+          "base_coverage_permille": 710,
+          "eligible_seasons": [],
+          "rows": []
+        }
+      },
+      "TU000017375": {
+        "fit_days": 17466,
+        "layer1": {
+          "test_days": 2999,
+          "hot_days": 97,
+          "hot_cutoff_degC": 37.9,
+          "era5_raw": {
+            "mae": 1.866,
+            "mae_hot": 4.958,
+            "bias_hot": -4.958
+          },
+          "era5_monthly_linear": {
+            "mae": 1.211,
+            "mae_hot": 2.302,
+            "bias_hot": -2.267
+          },
+          "era5_quantile_map": {
+            "mae": 1.285,
+            "mae_hot": 1.34,
+            "bias_hot": -0.729
+          },
+          "lightgbm_gap_fill": {
+            "mae": 1.156,
+            "mae_hot": 1.585,
+            "bias_hot": -1.347
+          }
+        },
+        "layer2": {
+          "base_coverage_permille": 999,
+          "eligible_seasons": [
+            2011,
+            2021
+          ],
+          "rows": [
+            {
+              "year": 2011,
+              "pattern": "antalya_2023",
+              "gap_days": 72,
+              "truth_longest": 6,
+              "truth": true,
+              "era5_raw": 5,
+              "era5_monthly_linear": 5,
+              "era5_quantile_map": 6,
+              "lightgbm_gap_fill": 5
+            },
+            {
+              "year": 2011,
+              "pattern": "antalya_2024",
+              "gap_days": 91,
+              "truth_longest": 6,
+              "truth": true,
+              "era5_raw": 4,
+              "era5_monthly_linear": 5,
+              "era5_quantile_map": 6,
+              "lightgbm_gap_fill": 5
+            },
+            {
+              "year": 2011,
+              "pattern": "whole_season",
+              "gap_days": 122,
+              "truth_longest": 6,
+              "truth": true,
+              "era5_raw": 0,
+              "era5_monthly_linear": 4,
+              "era5_quantile_map": 6,
+              "lightgbm_gap_fill": 5
+            },
+            {
+              "year": 2021,
+              "pattern": "antalya_2023",
+              "gap_days": 72,
+              "truth_longest": 11,
+              "truth": true,
+              "era5_raw": 9,
+              "era5_monthly_linear": 11,
+              "era5_quantile_map": 11,
+              "lightgbm_gap_fill": 11
+            },
+            {
+              "year": 2021,
+              "pattern": "antalya_2024",
+              "gap_days": 91,
+              "truth_longest": 11,
+              "truth": true,
+              "era5_raw": 4,
+              "era5_monthly_linear": 10,
+              "era5_quantile_map": 11,
+              "lightgbm_gap_fill": 10
+            },
+            {
+              "year": 2021,
+              "pattern": "whole_season",
+              "gap_days": 122,
+              "truth_longest": 11,
+              "truth": true,
+              "era5_raw": 2,
+              "era5_monthly_linear": 10,
+              "era5_quantile_map": 11,
+              "lightgbm_gap_fill": 10
+            }
+          ]
+        },
+        "explore": {
+          "base_coverage_permille": 793,
+          "eligible_seasons": [
+            2021,
+            2026
+          ],
+          "rows": [
+            {
+              "year": 2021,
+              "pattern": "antalya_2023",
+              "gap_days": 72,
+              "truth_longest": 11,
+              "truth": true,
+              "era5_raw": 9,
+              "era5_monthly_linear": 11,
+              "era5_quantile_map": 11,
+              "lightgbm_gap_fill": 11
+            },
+            {
+              "year": 2021,
+              "pattern": "antalya_2024",
+              "gap_days": 91,
+              "truth_longest": 11,
+              "truth": true,
+              "era5_raw": 2,
+              "era5_monthly_linear": 10,
+              "era5_quantile_map": 11,
+              "lightgbm_gap_fill": 10
+            },
+            {
+              "year": 2021,
+              "pattern": "whole_season",
+              "gap_days": 122,
+              "truth_longest": 11,
+              "truth": true,
+              "era5_raw": 0,
+              "era5_monthly_linear": 9,
+              "era5_quantile_map": 11,
+              "lightgbm_gap_fill": 10
+            },
+            {
+              "year": 2026,
+              "pattern": "antalya_2023",
+              "gap_days": 72,
+              "truth_longest": 3,
+              "truth": false,
+              "era5_raw": 1,
+              "era5_monthly_linear": 2,
+              "era5_quantile_map": 3,
+              "lightgbm_gap_fill": 3
+            },
+            {
+              "year": 2026,
+              "pattern": "antalya_2024",
+              "gap_days": 91,
+              "truth_longest": 3,
+              "truth": false,
+              "era5_raw": 3,
+              "era5_monthly_linear": 3,
+              "era5_quantile_map": 3,
+              "lightgbm_gap_fill": 3
+            },
+            {
+              "year": 2026,
+              "pattern": "whole_season",
+              "gap_days": 122,
+              "truth_longest": 3,
+              "truth": false,
+              "era5_raw": 0,
+              "era5_monthly_linear": 2,
+              "era5_quantile_map": 3,
+              "lightgbm_gap_fill": 3
+            }
+          ]
+        }
+      },
+      "TU000017240": {
+        "fit_days": 17059,
+        "layer1": {
+          "test_days": 1833,
+          "hot_days": 69,
+          "hot_cutoff_degC": 35.07,
+          "era5_raw": {
+            "mae": 1.564,
+            "mae_hot": 2.988,
+            "bias_hot": -2.988
+          },
+          "era5_monthly_linear": {
+            "mae": 0.914,
+            "mae_hot": 1.315,
+            "bias_hot": -1.309
+          },
+          "era5_quantile_map": {
+            "mae": 0.903,
+            "mae_hot": 1.167,
+            "bias_hot": -1.127
+          },
+          "lightgbm_gap_fill": {
+            "mae": 0.88,
+            "mae_hot": 1.313,
+            "bias_hot": -1.279
+          }
+        },
+        "layer2": {
+          "base_coverage_permille": 997,
+          "eligible_seasons": [
+            2015
+          ],
+          "rows": [
+            {
+              "year": 2015,
+              "pattern": "antalya_2023",
+              "gap_days": 72,
+              "truth_longest": 9,
+              "truth": true,
+              "era5_raw": 8,
+              "era5_monthly_linear": 9,
+              "era5_quantile_map": 12,
+              "lightgbm_gap_fill": 12
+            },
+            {
+              "year": 2015,
+              "pattern": "antalya_2024",
+              "gap_days": 91,
+              "truth_longest": 9,
+              "truth": true,
+              "era5_raw": 4,
+              "era5_monthly_linear": 9,
+              "era5_quantile_map": 9,
+              "lightgbm_gap_fill": 9
+            },
+            {
+              "year": 2015,
+              "pattern": "whole_season",
+              "gap_days": 122,
+              "truth_longest": 9,
+              "truth": true,
+              "era5_raw": 4,
+              "era5_monthly_linear": 9,
+              "era5_quantile_map": 12,
+              "lightgbm_gap_fill": 12
+            }
+          ]
+        },
+        "explore": {
+          "base_coverage_permille": 764,
+          "eligible_seasons": [],
+          "rows": []
+        }
+      },
+      "TUM00017292": {
+        "fit_days": 13194,
+        "layer1": {
+          "test_days": 5122,
+          "hot_days": 178,
+          "hot_cutoff_degC": 37.79,
+          "era5_raw": {
+            "mae": 1.225,
+            "mae_hot": 1.726,
+            "bias_hot": -1.637
+          },
+          "era5_monthly_linear": {
+            "mae": 1.047,
+            "mae_hot": 1.554,
+            "bias_hot": -1.444
+          },
+          "era5_quantile_map": {
+            "mae": 1.051,
+            "mae_hot": 1.43,
+            "bias_hot": -1.163
+          },
+          "lightgbm_gap_fill": {
+            "mae": 1.012,
+            "mae_hot": 1.306,
+            "bias_hot": -1.197
+          }
+        },
+        "layer2": {
+          "excluded": "base coverage 6364/10957 below 60 %"
+        },
+        "explore": {
+          "base_coverage_permille": 929,
+          "eligible_seasons": [
+            2021,
+            2026
+          ],
+          "rows": [
+            {
+              "year": 2021,
+              "pattern": "antalya_2023",
+              "gap_days": 72,
+              "truth_longest": 4,
+              "truth": false,
+              "era5_raw": 5,
+              "era5_monthly_linear": 5,
+              "era5_quantile_map": 5,
+              "lightgbm_gap_fill": 5
+            },
+            {
+              "year": 2021,
+              "pattern": "antalya_2024",
+              "gap_days": 91,
+              "truth_longest": 4,
+              "truth": false,
+              "era5_raw": 4,
+              "era5_monthly_linear": 4,
+              "era5_quantile_map": 4,
+              "lightgbm_gap_fill": 6
+            },
+            {
+              "year": 2021,
+              "pattern": "whole_season",
+              "gap_days": 122,
+              "truth_longest": 4,
+              "truth": false,
+              "era5_raw": 4,
+              "era5_monthly_linear": 6,
+              "era5_quantile_map": 6,
+              "lightgbm_gap_fill": 8
+            },
+            {
+              "year": 2026,
+              "pattern": "antalya_2023",
+              "gap_days": 72,
+              "truth_longest": 4,
+              "truth": false,
+              "era5_raw": 1,
+              "era5_monthly_linear": 1,
+              "era5_quantile_map": 2,
+              "lightgbm_gap_fill": 1
+            },
+            {
+              "year": 2026,
+              "pattern": "antalya_2024",
+              "gap_days": 91,
+              "truth_longest": 4,
+              "truth": false,
+              "era5_raw": 4,
+              "era5_monthly_linear": 4,
+              "era5_quantile_map": 4,
+              "lightgbm_gap_fill": 4
+            },
+            {
+              "year": 2026,
+              "pattern": "whole_season",
+              "gap_days": 122,
+              "truth_longest": 4,
+              "truth": false,
+              "era5_raw": 1,
+              "era5_monthly_linear": 1,
+              "era5_quantile_map": 2,
+              "lightgbm_gap_fill": 1
+            }
+          ]
+        }
+      },
+      "TUW00033308": {
+        "fit_days": 1826,
+        "layer1": {
+          "test_days": 360,
+          "hot_days": 13,
+          "hot_cutoff_degC": 37.0,
+          "era5_raw": {
+            "mae": 0.972,
+            "mae_hot": 0.6,
+            "bias_hot": -0.508
+          },
+          "era5_monthly_linear": {
+            "mae": 0.719,
+            "mae_hot": 0.761,
+            "bias_hot": -0.717
+          },
+          "era5_quantile_map": {
+            "mae": 0.882,
+            "mae_hot": 0.745,
+            "bias_hot": -0.06
+          },
+          "lightgbm_gap_fill": {
+            "mae": 0.952,
+            "mae_hot": 2.824,
+            "bias_hot": -2.784
+          }
+        },
+        "layer2": {
+          "excluded": "base coverage 2556/10957 below 60 %"
+        },
+        "explore": {
+          "excluded": "base coverage 0/10958 below 60 %"
+        }
+      },
+      "TUM00017370": {
+        "fit_days": 11367,
+        "layer1": {
+          "test_days": 2835,
+          "hot_days": 104,
+          "hot_cutoff_degC": 33.5,
+          "era5_raw": {
+            "mae": 1.782,
+            "mae_hot": 2.638,
+            "bias_hot": 2.563
+          },
+          "era5_monthly_linear": {
+            "mae": 0.998,
+            "mae_hot": 1.696,
+            "bias_hot": -1.569
+          },
+          "era5_quantile_map": {
+            "mae": 1.077,
+            "mae_hot": 1.357,
+            "bias_hot": -0.59
+          },
+          "lightgbm_gap_fill": {
+            "mae": 0.861,
+            "mae_hot": 1.289,
+            "bias_hot": -1.057
+          }
+        },
+        "layer2": {
+          "excluded": "base coverage 4497/10957 below 60 %"
+        },
+        "explore": {
+          "base_coverage_permille": 822,
+          "eligible_seasons": [],
+          "rows": []
+        }
+      },
+      "TUM00017244": {
+        "fit_days": 11658,
+        "layer1": {
+          "test_days": 1125,
+          "hot_days": 54,
+          "hot_cutoff_degC": 34.3,
+          "era5_raw": {
+            "mae": 1.041,
+            "mae_hot": 0.657,
+            "bias_hot": 0.087
+          },
+          "era5_monthly_linear": {
+            "mae": 0.857,
+            "mae_hot": 0.695,
+            "bias_hot": -0.261
+          },
+          "era5_quantile_map": {
+            "mae": 0.947,
+            "mae_hot": 0.651,
+            "bias_hot": 0.038
+          },
+          "lightgbm_gap_fill": {
+            "mae": 0.852,
+            "mae_hot": 0.774,
+            "bias_hot": -0.111
+          }
+        },
+        "layer2": {
+          "base_coverage_permille": 676,
+          "eligible_seasons": [],
+          "rows": []
+        },
+        "explore": {
+          "excluded": "base coverage 5072/10958 below 60 %"
+        }
+      },
+      "TUM00017190": {
+        "fit_days": 13073,
+        "layer1": {
+          "test_days": 3345,
+          "hot_days": 114,
+          "hot_cutoff_degC": 34.1,
+          "era5_raw": {
+            "mae": 1.146,
+            "mae_hot": 0.866,
+            "bias_hot": 0.722
+          },
+          "era5_monthly_linear": {
+            "mae": 1.088,
+            "mae_hot": 0.98,
+            "bias_hot": 0.844
+          },
+          "era5_quantile_map": {
+            "mae": 1.214,
+            "mae_hot": 1.185,
+            "bias_hot": 1.111
+          },
+          "lightgbm_gap_fill": {
+            "mae": 1.052,
+            "mae_hot": 1.054,
+            "bias_hot": 0.705
+          }
+        },
+        "layer2": {
+          "base_coverage_permille": 673,
+          "eligible_seasons": [],
+          "rows": []
+        },
+        "explore": {
+          "base_coverage_permille": 708,
+          "eligible_seasons": [],
+          "rows": []
+        }
+      }
+    },
+    "excluded": {
+      "TUM00017340": "only 19 paired station days in 1963-2010 (need 1095)",
+      "TUM00017220": "only 21 paired station days in 1963-2010 (need 1095)"
+    },
+    "summary": {
+      "methods": {
+        "era5_raw": {
+          "seasons_scored": 9,
+          "agree": 2,
+          "false_triggers": 0,
+          "missed_triggers": 7,
+          "true_trigger_seasons": 9,
+          "longest_spell_mae": 4.222,
+          "agree_by_pattern": {
+            "antalya_2023": "2/3",
+            "antalya_2024": "0/3",
+            "whole_season": "0/3"
+          },
+          "layer1_mean_station_mae": 1.372,
+          "layer1_mean_station_mae_hot": 1.883
+        },
+        "era5_monthly_linear": {
+          "seasons_scored": 9,
+          "agree": 6,
+          "false_triggers": 0,
+          "missed_triggers": 3,
+          "true_trigger_seasons": 9,
+          "longest_spell_mae": 0.667,
+          "agree_by_pattern": {
+            "antalya_2023": "2/3",
+            "antalya_2024": "2/3",
+            "whole_season": "2/3"
+          },
+          "layer1_mean_station_mae": 1.01,
+          "layer1_mean_station_mae_hot": 1.546
+        },
+        "era5_quantile_map": {
+          "seasons_scored": 9,
+          "agree": 9,
+          "false_triggers": 0,
+          "missed_triggers": 0,
+          "true_trigger_seasons": 9,
+          "longest_spell_mae": 0.667,
+          "agree_by_pattern": {
+            "antalya_2023": "3/3",
+            "antalya_2024": "3/3",
+            "whole_season": "3/3"
+          },
+          "layer1_mean_station_mae": 1.066,
+          "layer1_mean_station_mae_hot": 1.135
+        },
+        "lightgbm_gap_fill": {
+          "seasons_scored": 9,
+          "agree": 6,
+          "false_triggers": 0,
+          "missed_triggers": 3,
+          "true_trigger_seasons": 9,
+          "longest_spell_mae": 1.222,
+          "agree_by_pattern": {
+            "antalya_2023": "2/3",
+            "antalya_2024": "2/3",
+            "whole_season": "2/3"
+          },
+          "layer1_mean_station_mae": 0.967,
+          "layer1_mean_station_mae_hot": 1.376
+        }
+      },
+      "best_baseline": "era5_quantile_map",
+      "ai_adopted": false,
+      "default_fill": "era5_quantile_map"
+    },
+    "exploratory_post_hoc": {
+      "methods": {
+        "era5_raw": {
+          "seasons_scored": 12,
+          "agree": 10,
+          "false_triggers": 0,
+          "missed_triggers": 2,
+          "true_trigger_seasons": 3,
+          "longest_spell_mae": 2.833,
+          "agree_by_pattern": {
+            "antalya_2023": "4/4",
+            "antalya_2024": "3/4",
+            "whole_season": "3/4"
+          },
+          "layer1_mean_station_mae": 1.372,
+          "layer1_mean_station_mae_hot": 1.883
+        },
+        "era5_monthly_linear": {
+          "seasons_scored": 12,
+          "agree": 11,
+          "false_triggers": 1,
+          "missed_triggers": 0,
+          "true_trigger_seasons": 3,
+          "longest_spell_mae": 1.167,
+          "agree_by_pattern": {
+            "antalya_2023": "4/4",
+            "antalya_2024": "4/4",
+            "whole_season": "3/4"
+          },
+          "layer1_mean_station_mae": 1.01,
+          "layer1_mean_station_mae_hot": 1.546
+        },
+        "era5_quantile_map": {
+          "seasons_scored": 12,
+          "agree": 11,
+          "false_triggers": 1,
+          "missed_triggers": 0,
+          "true_trigger_seasons": 3,
+          "longest_spell_mae": 0.583,
+          "agree_by_pattern": {
+            "antalya_2023": "4/4",
+            "antalya_2024": "4/4",
+            "whole_season": "3/4"
+          },
+          "layer1_mean_station_mae": 1.066,
+          "layer1_mean_station_mae_hot": 1.135
+        },
+        "lightgbm_gap_fill": {
+          "seasons_scored": 12,
+          "agree": 10,
+          "false_triggers": 2,
+          "missed_triggers": 0,
+          "true_trigger_seasons": 3,
+          "longest_spell_mae": 1.25,
+          "agree_by_pattern": {
+            "antalya_2023": "4/4",
+            "antalya_2024": "3/4",
+            "whole_season": "3/4"
+          },
+          "layer1_mean_station_mae": 0.967,
+          "layer1_mean_station_mae_hot": 1.376
+        }
+      },
+      "best_baseline": "era5_quantile_map",
+      "ai_adopted": false,
+      "default_fill": "era5_quantile_map"
+    }
+  },
+  "spatial": {
+    "per_station": {
+      "TUM00017300": {
+        "fit_days": 85683,
+        "layer1": {
+          "test_days": 2390,
+          "hot_days": 86,
+          "hot_cutoff_degC": 39.6,
+          "era5_raw": {
+            "mae": 1.377,
+            "mae_hot": 0.629,
+            "bias_hot": -0.08
+          },
+          "era5_monthly_linear": {
+            "mae": 1.444,
+            "mae_hot": 0.991,
+            "bias_hot": -0.926
+          },
+          "era5_quantile_map": {
+            "mae": 1.714,
+            "mae_hot": 1.193,
+            "bias_hot": 1.109
+          },
+          "lightgbm_gap_fill": {
+            "mae": 1.222,
+            "mae_hot": 2.119,
+            "bias_hot": -2.119
+          }
+        },
+        "layer2": {
+          "base_coverage_permille": 651,
+          "eligible_seasons": [],
+          "rows": []
+        },
+        "explore": {
+          "base_coverage_permille": 710,
+          "eligible_seasons": [],
+          "rows": []
+        }
+      },
+      "TU000017375": {
+        "fit_days": 81455,
+        "layer1": {
+          "test_days": 2999,
+          "hot_days": 97,
+          "hot_cutoff_degC": 37.9,
+          "era5_raw": {
+            "mae": 1.866,
+            "mae_hot": 4.958,
+            "bias_hot": -4.958
+          },
+          "era5_monthly_linear": {
+            "mae": 1.858,
+            "mae_hot": 6.089,
+            "bias_hot": -6.089
+          },
+          "era5_quantile_map": {
+            "mae": 1.794,
+            "mae_hot": 5.939,
+            "bias_hot": -5.939
+          },
+          "lightgbm_gap_fill": {
+            "mae": 1.256,
+            "mae_hot": 1.089,
+            "bias_hot": -0.398
+          }
+        },
+        "layer2": {
+          "base_coverage_permille": 999,
+          "eligible_seasons": [
+            2011,
+            2021
+          ],
+          "rows": [
+            {
+              "year": 2011,
+              "pattern": "antalya_2023",
+              "gap_days": 72,
+              "truth_longest": 6,
+              "truth": true,
+              "era5_raw": 5,
+              "era5_monthly_linear": 5,
+              "era5_quantile_map": 5,
+              "lightgbm_gap_fill": 7
+            },
+            {
+              "year": 2011,
+              "pattern": "antalya_2024",
+              "gap_days": 91,
+              "truth_longest": 6,
+              "truth": true,
+              "era5_raw": 4,
+              "era5_monthly_linear": 4,
+              "era5_quantile_map": 4,
+              "lightgbm_gap_fill": 7
+            },
+            {
+              "year": 2011,
+              "pattern": "whole_season",
+              "gap_days": 122,
+              "truth_longest": 6,
+              "truth": true,
+              "era5_raw": 0,
+              "era5_monthly_linear": 0,
+              "era5_quantile_map": 0,
+              "lightgbm_gap_fill": 7
+            },
+            {
+              "year": 2021,
+              "pattern": "antalya_2023",
+              "gap_days": 72,
+              "truth_longest": 11,
+              "truth": true,
+              "era5_raw": 9,
+              "era5_monthly_linear": 9,
+              "era5_quantile_map": 9,
+              "lightgbm_gap_fill": 11
+            },
+            {
+              "year": 2021,
+              "pattern": "antalya_2024",
+              "gap_days": 91,
+              "truth_longest": 11,
+              "truth": true,
+              "era5_raw": 4,
+              "era5_monthly_linear": 2,
+              "era5_quantile_map": 2,
+              "lightgbm_gap_fill": 11
+            },
+            {
+              "year": 2021,
+              "pattern": "whole_season",
+              "gap_days": 122,
+              "truth_longest": 11,
+              "truth": true,
+              "era5_raw": 2,
+              "era5_monthly_linear": 0,
+              "era5_quantile_map": 0,
+              "lightgbm_gap_fill": 11
+            }
+          ]
+        },
+        "explore": {
+          "base_coverage_permille": 793,
+          "eligible_seasons": [
+            2021,
+            2026
+          ],
+          "rows": [
+            {
+              "year": 2021,
+              "pattern": "antalya_2023",
+              "gap_days": 72,
+              "truth_longest": 11,
+              "truth": true,
+              "era5_raw": 9,
+              "era5_monthly_linear": 9,
+              "era5_quantile_map": 9,
+              "lightgbm_gap_fill": 11
+            },
+            {
+              "year": 2021,
+              "pattern": "antalya_2024",
+              "gap_days": 91,
+              "truth_longest": 11,
+              "truth": true,
+              "era5_raw": 2,
+              "era5_monthly_linear": 2,
+              "era5_quantile_map": 2,
+              "lightgbm_gap_fill": 11
+            },
+            {
+              "year": 2021,
+              "pattern": "whole_season",
+              "gap_days": 122,
+              "truth_longest": 11,
+              "truth": true,
+              "era5_raw": 0,
+              "era5_monthly_linear": 0,
+              "era5_quantile_map": 0,
+              "lightgbm_gap_fill": 11
+            },
+            {
+              "year": 2026,
+              "pattern": "antalya_2023",
+              "gap_days": 72,
+              "truth_longest": 3,
+              "truth": false,
+              "era5_raw": 1,
+              "era5_monthly_linear": 1,
+              "era5_quantile_map": 1,
+              "lightgbm_gap_fill": 6
+            },
+            {
+              "year": 2026,
+              "pattern": "antalya_2024",
+              "gap_days": 91,
+              "truth_longest": 3,
+              "truth": false,
+              "era5_raw": 3,
+              "era5_monthly_linear": 3,
+              "era5_quantile_map": 3,
+              "lightgbm_gap_fill": 3
+            },
+            {
+              "year": 2026,
+              "pattern": "whole_season",
+              "gap_days": 122,
+              "truth_longest": 3,
+              "truth": false,
+              "era5_raw": 0,
+              "era5_monthly_linear": 0,
+              "era5_quantile_map": 0,
+              "lightgbm_gap_fill": 6
+            }
+          ]
+        }
+      },
+      "TU000017240": {
+        "fit_days": 81862,
+        "layer1": {
+          "test_days": 1833,
+          "hot_days": 69,
+          "hot_cutoff_degC": 35.07,
+          "era5_raw": {
+            "mae": 1.564,
+            "mae_hot": 2.988,
+            "bias_hot": -2.988
+          },
+          "era5_monthly_linear": {
+            "mae": 1.447,
+            "mae_hot": 3.483,
+            "bias_hot": -3.483
+          },
+          "era5_quantile_map": {
+            "mae": 1.742,
+            "mae_hot": 3.309,
+            "bias_hot": -3.309
+          },
+          "lightgbm_gap_fill": {
+            "mae": 1.364,
+            "mae_hot": 2.223,
+            "bias_hot": -2.223
+          }
+        },
+        "layer2": {
+          "base_coverage_permille": 997,
+          "eligible_seasons": [
+            2015
+          ],
+          "rows": [
+            {
+              "year": 2015,
+              "pattern": "antalya_2023",
+              "gap_days": 72,
+              "truth_longest": 9,
+              "truth": true,
+              "era5_raw": 8,
+              "era5_monthly_linear": 8,
+              "era5_quantile_map": 8,
+              "lightgbm_gap_fill": 8
+            },
+            {
+              "year": 2015,
+              "pattern": "antalya_2024",
+              "gap_days": 91,
+              "truth_longest": 9,
+              "truth": true,
+              "era5_raw": 4,
+              "era5_monthly_linear": 3,
+              "era5_quantile_map": 3,
+              "lightgbm_gap_fill": 4
+            },
+            {
+              "year": 2015,
+              "pattern": "whole_season",
+              "gap_days": 122,
+              "truth_longest": 9,
+              "truth": true,
+              "era5_raw": 4,
+              "era5_monthly_linear": 3,
+              "era5_quantile_map": 3,
+              "lightgbm_gap_fill": 4
+            }
+          ]
+        },
+        "explore": {
+          "base_coverage_permille": 764,
+          "eligible_seasons": [],
+          "rows": []
+        }
+      },
+      "TUM00017292": {
+        "fit_days": 85727,
+        "layer1": {
+          "test_days": 5122,
+          "hot_days": 178,
+          "hot_cutoff_degC": 37.79,
+          "era5_raw": {
+            "mae": 1.225,
+            "mae_hot": 1.726,
+            "bias_hot": -1.637
+          },
+          "era5_monthly_linear": {
+            "mae": 1.456,
+            "mae_hot": 3.141,
+            "bias_hot": -3.141
+          },
+          "era5_quantile_map": {
+            "mae": 1.382,
+            "mae_hot": 2.06,
+            "bias_hot": -2.02
+          },
+          "lightgbm_gap_fill": {
+            "mae": 1.222,
+            "mae_hot": 1.052,
+            "bias_hot": -0.967
+          }
+        },
+        "layer2": {
+          "excluded": "base coverage 6364/10957 below 60 %"
+        },
+        "explore": {
+          "base_coverage_permille": 929,
+          "eligible_seasons": [
+            2021,
+            2026
+          ],
+          "rows": [
+            {
+              "year": 2021,
+              "pattern": "antalya_2023",
+              "gap_days": 72,
+              "truth_longest": 4,
+              "truth": false,
+              "era5_raw": 5,
+              "era5_monthly_linear": 3,
+              "era5_quantile_map": 3,
+              "lightgbm_gap_fill": 5
+            },
+            {
+              "year": 2021,
+              "pattern": "antalya_2024",
+              "gap_days": 91,
+              "truth_longest": 4,
+              "truth": false,
+              "era5_raw": 4,
+              "era5_monthly_linear": 1,
+              "era5_quantile_map": 2,
+              "lightgbm_gap_fill": 6
+            },
+            {
+              "year": 2021,
+              "pattern": "whole_season",
+              "gap_days": 122,
+              "truth_longest": 4,
+              "truth": false,
+              "era5_raw": 4,
+              "era5_monthly_linear": 1,
+              "era5_quantile_map": 2,
+              "lightgbm_gap_fill": 8
+            },
+            {
+              "year": 2026,
+              "pattern": "antalya_2023",
+              "gap_days": 72,
+              "truth_longest": 4,
+              "truth": false,
+              "era5_raw": 1,
+              "era5_monthly_linear": 1,
+              "era5_quantile_map": 1,
+              "lightgbm_gap_fill": 2
+            },
+            {
+              "year": 2026,
+              "pattern": "antalya_2024",
+              "gap_days": 91,
+              "truth_longest": 4,
+              "truth": false,
+              "era5_raw": 4,
+              "era5_monthly_linear": 4,
+              "era5_quantile_map": 4,
+              "lightgbm_gap_fill": 4
+            },
+            {
+              "year": 2026,
+              "pattern": "whole_season",
+              "gap_days": 122,
+              "truth_longest": 4,
+              "truth": false,
+              "era5_raw": 1,
+              "era5_monthly_linear": 0,
+              "era5_quantile_map": 0,
+              "lightgbm_gap_fill": 2
+            }
+          ]
+        }
+      },
+      "TUM00017340": {
+        "fit_days": 98902,
+        "layer1": {
+          "test_days": 2739,
+          "hot_days": 99,
+          "hot_cutoff_degC": 34.3,
+          "era5_raw": {
+            "mae": 2.162,
+            "mae_hot": 3.581,
+            "bias_hot": -3.561
+          },
+          "era5_monthly_linear": {
+            "mae": 1.719,
+            "mae_hot": 3.424,
+            "bias_hot": -3.424
+          },
+          "era5_quantile_map": {
+            "mae": 1.66,
+            "mae_hot": 3.476,
+            "bias_hot": -3.466
+          },
+          "lightgbm_gap_fill": {
+            "mae": 0.981,
+            "mae_hot": 1.645,
+            "bias_hot": 0.036
+          }
+        },
+        "layer2": {
+          "excluded": "base coverage 1/10957 below 60 %"
+        },
+        "explore": {
+          "excluded": "base coverage 1038/10958 below 60 %"
+        }
+      },
+      "TUM00017220": {
+        "fit_days": 98900,
+        "layer1": {
+          "test_days": 4419,
+          "hot_days": 160,
+          "hot_cutoff_degC": 36.8,
+          "era5_raw": {
+            "mae": 1.215,
+            "mae_hot": 1.062,
+            "bias_hot": 0.365
+          },
+          "era5_monthly_linear": {
+            "mae": 1.313,
+            "mae_hot": 1.434,
+            "bias_hot": -1.183
+          },
+          "era5_quantile_map": {
+            "mae": 1.469,
+            "mae_hot": 1.054,
+            "bias_hot": 0.079
+          },
+          "lightgbm_gap_fill": {
+            "mae": 1.695,
+            "mae_hot": 1.158,
+            "bias_hot": 0.066
+          }
+        },
+        "layer2": {
+          "excluded": "base coverage 0/10957 below 60 %"
+        },
+        "explore": {
+          "excluded": "base coverage 2678/10958 below 60 %"
+        }
+      },
+      "TUW00033308": {
+        "fit_days": 97095,
+        "layer1": {
+          "test_days": 360,
+          "hot_days": 13,
+          "hot_cutoff_degC": 37.0,
+          "era5_raw": {
+            "mae": 0.972,
+            "mae_hot": 0.6,
+            "bias_hot": -0.508
+          },
+          "era5_monthly_linear": {
+            "mae": 0.963,
+            "mae_hot": 2.2,
+            "bias_hot": -2.2
+          },
+          "era5_quantile_map": {
+            "mae": 0.827,
+            "mae_hot": 0.883,
+            "bias_hot": -0.883
+          },
+          "lightgbm_gap_fill": {
+            "mae": 0.975,
+            "mae_hot": 1.928,
+            "bias_hot": -1.348
+          }
+        },
+        "layer2": {
+          "excluded": "base coverage 2556/10957 below 60 %"
+        },
+        "explore": {
+          "excluded": "base coverage 0/10958 below 60 %"
+        }
+      },
+      "TUM00017370": {
+        "fit_days": 87554,
+        "layer1": {
+          "test_days": 2835,
+          "hot_days": 104,
+          "hot_cutoff_degC": 33.5,
+          "era5_raw": {
+            "mae": 1.782,
+            "mae_hot": 2.638,
+            "bias_hot": 2.563
+          },
+          "era5_monthly_linear": {
+            "mae": 1.701,
+            "mae_hot": 2.097,
+            "bias_hot": 1.938
+          },
+          "era5_quantile_map": {
+            "mae": 1.862,
+            "mae_hot": 2.573,
+            "bias_hot": 2.496
+          },
+          "lightgbm_gap_fill": {
+            "mae": 1.788,
+            "mae_hot": 2.961,
+            "bias_hot": 2.916
+          }
+        },
+        "layer2": {
+          "excluded": "base coverage 4497/10957 below 60 %"
+        },
+        "explore": {
+          "base_coverage_permille": 822,
+          "eligible_seasons": [],
+          "rows": []
+        }
+      },
+      "TUM00017244": {
+        "fit_days": 87263,
+        "layer1": {
+          "test_days": 1125,
+          "hot_days": 54,
+          "hot_cutoff_degC": 34.3,
+          "era5_raw": {
+            "mae": 1.041,
+            "mae_hot": 0.657,
+            "bias_hot": 0.087
+          },
+          "era5_monthly_linear": {
+            "mae": 1.382,
+            "mae_hot": 0.889,
+            "bias_hot": -0.858
+          },
+          "era5_quantile_map": {
+            "mae": 1.263,
+            "mae_hot": 0.614,
+            "bias_hot": -0.12
+          },
+          "lightgbm_gap_fill": {
+            "mae": 1.729,
+            "mae_hot": 2.203,
+            "bias_hot": -2.203
+          }
+        },
+        "layer2": {
+          "base_coverage_permille": 676,
+          "eligible_seasons": [],
+          "rows": []
+        },
+        "explore": {
+          "excluded": "base coverage 5072/10958 below 60 %"
+        }
+      },
+      "TUM00017190": {
+        "fit_days": 85848,
+        "layer1": {
+          "test_days": 3345,
+          "hot_days": 114,
+          "hot_cutoff_degC": 34.1,
+          "era5_raw": {
+            "mae": 1.146,
+            "mae_hot": 0.866,
+            "bias_hot": 0.722
+          },
+          "era5_monthly_linear": {
+            "mae": 1.481,
+            "mae_hot": 0.607,
+            "bias_hot": -0.355
+          },
+          "era5_quantile_map": {
+            "mae": 1.367,
+            "mae_hot": 0.747,
+            "bias_hot": 0.526
+          },
+          "lightgbm_gap_fill": {
+            "mae": 1.276,
+            "mae_hot": 0.625,
+            "bias_hot": 0.142
+          }
+        },
+        "layer2": {
+          "base_coverage_permille": 673,
+          "eligible_seasons": [],
+          "rows": []
+        },
+        "explore": {
+          "base_coverage_permille": 708,
+          "eligible_seasons": [],
+          "rows": []
+        }
+      }
+    },
+    "summary": {
+      "methods": {
+        "era5_raw": {
+          "seasons_scored": 9,
+          "agree": 2,
+          "false_triggers": 0,
+          "missed_triggers": 7,
+          "true_trigger_seasons": 9,
+          "longest_spell_mae": 4.222,
+          "agree_by_pattern": {
+            "antalya_2023": "2/3",
+            "antalya_2024": "0/3",
+            "whole_season": "0/3"
+          },
+          "layer1_mean_station_mae": 1.435,
+          "layer1_mean_station_mae_hot": 1.97
+        },
+        "era5_monthly_linear": {
+          "seasons_scored": 9,
+          "agree": 2,
+          "false_triggers": 0,
+          "missed_triggers": 7,
+          "true_trigger_seasons": 9,
+          "longest_spell_mae": 4.889,
+          "agree_by_pattern": {
+            "antalya_2023": "2/3",
+            "antalya_2024": "0/3",
+            "whole_season": "0/3"
+          },
+          "layer1_mean_station_mae": 1.476,
+          "layer1_mean_station_mae_hot": 2.436
+        },
+        "era5_quantile_map": {
+          "seasons_scored": 9,
+          "agree": 2,
+          "false_triggers": 0,
+          "missed_triggers": 7,
+          "true_trigger_seasons": 9,
+          "longest_spell_mae": 4.889,
+          "agree_by_pattern": {
+            "antalya_2023": "2/3",
+            "antalya_2024": "0/3",
+            "whole_season": "0/3"
+          },
+          "layer1_mean_station_mae": 1.508,
+          "layer1_mean_station_mae_hot": 2.185
+        },
+        "lightgbm_gap_fill": {
+          "seasons_scored": 9,
+          "agree": 7,
+          "false_triggers": 0,
+          "missed_triggers": 2,
+          "true_trigger_seasons": 9,
+          "longest_spell_mae": 1.556,
+          "agree_by_pattern": {
+            "antalya_2023": "3/3",
+            "antalya_2024": "2/3",
+            "whole_season": "2/3"
+          },
+          "layer1_mean_station_mae": 1.351,
+          "layer1_mean_station_mae_hot": 1.7
+        }
+      },
+      "best_baseline": "era5_raw",
+      "ai_adopted": true,
+      "default_fill": "lightgbm_gap_fill"
+    },
+    "exploratory_post_hoc": {
+      "methods": {
+        "era5_raw": {
+          "seasons_scored": 12,
+          "agree": 10,
+          "false_triggers": 0,
+          "missed_triggers": 2,
+          "true_trigger_seasons": 3,
+          "longest_spell_mae": 2.833,
+          "agree_by_pattern": {
+            "antalya_2023": "4/4",
+            "antalya_2024": "3/4",
+            "whole_season": "3/4"
+          },
+          "layer1_mean_station_mae": 1.435,
+          "layer1_mean_station_mae_hot": 1.97
+        },
+        "era5_monthly_linear": {
+          "seasons_scored": 12,
+          "agree": 10,
+          "false_triggers": 0,
+          "missed_triggers": 2,
+          "true_trigger_seasons": 3,
+          "longest_spell_mae": 3.417,
+          "agree_by_pattern": {
+            "antalya_2023": "4/4",
+            "antalya_2024": "3/4",
+            "whole_season": "3/4"
+          },
+          "layer1_mean_station_mae": 1.476,
+          "layer1_mean_station_mae_hot": 2.436
+        },
+        "era5_quantile_map": {
+          "seasons_scored": 12,
+          "agree": 10,
+          "false_triggers": 0,
+          "missed_triggers": 2,
+          "true_trigger_seasons": 3,
+          "longest_spell_mae": 3.25,
+          "agree_by_pattern": {
+            "antalya_2023": "4/4",
+            "antalya_2024": "3/4",
+            "whole_season": "3/4"
+          },
+          "layer1_mean_station_mae": 1.508,
+          "layer1_mean_station_mae_hot": 2.185
+        },
+        "lightgbm_gap_fill": {
+          "seasons_scored": 12,
+          "agree": 8,
+          "false_triggers": 4,
+          "missed_triggers": 0,
+          "true_trigger_seasons": 3,
+          "longest_spell_mae": 1.417,
+          "agree_by_pattern": {
+            "antalya_2023": "3/4",
+            "antalya_2024": "3/4",
+            "whole_season": "2/4"
+          },
+          "layer1_mean_station_mae": 1.351,
+          "layer1_mean_station_mae_hot": 1.7
+        }
+      },
+      "best_baseline": "era5_raw",
+      "ai_adopted": false,
+      "default_fill": "era5_raw"
+    }
+  }
+}

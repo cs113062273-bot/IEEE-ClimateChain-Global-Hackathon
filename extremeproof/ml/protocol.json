@@ -1,0 +1,43 @@
+{
+  "schema": "extremeproof.fill-eval-protocol.v1",
+  "written_before_results": "2026-10-20",
+  "question": "When a station's daily maximum temperature (TX) is missing, which pre-agreed estimate keeps the heat-trigger verdict closest to what the station would have reported?",
+  "target": "station TX (degC) on the day",
+  "candidates": {
+    "baselines": ["era5_raw", "era5_monthly_linear", "era5_quantile_map"],
+    "ai": "lightgbm_gap_fill"
+  },
+  "ai_features": [
+    "ERA5 TX on the day, the day before and the day after",
+    "ERA5 TN (daily minimum) on the day",
+    "ERA5-Land TX on the day",
+    "day-of-year as sine and cosine",
+    "spatial design only: station elevation minus ERA5 grid elevation"
+  ],
+  "ai_never_sees": ["the station's own value on the target day", "any station value from the test period"],
+  "designs": {
+    "temporal": {
+      "fit": "paired days 1963-01-01..2010-12-31, per station",
+      "test": "days 2011-01-01..2025-12-31 where the station observed TX"
+    },
+    "spatial": {
+      "fit": "all paired days 1963-01-01..2010-12-31 of the other stations (one pooled model; baselines pooled the same way)",
+      "test": "the held-out station, days 2011-01-01..2025-12-31 where it observed TX"
+    }
+  },
+  "layer_1_metrics": ["mean absolute error, all test days", "mean absolute error on hot days: observed TX at or above the station's own 90th percentile of June-September test-period values", "mean error (bias) on hot days"],
+  "layer_2_trigger_agreement": {
+    "rule": "1 Jun-30 Sep, at least 6 consecutive days above the calendar-day 90th percentile of the station's own 1961-1990 TX (5-day window, type-8 quantile); stations with less than 60 % base coverage are excluded and listed",
+    "eligible_seasons": "station-years 2011-2025 with no missing June-September TX",
+    "truth": "verdict and longest spell computed from the complete observed season",
+    "gap_patterns": {
+      "antalya_2023": "the June-September days that were actually missing at Antalya in 2023",
+      "antalya_2024": "the June-September days that were actually missing at Antalya in 2024",
+      "whole_season": "all 122 days missing"
+    },
+    "metrics": ["verdicts equal to truth (count)", "false triggers", "missed triggers", "mean absolute error of the longest spell (days)"]
+  },
+  "decision_rule": "Per design, the AI is adopted only if its layer-2 agreement count, pooled over stations and gap patterns, is strictly greater than the best baseline's AND its longest-spell MAE is not larger. Otherwise the best baseline (most agreements, then lower spell MAE) is the default gap-filling rule, and the report says so.",
+  "stations": ["TUM00017300", "TU000017375", "TU000017240", "TUM00017292", "TUM00017340", "TUM00017220", "TUW00033308", "TUM00017370", "TUM00017244", "TUM00017190"],
+  "lightgbm": {"objective": "regression_l1", "num_leaves": 31, "learning_rate": 0.05, "n_estimators": 400, "min_child_samples": 40, "subsample": 0.8, "subsample_freq": 1, "colsample_bytree": 0.9, "seed": 20261020, "deterministic": true}
+}

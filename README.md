@@ -1,5 +1,38 @@
 # GridProof
 
+**More drivers leave with the charge they asked for, on the connection you already have.** GridProof is a charging controller for workplace car parks whose chargers share one capped grid connection. It learns from each driver's earlier sessions when they are likely to leave, charges the likely early leavers first, never exceeds the connection limit with zero solar assumed, and produces a record of each day that a standard-library checker can verify independently.
+
+It is tested on real behaviour: 55,379 sessions from an Utrecht office car park ([4TU.ResearchData](https://doi.org/10.4121/80ef3824-3f5d-4e45-8794-3b8791efbd13.v2), CC BY-NC-SA 4.0). The departure model was fitted on 2021-22, calibrated and all choices fixed on 2023, then the product was evaluated **once** on 185 held-out 2024 weekdays (5,656 sessions) replayed on same-weekday GB 2025 grid days.
+
+| Held-out 2024, same days and drivers | Equal-share load balancing (industry default) | GridProof priority |
+|---|---:|---:|
+| **Decision-time inputs** (11 kW per car, requests as declared, nothing capped; post-review, exploratory) | | |
+| Requests met in full, 120 kW connection (physical ceiling 93.3%) | 85.8% | **88.6%** |
+| Connection needed for 90% of requests met in full (10 kW steps) | 150 kW | **130 kW** |
+| **Pre-registered inputs** (requests and power set using the real departure; tested once) | | |
+| Requests met in full, 120 kW connection | 88.3% | **94.6%** |
+| Connection needed for 95% of requests met in full | 160 kW | **130 kW** |
+
+The pre-registered evaluation capped each request and set each car's power using the real departure, which a deployed controller cannot know. After external review the comparison was repeated with decision-time inputs only: the gain halves but survives, +0.88 drivers per day with their full request met at 120 kW (95% CI 0.61 to 1.17; better on 80 days, worse on 17), and is positive at 100 and 150 kW. At an extremely tight 80 kW, when most drivers cannot be served anyway, priority is slightly below equal share. The value comes from **personal history**: a simple quantile of each driver's own past stays performs within statistical noise of LightGBM at 120 and 150 kW, while an arrival-time-only model is worse than equal share. Carbon is reported honestly: total modelled emissions rise with the extra energy delivered, and the experimental carbon-flex mode meets fewer requests than equal share, so it is not recommended. A request is the energy that real session took (no battery state of charge is available). This is a historical replay with simulated chargers and a synthetic building load, not a field trial, a connection design value or measured abatement.
+
+![Workplace charging workspace](docs/assets/carpark-desktop.png)
+
+Open **http://127.0.0.1:3000** after setup. Replay a held-out day, drag the time to see exactly what the controller knew at each half-hour, announce a grid operator's limit or a driver's early departure, compare strategies on the same day, read the 185-day results, then build, verify and try to forge the day's record. Everything on screen is recomputed on request.
+
+Method, data card, failures and the competitive judgement: [docs/CARPARK.md](docs/CARPARK.md). Derived results: [experiments/carpark/REPORT.md](experiments/carpark/REPORT.md); post-review checks: [experiments/carpark_followup/REPORT.md](experiments/carpark_followup/REPORT.md). Pre-test protocol: [experiments/carpark/protocol.json](experiments/carpark/protocol.json). The session data is downloaded by setup (public, no account) and is **not** redistributed in this repository.
+
+## Previous iterations (preserved)
+
+The earlier fleet readiness planner (`/readiness`) and the original research workspace (`/research`, `/dispatch`, `/replay`, `/audit`) are archived: no longer linked from the product, kept reachable by URL with an archive banner because the recorded proofs, offline backup and their tests depend on them. The results below describe those earlier synthetic scenarios, not the car-park controller. Review note: the readiness study's 122/122 completed days are deterministic. With the zero-solar guard, nothing that decides feasibility (building load, jobs, battery, connection) varies by day, so that figure reflects one feasibility check repeated, not 122 independent service trials.
+
+**Earlier October 19 upgrade: departure readiness (now at `/readiness`).** Open `http://127.0.0.1:3000/readiness` to compute a protected charging plan, change a request from a locked executed state, inspect a real shortfall, accept a solved later deadline, and verify/export that exact plan. The original research UI is preserved at `/research` and `/dispatch`.
+
+The new service policy completes the declared three-hour early-departure requirement on **122/122 days**, versus **0/122** when the original all-day plan is interrupted at those times (27.53 kWh/day missing). Against immediate charging with the same early service, the protected policy reduces modeled carbon exposure **3.39%**, illustrative cost **6.93%**, and mean daily peak **44.26%**. Protection costs an average **£0.64/day and 0.269 kgCO₂/day** relative to the old relaxed-deadline plan. This is an additional service promise, not a free algorithmic improvement. Four newly specified synthetic sites also complete 122/122 days each; they reuse known grid dates and are not independent field validation.
+
+The new path withholds future outcomes from decisions, enables the zero-PV import guard, preserves executed controls during replans, and independently checks event-prefix consistency. A vehicle leaving before its promised earliest departure can still be short. See the [product and engineering report](docs/READINESS_ENGINEERING.md), [6,160-row evaluation](experiments/service_readiness/REPORT.md), [fixed protocol](experiments/service_readiness/protocol.json), and [actual validation](docs/VALIDATION.md#service-readiness-release--2026-10-19). Existing model and benchmark results below remain historical references, not new-service claims.
+
+![Departure readiness workspace](docs/assets/readiness-desktop.png)
+
 **Microgrid scheduling + verifiable climate evidence** — for campus energy managers who need vehicles charged on time without creating a costly power peak. Choose a goal, inspect a feasible schedule and challenge its evidence. IEEE ClimateChain 2026 track: Renewable Energy & Energy Trading — Microgrid Coordination.
 
 GridProof turns authentic GB grid records into constrained campus energy schedules and independently verifiable evidence. It connects source acquisition, forecasts, a mixed-integer optimizer, numerical replay and a Solidity scope registry. The hypothetical London campus has 20 kWp PV, a 40 kWh battery, two EV jobs and a contiguous compute-lab batch.
@@ -49,6 +82,8 @@ The current full held-out benchmark contains **all 122 UTC days from September t
 The fixed peak-aware setting reduces mean daily peak imports **45.62%** and illustrative cost **7.97%** relative to immediate charging. It sacrifices some carbon benefit compared with the original hybrid. Its aggregate exposure bootstrap interval is **3.710-4.613%** (ordinary day resampling); its mean-daily interval is **3.764-4.913%** (seven-day circular block resampling). Those are different estimands.
 
 AI increment remains unproven. Across all 122 days, LightGBM versus seasonal hybrid gains only **0.202 percentage points** in mean daily improvement, with a paired seven-day block 95% interval **[-0.407, 0.747]**. For the peak-aware policy the gain is **0.182 pp**, interval **[-0.188, 0.557]**. Both intervals include zero. Original forecast test MAE remains 36.982 for LightGBM versus 34.836 for latest-value.
+
+The [model and scheduler competitiveness audit](docs/MODEL_SCHEDULER_AUDIT.md) adds battery-equipped greedy carbon/cost and peak heuristics on the same 122 days. GridProof offers a carbon/cost/peak tradeoff rather than winning every metric; all nominal strategies actually deliver 62 kWh/day. LightGBM has an exploratory paired illustrative-cost advantage over seasonal, but its carbon increment remains unresolved. Unannounced early departures leave GridProof incomplete on all 122 tested days. An optional conservative import guard removes the original hybrid's 195 replay-rejected candidates in three matched stress cases, with higher peaks than the previous fallback schedules. Existing model, peak-aware defaults and competition_v2 outputs are preserved.
 
 ![Carbon, cost and peak on all 122 days](experiments/competition_v2/figures/carbon_cost_peak.png)
 

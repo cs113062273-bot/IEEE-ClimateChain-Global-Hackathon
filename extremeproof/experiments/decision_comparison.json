@@ -1,0 +1,1883 @@
+{
+  "results": {
+    "antalya": {
+      "default": {
+        "seasons": [
+          {
+            "year": 2021,
+            "a": {
+              "missing": 0,
+              "filled": 23,
+              "inBase": false,
+              "state": "met",
+              "longest": 8
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2022,
+            "a": {
+              "missing": 0,
+              "filled": 24,
+              "inBase": false,
+              "state": "not",
+              "longest": 2
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "not",
+              "longest": 1
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2023,
+            "a": {
+              "missing": 0,
+              "filled": 72,
+              "inBase": false,
+              "state": "met",
+              "longest": 7
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 11
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2024,
+            "a": {
+              "missing": 0,
+              "filled": 91,
+              "inBase": false,
+              "state": "met",
+              "longest": 13
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 14
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2025,
+            "a": {
+              "missing": 0,
+              "filled": 121,
+              "inBase": false,
+              "state": "met",
+              "longest": 6
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 7
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          }
+        ],
+        "summaries": {
+          "station": {
+            "directPays": 4,
+            "directRefunds": 1,
+            "disputes": 0,
+            "payoutCents": 20000000,
+            "modelledDaysTotal": 0
+          },
+          "era5": {
+            "directPays": 4,
+            "directRefunds": 1,
+            "disputes": 0,
+            "payoutCents": 20000000,
+            "modelledDaysTotal": 0
+          },
+          "dual": {
+            "directPays": 4,
+            "directRefunds": 1,
+            "disputes": 0,
+            "payoutCents": 20000000,
+            "modelledDaysTotal": 0
+          }
+        }
+      },
+      "limited_fill_refund": {
+        "seasons": [
+          {
+            "year": 2021,
+            "a": {
+              "missing": 0,
+              "filled": 23,
+              "inBase": false,
+              "state": "met",
+              "longest": 8
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2022,
+            "a": {
+              "missing": 0,
+              "filled": 24,
+              "inBase": false,
+              "state": "not",
+              "longest": 2
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "not",
+              "longest": 1
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2023,
+            "a": {
+              "missing": 0,
+              "filled": 72,
+              "inBase": false,
+              "state": "nodata",
+              "longest": null,
+              "why": "72 days filled (limit 60)"
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 11
+            },
+            "policies": {
+              "station": {
+                "outcome": "dispute",
+                "reason": "missing",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 30
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "dispute",
+                "reason": "missing",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 30
+              }
+            }
+          },
+          {
+            "year": 2024,
+            "a": {
+              "missing": 0,
+              "filled": 91,
+              "inBase": false,
+              "state": "nodata",
+              "longest": null,
+              "why": "91 days filled (limit 60)"
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 14
+            },
+            "policies": {
+              "station": {
+                "outcome": "dispute",
+                "reason": "missing",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 30
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "dispute",
+                "reason": "missing",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 30
+              }
+            }
+          },
+          {
+            "year": 2025,
+            "a": {
+              "missing": 0,
+              "filled": 121,
+              "inBase": false,
+              "state": "nodata",
+              "longest": null,
+              "why": "121 days filled (limit 60)"
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 7
+            },
+            "policies": {
+              "station": {
+                "outcome": "dispute",
+                "reason": "missing",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 30
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "dispute",
+                "reason": "missing",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 30
+              }
+            }
+          }
+        ],
+        "summaries": {
+          "station": {
+            "directPays": 1,
+            "directRefunds": 1,
+            "disputes": 3,
+            "payoutCents": 5000000,
+            "modelledDaysTotal": 90
+          },
+          "era5": {
+            "directPays": 4,
+            "directRefunds": 1,
+            "disputes": 0,
+            "payoutCents": 20000000,
+            "modelledDaysTotal": 0
+          },
+          "dual": {
+            "directPays": 1,
+            "directRefunds": 1,
+            "disputes": 3,
+            "payoutCents": 5000000,
+            "modelledDaysTotal": 90
+          }
+        }
+      },
+      "limited_fill_pay": {
+        "seasons": [
+          {
+            "year": 2021,
+            "a": {
+              "missing": 0,
+              "filled": 23,
+              "inBase": false,
+              "state": "met",
+              "longest": 8
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2022,
+            "a": {
+              "missing": 0,
+              "filled": 24,
+              "inBase": false,
+              "state": "not",
+              "longest": 2
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "not",
+              "longest": 1
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2023,
+            "a": {
+              "missing": 0,
+              "filled": 72,
+              "inBase": false,
+              "state": "nodata",
+              "longest": null,
+              "why": "72 days filled (limit 60)"
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 11
+            },
+            "policies": {
+              "station": {
+                "outcome": "dispute",
+                "reason": "missing",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 30
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "dispute",
+                "reason": "missing",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 30
+              }
+            }
+          },
+          {
+            "year": 2024,
+            "a": {
+              "missing": 0,
+              "filled": 91,
+              "inBase": false,
+              "state": "nodata",
+              "longest": null,
+              "why": "91 days filled (limit 60)"
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 14
+            },
+            "policies": {
+              "station": {
+                "outcome": "dispute",
+                "reason": "missing",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 30
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "dispute",
+                "reason": "missing",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 30
+              }
+            }
+          },
+          {
+            "year": 2025,
+            "a": {
+              "missing": 0,
+              "filled": 121,
+              "inBase": false,
+              "state": "nodata",
+              "longest": null,
+              "why": "121 days filled (limit 60)"
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 7
+            },
+            "policies": {
+              "station": {
+                "outcome": "dispute",
+                "reason": "missing",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 30
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "dispute",
+                "reason": "missing",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 30
+              }
+            }
+          }
+        ],
+        "summaries": {
+          "station": {
+            "directPays": 1,
+            "directRefunds": 1,
+            "disputes": 3,
+            "payoutCents": 20000000,
+            "modelledDaysTotal": 90
+          },
+          "era5": {
+            "directPays": 4,
+            "directRefunds": 1,
+            "disputes": 0,
+            "payoutCents": 20000000,
+            "modelledDaysTotal": 0
+          },
+          "dual": {
+            "directPays": 1,
+            "directRefunds": 1,
+            "disputes": 3,
+            "payoutCents": 20000000,
+            "modelledDaysTotal": 90
+          }
+        }
+      },
+      "ten_day_trigger": {
+        "seasons": [
+          {
+            "year": 2021,
+            "a": {
+              "missing": 0,
+              "filled": 23,
+              "inBase": false,
+              "state": "not",
+              "longest": 8
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "dispute",
+                "reason": "disagreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 30
+              }
+            }
+          },
+          {
+            "year": 2022,
+            "a": {
+              "missing": 0,
+              "filled": 24,
+              "inBase": false,
+              "state": "not",
+              "longest": 2
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "not",
+              "longest": 1
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2023,
+            "a": {
+              "missing": 0,
+              "filled": 72,
+              "inBase": false,
+              "state": "not",
+              "longest": 7
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 11
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "dispute",
+                "reason": "disagreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 30
+              }
+            }
+          },
+          {
+            "year": 2024,
+            "a": {
+              "missing": 0,
+              "filled": 91,
+              "inBase": false,
+              "state": "met",
+              "longest": 13
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 14
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2025,
+            "a": {
+              "missing": 0,
+              "filled": 121,
+              "inBase": false,
+              "state": "not",
+              "longest": 6
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "not",
+              "longest": 7
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              }
+            }
+          }
+        ],
+        "summaries": {
+          "station": {
+            "directPays": 1,
+            "directRefunds": 4,
+            "disputes": 0,
+            "payoutCents": 5000000,
+            "modelledDaysTotal": 0
+          },
+          "era5": {
+            "directPays": 3,
+            "directRefunds": 2,
+            "disputes": 0,
+            "payoutCents": 15000000,
+            "modelledDaysTotal": 0
+          },
+          "dual": {
+            "directPays": 1,
+            "directRefunds": 2,
+            "disputes": 2,
+            "payoutCents": 5000000,
+            "modelledDaysTotal": 60
+          }
+        }
+      }
+    },
+    "mugla": {
+      "default": {
+        "seasons": [
+          {
+            "year": 2021,
+            "a": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "not",
+              "longest": 4
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "dispute",
+                "reason": "disagreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 30
+              }
+            }
+          },
+          {
+            "year": 2022,
+            "a": {
+              "missing": 0,
+              "filled": 9,
+              "inBase": false,
+              "state": "not",
+              "longest": 2
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "not",
+              "longest": 1
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2023,
+            "a": {
+              "missing": 0,
+              "filled": 2,
+              "inBase": false,
+              "state": "met",
+              "longest": 6
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2024,
+            "a": {
+              "missing": 0,
+              "filled": 3,
+              "inBase": false,
+              "state": "met",
+              "longest": 13
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 21
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2025,
+            "a": {
+              "missing": 0,
+              "filled": 4,
+              "inBase": false,
+              "state": "met",
+              "longest": 6
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          }
+        ],
+        "summaries": {
+          "station": {
+            "directPays": 3,
+            "directRefunds": 2,
+            "disputes": 0,
+            "payoutCents": 15000000,
+            "modelledDaysTotal": 0
+          },
+          "era5": {
+            "directPays": 4,
+            "directRefunds": 1,
+            "disputes": 0,
+            "payoutCents": 20000000,
+            "modelledDaysTotal": 0
+          },
+          "dual": {
+            "directPays": 3,
+            "directRefunds": 1,
+            "disputes": 1,
+            "payoutCents": 15000000,
+            "modelledDaysTotal": 30
+          }
+        }
+      },
+      "limited_fill_refund": {
+        "seasons": [
+          {
+            "year": 2021,
+            "a": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "not",
+              "longest": 4
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "dispute",
+                "reason": "disagreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 30
+              }
+            }
+          },
+          {
+            "year": 2022,
+            "a": {
+              "missing": 0,
+              "filled": 9,
+              "inBase": false,
+              "state": "not",
+              "longest": 2
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "not",
+              "longest": 1
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2023,
+            "a": {
+              "missing": 0,
+              "filled": 2,
+              "inBase": false,
+              "state": "met",
+              "longest": 6
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2024,
+            "a": {
+              "missing": 0,
+              "filled": 3,
+              "inBase": false,
+              "state": "met",
+              "longest": 13
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 21
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2025,
+            "a": {
+              "missing": 0,
+              "filled": 4,
+              "inBase": false,
+              "state": "met",
+              "longest": 6
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          }
+        ],
+        "summaries": {
+          "station": {
+            "directPays": 3,
+            "directRefunds": 2,
+            "disputes": 0,
+            "payoutCents": 15000000,
+            "modelledDaysTotal": 0
+          },
+          "era5": {
+            "directPays": 4,
+            "directRefunds": 1,
+            "disputes": 0,
+            "payoutCents": 20000000,
+            "modelledDaysTotal": 0
+          },
+          "dual": {
+            "directPays": 3,
+            "directRefunds": 1,
+            "disputes": 1,
+            "payoutCents": 15000000,
+            "modelledDaysTotal": 30
+          }
+        }
+      },
+      "limited_fill_pay": {
+        "seasons": [
+          {
+            "year": 2021,
+            "a": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "not",
+              "longest": 4
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "dispute",
+                "reason": "disagreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 30
+              }
+            }
+          },
+          {
+            "year": 2022,
+            "a": {
+              "missing": 0,
+              "filled": 9,
+              "inBase": false,
+              "state": "not",
+              "longest": 2
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "not",
+              "longest": 1
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2023,
+            "a": {
+              "missing": 0,
+              "filled": 2,
+              "inBase": false,
+              "state": "met",
+              "longest": 6
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2024,
+            "a": {
+              "missing": 0,
+              "filled": 3,
+              "inBase": false,
+              "state": "met",
+              "longest": 13
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 21
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2025,
+            "a": {
+              "missing": 0,
+              "filled": 4,
+              "inBase": false,
+              "state": "met",
+              "longest": 6
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          }
+        ],
+        "summaries": {
+          "station": {
+            "directPays": 3,
+            "directRefunds": 2,
+            "disputes": 0,
+            "payoutCents": 15000000,
+            "modelledDaysTotal": 0
+          },
+          "era5": {
+            "directPays": 4,
+            "directRefunds": 1,
+            "disputes": 0,
+            "payoutCents": 20000000,
+            "modelledDaysTotal": 0
+          },
+          "dual": {
+            "directPays": 3,
+            "directRefunds": 1,
+            "disputes": 1,
+            "payoutCents": 20000000,
+            "modelledDaysTotal": 30
+          }
+        }
+      },
+      "ten_day_trigger": {
+        "seasons": [
+          {
+            "year": 2021,
+            "a": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "not",
+              "longest": 4
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "dispute",
+                "reason": "disagreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 30
+              }
+            }
+          },
+          {
+            "year": 2022,
+            "a": {
+              "missing": 0,
+              "filled": 9,
+              "inBase": false,
+              "state": "not",
+              "longest": 2
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "not",
+              "longest": 1
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2023,
+            "a": {
+              "missing": 0,
+              "filled": 2,
+              "inBase": false,
+              "state": "not",
+              "longest": 6
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "dispute",
+                "reason": "disagreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 30
+              }
+            }
+          },
+          {
+            "year": 2024,
+            "a": {
+              "missing": 0,
+              "filled": 3,
+              "inBase": false,
+              "state": "met",
+              "longest": 13
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 21
+            },
+            "policies": {
+              "station": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              }
+            }
+          },
+          {
+            "year": 2025,
+            "a": {
+              "missing": 0,
+              "filled": 4,
+              "inBase": false,
+              "state": "not",
+              "longest": 6
+            },
+            "b": {
+              "missing": 0,
+              "filled": 0,
+              "inBase": false,
+              "state": "met",
+              "longest": 10
+            },
+            "policies": {
+              "station": {
+                "outcome": "refund",
+                "reason": "agreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 0
+              },
+              "era5": {
+                "outcome": "pay",
+                "reason": "agreement",
+                "final": "pay",
+                "payoutCents": 5000000,
+                "modelledDays": 0
+              },
+              "dual": {
+                "outcome": "dispute",
+                "reason": "disagreement",
+                "final": "refund",
+                "payoutCents": 0,
+                "modelledDays": 30
+              }
+            }
+          }
+        ],
+        "summaries": {
+          "station": {
+            "directPays": 1,
+            "directRefunds": 4,
+            "disputes": 0,
+            "payoutCents": 5000000,
+            "modelledDaysTotal": 0
+          },
+          "era5": {
+            "directPays": 4,
+            "directRefunds": 1,
+            "disputes": 0,
+            "payoutCents": 20000000,
+            "modelledDaysTotal": 0
+          },
+          "dual": {
+            "directPays": 1,
+            "directRefunds": 1,
+            "disputes": 3,
+            "payoutCents": 5000000,
+            "modelledDaysTotal": 90
+          }
+        }
+      }
+    }
+  },
+  "assumptions": {
+    "reportDays": 14,
+    "disputeDays": 30,
+    "reporting": "Both providers report promptly after the season; \"not enough data\" is a report too, so a dispute opens at once. Only a silent provider would make settlement wait for the 14-day report deadline (not modelled).",
+    "resolution": "No unanimous dispute resolution; apply the signed fallback as soon as eligible. Transactions still need an operator.",
+    "timing": "Modelled whole days after season end, not measured delivery time. Excludes data publication lag and transaction latency.",
+    "evaluation": "Retrospective comparison on pinned final data, not an independent holdout or a reconstruction of what was available at the time."
+  },
+  "schema": "extremeproof.comparison-audit.v1",
+  "cases": {
+    "default": {
+      "variant": "station_qm",
+      "base": "1991-2020",
+      "percentile": 90,
+      "minSpell": 6,
+      "maxMissing": 0,
+      "maxFilled": 122,
+      "onDispute": "refund"
+    },
+    "limited_fill_refund": {
+      "variant": "station_qm",
+      "base": "1991-2020",
+      "percentile": 90,
+      "minSpell": 6,
+      "maxMissing": 0,
+      "maxFilled": 60,
+      "onDispute": "refund"
+    },
+    "limited_fill_pay": {
+      "variant": "station_qm",
+      "base": "1991-2020",
+      "percentile": 90,
+      "minSpell": 6,
+      "maxMissing": 0,
+      "maxFilled": 60,
+      "onDispute": "pay"
+    },
+    "ten_day_trigger": {
+      "variant": "station_qm",
+      "base": "1991-2020",
+      "percentile": 90,
+      "minSpell": 10,
+      "maxMissing": 0,
+      "maxFilled": 122,
+      "onDispute": "refund"
+    }
+  },
+  "audited_source_and_policy_rows": 200,
+  "input_sha256": {
+    "antalya": "bd09a15fa2d50137aadcad56b4621aae7a3c2aa6167d458c0f9dc10ef0a18718",
+    "mugla": "c70ef99d7616a02f9dc4152a6a16ca5e5c0ba6023bc54ef48d89e170be4c72dd"
+  },
+  "scope": "Post-review exploratory design comparison. No new method selection, independent holdout, observed payment times, household losses or real aid outcomes."
+}

@@ -1,0 +1,19 @@
+{
+  "study": "Exploratory after observing main-study failures; operator acceptance of later departure assumed, not free improvement",
+  "attempts": 122,
+  "original_deadline_accepted": 36,
+  "completed_with_accepted_extension": 122,
+  "extension_hours_among_rejected": {
+    "count": 86.0,
+    "mean": 0.5,
+    "std": 0.0,
+    "min": 0.5,
+    "25%": 0.5,
+    "50%": 0.5,
+    "75%": 0.5,
+    "max": 0.5
+  },
+  "wall_seconds": 37.536761299998034,
+  "script_sha256": "317bfc042fabb8f8d0211a6240e519a1a584703ceee338071a9862a175fe2232",
+  "controller_sha256": "0e21f425dc169ea52cf83542a35bdc49c8d3bc7646ae6acc6ede808ec30967b9"
+}

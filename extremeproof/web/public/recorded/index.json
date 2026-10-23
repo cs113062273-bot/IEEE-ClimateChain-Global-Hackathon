@@ -1,0 +1,45 @@
+{
+ "schema": "extremeproof.recorded-runs.v1",
+ "recorded_at": "2026-10-21T14:03:06.315Z",
+ "chain": {
+  "id": 31337,
+  "contract": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+  "token": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+  "note": "Local Hardhat chain; the clock is moved forward to replay past summers."
+ },
+ "cases": [
+  {
+   "id": "heatwave-pays",
+   "agreement": 1,
+   "title": "Antalya summer heat spell 2024",
+   "outcome": null,
+   "bundle": {
+    "file": "heatwave-pays.zip",
+    "sha256": "467d3891a80deef239db1cff5f5a9e0a33ca54cbb517f584cba6e091dbe687a0",
+    "bytes": 430086
+   }
+  },
+  {
+   "id": "sources-disagree",
+   "agreement": 1,
+   "title": "Muğla summer heat spell 2021",
+   "outcome": "30 days passed without a unanimous decision → the signed fallback applied: 35,000.00 DEMO returned to the fund (refund).",
+   "bundle": {
+    "file": "sources-disagree.zip",
+    "sha256": "f1cdef42cb1e00222565c7fab2557855ed479f707a4b826e8b427df0f4a10a23",
+    "bytes": 394523
+   }
+  },
+  {
+   "id": "too-little-data",
+   "agreement": 1,
+   "title": "Antalya summer heat spell 2023",
+   "outcome": "30 days passed without a unanimous decision → the signed fallback applied: 50,000.00 DEMO paid to the cooperative (pay).",
+   "bundle": {
+    "file": "too-little-data.zip",
+    "sha256": "daaac63d4dcad7f70877057ce4e647e8a41999cdce579226c41e3c5f3b27984c",
+    "bytes": 403664
+   }
+  }
+ ]
+}

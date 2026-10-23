@@ -68,13 +68,13 @@ test("judge pages remain readable on desktop and phone",async({page})=>{
     if(scenarioReads===1){await route.fulfill({status:503,contentType:"application/json",body:JSON.stringify({error:{message:"Injected transient GET failure"}})});return;}
     await route.continue();
   });
-  for(const [path,title,name] of [["/","Control room","control-room"],["/dispatch","Intelligent dispatch","dispatch"],["/replay","Digital twin & replay","replay"],["/audit","Trust audit","trust-audit"]]){
+  for(const [path,title,name] of [["/research","Control room","control-room"],["/dispatch","Intelligent dispatch","dispatch"],["/replay","Digital twin & replay","replay"],["/audit","Trust audit","trust-audit"]]){
     await page.goto(path);
     await expect(page.getByRole("heading",{name:title,exact:true})).toBeVisible();
     await expect(page.getByRole("button",{name:"Run optimization"}).or(page.getByRole("button",{name:"Generate evidence"}))).toBeEnabled();
     await page.screenshot({path:"../docs/assets/"+name+".png",fullPage:true});
   }
-  await page.goto("/");
+  await page.goto("/research");
   await page.setViewportSize({width:390,height:844});
   await expect(page.getByText("Peak grid import",{exact:true}).first()).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth)).toBe(false);

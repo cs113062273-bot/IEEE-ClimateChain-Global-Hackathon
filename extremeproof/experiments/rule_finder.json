@@ -1,0 +1,2132 @@
+{
+  "schema": "extremeproof.rule-finder.v2",
+  "base_rule": {
+    "variant": "station_qm",
+    "base": "1991-2020",
+    "percentile": 90,
+    "minSpell": 6,
+    "maxMissing": 0,
+    "maxFilled": 122,
+    "onDispute": "refund"
+  },
+  "targets": [
+    3,
+    5,
+    10
+  ],
+  "fallbacks": [
+    "refund",
+    "pay"
+  ],
+  "target_means": "final payments to the community under the signed fallback (agreement pays + disputes the fallback pays)",
+  "audited_candidate_summers": 420,
+  "audited_one_day_neighbour_summers": 770,
+  "independent_evaluations": 435,
+  "results": {
+    "antalya": {
+      "refund/1-in-3": {
+        "excluded": [],
+        "candidates": [
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 3.75,
+            "agreementReturnPeriod": 3.75,
+            "hinge": {
+              "noDayToSpare": 1,
+              "oneDayShort": 1
+            },
+            "now": {
+              "summers": 30,
+              "pays": 8,
+              "finalPays": 8,
+              "refunds": 19,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 10
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 24,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 6
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 5,
+              "refunds": 5,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 5
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 3.75,
+            "agreementReturnPeriod": 3.75,
+            "hinge": {
+              "noDayToSpare": 1,
+              "oneDayShort": 1
+            },
+            "now": {
+              "summers": 30,
+              "pays": 8,
+              "finalPays": 8,
+              "refunds": 19,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 10
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 24,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 6
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 5,
+              "refunds": 5,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 5
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1961-1990",
+              "percentile": 90,
+              "minSpell": 7,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 3.75,
+            "agreementReturnPeriod": 3.75,
+            "hinge": {
+              "noDayToSpare": 2,
+              "oneDayShort": 0
+            },
+            "now": {
+              "summers": 30,
+              "pays": 8,
+              "finalPays": 8,
+              "refunds": 19,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 11
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 22,
+              "contested": 6,
+              "thin": 0,
+              "waitingDays": 180,
+              "era5Heat": 8
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 4,
+              "finalPays": 4,
+              "refunds": 6,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 4
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 95,
+              "minSpell": 4,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 3.3333333333333335,
+            "agreementReturnPeriod": 3.3333333333333335,
+            "hinge": {
+              "noDayToSpare": 3,
+              "oneDayShort": 7
+            },
+            "now": {
+              "summers": 30,
+              "pays": 9,
+              "finalPays": 9,
+              "refunds": 17,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 12
+            },
+            "then": {
+              "summers": 30,
+              "pays": 5,
+              "finalPays": 5,
+              "refunds": 22,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 7
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 5,
+              "refunds": 4,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 6
+            }
+          }
+        ]
+      },
+      "refund/1-in-5": {
+        "excluded": [],
+        "candidates": [
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 3.75,
+            "agreementReturnPeriod": 3.75,
+            "hinge": {
+              "noDayToSpare": 1,
+              "oneDayShort": 1
+            },
+            "now": {
+              "summers": 30,
+              "pays": 8,
+              "finalPays": 8,
+              "refunds": 19,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 10
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 24,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 6
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 5,
+              "refunds": 5,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 5
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1961-1990",
+              "percentile": 90,
+              "minSpell": 8,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 5,
+            "agreementReturnPeriod": 5,
+            "hinge": {
+              "noDayToSpare": 2,
+              "oneDayShort": 2
+            },
+            "now": {
+              "summers": 30,
+              "pays": 6,
+              "finalPays": 6,
+              "refunds": 23,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 7
+            },
+            "then": {
+              "summers": 30,
+              "pays": 1,
+              "finalPays": 1,
+              "refunds": 25,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 5
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 3,
+              "finalPays": 3,
+              "refunds": 7,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 3
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 7,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 4.285714285714286,
+            "agreementReturnPeriod": 4.285714285714286,
+            "hinge": {
+              "noDayToSpare": 3,
+              "oneDayShort": 1
+            },
+            "now": {
+              "summers": 30,
+              "pays": 7,
+              "finalPays": 7,
+              "refunds": 22,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 8
+            },
+            "then": {
+              "summers": 30,
+              "pays": 1,
+              "finalPays": 1,
+              "refunds": 25,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 4
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 4,
+              "finalPays": 4,
+              "refunds": 5,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 5
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 95,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 6,
+            "agreementReturnPeriod": 6,
+            "hinge": {
+              "noDayToSpare": 3,
+              "oneDayShort": 1
+            },
+            "now": {
+              "summers": 30,
+              "pays": 5,
+              "finalPays": 5,
+              "refunds": 24,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 6
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 0,
+              "refunds": 28,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 1
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 3,
+              "finalPays": 3,
+              "refunds": 7,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 3
+            }
+          }
+        ]
+      },
+      "refund/1-in-10": {
+        "excluded": [],
+        "candidates": [
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 3.75,
+            "agreementReturnPeriod": 3.75,
+            "hinge": {
+              "noDayToSpare": 1,
+              "oneDayShort": 1
+            },
+            "now": {
+              "summers": 30,
+              "pays": 8,
+              "finalPays": 8,
+              "refunds": 19,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 10
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 24,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 6
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 5,
+              "refunds": 5,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 5
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1961-1990",
+              "percentile": 95,
+              "minSpell": 7,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 10,
+            "agreementReturnPeriod": 10,
+            "hinge": {
+              "noDayToSpare": 2,
+              "oneDayShort": 2
+            },
+            "now": {
+              "summers": 30,
+              "pays": 3,
+              "finalPays": 3,
+              "refunds": 24,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 5
+            },
+            "then": {
+              "summers": 30,
+              "pays": 1,
+              "finalPays": 1,
+              "refunds": 29,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 1
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 7,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 2
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 8,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 7.5,
+            "agreementReturnPeriod": 7.5,
+            "hinge": {
+              "noDayToSpare": 3,
+              "oneDayShort": 3
+            },
+            "now": {
+              "summers": 30,
+              "pays": 4,
+              "finalPays": 4,
+              "refunds": 24,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 6
+            },
+            "then": {
+              "summers": 30,
+              "pays": 1,
+              "finalPays": 1,
+              "refunds": 29,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 1
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 3,
+              "finalPays": 3,
+              "refunds": 6,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 4
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1961-1990",
+              "percentile": 90,
+              "minSpell": 9,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 7.5,
+            "agreementReturnPeriod": 7.5,
+            "hinge": {
+              "noDayToSpare": 3,
+              "oneDayShort": 2
+            },
+            "now": {
+              "summers": 30,
+              "pays": 4,
+              "finalPays": 4,
+              "refunds": 23,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 6
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 0,
+              "refunds": 29,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 1
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 7,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 3
+            }
+          }
+        ]
+      },
+      "pay/1-in-3": {
+        "excluded": [],
+        "candidates": [
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 2.727272727272727,
+            "agreementReturnPeriod": 3.75,
+            "hinge": {
+              "noDayToSpare": 3,
+              "oneDayShort": 5
+            },
+            "now": {
+              "summers": 30,
+              "pays": 8,
+              "finalPays": 11,
+              "refunds": 19,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 10
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 6,
+              "refunds": 24,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 6
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 5,
+              "refunds": 5,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 5
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 7,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 3.75,
+            "agreementReturnPeriod": 4.285714285714286,
+            "hinge": {
+              "noDayToSpare": 2,
+              "oneDayShort": 3
+            },
+            "now": {
+              "summers": 30,
+              "pays": 7,
+              "finalPays": 8,
+              "refunds": 22,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 8
+            },
+            "then": {
+              "summers": 30,
+              "pays": 1,
+              "finalPays": 5,
+              "refunds": 25,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 4
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 4,
+              "finalPays": 5,
+              "refunds": 5,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 5
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 95,
+              "minSpell": 5,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 3.75,
+            "agreementReturnPeriod": 5,
+            "hinge": {
+              "noDayToSpare": 2,
+              "oneDayShort": 5
+            },
+            "now": {
+              "summers": 30,
+              "pays": 6,
+              "finalPays": 8,
+              "refunds": 22,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 8
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 5,
+              "refunds": 25,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 5
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 4,
+              "finalPays": 4,
+              "refunds": 6,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 4
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1961-1990",
+              "percentile": 90,
+              "minSpell": 7,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 2.727272727272727,
+            "agreementReturnPeriod": 3.75,
+            "hinge": {
+              "noDayToSpare": 4,
+              "oneDayShort": 3
+            },
+            "now": {
+              "summers": 30,
+              "pays": 8,
+              "finalPays": 11,
+              "refunds": 19,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 11
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 8,
+              "refunds": 22,
+              "contested": 6,
+              "thin": 0,
+              "waitingDays": 180,
+              "era5Heat": 8
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 4,
+              "finalPays": 4,
+              "refunds": 6,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 4
+            }
+          }
+        ]
+      },
+      "pay/1-in-5": {
+        "excluded": [],
+        "candidates": [
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 2.727272727272727,
+            "agreementReturnPeriod": 3.75,
+            "hinge": {
+              "noDayToSpare": 3,
+              "oneDayShort": 5
+            },
+            "now": {
+              "summers": 30,
+              "pays": 8,
+              "finalPays": 11,
+              "refunds": 19,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 10
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 6,
+              "refunds": 24,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 6
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 5,
+              "refunds": 5,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 5
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 95,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 5,
+            "agreementReturnPeriod": 6,
+            "hinge": {
+              "noDayToSpare": 1,
+              "oneDayShort": 2
+            },
+            "now": {
+              "summers": 30,
+              "pays": 5,
+              "finalPays": 6,
+              "refunds": 24,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 6
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 2,
+              "refunds": 28,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 1
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 3,
+              "finalPays": 3,
+              "refunds": 7,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 3
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1961-1990",
+              "percentile": 90,
+              "minSpell": 8,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 4.285714285714286,
+            "agreementReturnPeriod": 5,
+            "hinge": {
+              "noDayToSpare": 0,
+              "oneDayShort": 4
+            },
+            "now": {
+              "summers": 30,
+              "pays": 6,
+              "finalPays": 7,
+              "refunds": 23,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 7
+            },
+            "then": {
+              "summers": 30,
+              "pays": 1,
+              "finalPays": 5,
+              "refunds": 25,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 5
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 3,
+              "finalPays": 3,
+              "refunds": 7,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 3
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 8,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 5,
+            "agreementReturnPeriod": 7.5,
+            "hinge": {
+              "noDayToSpare": 1,
+              "oneDayShort": 2
+            },
+            "now": {
+              "summers": 30,
+              "pays": 4,
+              "finalPays": 6,
+              "refunds": 24,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 6
+            },
+            "then": {
+              "summers": 30,
+              "pays": 1,
+              "finalPays": 1,
+              "refunds": 29,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 1
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 3,
+              "finalPays": 4,
+              "refunds": 6,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 4
+            }
+          }
+        ]
+      },
+      "pay/1-in-10": {
+        "excluded": [],
+        "candidates": [
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 2.727272727272727,
+            "agreementReturnPeriod": 3.75,
+            "hinge": {
+              "noDayToSpare": 3,
+              "oneDayShort": 5
+            },
+            "now": {
+              "summers": 30,
+              "pays": 8,
+              "finalPays": 11,
+              "refunds": 19,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 10
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 6,
+              "refunds": 24,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 6
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 5,
+              "refunds": 5,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 5
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1961-1990",
+              "percentile": 95,
+              "minSpell": 8,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 10,
+            "agreementReturnPeriod": 30,
+            "hinge": {
+              "noDayToSpare": 1,
+              "oneDayShort": 3
+            },
+            "now": {
+              "summers": 30,
+              "pays": 1,
+              "finalPays": 3,
+              "refunds": 27,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 2
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 0,
+              "refunds": 30,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 0
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 1,
+              "finalPays": 1,
+              "refunds": 9,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 1
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 10,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 7.5,
+            "agreementReturnPeriod": 30,
+            "hinge": {
+              "noDayToSpare": 1,
+              "oneDayShort": 1
+            },
+            "now": {
+              "summers": 30,
+              "pays": 1,
+              "finalPays": 4,
+              "refunds": 26,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 4
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 1,
+              "refunds": 29,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 1
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 1,
+              "finalPays": 3,
+              "refunds": 7,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 3
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 95,
+              "minSpell": 8,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 15,
+            "agreementReturnPeriod": 15,
+            "hinge": {
+              "noDayToSpare": 0,
+              "oneDayShort": 3
+            },
+            "now": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 28,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 2
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 0,
+              "refunds": 30,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 0
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 1,
+              "finalPays": 1,
+              "refunds": 9,
+              "contested": 0,
+              "thin": 0,
+              "waitingDays": 0,
+              "era5Heat": 1
+            }
+          }
+        ]
+      }
+    },
+    "mugla": {
+      "refund/1-in-3": {
+        "excluded": [
+          {
+            "base": "1961-1990",
+            "percentile": 90,
+            "why": "base period only 58% complete"
+          },
+          {
+            "base": "1961-1990",
+            "percentile": 95,
+            "why": "base period only 58% complete"
+          }
+        ],
+        "candidates": [
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 2.142857142857143,
+            "agreementReturnPeriod": 2.142857142857143,
+            "hinge": {
+              "noDayToSpare": 5,
+              "oneDayShort": 2
+            },
+            "now": {
+              "summers": 30,
+              "pays": 14,
+              "finalPays": 14,
+              "refunds": 12,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 16
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 23,
+              "contested": 4,
+              "thin": 1,
+              "waitingDays": 150,
+              "era5Heat": 6
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 5,
+              "refunds": 3,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 6
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 7,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 3.3333333333333335,
+            "agreementReturnPeriod": 3.3333333333333335,
+            "hinge": {
+              "noDayToSpare": 3,
+              "oneDayShort": 5
+            },
+            "now": {
+              "summers": 30,
+              "pays": 9,
+              "finalPays": 9,
+              "refunds": 18,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 12
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 0,
+              "refunds": 25,
+              "contested": 4,
+              "thin": 1,
+              "waitingDays": 150,
+              "era5Heat": 4
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 5,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 5
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 95,
+              "minSpell": 4,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 3,
+            "agreementReturnPeriod": 3,
+            "hinge": {
+              "noDayToSpare": 4,
+              "oneDayShort": 2
+            },
+            "now": {
+              "summers": 30,
+              "pays": 10,
+              "finalPays": 10,
+              "refunds": 11,
+              "contested": 9,
+              "thin": 0,
+              "waitingDays": 270,
+              "era5Heat": 15
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 25,
+              "contested": 2,
+              "thin": 1,
+              "waitingDays": 90,
+              "era5Heat": 4
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 5,
+              "refunds": 3,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 6
+            }
+          }
+        ]
+      },
+      "refund/1-in-5": {
+        "excluded": [
+          {
+            "base": "1961-1990",
+            "percentile": 90,
+            "why": "base period only 58% complete"
+          },
+          {
+            "base": "1961-1990",
+            "percentile": 95,
+            "why": "base period only 58% complete"
+          }
+        ],
+        "candidates": [
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 2.142857142857143,
+            "agreementReturnPeriod": 2.142857142857143,
+            "hinge": {
+              "noDayToSpare": 5,
+              "oneDayShort": 2
+            },
+            "now": {
+              "summers": 30,
+              "pays": 14,
+              "finalPays": 14,
+              "refunds": 12,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 16
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 23,
+              "contested": 4,
+              "thin": 1,
+              "waitingDays": 150,
+              "era5Heat": 6
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 5,
+              "refunds": 3,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 6
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 8,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 5,
+            "agreementReturnPeriod": 5,
+            "hinge": {
+              "noDayToSpare": 3,
+              "oneDayShort": 3
+            },
+            "now": {
+              "summers": 30,
+              "pays": 6,
+              "finalPays": 6,
+              "refunds": 19,
+              "contested": 5,
+              "thin": 0,
+              "waitingDays": 150,
+              "era5Heat": 9
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 0,
+              "refunds": 28,
+              "contested": 1,
+              "thin": 1,
+              "waitingDays": 60,
+              "era5Heat": 1
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 5,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 5
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 95,
+              "minSpell": 5,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 5,
+            "agreementReturnPeriod": 5,
+            "hinge": {
+              "noDayToSpare": 2,
+              "oneDayShort": 4
+            },
+            "now": {
+              "summers": 30,
+              "pays": 6,
+              "finalPays": 6,
+              "refunds": 17,
+              "contested": 7,
+              "thin": 0,
+              "waitingDays": 210,
+              "era5Heat": 12
+            },
+            "then": {
+              "summers": 30,
+              "pays": 1,
+              "finalPays": 1,
+              "refunds": 27,
+              "contested": 1,
+              "thin": 1,
+              "waitingDays": 60,
+              "era5Heat": 2
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 3,
+              "finalPays": 3,
+              "refunds": 4,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 6
+            }
+          }
+        ]
+      },
+      "refund/1-in-10": {
+        "excluded": [
+          {
+            "base": "1961-1990",
+            "percentile": 90,
+            "why": "base period only 58% complete"
+          },
+          {
+            "base": "1961-1990",
+            "percentile": 95,
+            "why": "base period only 58% complete"
+          }
+        ],
+        "candidates": [
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 2.142857142857143,
+            "agreementReturnPeriod": 2.142857142857143,
+            "hinge": {
+              "noDayToSpare": 5,
+              "oneDayShort": 2
+            },
+            "now": {
+              "summers": 30,
+              "pays": 14,
+              "finalPays": 14,
+              "refunds": 12,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 16
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 23,
+              "contested": 4,
+              "thin": 1,
+              "waitingDays": 150,
+              "era5Heat": 6
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 5,
+              "refunds": 3,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 6
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 10,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 10,
+            "agreementReturnPeriod": 10,
+            "hinge": {
+              "noDayToSpare": 0,
+              "oneDayShort": 0
+            },
+            "now": {
+              "summers": 30,
+              "pays": 3,
+              "finalPays": 3,
+              "refunds": 23,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 6
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 0,
+              "refunds": 29,
+              "contested": 0,
+              "thin": 1,
+              "waitingDays": 30,
+              "era5Heat": 0
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 1,
+              "finalPays": 1,
+              "refunds": 6,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 4
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 95,
+              "minSpell": 7,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "refund"
+            },
+            "returnPeriod": 10,
+            "agreementReturnPeriod": 10,
+            "hinge": {
+              "noDayToSpare": 1,
+              "oneDayShort": 1
+            },
+            "now": {
+              "summers": 30,
+              "pays": 3,
+              "finalPays": 3,
+              "refunds": 22,
+              "contested": 5,
+              "thin": 0,
+              "waitingDays": 150,
+              "era5Heat": 7
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 0,
+              "refunds": 29,
+              "contested": 0,
+              "thin": 1,
+              "waitingDays": 30,
+              "era5Heat": 0
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 2,
+              "finalPays": 2,
+              "refunds": 7,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 3
+            }
+          }
+        ]
+      },
+      "pay/1-in-3": {
+        "excluded": [
+          {
+            "base": "1961-1990",
+            "percentile": 90,
+            "why": "base period only 58% complete"
+          },
+          {
+            "base": "1961-1990",
+            "percentile": 95,
+            "why": "base period only 58% complete"
+          }
+        ],
+        "candidates": [
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 1.6666666666666667,
+            "agreementReturnPeriod": 2.142857142857143,
+            "hinge": {
+              "noDayToSpare": 6,
+              "oneDayShort": 0
+            },
+            "now": {
+              "summers": 30,
+              "pays": 14,
+              "finalPays": 18,
+              "refunds": 12,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 16
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 7,
+              "refunds": 23,
+              "contested": 4,
+              "thin": 1,
+              "waitingDays": 150,
+              "era5Heat": 6
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 7,
+              "refunds": 3,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 6
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 7,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 2.5,
+            "agreementReturnPeriod": 3.3333333333333335,
+            "hinge": {
+              "noDayToSpare": 1,
+              "oneDayShort": 6
+            },
+            "now": {
+              "summers": 30,
+              "pays": 9,
+              "finalPays": 12,
+              "refunds": 18,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 12
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 5,
+              "refunds": 25,
+              "contested": 4,
+              "thin": 1,
+              "waitingDays": 150,
+              "era5Heat": 4
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 2,
+              "finalPays": 5,
+              "refunds": 5,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 5
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 95,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 3.3333333333333335,
+            "agreementReturnPeriod": 7.5,
+            "hinge": {
+              "noDayToSpare": 1,
+              "oneDayShort": 4
+            },
+            "now": {
+              "summers": 30,
+              "pays": 4,
+              "finalPays": 9,
+              "refunds": 21,
+              "contested": 5,
+              "thin": 0,
+              "waitingDays": 150,
+              "era5Heat": 9
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 1,
+              "refunds": 29,
+              "contested": 0,
+              "thin": 1,
+              "waitingDays": 30,
+              "era5Heat": 0
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 2,
+              "finalPays": 4,
+              "refunds": 6,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 4
+            }
+          }
+        ]
+      },
+      "pay/1-in-5": {
+        "excluded": [
+          {
+            "base": "1961-1990",
+            "percentile": 90,
+            "why": "base period only 58% complete"
+          },
+          {
+            "base": "1961-1990",
+            "percentile": 95,
+            "why": "base period only 58% complete"
+          }
+        ],
+        "candidates": [
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 1.6666666666666667,
+            "agreementReturnPeriod": 2.142857142857143,
+            "hinge": {
+              "noDayToSpare": 6,
+              "oneDayShort": 0
+            },
+            "now": {
+              "summers": 30,
+              "pays": 14,
+              "finalPays": 18,
+              "refunds": 12,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 16
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 7,
+              "refunds": 23,
+              "contested": 4,
+              "thin": 1,
+              "waitingDays": 150,
+              "era5Heat": 6
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 7,
+              "refunds": 3,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 6
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 10,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 4.285714285714286,
+            "agreementReturnPeriod": 10,
+            "hinge": {
+              "noDayToSpare": 4,
+              "oneDayShort": 2
+            },
+            "now": {
+              "summers": 30,
+              "pays": 3,
+              "finalPays": 7,
+              "refunds": 23,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 6
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 1,
+              "refunds": 29,
+              "contested": 0,
+              "thin": 1,
+              "waitingDays": 30,
+              "era5Heat": 0
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 1,
+              "finalPays": 4,
+              "refunds": 6,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 4
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 95,
+              "minSpell": 7,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 3.75,
+            "agreementReturnPeriod": 10,
+            "hinge": {
+              "noDayToSpare": 4,
+              "oneDayShort": 1
+            },
+            "now": {
+              "summers": 30,
+              "pays": 3,
+              "finalPays": 8,
+              "refunds": 22,
+              "contested": 5,
+              "thin": 0,
+              "waitingDays": 150,
+              "era5Heat": 7
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 1,
+              "refunds": 29,
+              "contested": 0,
+              "thin": 1,
+              "waitingDays": 30,
+              "era5Heat": 0
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 2,
+              "finalPays": 3,
+              "refunds": 7,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 3
+            }
+          }
+        ]
+      },
+      "pay/1-in-10": {
+        "excluded": [
+          {
+            "base": "1961-1990",
+            "percentile": 90,
+            "why": "base period only 58% complete"
+          },
+          {
+            "base": "1961-1990",
+            "percentile": 95,
+            "why": "base period only 58% complete"
+          }
+        ],
+        "candidates": [
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 6,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 1.6666666666666667,
+            "agreementReturnPeriod": 2.142857142857143,
+            "hinge": {
+              "noDayToSpare": 6,
+              "oneDayShort": 0
+            },
+            "now": {
+              "summers": 30,
+              "pays": 14,
+              "finalPays": 18,
+              "refunds": 12,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 16
+            },
+            "then": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 7,
+              "refunds": 23,
+              "contested": 4,
+              "thin": 1,
+              "waitingDays": 150,
+              "era5Heat": 6
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 5,
+              "finalPays": 7,
+              "refunds": 3,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 6
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 95,
+              "minSpell": 8,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 7.5,
+            "agreementReturnPeriod": 15,
+            "hinge": {
+              "noDayToSpare": 2,
+              "oneDayShort": 4
+            },
+            "now": {
+              "summers": 30,
+              "pays": 2,
+              "finalPays": 4,
+              "refunds": 26,
+              "contested": 2,
+              "thin": 0,
+              "waitingDays": 60,
+              "era5Heat": 4
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 1,
+              "refunds": 29,
+              "contested": 0,
+              "thin": 1,
+              "waitingDays": 30,
+              "era5Heat": 0
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 1,
+              "finalPays": 2,
+              "refunds": 8,
+              "contested": 1,
+              "thin": 0,
+              "waitingDays": 30,
+              "era5Heat": 2
+            }
+          },
+          {
+            "rule": {
+              "variant": "station_qm",
+              "base": "1991-2020",
+              "percentile": 90,
+              "minSpell": 10,
+              "maxMissing": 0,
+              "maxFilled": 122,
+              "onDispute": "pay"
+            },
+            "returnPeriod": 4.285714285714286,
+            "agreementReturnPeriod": 10,
+            "hinge": {
+              "noDayToSpare": 4,
+              "oneDayShort": 2
+            },
+            "now": {
+              "summers": 30,
+              "pays": 3,
+              "finalPays": 7,
+              "refunds": 23,
+              "contested": 4,
+              "thin": 0,
+              "waitingDays": 120,
+              "era5Heat": 6
+            },
+            "then": {
+              "summers": 30,
+              "pays": 0,
+              "finalPays": 1,
+              "refunds": 29,
+              "contested": 0,
+              "thin": 1,
+              "waitingDays": 30,
+              "era5Heat": 0
+            },
+            "last10": {
+              "summers": 10,
+              "pays": 1,
+              "finalPays": 4,
+              "refunds": 6,
+              "contested": 3,
+              "thin": 0,
+              "waitingDays": 90,
+              "era5Heat": 4
+            }
+          }
+        ]
+      }
+    }
+  },
+  "scope": "Exploratory, over summers already seen. Shows how often each complete rule would have paid, disputed or waited; not which rule is right."
+}

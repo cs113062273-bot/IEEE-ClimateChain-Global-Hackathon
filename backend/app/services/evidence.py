@@ -49,6 +49,8 @@ def make_evidence(run_id,policy="hybrid"):
     if run["forecast_model"].get("weights_sha256"):
         paths.append("experiments/models_portable/carbon_model.json" if run["forecast_model"].get("artifact_format")=="portable-json" else "experiments/models/carbon_model.pkl")
     paths.extend(["backend/app/services/lineage.py","scripts/verify_evidence.py","data/trust/source_anchors.v1.json"])
+    if run.get("operational_context"):
+        paths.extend(["backend/app/services/readiness.py","backend/app/domain/baselines.py"])
     for relative in paths:
         path=ROOT/relative
         if path.exists(): artifacts.append({"path":relative,"sha256":file_hash(path)})
@@ -62,6 +64,9 @@ def make_evidence(run_id,policy="hybrid"):
         snapshots.append({"source_id":anchor["source_id"],"path":anchor["paths"][0],"sha256":anchor["sha256"],"retrieved_utc":None,"license":anchor["license"],"source_url":None,"attribution":"GridProof trained model using attributed NESO historical CI", "provenance_status":"fixed_trained_model","role":"decision_model","required_for_lineage":True})
     claim={"schema_version":"1.0.0","canonicalization":"gridproof-canonical-json-v1/float-decimal-strings-9","methodology":"gridproof/location-based-operational-scenario/v1","claim_scope":{"site_hash":run["scenario"]["site_id_hash"],"from_utc":run["intervals"][0]["start_utc"],"to_utc":run["intervals"][-1]["end_utc"],"category":"modelled-grid-emissions-exposure"},"observational_status":"simulation_using_public_grid_data","source_snapshots":snapshots,"scenario_parameters":run["scenario"],"forecast_model":run["forecast_model"],"solver":plan["solver"],"baseline_id":"immediate-unmanaged-battery-idle-v1","results":{"baseline_kgco2":baseline["metrics"]["emissions_kgco2"],"plan_kgco2":plan["metrics"]["emissions_kgco2"],"difference_kgco2":baseline["metrics"]["emissions_kgco2"]-plan["metrics"]["emissions_kgco2"],"cost_gbp":plan["metrics"]["cost_gbp"],"baseline_cost_gbp":baseline["metrics"]["cost_gbp"]},"inputs":input_payload,"input_sha256":digest(input_payload),"reproduction":{"seed":42,"code_commit":commit,"selected_policy":policy,"run_id":run_id,"artifact_hashes":artifacts},"units":run["units"],"limitations":["synthetic campus; calendar PV forecast with irradiance-derived simulated replay PV and grid/curtailment recourse","not a regulatory or transferable carbon credit","average GB location-based intensity, not marginal causal abatement","historical NESO forecast issuance unverified; primary predictor is past-only","blockchain attests integrity after commitment, not physical meter truth","illustrative tariff, not actual electricity bill"]}
     claim["schema_version"]="2.0.0"
+    if run.get("operational_context"):
+        claim["operational_context"]=run["operational_context"]
+        claim["limitations"].append("Service readiness and event history are simulated; hashes do not prove wall-clock execution or an externally witnessed pre-decision commitment")
     claim["lineage"]=build_lineage(run,canonical_bytes)
     claim["source_reference_roles"]={"neso-national-ci-2025":"original_input","openmeteo-london-weather-2025":"original_input","gridproof-offline-sample":"derived_support","neso-demand-2025":"context_only","pvgis-london-pv-model-2023":"diagnostic_only"}
     claim=normalize(claim); fingerprint=digest(claim); evidence_id="evidence-"+fingerprint[:20]
@@ -133,6 +138,9 @@ def verify_evidence(evidence,expected_digest,check_local_files=True,expected_con
         warnings.extend("Historical artifact differs from current checkout: "+x for x in drift)
         errors=[x for x in errors if x not in drift]
     lineage=verify_lineage(evidence,ROOT,expected_config_digest)
+    if evidence.get("operational_context"):
+        from scripts.verify_evidence import verify_service_context
+        errors.extend(verify_service_context(evidence))
     complete=not errors and lineage["verified"]
     status="VERIFIED" if complete else "HASH_MISMATCH" if actual!=expected else "INVALID_EVIDENCE" if errors or lineage["errors"] else "INTEGRITY_ONLY" if evidence.get("schema_version")=="1.0.0" else "INCOMPLETE"
     physical_errors=[x for x in errors if x!="Evidence SHA256 differs from expected digest" and not x.startswith("Local artifact digest mismatch") and not x.startswith("Artifact path")]

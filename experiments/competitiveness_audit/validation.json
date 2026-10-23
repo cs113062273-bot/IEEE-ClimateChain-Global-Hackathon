@@ -1,0 +1,10 @@
+{
+  "command": ".venv/Scripts/python.exe -m pytest backend/tests/test_competitiveness.py backend/tests/test_peak.py backend/tests/test_engine.py -q",
+  "passed": 57,
+  "warnings": 1,
+  "warning": "Existing Starlette TestClient use of deprecated AnyIO BlockingPortal alias",
+  "elapsed_seconds": 15.08,
+  "runtime": "Python 3.11.14 with pinned core dependencies",
+  "scope": "Audit control information boundaries, energy/deadline completion, rejected-candidate diagnostics, optional import guard, original engine and peak regressions",
+  "full_backend_frontend_contract_deployment_suite_rerun": false
+}

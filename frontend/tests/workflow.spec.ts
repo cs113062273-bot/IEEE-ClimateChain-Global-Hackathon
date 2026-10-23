@@ -2,7 +2,7 @@ import {expect,test} from "@playwright/test";
 
 test("computed dispatch, deterministic replay, independent tamper check, and responsive audit",async({page})=>{
   const errors:string[]=[];page.on("pageerror",error=>errors.push(error.message));
-  await page.goto("/");
+  await page.goto("/research");
   await expect(page.getByRole("heading",{name:"Control room",exact:true})).toBeVisible();
   await expect(page.getByText("All dispatch constraints satisfied")).toBeVisible();
   await expect(page.getByText("Actual national intensity · scored after dispatch")).toBeVisible();

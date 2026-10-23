@@ -1,0 +1,10 @@
+[
+  {
+    "date": "2025-08-10",
+    "reason": "Invalid or missing ci_actual_g_per_kwh"
+  },
+  {
+    "date": "2025-08-11",
+    "reason": "Invalid or missing ci_actual_g_per_kwh"
+  }
+]

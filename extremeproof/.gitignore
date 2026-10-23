@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.part
+# Large GHCN index files (47 MB); hashes stay pinned in data/manifest.json and
+# scripts/fetch_data.py re-downloads them. Station CSVs and ERA5 files are committed.
+data/raw/ghcn/ghcnd-inventory.txt
+data/raw/ghcn/ghcnd-stations.txt
+ml/lightgbm_antalya.txt
+.runtime/
+.runtime-e2e/
