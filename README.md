@@ -1,169 +1,183 @@
-# GridProof
+# ExtremeProof
 
-**More drivers leave with the charge they asked for, on the connection you already have.** GridProof is a charging controller for workplace car parks whose chargers share one capped grid connection. It learns from each driver's earlier sessions when they are likely to leave, charges the likely early leavers first, never exceeds the connection limit with zero solar assumed, and produces a record of each day that a standard-library checker can verify independently.
+**Heat relief agreed before the summer, paid by a rule both weather records can check, verifiable by anyone.**
 
-It is tested on real behaviour: 55,379 sessions from an Utrecht office car park ([4TU.ResearchData](https://doi.org/10.4121/80ef3824-3f5d-4e45-8794-3b8791efbd13.v2), CC BY-NC-SA 4.0). The departure model was fitted on 2021-22, calibrated and all choices fixed on 2023, then the product was evaluated **once** on 185 held-out 2024 weekdays (5,656 sessions) replayed on same-weekday GB 2025 grid days.
+IEEE ClimateChain Global Hackathon 2026 · Track 4: Climate Data & Environmental Monitoring
 
-| Held-out 2024, same days and drivers | Equal-share load balancing (industry default) | GridProof priority |
-|---|---:|---:|
-| **Decision-time inputs** (11 kW per car, requests as declared, nothing capped; post-review, exploratory) | | |
-| Requests met in full, 120 kW connection (physical ceiling 93.3%) | 85.8% | **88.6%** |
-| Connection needed for 90% of requests met in full (10 kW steps) | 150 kW | **130 kW** |
-| **Pre-registered inputs** (requests and power set using the real departure; tested once) | | |
-| Requests met in full, 120 kW connection | 88.3% | **94.6%** |
-| Connection needed for 95% of requests met in full | 160 kW | **130 kW** |
+**Try it in the browser:** https://cs113062273-bot.github.io/IEEE-ClimateChain-Global-Hackathon/
+(static edition, no install; for the live chain see [Run it locally](#run-it-locally))
 
-The pre-registered evaluation capped each request and set each car's power using the real departure, which a deployed controller cannot know. After external review the comparison was repeated with decision-time inputs only: the gain halves but survives, +0.88 drivers per day with their full request met at 120 kW (95% CI 0.61 to 1.17; better on 80 days, worse on 17), and is positive at 100 and 150 kW. At an extremely tight 80 kW, when most drivers cannot be served anyway, priority is slightly below equal share. The value comes from **personal history**: a simple quantile of each driver's own past stays performs within statistical noise of LightGBM at 120 and 150 kW, while an arrival-time-only model is worse than equal share. Carbon is reported honestly: total modelled emissions rise with the extra energy delivered, and the experimental carbon-flex mode meets fewer requests than equal share, so it is not recommended. A request is the energy that real session took (no battery state of charge is available). This is a historical replay with simulated chargers and a synthetic building load, not a field trial, a connection design value or measured abatement.
+![Muğla 2021: the station saw a 4-day hot spell, ERA5 a 10-day one; under a graded rule 15,000 DEMO goes back at once and only 35,000 is disputed](extremeproof/docs/assets/hero.png)
 
-![Workplace charging workspace](docs/assets/carpark-desktop.png)
+## The problem
 
-Open **http://127.0.0.1:3000** after setup. Replay a held-out day, drag the time to see exactly what the controller knew at each half-hour, announce a grid operator's limit or a driver's early departure, compare strategies on the same day, read the 185-day results, then build, verify and try to forge the day's record. Everything on screen is recomputed on request.
+Relief for climate extremes is increasingly promised in advance and paid when an index crosses a line. For heat, the index is a place's own climate statistics: days above the calendar-day 90th percentile of a 30-year normal (ETCCDI). Whether a summer counts depends on choices that move real money:
 
-Method, data card, failures and the competitive judgement: [docs/CARPARK.md](docs/CARPARK.md). Derived results: [experiments/carpark/REPORT.md](experiments/carpark/REPORT.md); post-review checks: [experiments/carpark_followup/REPORT.md](experiments/carpark_followup/REPORT.md). Pre-test protocol: [experiments/carpark/protocol.json](experiments/carpark/protocol.json). The session data is downloaded by setup (public, no account) and is **not** redistributed in this repository.
+- **Which record.** Muğla, summer 2021: the weather station counted a 4-day hot spell, the ERA5 reanalysis 10 days. Under a 6-day rule one record pays, the other does not.
+- **Which 30 years are "normal".** In Muğla the same ERA5 rule gives a different verdict in 10 summers since 1966 depending only on 1961–1990 versus 1991–2020.
+- **How gaps are filled.** The Antalya station reported 31 of 122 days in summer 2024. Filled by linear correction the longest spell is 7 days; by quantile mapping, 13.
+- **The climate is moving.** Against one fixed line, Muğla had a 6+ day hot spell in 9 of 30 summers in 1966–1995 and 19 of 30 in 1996–2025.
 
-## Previous iterations (preserved)
+Today the paying side usually makes these choices and runs the calculation. The community the money is for cannot check it.
 
-The earlier fleet readiness planner (`/readiness`) and the original research workspace (`/research`, `/dispatch`, `/replay`, `/audit`) are archived: no longer linked from the product, kept reachable by URL with an archive banner because the recorded proofs, offline backup and their tests depend on them. The results below describe those earlier synthetic scenarios, not the car-park controller. Review note: the readiness study's 122/122 completed days are deterministic. With the zero-solar guard, nothing that decides feasibility (building load, jobs, battery, connection) varies by day, so that figure reflects one feasibility check repeated, not 122 independent service trials.
+## What it does
 
-**Earlier October 19 upgrade: departure readiness (now at `/readiness`).** Open `http://127.0.0.1:3000/readiness` to compute a protected charging plan, change a request from a locked executed state, inspect a real shortfall, accept a solved later deadline, and verify/export that exact plan. The original research UI is preserved at `/research` and `/dispatch`.
+A relief fund, a farmers' cooperative and an independent checker agree a heat rule before the season. Two data providers (station, ERA5) post daily readings. A contract computes the heatwave and moves the money.
 
-The new service policy completes the declared three-hour early-departure requirement on **122/122 days**, versus **0/122** when the original all-day plan is interrupted at those times (27.53 kWh/day missing). Against immediate charging with the same early service, the protected policy reduces modeled carbon exposure **3.39%**, illustrative cost **6.93%**, and mean daily peak **44.26%**. Protection costs an average **£0.64/day and 0.269 kgCO₂/day** relative to the old relaxed-deadline plan. This is an additional service promise, not a free algorithmic improvement. Four newly specified synthetic sites also complete 122/122 days each; they reuse known grid dates and are not independent field validation.
+1. **Climate.** For 14 stations (10 in Türkiye; Athens, Larissa, Bucharest, Sofia) see daily maximum temperature against two definitions of "unusually hot", and 60 summers of hot spells against one fixed line.
+2. **Rule.** Choose how often the community should be paid (about 1 summer in 3, 5 or 10), all-or-nothing or graded (40 / 70 / 100 % at 6 / 9 / 12 days), and where unresolved disputes go. The finder compares complete rules on 1996–2025: payment frequency, payments that hinge on one day, money held in dispute, and drift between 1966–95 and 1996–2025. A decision brief shows what the rule would have done in each summer 2021–2025. The regional scan applies the same rule at all 14 stations.
+3. **Lock.** The rule, the 122 daily thresholds per source and every contract term become one canonical JSON text and one sha256 fingerprint. The browser recomputes the fingerprint and the contract's terms are read back against it. The three parties sign it; the fund's signature escrows the deposit. The contract refuses to lock once the season has started. The cooperative gets a one-page member summary (EN/TR).
+4. **Season.** Providers post the daily readings on chain. `SeasonRecord` compares each reading with the signed threshold and counts the spells itself. Weekly, the share both records already support is released. After the season, the share neither supports returns to the fund, and only the difference is disputed: a unanimous vote, or the signed fallback after 30 days.
+5. **Attack.** Re-sign with another normal, lower the signed threshold by 2 °C, edit one temperature, flip a verdict, drop the evidence. The contract or the verifier rejects each one.
+6. **Verify.** Download the bundle and run one standard-library Python file. It recomputes thresholds, gap filling, every season day and the settlement, and matches the contract's on-chain day log.
 
-The new path withholds future outcomes from decisions, enables the zero-PV import guard, preserves executed controls during replans, and independently checks event-prefix consistency. A vehicle leaving before its promised earliest departure can still be short. See the [product and engineering report](docs/READINESS_ENGINEERING.md), [6,160-row evaluation](experiments/service_readiness/REPORT.md), [fixed protocol](experiments/service_readiness/protocol.json), and [actual validation](docs/VALIDATION.md#service-readiness-release--2026-10-19). Existing model and benchmark results below remain historical references, not new-service claims.
+## Results
 
-![Departure readiness workspace](docs/assets/readiness-desktop.png)
+| | |
+|---|---|
+| Muğla 2021, graded rule | station 4 days, ERA5 10: 15,000 DEMO returned at once, 35,000 disputed (all-or-nothing: 50,000 disputed) |
+| Antalya 2024 | 35,000 DEMO released on 15 June and 15,000 on 22 June, during the season instead of after 30 September |
+| In-season release, 10 Turkish stations, 2021–2025 | in the 19 summers both records supported a payment, 96 % of that money released before the season ended, in 10 of them by end of July (5-day publication lag, weekly checks) |
+| Regional scan, all-or-nothing rule | station and ERA5 give opposite answers in 46 of 358 decidable summers in Türkiye and 27 of 180 abroad; 4 of 10 Turkish stations (İzmir, Konya, Mersin, Adana) and Sofia hold under 60 % of 1991–2020, so a station-only scheme could not run there |
+| AI gap filling | LightGBM had the lowest daily error (0.97 °C vs 1.07 °C) but missed 3 of 9 heatwaves; quantile mapping got 9 of 9, so the AI was **not adopted** ([ml/REPORT.md](extremeproof/ml/REPORT.md)) |
+| Cost on chain | a disputed agreement: 10 transactions, about 1.7 million gas |
+| Verifier, recorded bundles | 44/44, 42/42 and 39/39 checks passed offline |
 
-**Microgrid scheduling + verifiable climate evidence** — for campus energy managers who need vehicles charged on time without creating a costly power peak. Choose a goal, inspect a feasible schedule and challenge its evidence. IEEE ClimateChain 2026 track: Renewable Energy & Energy Trading — Microgrid Coordination.
+Every data number is recomputed from pinned raw files ([FACTS.md](extremeproof/docs/FACTS.md), [experiments/](extremeproof/experiments)).
 
-GridProof turns authentic GB grid records into constrained campus energy schedules and independently verifiable evidence. It connects source acquisition, forecasts, a mixed-integer optimizer, numerical replay and a Solidity scope registry. The hypothetical London campus has 20 kWp PV, a 40 kWh battery, two EV jobs and a contiguous compute-lab batch.
+## Run it locally
 
-![Computed campus control room](docs/assets/control-room.png)
+The full version runs a local EVM chain, the contracts, two provider services, a hub and the web app on one machine. Needs **Python 3.11+** and **Node 24**. No accounts, keys or internet once set up; raw data are in the repository.
 
-## Run the local demo
-
-Prerequisites: **Python 3.11** and **Node 24**. All application dependencies are pinned in requirements.txt and npm lockfiles. Setup downloads dependencies. The release includes four demo days, separately pinned original CI/weather snapshots and a portable trained model; after installation no provider network is needed.
+**1. One-time setup** (installs Python and npm packages, compiles the contracts, builds the web app; a few minutes):
 
 ```powershell
 # Windows, from the repository root
-.\scripts\setup.ps1
-.\scripts\run_demo.ps1
+powershell -ExecutionPolicy Bypass -File extremeproof\scripts\setup.ps1
 ```
-
 ```sh
 # macOS / Linux
-sh scripts/setup.sh
-sh scripts/run_demo.sh
+sh extremeproof/scripts/setup.sh
 ```
 
-Open **http://127.0.0.1:3000**. FastAPI docs: http://127.0.0.1:8000/docs. The zero-cost local EVM is at 127.0.0.1:8545, chain 31337. The startup command deploys or reuses a local registry; it does not attest evidence automatically. Stop the command with Ctrl+C to stop the API/dashboard processes it started. The independently managed local chain can be reused for later demonstrations.
-
-PowerShell users with script execution restricted can invoke `.\.venv\Scripts\python.exe scripts/run_demo.py` after setup, or run the setup commands directly. No Python `py` launcher is required. The local demo uses cached official records, transparently simulated site data and an illustrative tariff. A fresh source copy runs seasonal forecasts before September 1 and the actual validation-selected LightGBM model on September 1 and October 13. The portable JSON contains the original trained trees; it does not deserialize uploaded pickle.
-
-## Four working pages
-
-- **Control room:** operator problem, three-step walkthrough, four goals and same-workload Carbon/Cost/Peak deltas, plus the numerical campus twin.
-- **Intelligent dispatch:** select Lowest Carbon / Lowest Cost / Lowest Peak / Balanced; metrics and curves use that computed policy. Change source day, battery, EV deadline or hybrid preference and run a real recomputation. Export the selected 48-interval CSV/JSON. Infeasible inputs retain the previous usable plan and show an error.
-- **Digital twin & replay:** inspect each half-hour, the finite trade-off map and all equal-workload policies. Goal switching is labeled selection of computed results; full-period evaluation remains separate from the selected day.
-- **Trust audit:** scope/source values before technical JSON, generate the selected policy's evidence, verify local layers and forge CI plus new hashes to demonstrate rejection. Fixed receipt reads are separate from new reports; actual history/revocation fields are displayed. Missing RPC or mismatched evidence never becomes verified.
-
-Follow the [60-second judge path](docs/ACCEPTANCE_60_SECONDS.md): **choose a goal → compare schedules → challenge the evidence**. Human comprehension is pending a real teach-back, not inferred from browser tests. The [product iteration report](docs/CHAMPIONSHIP_ITERATION.md) includes the direct review answers and actual changes; [release operations](docs/RELEASE_OPERATIONS.md) prepares the existing app plus a static recorded backup. Nothing has been publicly deployed or submitted.
-
-## Measured results and limits
-
-The current full held-out benchmark contains **all 122 UTC days from September through December 2025**. The original 24-day files remain unchanged; all 120 original policy-day carbon/cost outputs reproduce exactly.
-
-| Fixed policy | Mean modeled kgCO2/day | Illustrative GBP/day | Mean daily peak kW | Aggregate exposure improvement | Mean daily relative improvement | Non-improving days |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Immediate | 34.945 | 61.703 | 34.053 | 0% | 0% | Reference |
-| Original LightGBM hybrid | 32.884 | 58.420 | 48.227 | 5.897% | 6.365% | 7/122 |
-| Peak-aware LightGBM hybrid | 33.491 | 56.785 | 18.517 | **4.162%** | **4.302%** | **4/122** |
-| No-forecast peak control | 34.856 | 62.491 | 14.257 | 0.255% | -0.290% | 64/122 |
-
-The fixed peak-aware setting reduces mean daily peak imports **45.62%** and illustrative cost **7.97%** relative to immediate charging. It sacrifices some carbon benefit compared with the original hybrid. Its aggregate exposure bootstrap interval is **3.710-4.613%** (ordinary day resampling); its mean-daily interval is **3.764-4.913%** (seven-day circular block resampling). Those are different estimands.
-
-AI increment remains unproven. Across all 122 days, LightGBM versus seasonal hybrid gains only **0.202 percentage points** in mean daily improvement, with a paired seven-day block 95% interval **[-0.407, 0.747]**. For the peak-aware policy the gain is **0.182 pp**, interval **[-0.188, 0.557]**. Both intervals include zero. Original forecast test MAE remains 36.982 for LightGBM versus 34.836 for latest-value.
-
-The [model and scheduler competitiveness audit](docs/MODEL_SCHEDULER_AUDIT.md) adds battery-equipped greedy carbon/cost and peak heuristics on the same 122 days. GridProof offers a carbon/cost/peak tradeoff rather than winning every metric; all nominal strategies actually deliver 62 kWh/day. LightGBM has an exploratory paired illustrative-cost advantage over seasonal, but its carbon increment remains unresolved. Unannounced early departures leave GridProof incomplete on all 122 tested days. An optional conservative import guard removes the original hybrid's 195 replay-rejected candidates in three matched stress cases, with higher peaks than the previous fallback schedules. Existing model, peak-aware defaults and competition_v2 outputs are preserved.
-
-![Carbon, cost and peak on all 122 days](experiments/competition_v2/figures/carbon_cost_peak.png)
-
-The 17-policy nominal evaluation has zero failed pairs, fallback days or returned constraint violations. Sensitivity reports retain **610 infeasible, 610 input-rejected and 195 verified fallback rows**. Those 195 fallbacks followed rejected replay candidates; zero violations of returned fallback schedules does **not** mean every candidate was valid. The fixed exploratory weight grid and all 9,760 sensitivity rows retain source/configuration hashes.
-
-This is modeled national-average grid-emissions exposure. The facility, jobs, battery, PV conversion and tariff are simulated; weather is reanalysis. It is not measured campus deployment, marginal causal avoided emissions, certified abatement or a carbon credit. Source lineage proves correspondence to separately trusted snapshot bytes, not that the provider's physical measurements are true. Historic actual-publication latency/revisions remain unarchived.
-
-See [complete evaluation](docs/COMPETITION_EVALUATION.md), [raw 122-day results](experiments/competition_v2/daily_results.csv), [paired AI ablation](experiments/competition_v2/paired_forecast_ablation.json), [source-lineage verification](docs/LINEAGE_VERIFICATION.md) and [original 24-day evaluation](docs/EVALUATION.md).
-
-## Offline judge backup
-
-Open **[offline/index.html](offline/index.html)** directly in a modern browser. It requires no Python, Node, wallet, registration, API or Internet. Four recorded days and policy comparisons are interactive; sliders replay stored dispatch, not a new solve. It demonstrates original-hash tampering and source-value forgery even after rehashing.
-
-The offline browser check reconstructs pinned CI/radiation/PV/load/tariff values and energy balance. It explicitly does not replace the complete independent Python forecast, job and SoC verifier. On-chain status remains NOT CHECKED offline. A hosted Next.js build also serves the same backup at /offline/index.html.
-
-## Reproduce full-data acquisition and experiments
+**2. Start everything:**
 
 ```powershell
-.\.venv\Scripts\python.exe scripts/discover_sources.py
-.\.venv\Scripts\python.exe scripts/fetch_neso.py --year 2025
-.\.venv\Scripts\python.exe scripts/fetch_neso.py --year 2026 --ci-only --through 2026-10-13
-.\.venv\Scripts\python.exe scripts/fetch_openmeteo.py
-.\.venv\Scripts\python.exe scripts/fetch_pvgis.py --year 2023
-.\.venv\Scripts\python.exe scripts/build_snapshot.py
-.\.venv\Scripts\python.exe scripts/profile_sources.py
-.\.venv\Scripts\python.exe scripts/validate_sources.py --require-bulk --write-manifest
-.\.venv\Scripts\python.exe scripts/train_models.py
-.\.venv\Scripts\python.exe scripts/run_benchmark.py --days 24
-.\.venv\Scripts\python.exe scripts/make_demo_fixture.py
-.\.venv\Scripts\python.exe scripts/smoke_test.py
+extremeproof\.venv\Scripts\python -m extremeproof.scripts.stack      # Windows
+```
+```sh
+extremeproof/.venv/bin/python -m extremeproof.scripts.stack          # macOS / Linux
 ```
 
-On Unix replace `.\.venv\Scripts\python.exe` with `.venv/bin/python`. `scripts/setup.ps1 -DownloadData` or `sh scripts/setup.sh --download-data` prepares the core 2025 datasets. 2026 and UKPN are optional separate commands. Acquisition caches responses, verifies checksums, implements bounded retry/backoff and timeouts, and records failures rather than inventing successful downloads. Diagnostic plotting, Parquet and DuckDB conversion operate on the cached normalized records.
+Wait until the terminal prints `web    http://127.0.0.1:3000`, then open **http://127.0.0.1:3000**. Keep the terminal open; `Ctrl+C` stops everything. Ports used: 3000 (web), 8545 (chain), 8600 (hub), 8601–8602 (providers).
 
-The source audit is read-only unless `--write-manifest` is explicitly requested. `validate_sources.py` validates the shared fixture on a fresh clone; `--require-bulk` also requires all downloaded artifacts. A missing full dataset is visible, never silently reported as present. Retraining and re-evaluation require the full download, while the four-day demo uses the distributed source and portable-model release bundle.
+**3. Use it.** Click one of the three ready-made cases (*A heatwave that pays*, *Sources disagree*, *Too little data*). One click signs a real agreement on the local chain and plays the whole summer in under a minute: weekly releases, both providers' reports, one refused attack and the settlement. Then run the other attacks in step 5 and the verifier in step 6. Or design a rule in step 2 and sign it party by party in step 3.
 
-## Verify evidence independently
+The chain clock starts on 1 May 2021 (simulated) so summers 2021–2026 can be locked before they begin. A ready-made case rolls the local chain back by itself; **Reset demo chain** does it by hand.
 
-V2 evidence has four separate layers: **Integrity**, **Source Lineage**, **Physical Validity**, and **On-chain Attestation**. Full offline VERIFIED requires the first three; on-chain verification is a separate receipt read, never inferred from a matching hash.
-
-```powershell
-.\\.venv\\Scripts\\python.exe scripts/verify_evidence.py data/sample/evidence.json --digest 0xTRUSTED_EXPECTED_SHA256
-```
-
-The standalone verifier imports no backend and uses only the Python standard library. It independently reconstructs raw snapshot timestamps, actual CI, past-only features/model inference, radiation alignment, forecast/outcome PV, declared synthetic load/tariff, immediate baseline, physical constraints and KPI arithmetic. The **separate trusted release** data/trust/source_anchors.v1.json pins original upstream/model bytes; a report cannot nominate new hashes as its own trust root.
-
-Self-contained blobs use bounded deterministic gzip+base64 transport; SHA256 always covers the original uncompressed bytes. Missing required sources/model/pins return INCOMPLETE. Missing optional current local copies are labeled NOT_LOCALLY_CHECKED, while valid embedded original bytes can still be reconstructed. Legacy v1 remains readable as INTEGRITY_ONLY / LEGACY_UNVERIFIED; preserved sample is data/sample/evidence.v1.json.
-
-Use a trusted original digest or on-chain commitment. The forgery demo deliberately rehashes zero-CI inputs and valid arithmetic: Integrity and Physical Validity pass, **Source Lineage rejects**. This distinction is the repair, not a claim that hashing authenticates a meter.
-
-Canonical JSON remains the disclosed GridProof format, not RFC 8785. The registry preserves exact site/time/category scope, authorized revocation/replacement and linked history; it does not prove site ownership or globally prevent overlapping claims.
-
-See [verification details](docs/LINEAGE_VERIFICATION.md), [deployment preparation](docs/PUBLIC_DEPLOYMENT.md) and [chain demo/history](docs/CHAIN_DEMO.md).
-
-## Tests
-
-```powershell
-.\scripts\check.ps1
-# With the local demo running; Windows uses installed Microsoft Edge:
-npm --prefix frontend run test:e2e
-```
+**Check a bundle yourself** (standard-library Python 3.9+, works offline):
 
 ```sh
-sh scripts/check.sh
-# Install Chromium for Playwright once on Linux/macOS:
-cd frontend
-npx playwright install chromium
-npm run test:e2e
+python verify.py sources-disagree.zip                      # 42/42 checks passed
+python verify.py <bundle> --rpc http://127.0.0.1:8545      # also re-read the live chain
+python verify.py <bundle> --refetch                        # compare with NOAA and Open-Meteo today
 ```
 
-Tests exercise DST settlement conversion, source integrity and missingness, no future feature/weather leakage, feasible and infeasible deadlines, energy conservation, terminal SoC, battery exclusivity, shared charger caps, batch contiguity, solver failure/time limits, canonical tampering, independently reconstructed arithmetic, duplicate registry scopes, authorization, replacement history, wrong-chain/RPC handling and the browser workflow. [Execution worklog](docs/WORKLOG.md) records actual pass counts and verification limits.
+The bundles and `verify.py` are downloadable from step 6 of both editions, and in [extremeproof/web/public/recorded/](extremeproof/web/public/recorded).
 
-The upgraded Windows release passed **91 Python/data tests, 32 contract/bridge tests and 6 browser tests**, plus the production build and TypeScript checks. `scripts/test_offline_copy.py` checks four days with ignored downloads/pickle/runtime absent and external network denied; pinned original source snapshots and portable trained trees remain deliberately distributed. A separate clean Python environment was installed from the pinned lockfile. Exact fresh-clone results and retained failures are recorded in [validation](docs/VALIDATION.md).
+**Static edition.** The online page runs steps 1–2 in the browser. Steps 3–6 replay three agreements recorded from the local stack, with their bundles. It is built by [.github/workflows/pages.yml](.github/workflows/pages.yml) (`EP_EDITION=static npx next build` in `extremeproof/web`).
 
-## Repository and submission
+## How it works
 
-The original implementation specification and architecture assets remain at the root. Bulk downloads, processed databases, trained binary models, local-chain state, runtime evidence and dependency directories are gitignored. The attributed release now also includes pinned original CI/weather snapshots and portable JSON model trees for independent offline reconstruction. Their upstream licences and attribution remain applicable.
+```mermaid
+flowchart LR
+  subgraph Before["Before the season (signed)"]
+    H[History to 31 Dec, pinned by sha256]
+    R[Rule + 122 daily thresholds per source<br/>+ contract terms]
+  end
+  subgraph During["During and after the season"]
+    N[NOAA GHCN-Daily] --> PA[Provider A: station]
+    O[Open-Meteo ERA5] --> PA
+    O --> PB[Provider B: ERA5]
+  end
+  T[TriggerAgreement + SeasonRecord<br/>escrow, spells computed on chain]
+  H & R -->|fingerprint signed by fund, cooperative, checker| T
+  PA -->|daily readings + evidence digest| T
+  PB -->|daily readings + evidence digest| T
+  T -->|share both support| Pay[Paid during / after the season]
+  T -->|share neither supports| Back[Returned to the fund]
+  T -->|difference only| Dispute[Unanimous vote or signed fallback]
+  V[verify.py] -.recomputes everything, checks the day log.-> T
+```
 
-[Architecture](docs/ARCHITECTURE.md) · [source attribution](ATTRIBUTION.md) · [competition conflicts](docs/COMPETITION_RULES.md) · [4:35 English demo script](docs/DEMO_SCRIPT.md) · [submission description](docs/SUBMISSION_DESCRIPTION.md) · [submission checklist](docs/SUBMISSION_CHECKLIST.md).
+| Part | What it is |
+|---|---|
+| `climate/` | Standard-library Python engine: ETCCDI calendar-day percentiles (5-day window, Hyndman–Fan type 8), Zhang et al. (2005) bootstrap for in-base years, TX90p, WSDI, seasonal hot spells; gap filling fitted only on years before the season. Checked against xclim 0.58 during development. |
+| `contracts/` | Solidity 0.8.28, Hardhat 3. `TriggerAgreement`: three-party lock, escrow, payout ladder, quorum, release, dispute, fallback. `SeasonRecord`: append-only daily readings, checked against the signed threshold fingerprint, spells and missing/filled counts computed on chain, every day folded into a keccak log. |
+| `providers/` | One FastAPI process per data source with its own key. Refuses a spec whose hash or thresholds differ from what is on chain; posts newly published days weekly, the rest after the season with an evidence digest. Season fetch simulated from the pinned download by default; `EP_LIVE_FETCH=1` downloads it from NOAA and Open-Meteo. |
+| `server/hub.py` | Stores specs and assembles public verification bundles. No authority over money. |
+| `verifier/verify.py` | Independent re-implementation (percentiles, gap filling, spells, canonical hashing, Keccak) sharing no code with the engine. Checks every executed term against the signed text, every provider, every day against the on-chain log, and the settlement. |
+| `ml/` | Frozen protocol and evaluation of LightGBM gap filling against three baselines, judged on trigger verdicts. |
+| `web/` | Next.js 16, hand-built SVG charts; live edition (local chain) and static edition. |
 
-The displayed public deadline is **October 25, 2026, 22:00 Asia/Taipei**. The Rules/submit-window conflict remains UNRESOLVED in the latest requirements audit. Eligibility and submission-window contradictions remain recorded; personal eligibility and authenticated submission availability require the entrant's review. The local prototype is prepared without public upload, paid deployment or contest submission. The public repository, recorded video and optional hosting remain publication steps.
+### Why a blockchain
 
-Original code: [MIT](LICENSE). Upstream datasets retain their own terms and attribution.
+The verdict is public arithmetic; anyone with the rule and the data can recompute it. The chain adds what recomputation cannot:
+
+- **One version of the rule, fixed before the season.** A signature shows who signed a text, not that no other text was signed. One ordered public record of the fingerprint, locked before the season, does.
+- **The money is already there and moves by rule.** The deposit is escrowed at lock. The share both records support is released without anyone's approval; the fund cannot hold it back, the community cannot claim more.
+- **The contract, not a provider, decides whether the heat counted.** Thresholds are fixed by the signed fingerprint, posted days cannot change, and the contract computes the spell. A provider vouches only for its readings, which anyone can compare with the publisher.
+
+It does not make data true. A provider's post proves which bytes it used, not that the publisher served them; two sources and `--refetch` reduce that risk, they do not remove it. If every party already trusts one institution, a database and signatures are enough.
+
+## Reproduce the numbers
+
+From the repository root, with `extremeproof\.venv\Scripts\python` (Windows) or `extremeproof/.venv/bin/python`:
+
+| Command | Writes |
+|---|---|
+| `python -m extremeproof.scripts.reproduce_facts` | every number in [FACTS.md](extremeproof/docs/FACTS.md) → `docs/facts.json` |
+| `python -m extremeproof.scripts.rule_finder` | rule-finder outcomes and one-day hinge counts → `experiments/rule_finder.json` |
+| `python -m extremeproof.scripts.compare_relief` | station-only / ERA5-only / two-source comparison → `experiments/decision_comparison.json` |
+| `python -m extremeproof.scripts.inseason` | weekly in-season release, 14 stations, 2021–2025 → `experiments/inseason_release.json` |
+| `python -m extremeproof.scripts.region_scan` | source verdicts at 14 stations → `experiments/region_scan.json` |
+| `python -m extremeproof.ml.evaluate` | gap-filling evaluation → `ml/report.json` |
+| `python -m extremeproof.scripts.demo_flow --site antalya --year 2024` | one full agreement on the local chain, without the browser |
+
+## Data and licences
+
+| Data | Source | Terms |
+|---|---|---|
+| GHCN-Daily, 14 stations | NOAA NCEI ([readme](https://www.ncei.noaa.gov/pub/data/ghcn/daily/readme.txt)) | No licence text; citation requested (Menne et al. 2012, doi:10.7289/V5D21VHZ) |
+| ERA5 / ERA5-Land daily, 1950–2026-09 | [Open-Meteo historical API](https://open-meteo.com/en/docs/historical-weather-api) (Copernicus C3S / ECMWF) | CC BY 4.0 |
+| Index definitions | [ETCCDI](https://etccdi.pacificclimate.org/list_27_indices.shtml) | Public definitions |
+
+URL, retrieval time and sha256 of every file: [data/manifest.json](extremeproof/data/manifest.json). `scripts/fetch_data.py` re-downloads and re-pins them. Code: MIT ([LICENSE](LICENSE)).
+
+## Limitations
+
+- Adaptation, not mitigation: it does not reduce emissions. Pre-arranged relief, not insurance.
+- Observed heat only, no forecast. Money follows the heat by about a week (assumed 5-day publication lag plus weekly checks).
+- Parties, providers, DEMO money and the chain clock are simulated on one machine. No real users; not deployed to a public network.
+- The demo's season fetch is cut from the same October 2026 download as the pinned history. Publisher revisions between signing and settlement are not modelled.
+- The two providers are not fully independent: provider A fills station gaps with ERA5, provider B's source.
+- Payment frequency is calibrated on 30 past summers with few events; the finder shows how many payments hinge on one day, it does not forecast.
+- The 40 / 70 / 100 % ladder is an editable example, not calibrated to loss data.
+- Daily maximum temperature only. Station records are not homogenised; ERA5 before the late 1970s rests on fewer observations.
+
+## Repository map
+
+```
+extremeproof/
+  climate/      engine.py, sources.py, fill.py, trigger.py, archive.py, specs.py
+  contracts/    TriggerAgreement.sol, SeasonRecord.sol, DemoToken.sol, deploy scripts
+  providers/    service.py      one process per data source
+  server/       hub.py          spec registry and verification bundles
+  verifier/     verify.py       standalone, standard library only
+  ml/           protocol.json, evaluate.py, REPORT.md
+  scripts/      setup, stack (start everything), reproduction scripts
+  web/          Next.js app; public/recorded/ holds the recorded runs
+  experiments/  outputs of the reproduction scripts
+  data/         raw/ (pinned files), manifest.json, stations.json
+  docs/         FACTS.md, DEVPOST.md, VIDEO_SCRIPT.md
+```

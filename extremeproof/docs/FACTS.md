@@ -2,8 +2,6 @@
 
 Every number below is recomputed by `python -m extremeproof.scripts.reproduce_facts`
 from the files pinned in `data/manifest.json` and written to `docs/facts.json`.
-Where an earlier planning note disagreed with the recomputation, the
-recomputed value is used and the difference is listed at the end.
 
 ## Antalya station (GHCN-Daily TUM00017300)
 
@@ -26,7 +24,7 @@ Rule: 1 Jun–30 Sep, at least 6 consecutive days with TX above the calendar-day
 percentile of the base period (centred 5-day window, type-8 quantile). Missing days
 break a spell; nothing is filled. Bootstrapped results apply the Zhang et al. (2005)
 procedure to years inside the base period (triggered when at least half of the replicates trigger).
-The engine reproduces xclim 0.58 to 1e-9 (`tests/test_engine_vs_xclim.py`).
+During development the engine's percentiles, TX90p, WSDI, spells and bootstrap matched xclim 0.58 to within 1e-9 on this station (with gaps) and ERA5.
 
 | Source / base | Years triggered, 1966–2025 |
 |---|---|
@@ -71,11 +69,3 @@ data, so completeness has to be checked station by station.
   NOAA/NCEI disclaim liability. Downloaded without an account.
 - **Open-Meteo**: API data under CC BY 4.0; the free API is non-commercial only (<10,000 calls/day).
   Reanalysis from the Copernicus Climate Change Service (ERA5, ERA5-Land). No API key.
-
-## Corrections to the planning note
-
-| Planning note | Recomputed |
-|---|---|
-| ERA5 with 1961–1990 triggers in 2001, 2008, 2011, 2015, 2024; none of these under 1991–2020 | 2001 does not trigger under either base (longest spell 5 days). 2008, 2011, 2015 trigger only under 1961–1990. 2024 triggers under both (14-day spell). |
-| 180 Mediterranean stations cover 1961–2024 | 191 with the definition above; the note's definition is unknown |
-| 40 heatwave events in 60 years | 23 (ERA5, 1961–1990 base) or 18 (1991–2020 base) qualifying spells in 1966–2025 under the rule above |

@@ -22,6 +22,17 @@ ROOT = Path(__file__).resolve().parents[1]
 YEARS = range(2021, 2026)  # summers after the 1991-2020 base period can be settled by a spec
 
 
+def summary(rows):
+    paid = [r for r in rows if r.get("final_share_bps")]
+    total = sum(r["final_share_bps"] for r in paid)
+    early = sum(min(r["released_in_season_bps"], r["final_share_bps"]) for r in paid)
+    return {
+        "sites": sorted({r["site"] for r in rows}),
+        "summers_with_payment_agreed_by_both": len(paid), "share_of_agreed_payout_released_before_october": round(early / total, 3) if total else None,
+        "first_release_months": {m: sum(1 for r in paid if (r.get("first_release") or "")[5:7] == m) for m in ("06", "07", "08", "09")},
+    }
+
+
 def main():
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     rows = []
@@ -49,20 +60,20 @@ def main():
                 check += timedelta(days=7)
             rows.append({"site": site, "year": year, "final_share_bps": final_bps, "released_in_season_bps": released,
                          "first_release": first})
-    paid = [r for r in rows if r.get("final_share_bps")]
-    total = sum(r["final_share_bps"] for r in paid)
-    early = sum(min(r["released_in_season_bps"], r["final_share_bps"]) for r in paid)
+    # The headline covers the stations in Türkiye; the same replay abroad is reported beside it.
+    home = summary([r for r in rows if SITES[r["site"]]["country"] == "TR"])
     out = {
         "schema": "extremeproof.inseason.v1", "years": [YEARS.start, YEARS.stop - 1], "rule": "graded, p90 of 1991-2020, 6+ days, quantile-mapped gaps",
         "publication_lag_days": PUBLICATION_LAG_DAYS, "check_every_days": 7,
-        "summers_with_payment_agreed_by_both": len(paid), "share_of_agreed_payout_released_before_october": round(early / total, 3) if total else None,
-        "first_release_months": {m: sum(1 for r in paid if (r.get("first_release") or "")[5:7] == m) for m in ("06", "07", "08", "09")},
+        **home,
+        "outside_turkiye": summary([r for r in rows if SITES[r["site"]]["country"] != "TR"]),
         "rows": rows,
         "scope": "Retrospective replay on pinned final data with an assumed 5-day publication lag; data revisions are not modelled.",
     }
+    paid = home["summers_with_payment_agreed_by_both"]
     dest = ROOT / "experiments" / "inseason_release.json"
     dest.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
-    print(f"{len(paid)} summers where both records support a payment; "
+    print(f"Türkiye: {paid} summers where both records support a payment; "
           f"{out['share_of_agreed_payout_released_before_october']:.0%} of that payout released before 1 October; "
           f"first release by month {out['first_release_months']}; wrote {dest}")
 

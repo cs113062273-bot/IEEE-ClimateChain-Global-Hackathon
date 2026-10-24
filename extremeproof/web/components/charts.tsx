@@ -429,3 +429,113 @@ export function Matrix({
     </div>
   );
 }
+
+/** One bar per year, highlighted where it reaches `line`; dashed means for the two 30-year halves. */
+export function YearBars({
+  years,
+  values,
+  line,
+  lineLabel,
+  unit,
+  ariaLabel,
+  halves,
+}: {
+  years: number[];
+  values: (number | null)[];
+  line: number;
+  lineLabel: string;
+  unit: string;
+  ariaLabel: string;
+  halves?: { from: number; to: number; label: string }[];
+}) {
+  const [ref, W] = useWidth<HTMLDivElement>();
+  const [hover, setHover] = useState<number | null>(null);
+  const [table, setTable] = useState(false);
+  const m = { l: 40, r: 14, t: 12, b: 28 };
+  const H = 220;
+  const iw = W - m.l - m.r;
+  const ih = H - m.t - m.b;
+  const hi = Math.max(line + 2, ...values.filter((v): v is number => v !== null));
+  const yt = niceTicks(0, hi, 4);
+  const y1 = Math.max(hi, yt[yt.length - 1]);
+  const bw = iw / years.length;
+  const x = (i: number) => m.l + i * bw;
+  const y = (v: number) => m.t + ih - (v / y1) * ih;
+  const mean = (from: number, to: number) => {
+    const vs = years.map((yr, i) => (yr >= from && yr <= to ? values[i] : null)).filter((v): v is number => v !== null);
+    return vs.length ? vs.reduce((a, b) => a + b, 0) / vs.length : null;
+  };
+  const onMove = (e: React.PointerEvent<SVGRectElement>) => {
+    const r = (e.currentTarget as SVGRectElement).getBoundingClientRect();
+    setHover(Math.max(0, Math.min(years.length - 1, Math.floor(((e.clientX - r.left) / r.width) * years.length))));
+  };
+  return (
+    <div>
+      <div className="legend" aria-hidden>
+        <span><i className="key-dot" style={{ background: "var(--series-2)", borderRadius: 2 }} />{lineLabel}</span>
+        <span><i className="key-dot" style={{ background: "var(--axis)", borderRadius: 2 }} />shorter</span>
+        {halves && <span><i className="key-line" style={{ background: "var(--ink-2)" }} />30-year average</span>}
+      </div>
+      <div className="chart-wrap" ref={ref}>
+        <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={ariaLabel} tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowRight") setHover((h) => Math.min(years.length - 1, (h ?? -1) + 1));
+            else if (e.key === "ArrowLeft") setHover((h) => Math.max(0, (h ?? years.length) - 1));
+            else if (e.key === "Escape") setHover(null);
+          }}
+          onBlur={() => setHover(null)}>
+          {yt.map((v) => (
+            <g key={v}>
+              <line x1={m.l} x2={W - m.r} y1={y(v)} y2={y(v)} stroke="var(--grid)" strokeWidth={1} />
+              <text x={m.l - 6} y={y(v) + 4} textAnchor="end" fontSize={11} fill="var(--muted)" style={{ fontVariantNumeric: "tabular-nums" }}>{v}</text>
+            </g>
+          ))}
+          <text x={4} y={m.t + 2} fontSize={11} fill="var(--muted)" dominantBaseline="hanging">{unit}</text>
+          {values.map((v, i) =>
+            v === null ? null : (
+              <rect key={years[i]} x={x(i) + bw * 0.15} y={y(v)} width={Math.max(1, bw * 0.7)} height={m.t + ih - y(v)} rx={Math.min(2, bw * 0.2)}
+                fill={v >= line ? "var(--series-2)" : "var(--axis)"} opacity={hover === null || hover === i ? 1 : 0.75} />
+            ),
+          )}
+          <line x1={m.l} x2={W - m.r} y1={y(line)} y2={y(line)} stroke="var(--series-2)" strokeWidth={1} strokeDasharray="2 3" />
+          {halves?.map((h) => {
+            const v = mean(h.from, h.to);
+            const i0 = years.indexOf(h.from);
+            const i1 = years.indexOf(h.to);
+            return v === null || i0 < 0 || i1 < 0 ? null : (
+              <g key={h.label}>
+                <line x1={x(i0)} x2={x(i1) + bw} y1={y(v)} y2={y(v)} stroke="var(--ink-2)" strokeWidth={2} />
+                <text x={x(i0) + 4} y={y(v) - 5} fontSize={11} fill="var(--ink-2)">{h.label}: {v.toFixed(1)} {unit}</text>
+              </g>
+            );
+          })}
+          <line x1={m.l} x2={W - m.r} y1={m.t + ih} y2={m.t + ih} stroke="var(--axis)" strokeWidth={1} />
+          {years.map((yr, i) => (yr % 10 === 0 ? (
+            <text key={yr} x={x(i) + bw / 2} y={m.t + ih + 16} fontSize={11} fill="var(--muted)" textAnchor="middle">{yr}</text>
+          ) : null))}
+          <rect x={m.l} y={m.t} width={iw} height={ih} fill="transparent" onPointerMove={onMove} onPointerDown={onMove} onPointerLeave={() => setHover(null)} />
+        </svg>
+        {hover !== null && (
+          <div className="tooltip" style={{ left: x(hover) > W * 0.6 ? x(hover) - 170 : x(hover) + 14, top: 8 }} role="status">
+            <div className="tt-title">Summer {years[hover]}</div>
+            <div className="tt-row"><span>{values[hover] === null ? "no data" : `${values[hover]} ${unit}`}</span></div>
+          </div>
+        )}
+      </div>
+      <button className="table-toggle" onClick={() => setTable((t) => !t)} aria-expanded={table}>
+        {table ? "Hide table" : "Show as table"}
+      </button>
+      {table && (
+        <div className="table-scroll">
+          <table className="data-table">
+            <caption className="sr-only">{ariaLabel}</caption>
+            <thead><tr><th>Summer</th><th>{unit}</th></tr></thead>
+            <tbody>
+              {years.map((yr, i) => <tr key={yr}><td>{yr}</td><td>{values[i] ?? "–"}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+}

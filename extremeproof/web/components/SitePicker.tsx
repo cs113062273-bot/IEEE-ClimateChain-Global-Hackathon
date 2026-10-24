@@ -1,5 +1,5 @@
 "use client";
-import { SITES } from "@/lib/sites";
+import { COUNTRY, SITES } from "@/lib/sites";
 
 const featured = SITES.filter((s) => s.featured);
 const others = SITES.filter((s) => !s.featured);
@@ -18,10 +18,14 @@ export function SitePicker({ site, setSite, label }: { site: string; setSite: (s
       </div>
       <select aria-label={`${label}: other stations`} className={isOther ? "active" : ""} value={isOther ? site : ""} onChange={(e) => e.target.value && setSite(e.target.value)}>
         <option value="">{SITES.length - featured.length} more stations…</option>
-        {others.map((s) => (
-          <option key={s.id} value={s.id}>
-            {s.name}
-          </option>
+        {Object.entries(COUNTRY).map(([code, country]) => (
+          <optgroup key={code} label={country}>
+            {others.filter((s) => s.country === code).map((s) => (
+              <option key={s.id} value={s.id}>
+                {s.name}
+              </option>
+            ))}
+          </optgroup>
         ))}
       </select>
     </div>

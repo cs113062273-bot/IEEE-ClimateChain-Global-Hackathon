@@ -28,6 +28,11 @@ SITES = {
     "mersin": {"id": "mersin", "name": "Mersin", "country": "TR", "station": "TUM00017340"},
     "adana": {"id": "adana", "name": "Adana", "country": "TR", "station": "TUW00033308"},
     "iskenderun": {"id": "iskenderun", "name": "İskenderun", "country": "TR", "station": "TUM00017370"},
+    # The same engine outside Türkiye, where summer clocks are also UTC+3.
+    "athens": {"id": "athens", "name": "Athens", "country": "GR", "station": "GR000016716"},
+    "larissa": {"id": "larissa", "name": "Larissa", "country": "GR", "station": "GR000016648"},
+    "bucharest": {"id": "bucharest", "name": "Bucharest", "country": "RO", "station": "ROE00108889"},
+    "sofia": {"id": "sofia", "name": "Sofia", "country": "BG", "station": "BUM00015614"},
 }
 
 

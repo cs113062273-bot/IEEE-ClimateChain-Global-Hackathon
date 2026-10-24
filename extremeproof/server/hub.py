@@ -20,6 +20,7 @@ import shutil
 import tempfile
 import urllib.request
 import zipfile
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
@@ -175,6 +176,79 @@ def snapshot(contract, aid):
                "evidence_digest": "0x" + e["args"]["evidenceDigest"].hex(), "is_final": e["args"]["isFinal"]}
               for e in contract.events.DaysPosted().get_logs(from_block=0, argument_filters={"agreementId": aid})]
     return agreement, [p.lower() for p in providers], reports, events
+
+
+@app.get("/api/agreements/{aid}/resume")
+def resume_agreement(aid: int):
+    """Read-only recovery. Browser storage is only a pointer, never the money or verdict."""
+    if aid < 1:
+        raise HTTPException(404, "unknown agreement")
+    w3, dep, contract = chain()
+    if aid >= contract.functions.nextId().call():
+        raise HTTPException(404, "agreement no longer exists; the demo chain may have been reset")
+    agreement, _, reports, _ = snapshot(contract, aid)
+    spec = get_spec(agreement["spec_hash"])
+    providers = {}
+    warnings = []
+    for url in PROVIDERS:
+        try:
+            h = get_json(url + "/health")
+            r = reports.get(h["address"].lower())
+            if not r:
+                continue
+            entry = {}
+            if r["is_final"]:
+                entry["report"] = {"verdict": r["verdict"], "outcome": {1: True, 2: False}.get(r["verdict"]),
+                                   "reason": "", "longest_spell": r["longest_spell"],
+                                   "evidence_digest": r["evidence_digest"]}
+            if r["posted"] or r["is_final"]:
+                try:
+                    ev = get_json(f"{url}/evidence/{aid}")["evidence"]
+                    if "0x" + verify_mod.sha256_hex(verify_mod.canonical(ev)) != r["evidence_digest"]:
+                        raise ValueError("provider evidence fingerprint differs from the chain")
+                    entry["evidence"] = ev
+                    if "report" in entry:
+                        entry["report"]["reason"] = ev.get("reason", "")
+                except (OSError, ValueError) as e:
+                    entry["error"] = f"Evidence unavailable: {e}. Reload to retry before verification."
+            providers[h["source"]] = entry
+        except OSError:
+            warnings.append(f"Provider at {url} is unavailable; retry recovery when it is running.")
+
+    events = []
+    for abi in contract.abi:
+        if abi.get("type") != "event":
+            continue
+        key = next((x["name"] for x in abi["inputs"] if x["name"] in ("id", "agreementId")), None)
+        if key:
+            events.extend(contract.events[abi["name"]]().get_logs(from_block=0, argument_filters={key: aid}))
+    events.sort(key=lambda e: (e["blockNumber"], e["logIndex"]))
+    grouped = {}
+    releases = []
+    for event in events:
+        tx = "0x" + event["transactionHash"].hex()
+        entry = grouped.setdefault(tx, {"events": [], "text": []})
+        name, a = event["event"], event["args"]
+        entry["events"].append(name)
+        if name == "DaysPosted":
+            entry["text"].append(f"Provider posted {a['count']} days; contract hot spell {a['longestSpell']} days")
+        elif name == "Settled":
+            entry["text"].append(f"{'During season' if a['how'] == 3 else 'Settlement'}: {a['paid'] / 100:,.2f} DEMO paid, {a['refunded'] / 100:,.2f} returned")
+        else:
+            entry["text"].append(name)
+    log = []
+    for tx, entry in grouped.items():
+        receipt = w3.eth.get_transaction_receipt(tx)
+        timestamp = w3.eth.get_block(receipt["blockNumber"])["timestamp"]
+        log.append({"t": timestamp, "text": "; ".join(entry["text"]),
+                    "tx": {"hash": tx, "block": receipt["blockNumber"], "gas": receipt["gasUsed"], "events": entry["events"]}})
+    for event in events:
+        if event["event"] == "Settled" and event["args"]["how"] == 3:
+            timestamp = w3.eth.get_block(event["blockNumber"])["timestamp"]
+            releases.append({"date": datetime.fromtimestamp(timestamp, timezone(timedelta(hours=3))).date().isoformat(),
+                             "amount": str(event["args"]["paid"])})
+    return {"spec": spec, "hash": agreement["spec_hash"], "providers": providers, "log": log,
+            "releases": releases, "warnings": warnings, "chain_id": w3.eth.chain_id, "contract": dep["TriggerAgreement"]}
 
 
 def build_bundle(aid):

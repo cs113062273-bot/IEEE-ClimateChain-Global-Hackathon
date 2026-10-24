@@ -1,5 +1,7 @@
 "use client";
-import { SITES } from "@/lib/sites";
+import { IN_TURKIYE, SITES } from "@/lib/sites";
+
+const ABROAD = SITES.filter((s) => s.country !== "TR");
 
 const STAGES = [
   {
@@ -34,7 +36,7 @@ const STAGES = [
 
 const CHANGES: [string, string, string][] = [
   ["Who decides whether the heat counted?", "The paying side, from one record and its own calculation", "The contract: named providers post the daily readings from public records named in advance, and it compares each with the threshold signed before the season"],
-  ["Can the rule change after the heatwave?", "A signature shows who signed, not that no other version exists", "One fingerprint on chain; the contract refuses a different rule once locked"],
+  ["Can the rule change after the heatwave?", "A signature shows who signed, not that no other version exists", "One fingerprint per agreement on chain; the contract refuses a different rule once locked"],
   ["What if two records disagree?", "Not visible: one source was chosen in advance", "Shown summer by summer before signing; afterwards only the difference between them is disputed, the agreed part is paid at once"],
   ["Is the money there when the rule is met?", "Paid after the payer approves", "Escrowed at lock; released only by the rule, the parties together or the fallback"],
   ["Can the community check the result?", "Only if the payer shares its model and data", "Anyone can rerun the verifier on the published bundle"],
@@ -62,11 +64,12 @@ export function HowItWorks() {
         </ol>
         <details className="how-changes">
           <summary><h3>What changes for the people the money is for: five questions, before and after</h3></summary>
+          <p className="note">Comparison with an illustrative fund that computes one record and approves payments manually. Existing parametric platforms also automate payouts; this table is not a claim about every alternative.</p>
           <table>
             <thead>
               <tr>
                 <th scope="col"><span className="sr-only">Question</span></th>
-                <th scope="col">One record, computed by the payer</th>
+                <th scope="col">Example: a manually operated fund</th>
                 <th scope="col">ExtremeProof</th>
               </tr>
             </thead>
@@ -84,7 +87,7 @@ export function HowItWorks() {
         <div className="how-impact" aria-label="Real-world impact">
           <h3>Real-world impact</h3>
           <p className="callout impact-headline">
-            <strong>Money during the heatwave, not months after it.</strong> Replaying 2021–2025 at our 10 Turkish stations under the default rule: in the 19
+            <strong>Relief during the season, as published readings qualify.</strong> Replaying 2021–2025 at our {IN_TURKIYE.length} Turkish stations under the default rule: in the 19
             summers where both records supported a payment, <strong>96% of that money would have been released before the season ended</strong>, in 10 of
             them by the end of July. Weekly checks, assuming data are published 5 days late; pinned final data, revisions not modelled.
           </p>
@@ -109,9 +112,10 @@ export function HowItWorks() {
             <div className="fact">
               <strong>How it scales</strong>
               <p className="small">
-                The rule needs only a station ID and a grid point: GHCN-Daily and ERA5 are free and global, so the same engine runs for any place with a station
-                record, as the 10-station scan shows. One agreement is a handful of transactions; checking it is one standard-library Python file. Adaptation, not
-                mitigation: it does not cut emissions, it makes heat relief arrive by a rule people can check.
+                The rule needs only a station ID and a grid point: GHCN-Daily and ERA5 are free and global. The same code runs unchanged at {ABROAD.length} stations in
+                Greece, Romania and Bulgaria next to the {IN_TURKIYE.length} in Türkiye (step 2, regional scan), and any of them can be signed and settled. One
+                agreement is a handful of transactions; checking it is one standard-library Python file. Adaptation, not mitigation: it does not cut emissions, it
+                makes heat relief arrive by a rule people can check.
               </p>
             </div>
           </div>

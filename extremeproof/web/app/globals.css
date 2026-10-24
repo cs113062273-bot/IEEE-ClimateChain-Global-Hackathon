@@ -395,6 +395,7 @@ button.link { border: 0; background: none; padding: 0; color: var(--accent); cur
 .region-bar i.thin { background: var(--hatch); }
 .region-count { font-size: 13px; }
 .region-legend { display: flex; flex-wrap: wrap; gap: 14px; }
+.region-abroad { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border); }
 .region-table tr.no-normal td, .region-table tr.no-normal th { background: var(--surface-2); }
 .log .what { display: block; }
 .log .tx { display: block; font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 1px; overflow-wrap: anywhere; }
@@ -464,3 +465,16 @@ button.link { border: 0; background: none; padding: 0; color: var(--accent); cur
 .comparison-detail[open] > summary { margin-bottom: 12px; }
 .ladder-edit span { display: block; font-size: 13.5px; }
 .ladder-edit input { width: 4.2em; margin: 2px 4px; }
+
+/* One agreement's money: paid, still held, and returned remain distinct. */
+.agreement-funds { display: grid; gap: 10px; margin-top: 12px; padding: 16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); }
+.agreement-funds h3 { font-size: 20px; }
+.funds-values { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 12px; margin: 0; font-variant-numeric: tabular-nums; }
+.funds-values dt { font-size: 12px; color: var(--ink-2); }
+.funds-values dd { margin: 2px 0 0; font-size: 17px; font-weight: 650; }
+.funds-values dt i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; }
+.agreement-funds .paid { background: var(--good); }
+.agreement-funds .held { background: var(--warning); }
+.agreement-funds .back { background: var(--hatch); }
+.agreement-funds .escrow { background: var(--series-1); }
+.agreement-funds .unfunded { background: var(--axis); }

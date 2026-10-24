@@ -66,7 +66,7 @@ function DecisionBrief({ d, rule, setRule, seasons, year, setYear, onReview }: {
         {paid.length ? ` pay in ${paid.join(", ")}` : ""}{paid.length && refunded.length ? ";" : ""}{refunded.length ? ` refund in ${refunded.join(", ")}` : ""}{clear.length ? "." : " none."}
       </span></li>
       {contested.map((s) => <li key={s.year}><span className="brief-tag warn">Records disagree</span><span>
-        <strong>{s.year}:</strong> station {days(s.a)}, ERA5 {days(s.b)}; the rule needs {rule.minSpell}. A station-only rule would silently {decisionText(s.policies.station).toLowerCase()}, an ERA5-only rule would {decisionText(s.policies.era5).toLowerCase()}.
+        <strong>{s.year}:</strong> station {days(s.a)}, ERA5 {days(s.b)}; the rule needs {rule.minSpell}. A station-only rule would {decisionText(s.policies.station).toLowerCase()}, an ERA5-only rule would {decisionText(s.policies.era5).toLowerCase()}.
         {s.policies.dual.paidNowCents ? ` Both support ${units(s.policies.dual.paidNowCents)} DEMO, paid at once; only ${units(s.policies.dual.contestedCents)} is in question.` : ""}{" "}
         <button className="link" onClick={() => inspectSummer(s.year, setYear)} aria-label={`Show summer ${s.year} below`}>Inspect {s.year}</button>
       </span></li>)}
@@ -96,7 +96,7 @@ function DecisionBrief({ d, rule, setRule, seasons, year, setYear, onReview }: {
 function PaymentUse() {
   return <details className="comparison-method"><summary>What is the payment for?</summary><div className="stack">
     <p><strong>Example design, no partner yet:</strong> a heat-relief payment into a farmers' cooperative's hardship fund, which the cooperative distributes to
-      members under its own rules: the share both records support arrives during the heatwave (for shade, water, cooling and lost working days), the rest
+      members under its own rules: the share both records support can arrive during the summer (for shade, water, cooling and lost working days), the rest
       after the season, when heat damage to the harvest shows.</p>
     <p><strong>A different use: income protection during heat.</strong> SEWA's heat insurance for informal women workers in India addresses wages lost during extreme heat.
       Its design draws on members' experiences and health expertise, not just weather records

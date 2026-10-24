@@ -1,10 +1,11 @@
 "use client";
 import { useMemo, useState } from "react";
-import { LineChart } from "./charts";
+import { LineChart, YearBars } from "./charts";
 import { SitePicker } from "./SitePicker";
 import { dayIndex, doy, seasonDates, verdict, type SiteData } from "@/lib/rule";
 
 const RECENT = [2021, 2022, 2023, 2024, 2025, 2026];
+const MIN_SPELL = 6; // the default rule's minimum hot spell
 
 export function Story({ data, site, setSite }: { data: Record<string, SiteData>; site: string; setSite: (s: string) => void }) {
   const d = data[site];
@@ -23,11 +24,19 @@ export function Story({ data, site, setSite }: { data: Record<string, SiteData>;
     const diffs = season.map((k) => (d.thresholds["era5|1991-2020|90"][k - 1] ?? 0) - (d.thresholds["era5|1961-1990|90"][k - 1] ?? 0));
     const mean = diffs.reduce((a, b) => a + b, 0) / diffs.length;
     const warmer = diffs.filter((x) => x > 0).length;
-    const rule = { variant: "era5" as const, percentile: 90 as const, minSpell: 6, maxMissing: 0, maxFilled: 0, onDispute: "refund" as const };
+    const rule = { variant: "era5" as const, percentile: 90 as const, minSpell: MIN_SPELL, maxMissing: 0, maxFilled: 0, onDispute: "refund" as const };
     const flips = d.years
       .filter((y) => y <= 2025)
       .filter((y) => verdict(d, { ...rule, base: "1961-1990" }, y).state !== verdict(d, { ...rule, base: "1991-2020" }, y).state);
-    return { mean, warmer, total: diffs.length, flips };
+    // Sixty summers against one fixed line: the longest run above the 1961–1990 hot line (ERA5).
+    // Years inside the base period use the median bootstrap replicate, as the engine does.
+    const years = d.years.filter((y) => y <= 2025);
+    const spells = years.map((y) => {
+      const v = verdict(d, { ...rule, base: "1961-1990" }, y);
+      return v.state === "nodata" ? null : Math.round(v.payoutSpell ?? v.longest ?? 0);
+    });
+    const count = (a: number, b: number) => years.filter((y, i) => y >= a && y <= b && (spells[i] ?? 0) >= rule.minSpell).length;
+    return { mean, warmer, total: diffs.length, flips, years, spells, early: count(1966, 1995), late: count(1996, 2025) };
   }, [d]);
 
   return (
@@ -106,6 +115,25 @@ export function Story({ data, site, setSite }: { data: Record<string, SiteData>;
             </div>
           </div>
         </div>
+      </div>
+      <div className="card">
+        <h3>
+          Sixty summers in {d.site.name}: the longest run of unusually hot days, against one fixed line
+        </h3>
+        <p className="note" style={{ marginBottom: 6 }}>
+          ERA5, days above the 1961–1990 calendar-day 90th percentile. A run of {MIN_SPELL} or more days happened in <strong>{facts.early} of 30 summers in
+          1966–1995</strong> and <strong>{facts.late} of 30 in 1996–2025</strong>. A relief rule calibrated on the past pays more often as the climate
+          warms, so the normal, the line and the expected frequency are signed together.
+        </p>
+        <YearBars
+          years={facts.years}
+          values={facts.spells}
+          line={MIN_SPELL}
+          lineLabel={`${MIN_SPELL}+ days in a row`}
+          unit="days"
+          ariaLabel={`Longest run of days above the 1961–1990 90th percentile in ${d.site.name}, each summer 1966–2025, ERA5`}
+          halves={[{ from: 1966, to: 1995, label: "1966–95" }, { from: 1996, to: 2025, label: "1996–2025" }]}
+        />
       </div>
       <p className="callout">
         Climate is the long-run statistics of weather in a place. ExtremeProof computes exactly that — this place's own 30-year normal and its hottest days —

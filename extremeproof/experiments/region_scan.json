@@ -22,7 +22,51 @@
     "placesWithConflict": 6,
     "recentOpen": 3
   },
+  "outside_turkiye": {
+    "usable": 3,
+    "noNormal": [
+      "Sofia"
+    ],
+    "decidable": 180,
+    "contested": 27,
+    "placesWithConflict": 3,
+    "recentOpen": 2
+  },
+  "all_stations": {
+    "usable": 9,
+    "noNormal": [
+      "İzmir",
+      "Konya",
+      "Mersin",
+      "Adana",
+      "Sofia"
+    ],
+    "decidable": 538,
+    "contested": 73,
+    "placesWithConflict": 9,
+    "recentOpen": 5
+  },
   "rows": [
+    {
+      "id": "athens",
+      "name": "Athens",
+      "station": "GR000016716",
+      "baseCoverage": 809,
+      "noNormal": false,
+      "history": {
+        "total": 60,
+        "first": 1966,
+        "contested": 15,
+        "thin": 0
+      },
+      "recent": {
+        "2021": "pay",
+        "2022": "dispute (disagreement)",
+        "2023": "dispute (disagreement)",
+        "2024": "dispute (disagreement)",
+        "2025": "pay"
+      }
+    },
     {
       "id": "iskenderun",
       "name": "İskenderun",
@@ -97,6 +141,46 @@
       },
       "recent": {
         "2021": "pay",
+        "2022": "refund",
+        "2023": "pay",
+        "2024": "pay",
+        "2025": "pay"
+      }
+    },
+    {
+      "id": "larissa",
+      "name": "Larissa",
+      "station": "GR000016648",
+      "baseCoverage": 998,
+      "noNormal": false,
+      "history": {
+        "total": 60,
+        "first": 1966,
+        "contested": 7,
+        "thin": 0
+      },
+      "recent": {
+        "2021": "pay",
+        "2022": "refund",
+        "2023": "pay",
+        "2024": "pay",
+        "2025": "pay"
+      }
+    },
+    {
+      "id": "bucharest",
+      "name": "Bucharest",
+      "station": "ROE00108889",
+      "baseCoverage": 999,
+      "noNormal": false,
+      "history": {
+        "total": 60,
+        "first": 1966,
+        "contested": 5,
+        "thin": 0
+      },
+      "recent": {
+        "2021": "dispute (disagreement)",
         "2022": "refund",
         "2023": "pay",
         "2024": "pay",
@@ -222,9 +306,29 @@
         "2024": "dispute (missing)",
         "2025": "dispute (missing)"
       }
+    },
+    {
+      "id": "sofia",
+      "name": "Sofia",
+      "station": "BUM00015614",
+      "baseCoverage": 452,
+      "noNormal": true,
+      "history": {
+        "total": 60,
+        "first": 1966,
+        "contested": 0,
+        "thin": 60
+      },
+      "recent": {
+        "2021": "dispute (missing)",
+        "2022": "dispute (missing)",
+        "2023": "dispute (missing)",
+        "2024": "dispute (missing)",
+        "2025": "dispute (missing)"
+      }
     }
   ],
-  "audited_source_verdicts_2021_2025": 100,
+  "audited_source_verdicts_2021_2025": 140,
   "input_sha256": {
     "antalya": "bd09a15fa2d50137aadcad56b4621aae7a3c2aa6167d458c0f9dc10ef0a18718",
     "mugla": "c70ef99d7616a02f9dc4152a6a16ca5e5c0ba6023bc54ef48d89e170be4c72dd",
@@ -235,7 +339,11 @@
     "konya": "6da85eea2df4afee275600d08f63885444f52015ab11e2c197b077aca8544881",
     "mersin": "f1caafdac4729b61802946744b1bc4382322e1ce57182c5a870184473022467f",
     "adana": "feeb58d326efe19493bf9e5efcde8fc1ab75d00bc2fd346b6628dae18fa9d57f",
-    "iskenderun": "71a978b463fa763212175bee041ee3c3d028967d3795949d088e784d2bed6bff"
+    "iskenderun": "71a978b463fa763212175bee041ee3c3d028967d3795949d088e784d2bed6bff",
+    "athens": "99ec600dbe25f3ce9942285908221864f24376c368680a94d48bb64f8e93b83d",
+    "larissa": "6564bc89de7b113edc4991a94d9cbc9a4117d43255adcc21516c91d1a8cffd78",
+    "bucharest": "d15bf4e95e9c6eaa08492e6ad6aeef2fdb17acbf89b0ba4c50ff7d2170e06ffc",
+    "sofia": "cfa6c29abc2df4bfc506df481fe51864e614dc68324582d7ba3ae84981103ce2"
   },
   "scope": "Exploratory scan over summers already seen; shows where the choice of record changes the decision, not which record is right. 1966-2025 counts include bootstrapped base-period years from the precomputed tables."
 }

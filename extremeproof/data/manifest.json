@@ -1,5 +1,57 @@
 {
   "files": {
+    "data/raw/era5/BUM00015614_era5.json": {
+      "bytes": 769465,
+      "citation": "Weather data by Open-Meteo.com (https://open-meteo.com/); Hersbach et al. (2020) ERA5; Munoz Sabater (2019) ERA5-Land; Copernicus Climate Change Service.",
+      "licence": "CC BY 4.0 (Open-Meteo API data); free API is for non-commercial use only, <10,000 calls/day. Underlying reanalysis: Copernicus Climate Change Service (C3S) / ECMWF.",
+      "licence_url": "https://open-meteo.com/en/licence",
+      "retrieved_utc": "2026-10-23T19:44:16Z",
+      "sha256": "5d0e886aa6fd4c2077c4973c0ec398399330f07a44405648c996eb2843141322",
+      "source": "Open-Meteo historical API, model=era5",
+      "station": "BUM00015614",
+      "station_name": "Sofia",
+      "terms_url": "https://open-meteo.com/en/terms",
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=42.695&longitude=23.406&start_date=1950-01-01&end_date=2026-09-30&daily=temperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum&timezone=Europe%2FIstanbul&models=era5"
+    },
+    "data/raw/era5/GR000016648_era5.json": {
+      "bytes": 773431,
+      "citation": "Weather data by Open-Meteo.com (https://open-meteo.com/); Hersbach et al. (2020) ERA5; Munoz Sabater (2019) ERA5-Land; Copernicus Climate Change Service.",
+      "licence": "CC BY 4.0 (Open-Meteo API data); free API is for non-commercial use only, <10,000 calls/day. Underlying reanalysis: Copernicus Climate Change Service (C3S) / ECMWF.",
+      "licence_url": "https://open-meteo.com/en/licence",
+      "retrieved_utc": "2026-10-23T19:41:04Z",
+      "sha256": "87984ac509dac98611e15114c72a2912aef363d3a4ec07ca43c5c4a14e9c2559",
+      "source": "Open-Meteo historical API, model=era5",
+      "station": "GR000016648",
+      "station_name": "Larissa",
+      "terms_url": "https://open-meteo.com/en/terms",
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=39.65&longitude=22.45&start_date=1950-01-01&end_date=2026-09-30&daily=temperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum&timezone=Europe%2FIstanbul&models=era5"
+    },
+    "data/raw/era5/GR000016716_era5.json": {
+      "bytes": 776195,
+      "citation": "Weather data by Open-Meteo.com (https://open-meteo.com/); Hersbach et al. (2020) ERA5; Munoz Sabater (2019) ERA5-Land; Copernicus Climate Change Service.",
+      "licence": "CC BY 4.0 (Open-Meteo API data); free API is for non-commercial use only, <10,000 calls/day. Underlying reanalysis: Copernicus Climate Change Service (C3S) / ECMWF.",
+      "licence_url": "https://open-meteo.com/en/licence",
+      "retrieved_utc": "2026-10-23T19:39:29Z",
+      "sha256": "47b61ffc75cdd9072e76e1e44c3a8f0c0d7fcc28965b7a69ceb8610e5a0864f0",
+      "source": "Open-Meteo historical API, model=era5",
+      "station": "GR000016716",
+      "station_name": "Athens",
+      "terms_url": "https://open-meteo.com/en/terms",
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=37.9&longitude=23.75&start_date=1950-01-01&end_date=2026-09-30&daily=temperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum&timezone=Europe%2FIstanbul&models=era5"
+    },
+    "data/raw/era5/ROE00108889_era5.json": {
+      "bytes": 771078,
+      "citation": "Weather data by Open-Meteo.com (https://open-meteo.com/); Hersbach et al. (2020) ERA5; Munoz Sabater (2019) ERA5-Land; Copernicus Climate Change Service.",
+      "licence": "CC BY 4.0 (Open-Meteo API data); free API is for non-commercial use only, <10,000 calls/day. Underlying reanalysis: Copernicus Climate Change Service (C3S) / ECMWF.",
+      "licence_url": "https://open-meteo.com/en/licence",
+      "retrieved_utc": "2026-10-23T19:42:40Z",
+      "sha256": "4a4ec4d70b16966f704c80820ba1ffa220b76c2da0bcec4baba00e6c84bd3725",
+      "source": "Open-Meteo historical API, model=era5",
+      "station": "ROE00108889",
+      "station_name": "Bucharest",
+      "terms_url": "https://open-meteo.com/en/terms",
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=44.5167&longitude=26.0831&start_date=1950-01-01&end_date=2026-09-30&daily=temperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum&timezone=Europe%2FIstanbul&models=era5"
+    },
     "data/raw/era5/TU000017240_era5.json": {
       "bytes": 768380,
       "citation": "Weather data by Open-Meteo.com (https://open-meteo.com/); Hersbach et al. (2020) ERA5; Munoz Sabater (2019) ERA5-Land; Copernicus Climate Change Service.",
@@ -259,6 +311,54 @@
       "station_name": "Adana",
       "terms_url": "https://open-meteo.com/en/terms",
       "url": "https://archive-api.open-meteo.com/v1/archive?latitude=37.0&longitude=35.4333&start_date=1950-01-01&end_date=2026-09-30&daily=temperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum&timezone=Europe%2FIstanbul&models=era5_land"
+    },
+    "data/raw/ghcn/BUM00015614.csv": {
+      "bytes": 2654332,
+      "citation": "Menne, M.J. et al. (2012): Global Historical Climatology Network - Daily (GHCN-Daily), Version 3. NOAA National Climatic Data Center. doi:10.7289/V5D21VHZ",
+      "licence": "No explicit licence published; NOAA/NCEI asks for citation (doi:10.7289/V5D21VHZ). Readme and ISO metadata state no use restrictions; electronic downloads are free.",
+      "licence_url": "https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc:C00861",
+      "retrieved_utc": "2026-10-23T19:39:20Z",
+      "sha256": "2bbd8f247c24ae30e63bbcfcba2f7f0b95cd617a56f8c4057e5cba1fb3575ef9",
+      "source": "GHCN-Daily",
+      "station": "BUM00015614",
+      "station_name": "Sofia",
+      "url": "https://www.ncei.noaa.gov/data/global-historical-climatology-network-daily/access/BUM00015614.csv"
+    },
+    "data/raw/ghcn/GR000016648.csv": {
+      "bytes": 3100883,
+      "citation": "Menne, M.J. et al. (2012): Global Historical Climatology Network - Daily (GHCN-Daily), Version 3. NOAA National Climatic Data Center. doi:10.7289/V5D21VHZ",
+      "licence": "No explicit licence published; NOAA/NCEI asks for citation (doi:10.7289/V5D21VHZ). Readme and ISO metadata state no use restrictions; electronic downloads are free.",
+      "licence_url": "https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc:C00861",
+      "retrieved_utc": "2026-10-23T19:39:12Z",
+      "sha256": "47f75ce92e6111888dd97d658fa446f327a2c2f547d96db928746b7927ff926e",
+      "source": "GHCN-Daily",
+      "station": "GR000016648",
+      "station_name": "Larissa",
+      "url": "https://www.ncei.noaa.gov/data/global-historical-climatology-network-daily/access/GR000016648.csv"
+    },
+    "data/raw/ghcn/GR000016716.csv": {
+      "bytes": 3097414,
+      "citation": "Menne, M.J. et al. (2012): Global Historical Climatology Network - Daily (GHCN-Daily), Version 3. NOAA National Climatic Data Center. doi:10.7289/V5D21VHZ",
+      "licence": "No explicit licence published; NOAA/NCEI asks for citation (doi:10.7289/V5D21VHZ). Readme and ISO metadata state no use restrictions; electronic downloads are free.",
+      "licence_url": "https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc:C00861",
+      "retrieved_utc": "2026-10-23T19:39:08Z",
+      "sha256": "43bda003bc23e77f3845daf32f649b4c3a8e8937f8929992859add9144bff7df",
+      "source": "GHCN-Daily",
+      "station": "GR000016716",
+      "station_name": "Athens",
+      "url": "https://www.ncei.noaa.gov/data/global-historical-climatology-network-daily/access/GR000016716.csv"
+    },
+    "data/raw/ghcn/ROE00108889.csv": {
+      "bytes": 4616463,
+      "citation": "Menne, M.J. et al. (2012): Global Historical Climatology Network - Daily (GHCN-Daily), Version 3. NOAA National Climatic Data Center. doi:10.7289/V5D21VHZ",
+      "licence": "No explicit licence published; NOAA/NCEI asks for citation (doi:10.7289/V5D21VHZ). Readme and ISO metadata state no use restrictions; electronic downloads are free.",
+      "licence_url": "https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc:C00861",
+      "retrieved_utc": "2026-10-23T19:39:16Z",
+      "sha256": "1f2a322e6f75ff9627587c5e60cbeb7a85c1f16f3115118ecac4e99480b6e179",
+      "source": "GHCN-Daily",
+      "station": "ROE00108889",
+      "station_name": "Bucharest",
+      "url": "https://www.ncei.noaa.gov/data/global-historical-climatology-network-daily/access/ROE00108889.csv"
     },
     "data/raw/ghcn/TU000017240.csv": {
       "bytes": 3828343,

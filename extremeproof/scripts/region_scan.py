@@ -47,6 +47,19 @@ def browser_scan(sites):
         return json.loads(run.stdout)
 
 
+def group_summary(rows):
+    """The same totals as regionScan() in web/lib/region.ts, for a subset of its rows."""
+    usable = [r for r in rows if not r["noNormal"]]
+    return {
+        "usable": len(usable),
+        "noNormal": [r["name"] for r in rows if r["noNormal"]],
+        "decidable": sum(r["history"]["total"] - r["history"]["thin"] for r in usable),
+        "contested": sum(r["history"]["contested"] for r in usable),
+        "placesWithConflict": sum(1 for r in usable if r["history"]["contested"] > 0),
+        "recentOpen": sum(1 for r in usable if any(x["policies"]["dual"]["outcome"] == "dispute" for x in r["recent"])),
+    }
+
+
 def main():
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # station names on a Windows console
     out = browser_scan(list(SITES))
@@ -70,7 +83,10 @@ def main():
     s = out["scan"]
     result = {
         "schema": "extremeproof.region-scan.v1", "rule": RULE,
-        "summary": {k: s[k] for k in ("usable", "noNormal", "decidable", "contested", "placesWithConflict", "recentOpen")},
+        # The headline counts the stations in Türkiye; the same engine abroad is reported beside it.
+        "summary": group_summary([r for r in s["rows"] if SITES[r["id"]]["country"] == "TR"]),
+        "outside_turkiye": group_summary([r for r in s["rows"] if SITES[r["id"]]["country"] != "TR"]),
+        "all_stations": {k: s[k] for k in ("usable", "noNormal", "decidable", "contested", "placesWithConflict", "recentOpen")},
         "rows": [{k: r[k] for k in ("id", "name", "station", "baseCoverage", "noNormal", "history")}
                  | {"recent": {x["year"]: x["policies"]["dual"]["outcome"] + ("" if x["policies"]["dual"]["outcome"] != "dispute" else f" ({x['policies']['dual']['reason']})")
                                for x in r["recent"]}} for r in s["rows"]],
@@ -82,7 +98,8 @@ def main():
     dest = ROOT / "experiments" / "region_scan.json"
     dest.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"PASS: {checks} source verdicts 2021-2025 agree with raw-data evaluation; wrote {dest}")
-    print(json.dumps(result["summary"], ensure_ascii=False))
+    print("Türkiye", json.dumps(result["summary"], ensure_ascii=False))
+    print("outside Türkiye", json.dumps(result["outside_turkiye"], ensure_ascii=False))
     for r in result["rows"]:
         print(f"{r['name']:<11} {r['station']} base {r['baseCoverage'] / 10:5.1f}%  disagree {r['history']['contested']:>2}  thin {r['history']['thin']:>2}  {r['recent']}")
 

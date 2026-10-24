@@ -7,6 +7,18 @@
   "rule": "graded, p90 of 1991-2020, 6+ days, quantile-mapped gaps",
   "publication_lag_days": 5,
   "check_every_days": 7,
+  "sites": [
+    "adana",
+    "afyon",
+    "antalya",
+    "finike",
+    "iskenderun",
+    "isparta",
+    "izmir",
+    "konya",
+    "mersin",
+    "mugla"
+  ],
   "summers_with_payment_agreed_by_both": 19,
   "share_of_agreed_payout_released_before_october": 0.963,
   "first_release_months": {
@@ -14,6 +26,22 @@
     "07": 4,
     "08": 8,
     "09": 0
+  },
+  "outside_turkiye": {
+    "sites": [
+      "athens",
+      "bucharest",
+      "larissa",
+      "sofia"
+    ],
+    "summers_with_payment_agreed_by_both": 9,
+    "share_of_agreed_payout_released_before_october": 1.0,
+    "first_release_months": {
+      "06": 3,
+      "07": 0,
+      "08": 6,
+      "09": 0
+    }
   },
   "rows": [
     {
@@ -345,6 +373,141 @@
       "final_share_bps": 4000,
       "released_in_season_bps": 4000,
       "first_release": "2025-08-24"
+    },
+    {
+      "site": "athens",
+      "year": 2021,
+      "final_share_bps": 7000,
+      "released_in_season_bps": 7000,
+      "first_release": "2021-08-10"
+    },
+    {
+      "site": "athens",
+      "year": 2022,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "athens",
+      "year": 2023,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "athens",
+      "year": 2024,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "athens",
+      "year": 2025,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 4000,
+      "first_release": "2025-08-03"
+    },
+    {
+      "site": "larissa",
+      "year": 2021,
+      "final_share_bps": 7000,
+      "released_in_season_bps": 7000,
+      "first_release": "2021-08-10"
+    },
+    {
+      "site": "larissa",
+      "year": 2022,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "larissa",
+      "year": 2023,
+      "final_share_bps": 7000,
+      "released_in_season_bps": 7000,
+      "first_release": "2023-08-03"
+    },
+    {
+      "site": "larissa",
+      "year": 2024,
+      "final_share_bps": 10000,
+      "released_in_season_bps": 10000,
+      "first_release": "2024-06-22"
+    },
+    {
+      "site": "larissa",
+      "year": 2025,
+      "final_share_bps": 7000,
+      "released_in_season_bps": 7000,
+      "first_release": "2025-08-03"
+    },
+    {
+      "site": "bucharest",
+      "year": 2021,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "bucharest",
+      "year": 2022,
+      "final_share_bps": 0,
+      "released_in_season_bps": 0,
+      "first_release": null
+    },
+    {
+      "site": "bucharest",
+      "year": 2023,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 4000,
+      "first_release": "2023-08-31"
+    },
+    {
+      "site": "bucharest",
+      "year": 2024,
+      "final_share_bps": 10000,
+      "released_in_season_bps": 10000,
+      "first_release": "2024-06-15"
+    },
+    {
+      "site": "bucharest",
+      "year": 2025,
+      "final_share_bps": 4000,
+      "released_in_season_bps": 4000,
+      "first_release": "2025-06-15"
+    },
+    {
+      "site": "sofia",
+      "year": 2021,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "sofia",
+      "year": 2022,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "sofia",
+      "year": 2023,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "sofia",
+      "year": 2024,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
+    },
+    {
+      "site": "sofia",
+      "year": 2025,
+      "final_share_bps": null,
+      "note": "a provider has too little data"
     }
   ],
   "scope": "Retrospective replay on pinned final data with an assumed 5-day publication lag; data revisions are not modelled."

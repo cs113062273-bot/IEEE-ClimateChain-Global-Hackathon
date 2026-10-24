@@ -1,28 +1,28 @@
+# Python
 .venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
 .ruff_cache/
-.env
-.env.local
-.env.*.local
+
+# Node / Next.js
 node_modules/
 .next/
 out/
 *.tsbuildinfo
-data/raw/
-data/processed/
-data/runtime/
-contracts/artifacts/
-contracts/cache/
-contracts/runtime/
-contracts/coverage/
-frontend/test-results/
-frontend/playwright-report/
-experiments/models/
-experiments/forecast_predictions.csv
+# Written by `next dev`
+extremeproof/web/AGENTS.md
+
+# Local secrets and runtime state
+.env
+.env.local
+.env.*.local
 .runtime/
+.runtime-*/
 *.log
-!docs/validation/*.log
 *.zip
-GridProof_Codex_Starter_2026-10-13/
+# Recorded verification bundles served by the static edition
+!extremeproof/web/public/recorded/*.zip
+
+# Internal working notes
+extremeproof/docs/PRODUCT_REVIEW_*.md

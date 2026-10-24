@@ -33,6 +33,11 @@ SITES = {
     "mersin": {"name": "Mersin", "station": "TUM00017340", "blurb": "Mediterranean coast."},
     "adana": {"name": "Adana", "station": "TUW00033308", "blurb": "Çukurova plain."},
     "iskenderun": {"name": "İskenderun", "station": "TUM00017370", "blurb": "Eastern Mediterranean coast."},
+    # The same engine outside Türkiye, for the regional scan.
+    "athens": {"name": "Athens", "station": "GR000016716", "blurb": "Greece. The Hellenic Red Cross released heatwave relief by a threshold in 2024."},
+    "larissa": {"name": "Larissa", "station": "GR000016648", "blurb": "Thessaly plain, Greece's main farming plain."},
+    "bucharest": {"name": "Bucharest", "station": "ROE00108889", "blurb": "Romania, Bucharest-Băneasa."},
+    "sofia": {"name": "Sofia", "station": "BUM00015614", "blurb": "Bulgaria, about 530 m."},
 }
 BASES = {"1961-1990": (date(1961, 1, 1), date(1990, 12, 31)), "1991-2020": (date(1991, 1, 1), date(2020, 12, 31))}
 PERCENTILES = (90, 95)

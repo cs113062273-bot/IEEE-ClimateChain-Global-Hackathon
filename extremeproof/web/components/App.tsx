@@ -5,10 +5,10 @@ import { Designer } from "./Designer";
 import { RECORDED_CASES, RecordedRuns } from "./RecordedRuns";
 import { RegionScan } from "./RegionScan";
 import { HowItWorks } from "./HowItWorks";
-import { FEATURED, SITES } from "@/lib/sites";
+import { COUNTRY, FEATURED, IN_TURKIYE, SITES } from "@/lib/sites";
 import { Story } from "./Story";
 import { STATIC_EDITION, asset } from "@/lib/edition";
-import { compareSeason } from "@/lib/comparison";
+import { compareSeason, ruleFromSpec } from "@/lib/comparison";
 import { ladderOf, type Rule, type SiteData } from "@/lib/rule";
 
 const DEFAULT_RULE: Rule = { variant: "station_qm", base: "1991-2020", percentile: 90, minSpell: 6, maxMissing: 0, maxFilled: 122, onDispute: "refund", payout: "graded" };
@@ -183,22 +183,22 @@ export function App() {
         <div className="wrap hero">
           <div className="hero-grid">
             <div>
-              <div className="eyebrow">Climate data verification · {SITES.length} stations in Türkiye</div>
+              <div className="eyebrow">Climate data verification · {SITES.length} stations in {new Set(SITES.map((s) => s.country)).size} countries</div>
               <h1>Two weather records disagree. Who decides the heat relief?</h1>
               <p className="lede">
                 A relief fund and a farmers' cooperative fix the rule before summer. As the heat builds, the part of the payment both
-                records already support is released that week; only the difference is ever disputed, and anyone can recheck every step.
+                records already support is released at the next weekly check after publication; only the difference is ever disputed, and anyone can recheck every step.
               </p>
               <p className="hero-stat">
-                <strong>96%</strong> of the relief both records agreed on would have reached people before the season ended — replaying 2021–2025 at 10
-                stations in Türkiye.
+                <strong>96%</strong> of the relief both records agreed on would have been available to the cooperative before the season ended — replaying 2021–2025 at {IN_TURKIYE.length} stations
+                in Türkiye.
               </p>
               <div className="hero-action"><a className="btn" href="#design">Decide a real disagreement →</a></div>
             </div>
             {data && <HeroCase d={data.mugla} onDecide={() => { setSite("mugla"); setRule(DEFAULT_RULE); setYear(2021); }} />}
           </div>
           <dl className="status-row" aria-label="What is real, executed and simulated">
-            <div><dt>Real</dt><dd>GHCN-Daily station and ERA5 records at {SITES.length} stations, 1966–2025; engine cross-checked with xclim</dd></div>
+            <div><dt>Real</dt><dd>GHCN-Daily station and ERA5 records at {SITES.length} stations in {[...new Set(SITES.map((s) => COUNTRY[s.country]))].join(", ")}, 1966–2025; engine cross-checked with xclim</dd></div>
             <div><dt>Executed</dt><dd>Solidity contract that counts the heatwave itself from daily readings posted on chain, releases money during it and disputes only the providers' difference; standalone verifier</dd></div>
             <div><dt>AI tested</dt><dd>LightGBM gap filling missed 3 of 9 heatwaves, so it was not adopted. <a href="#ai-test" onClick={openAiTest}>See the test</a></dd></div>
             <div className="sim"><dt>Simulated</dt><dd>Fund, cooperative, checker, DEMO money, chain clock</dd></div>
@@ -217,7 +217,7 @@ export function App() {
           <p className="note" style={{ marginTop: 8 }}>
             {STATIC_EDITION
               ? "Each case shows a run recorded from the real contract and provider services, with a bundle you can verify yourself."
-              : "Each case writes its rule into step 3. Sign as the three demo parties, one by one or with one click, then replay the summer, settle, attack and verify."}
+              : "Each case signs a real agreement on the local chain and plays the whole summer: weekly releases, both providers' reports, one cheating attempt the contract refuses, and the settlement. Then try the other attacks in step 5 and run the verifier in step 6."}
           </p>
         </div>
         <HowItWorks />
@@ -259,7 +259,8 @@ export function App() {
             </section>
             {STATIC_EDITION
               ? <RecordedRuns selected={recorded} setSelected={setRecorded} data={data} />
-              : <Agreement data={data} site={site} rule={rule} target={target} year={year} setYear={setYear} scenario={scenario} />}
+              : <Agreement data={data} site={site} rule={rule} target={target} year={year} setYear={setYear} scenario={scenario}
+                  onRestore={(spec, savedTarget) => { setSite(spec.site.id); setRule(ruleFromSpec(spec)); setYear(spec.observation_year); setTarget(spec.purpose?.target_return_period_summers ?? savedTarget); }} />}
           </>
         )}
       </main>

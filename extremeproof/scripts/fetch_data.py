@@ -37,6 +37,16 @@ STATIONS = {
     "TUM00017244": "Konya",
     "TUM00017190": "Afyon",
 }
+# The same rule outside Türkiye. Greece, Romania and Bulgaria keep summer time at
+# UTC+3, so the season day is the same local day as in Türkiye. ERA5 only (no
+# ERA5-Land): these stations are not part of the gap-filling evaluation.
+ABROAD = {
+    "GR000016716": "Athens",
+    "GR000016648": "Larissa",
+    "ROE00108889": "Bucharest",
+    "BUM00015614": "Sofia",
+}
+ALL_STATIONS = {**STATIONS, **ABROAD}
 
 GHCN_URL = "https://www.ncei.noaa.gov/data/global-historical-climatology-network-daily/access/{}.csv"
 GHCN_STATIONS_URL = "https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt"
@@ -128,7 +138,7 @@ def main():
         got = download(url, dest, args.refresh)
         pin(manifest, dest, url, got, source="GHCN-Daily station metadata", **GHCN_LICENCE)
 
-    for sid, label in STATIONS.items():
+    for sid, label in ALL_STATIONS.items():
         url = GHCN_URL.format(sid)
         dest = RAW / "ghcn" / f"{sid}.csv"
         got = download(url, dest, args.refresh)
@@ -138,9 +148,9 @@ def main():
 
     coords = station_coords(RAW / "ghcn" / "ghcnd-stations.txt")
     write_station_subset(RAW / "ghcn" / "ghcnd-stations.txt", RAW / "ghcn" / "ghcnd-inventory.txt")
-    for sid, label in STATIONS.items():
+    for sid, label in ALL_STATIONS.items():
         lat, lon = coords[sid]
-        for model in ERA5_MODELS:
+        for model in ERA5_MODELS if sid in STATIONS else ("era5",):
             params = {
                 "latitude": lat, "longitude": lon, "start_date": ERA5_START, "end_date": ERA5_END,
                 "daily": "temperature_2m_max,temperature_2m_min,precipitation_sum",
@@ -169,8 +179,8 @@ def write_station_subset(stations_path, inventory_path):
     out = {}
     for line in stations_path.read_text(encoding="utf-8").splitlines():
         sid = line[0:11]
-        if sid in STATIONS:
-            out[sid] = {"name": STATIONS[sid], "ghcn_name": line[41:71].strip(), "lat": float(line[12:20]),
+        if sid in ALL_STATIONS:
+            out[sid] = {"name": ALL_STATIONS[sid], "ghcn_name": line[41:71].strip(), "lat": float(line[12:20]),
                         "lon": float(line[21:30]), "elev_m": float(line[31:37]), "inventory": {}}
     for line in inventory_path.read_text(encoding="utf-8").splitlines():
         sid = line[0:11]
@@ -187,9 +197,9 @@ def station_coords(path):
     out = {}
     for line in path.read_text(encoding="utf-8").splitlines():
         sid = line[0:11]
-        if sid in STATIONS:
+        if sid in ALL_STATIONS:
             out[sid] = (float(line[12:20]), float(line[21:30]))
-    missing = set(STATIONS) - set(out)
+    missing = set(ALL_STATIONS) - set(out)
     if missing:
         raise SystemExit(f"stations missing from ghcnd-stations.txt: {sorted(missing)}")
     return out

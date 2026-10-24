@@ -5,6 +5,122 @@
     "https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt"
   ],
   "stations": {
+    "BUM00015614": {
+      "elev_m": 531.0,
+      "ghcn_name": "SOFIA",
+      "inventory": {
+        "PRCP": [
+          1952,
+          2025
+        ],
+        "SNWD": [
+          1973,
+          2025
+        ],
+        "TAVG": [
+          1952,
+          2025
+        ],
+        "TMAX": [
+          1952,
+          2025
+        ],
+        "TMIN": [
+          1952,
+          2025
+        ]
+      },
+      "lat": 42.695,
+      "lon": 23.406,
+      "name": "Sofia"
+    },
+    "GR000016648": {
+      "elev_m": 73.0,
+      "ghcn_name": "LARISSA",
+      "inventory": {
+        "PRCP": [
+          1955,
+          2025
+        ],
+        "SNWD": [
+          1982,
+          2019
+        ],
+        "TAVG": [
+          1957,
+          2025
+        ],
+        "TMAX": [
+          1955,
+          2025
+        ],
+        "TMIN": [
+          1955,
+          2025
+        ]
+      },
+      "lat": 39.65,
+      "lon": 22.45,
+      "name": "Larissa"
+    },
+    "GR000016716": {
+      "elev_m": 10.0,
+      "ghcn_name": "HELLINIKON",
+      "inventory": {
+        "PRCP": [
+          1955,
+          2025
+        ],
+        "SNWD": [
+          1992,
+          2025
+        ],
+        "TAVG": [
+          1957,
+          2025
+        ],
+        "TMAX": [
+          1955,
+          2025
+        ],
+        "TMIN": [
+          1955,
+          2025
+        ]
+      },
+      "lat": 37.9,
+      "lon": 23.75,
+      "name": "Athens"
+    },
+    "ROE00108889": {
+      "elev_m": 90.0,
+      "ghcn_name": "BUCURESTI-BANEASA",
+      "inventory": {
+        "PRCP": [
+          1952,
+          2026
+        ],
+        "SNWD": [
+          1973,
+          2025
+        ],
+        "TAVG": [
+          1952,
+          2025
+        ],
+        "TMAX": [
+          1929,
+          2026
+        ],
+        "TMIN": [
+          1929,
+          2026
+        ]
+      },
+      "lat": 44.5167,
+      "lon": 26.0831,
+      "name": "Bucharest"
+    },
     "TU000017240": {
       "elev_m": 997.0,
       "ghcn_name": "ISPARTA",

@@ -7,9 +7,9 @@ export function historyCounts(d: SiteData, rule: Rule) {
   let contested = 0;
   let thin = 0;
   for (const y of past) {
-    const { a, b } = agreementOutcome(d, rule, y);
+    const { a, b, outcome } = agreementOutcome(d, rule, y);
     if (a.state === "nodata" || b.state === "nodata") thin++;
-    else if (a.state !== b.state) contested++;
+    else if (outcome === "dispute") contested++;
   }
   return { total: past.length, first: past[0], contested, thin };
 }

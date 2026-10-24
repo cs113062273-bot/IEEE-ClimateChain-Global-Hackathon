@@ -117,12 +117,12 @@ export function Designer({ d, rule, setRule, year, setYear, onReview, setSite, t
       }),
     },
   ];
-  const flags = outcomes.map((o) => o.a.state !== "nodata" && o.b.state !== "nodata" && o.a.state !== o.b.state);
+  const flags = outcomes.map((o) => o.a.state !== "nodata" && o.b.state !== "nodata" && o.outcome === "dispute");
   const past = years.map((y, i) => [y, outcomes[i]] as const).filter(([y]) => y <= 2025);
   const pays = past.filter(([, o]) => o.outcome === "pay").map(([y]) => y);
   const refunds = past.filter(([, o]) => o.outcome === "refund").length;
   const disputes = past.filter(([, o]) => o.outcome === "dispute").map(([y]) => y);
-  const disagree = past.filter(([, o]) => o.a.state !== "nodata" && o.b.state !== "nodata" && o.a.state !== o.b.state).length;
+  const disagree = past.filter(([, o]) => o.a.state !== "nodata" && o.b.state !== "nodata" && o.outcome === "dispute").length;
   const thin = disputes.length - disagree;
 
   const set = (p: Partial<Rule>) => setRule({ ...rule, ...p });
@@ -195,7 +195,7 @@ export function Designer({ d, rule, setRule, year, setYear, onReview, setSite, t
             };
             return (
               <div className="field ladder-edit">
-                Payout ladder (your own loss estimates)
+                Payout ladder (illustrative shares, not measured losses)
                 {steps.map(([d, b], i) => (
                   <span key={i}>
                     {rule.minSpell + d}+ days:{" "}

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Hex } from "viem";
 import { LineChart, type Band } from "./charts";
 import { Ledger } from "./Ledger";
+import { AgreementFunds } from "./AgreementFunds";
 import { memberSheet } from "@/lib/memberSheet";
 import { purposeBlock, purposeText } from "@/lib/finder";
 import { asset } from "@/lib/edition";
@@ -23,7 +24,6 @@ import {
   sha256Bytes,
   sha256Hex,
   termMismatches,
-  tokenBalance,
   txInfo,
   warpTo,
   write,
@@ -31,7 +31,7 @@ import {
   type Deployment,
   type TxInfo,
 } from "@/lib/chain";
-import { VARIANTS, dayIndex, doy, ladderText, seasonDates, type Rule, type SiteData } from "@/lib/rule";
+import { GRADED_STEPS, VARIANTS, dayIndex, doy, ladderText, seasonDates, type Rule, type SiteData } from "@/lib/rule";
 import { SignedDecisionReview } from "./DecisionReview";
 
 type Src = "station" | "era5";
@@ -57,6 +57,13 @@ interface Draft {
   browserHash: Hex;
   key: string;
 }
+/** One locked agreement, as the season phases need it. */
+interface Phase {
+  dep: Deployment;
+  id: bigint;
+  spec: any;
+  timing: AgreementView["timing"];
+}
 export interface Scenario {
   nonce: number;
   label: string;
@@ -65,6 +72,7 @@ export interface Scenario {
 }
 
 export const SEASONS = [2021, 2022, 2023, 2024, 2025, 2026];
+const RESUME_KEY = "extremeproof-active-agreement-v1";
 const PARTY_INFO: Record<string, { name: string; role: string }> = {
   funder: { name: "Relief fund", role: "Funder · deposits the money" },
   community: { name: "Farmers' cooperative", role: "Represents the people the money is for" },
@@ -183,6 +191,7 @@ export function Agreement({
   year,
   setYear,
   scenario,
+  onRestore,
 }: {
   data: Record<string, SiteData>;
   site: string;
@@ -191,6 +200,7 @@ export function Agreement({
   year: number;
   setYear: (y: number) => void;
   scenario: Scenario | null;
+  onRestore: (spec: any, target: number) => void;
 }) {
   const [dep, setDep] = useState<Deployment | null>(null);
   const [offline, setOffline] = useState<string | null>(null);
@@ -203,9 +213,11 @@ export function Agreement({
   const [attack, setAttack] = useState<{ provider?: any; changeRule?: string }>({});
   const [tamper, setTamper] = useState<Record<string, VerifyResult>>({});
   const [verified, setVerified] = useState<VerifyResult | null>(null);
-  const [bal, setBal] = useState<{ funder: bigint; beneficiary: bigint; escrow: bigint } | null>(null);
   const [log, setLog] = useState<{ t: number; text: string; tx?: TxInfo }[]>([]);
-  const [busy, setBusy] = useState<string | null>(null);
+  const [busy, setBusy] = useState<string | null>("restore");
+  const [recoveryError, setRecoveryError] = useState<string | null>(null);
+  const [recoveryAttempt, setRecoveryAttempt] = useState(0);
+  const recovered = useRef(false);
   const [interimDone, setInterimDone] = useState(false);
   const [releases, setReleases] = useState<{ date: string; amount: bigint }[]>([]);
   const [err, setErr] = useState<string | null>(null);
@@ -218,22 +230,22 @@ export function Agreement({
 
   const stationFill = VARIANTS.find((v) => v.id === rule.variant)?.fill ?? "era5_quantile_map";
   // Everything that goes into the rule text. Any change invalidates an unproposed draft.
-  const draftKey = JSON.stringify({ site, year, rule, stationFill, target });
+  const draftKey = canonicalJson({ site, year, rule: { ...rule, steps: rule.payout === "graded" ? (rule.steps ?? GRADED_STEPS) : null }, stationFill, target });
   // Once proposed, the signed spec is the only source of truth for steps 3-6.
   const spec = draft?.spec ?? null;
   const fixed = id !== null && spec !== null;
   const d = fixed ? data[spec.site.id] : data[site];
   const seasonYear: number = fixed ? spec.observation_year : year;
 
+  // A long run (one-click case) refreshes from a closure made before its agreement existed;
+  // read the id at refresh time so it never shows the previous agreement's money.
+  const idRef = useRef<bigint | null>(null);
+  idRef.current = id;
   const refresh = useCallback(async () => {
     if (!dep) return;
     setNow(await chainTime());
-    if (id !== null) setAg(await readAgreement(dep, id));
-    setBal({
-      funder: await tokenBalance(dep, dep.roles.funder),
-      beneficiary: await tokenBalance(dep, dep.roles.beneficiary),
-      escrow: await tokenBalance(dep, dep.TriggerAgreement),
-    });
+    const current = idRef.current;
+    if (current !== null) setAg(await readAgreement(dep, current));
   }, [dep, id]);
 
   useEffect(() => {
@@ -247,6 +259,60 @@ export function Agreement({
   useEffect(() => {
     refresh().catch(() => undefined);
   }, [refresh]);
+
+  useEffect(() => {
+    if (!dep || recovered.current) return;
+    let cancelled = false;
+    const restore = async () => {
+      setBusy("restore");
+      let saved: any;
+      try { saved = JSON.parse(localStorage.getItem(RESUME_KEY) ?? "null"); }
+      catch { /* Storage unavailable: the live flow remains usable. */ }
+      if (!saved) { recovered.current = true; setBusy(null); return; }
+      try {
+        if (saved.chainId !== dep.chainId || saved.contract.toLowerCase() !== dep.TriggerAgreement.toLowerCase())
+          throw new Error("The saved agreement belongs to a different demo deployment.");
+        if (!data[saved.site]) return; // Wait for this station's table to load.
+        const restored = await hub<any>(`/api/agreements/${saved.id}/resume`);
+        const actual = await readAgreement(dep, BigInt(saved.id));
+        const hash = await sha256Hex(canonicalJson(restored.spec));
+        if (hash !== saved.hash || hash !== restored.hash || hash !== actual.specHash || termMismatches(restored.spec, actual).length)
+          throw new Error("The saved rule does not match the live agreement. The demo chain may have been reset.");
+        if (cancelled) return;
+        onRestore(restored.spec, JSON.parse(saved.key).target);
+        setDraft({ spec: restored.spec, hash, browserHash: hash, key: saved.key });
+        setId(BigInt(saved.id));
+        setAg(actual);
+        setProv({ station: {}, era5: {}, ...restored.providers });
+        setLog(restored.log);
+        setReleases(restored.releases.map((r: any) => ({ date: r.date, amount: BigInt(r.amount) })));
+        const t = await chainTime();
+        if (cancelled) return;
+        setNow(t);
+        setIdx(Math.min(122, Math.max(0, Math.floor((t - actual.timing.windowStart) / DAY))));
+        setInterimDone(t >= actual.timing.windowEnd - 7 * DAY);
+        setNotice(`Restored agreement #${saved.id} from the live chain, including its receipts and provider evidence. Run the verifier again to check it independently.${restored.warnings.length ? " " + restored.warnings.join(" ") : ""}`);
+        setRecoveryError(null);
+        recovered.current = true;
+      } catch (e) {
+        if (!cancelled) setRecoveryError(e instanceof Error ? e.message : String(e));
+      } finally {
+        if (!cancelled) setBusy(null);
+      }
+    };
+    restore();
+    return () => { cancelled = true; };
+    // onRestore changes parent state only after the live state has been checked.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dep, data, recoveryAttempt]);
+
+  useEffect(() => {
+    if (id === null || !draft || !dep) return;
+    try {
+      localStorage.setItem(RESUME_KEY, JSON.stringify({ id: String(id), hash: draft.hash, site: draft.spec.site.id,
+        key: draft.key, chainId: dep.chainId, contract: dep.TriggerAgreement }));
+    } catch { /* No storage: this agreement still works until the page is closed. */ }
+  }, [id, draft, dep]);
 
   // A draft that no longer matches the settings on screen must not be proposed.
   useEffect(() => {
@@ -264,6 +330,7 @@ export function Agreement({
   const run = async (name: string, f: () => Promise<void>) => {
     setBusy(name);
     setErr(null);
+    if (name !== "verify") setVerified(null);
     try {
       await f();
     } catch (e: any) {
@@ -277,6 +344,9 @@ export function Agreement({
   const available = SEASONS.filter((y) => seasonTiming(y).windowStart > now);
 
   const clearAgreement = () => {
+    try { localStorage.removeItem(RESUME_KEY); } catch { /* storage unavailable */ }
+    recovered.current = true;
+    setRecoveryError(null);
     if (timer.current) clearInterval(timer.current);
     setPlaying(false);
     setDraft(null);
@@ -327,7 +397,7 @@ export function Agreement({
 
   // One-click cases from the top of the page.
   useEffect(() => {
-    if (!scenario || !dep) return;
+    if (!scenario || !dep || busy === "restore") return;
     caseKey.current = scenario.readyMade ? draftKey : null;
     clearAgreement();
     document.getElementById("lock")?.scrollIntoView({ behavior: "smooth" });
@@ -346,10 +416,13 @@ export function Agreement({
         return;
       }
       setNotice(rolledBack ? `Demo chain rolled back to 1 May 2021 to replay “${scenario.label}”.` : null);
-      await writeRule();
+      const written = await writeRule();
+      // A ready-made case runs the whole agreement; a reviewed decision stops here for signing.
+      // It always starts a new agreement: `id` in this closure may still name the one just cleared.
+      if (scenario.readyMade && dep.chainId === 31337) await signAndRun(written, null);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scenario?.nonce, dep]);
+  }, [scenario?.nonce, dep, busy === "restore"]);
 
   const submitDraft = async (text: Draft) => {
       if (!dep) throw new Error("The local chain is not connected.");
@@ -395,7 +468,8 @@ export function Agreement({
   const propose = () => run("propose", async () => { if (draft) await submitDraft(draft); });
 
   // Convenience for the LOCAL demo only: execute the same three approvals as
-  // the individual role cards. The signed spec and contract checks are shared.
+  // the individual role cards, then the whole season with the same calls as the
+  // step buttons. The signed spec and contract checks are shared.
   const startDemo = () => run("demo-start", async () => {
     if (!dep || dep.chainId !== 31337) throw new Error("Demo signing is available only on the local development chain.");
     // Replaying a summer the demo clock has passed: roll the local chain back first.
@@ -404,11 +478,17 @@ export function Agreement({
       await hub("/api/reset", {});
       setNotice(`Demo chain rolled back to 1 May 2021 to replay summer ${year}.`);
     }
-    const text = id !== null && draft ? draft : !rollBack && draft?.key === draftKey ? draft : await writeRule();
+    const existing = rollBack ? null : id;
+    await signAndRun(existing !== null && draft ? draft : !rollBack && draft?.key === draftKey ? draft : await writeRule(), existing);
+  });
+
+  const signAndRun = async (text: Draft, existing: bigint | null) => {
+    if (!dep) return;
+    setBusy("demo-start");
     if (text.browserHash !== text.hash) throw new Error("browser fingerprint differs; reload before signing");
     if (await chainTime() >= text.spec.settlement.timing.window_start)
       throw new Error("This summer already started on the demo clock. Reset the demo chain, then start again.");
-    const agreementId = id ?? await submitDraft(text);
+    const agreementId = existing ?? await submitDraft(text);
     let current = await readAgreement(dep, agreementId);
     const differences = termMismatches(text.spec, current);
     if (differences.length) throw new Error("Contract terms differ: " + differences.join(", "));
@@ -423,7 +503,20 @@ export function Agreement({
     await addLog("All three demo roles signed. The deposit is locked; starting the historical replay.");
     document.getElementById("replay")?.scrollIntoView({ behavior: "smooth" });
     play();
-  });
+    const p: Phase = { dep, id: agreementId, spec: text.spec, timing: current.timing };
+    if (current.status === "Locked" && (await chainTime()) < current.timing.windowEnd) {
+      setBusy("interim");
+      await interimPhase(p);
+    }
+    setBusy("report");
+    const reports = await reportPhase(p, { station: {}, era5: {} });
+    if (reports.era5.report) {
+      setBusy("attack");
+      await attackPhase(p);
+    }
+    setBusy("finalize");
+    await finalizePhase(p);
+  };
 
   const approve = (role: string) =>
     run(`approve-${role}`, async () => {
@@ -507,15 +600,19 @@ export function Agreement({
   // During the season: once a week each provider looks at the data already published (5 days behind);
   // if they hold a longer qualifying spell than the chain shows, it posts those days' readings. The
   // contract computes the spell from them; anyone then releases the share both providers' readings support.
-  const interimAll = () =>
-    run("interim", async () => {
-      if (!dep || !draft || id === null || !ag) return;
+  // The phases take the agreement explicitly, so the one-click run can chain them
+  // before React state catches up; the step buttons call the same functions.
+  const phaseOf = (): Phase | null => (dep && draft && id !== null && ag ? { dep, id, spec: draft.spec, timing: ag.timing } : null);
+
+  const interimPhase = async ({ dep, id, spec, timing }: Phase) => {
       let released = BigInt(0);
-      for (let ts = ag.timing.windowStart + 7 * DAY; ts < ag.timing.windowEnd; ts += 7 * DAY) {
+      const currentTime = await chainTime();
+      for (let ts = timing.windowStart + 7 * DAY; ts < timing.windowEnd; ts += 7 * DAY) {
+        if (ts < currentTime) continue;
         await warpTo(ts);
         let any = false;
         for (const p of dep.providers) {
-          const r = await call(`${p.url}/report`, { agreement_id: Number(id), spec: draft.spec, interim: true });
+          const r = await call(`${p.url}/report`, { agreement_id: Number(id), spec, interim: true });
           if (!r.reported) continue;
           any = true;
           await addLog(
@@ -527,7 +624,10 @@ export function Agreement({
         const before = (await readAgreement(dep, id)).paidOut;
         try {
           const rel = await write(dep, "deployer", "release", [id]);
-          const after = (await readAgreement(dep, id)).paidOut;
+          const updated = await readAgreement(dep, id);
+          const after = updated.paidOut;
+          setAg(updated);
+          setNow(await chainTime());
           released += after - before;
           const day = fmtChainDate(await chainTime()).slice(0, 10);
           setReleases((r) => [...r, { date: day, amount: after - before }]);
@@ -538,18 +638,19 @@ export function Agreement({
       }
       if (released === BigInt(0)) await addLog("During the season the two records never both showed a qualifying spell, so nothing was released early.");
       setInterimDone(true);
-    });
+  };
+  const interimAll = () => run("interim", async () => { const p = phaseOf(); if (p) await interimPhase(p); });
 
-  const reportAll = () =>
-    run("report", async () => {
-      if (!dep || !draft || id === null || !ag) return;
-      await warpTo(ag.timing.windowEnd);
+  const reportPhase = async ({ dep, id, spec, timing }: Phase, done: Record<Src, ProviderState>) => {
+      await warpTo(timing.windowEnd);
       await addLog("Season over. Chain clock moved to 1 October (simulated clock).");
-      const next: Record<Src, ProviderState> = { station: {}, era5: {} };
+      const next: Record<Src, ProviderState> = { ...done };
       for (const p of dep.providers) {
+        if (next[p.source].report) continue;
+        next[p.source] = {};
         const name = p.source === "station" ? "Station" : "ERA5";
         try {
-          const r = (next[p.source].report = await call(`${p.url}/report`, { agreement_id: Number(id), spec: draft.spec }));
+          const r = (next[p.source].report = await call(`${p.url}/report`, { agreement_id: Number(id), spec }));
           const ev = (next[p.source].evidence = (await call(`${p.url}/evidence/${id}`)).evidence);
           const fetched = Object.entries(ev.observations as Record<string, { sha256: string }>)
             .map(([k, o]) => `${k === "station" ? "station" : "ERA5"} data ${short(o.sha256)}`)
@@ -566,23 +667,24 @@ export function Agreement({
         }
       }
       setProv(next);
-    });
+      return next;
+  };
+  const reportAll = () => run("report", async () => { const p = phaseOf(); if (p) await reportPhase(p, prov); });
 
-  const providerAttack = () =>
-    run("attack", async () => {
-      if (!dep || id === null) return;
+  const attackPhase = async ({ dep, id }: Phase) => {
       const p = dep.providers.find((x) => x.source === "era5")!;
       const r = await call(`${p.url}/attack/${id}`, {});
       setAttack((a) => ({ ...a, provider: r }));
-      await addLog(`ERA5 provider tried to ${r.attempted} → ${r.accepted ? "ACCEPTED" : "rejected by the contract (" + r.reason + ")"}`);
-    });
+      await addLog(`Attack: the ERA5 provider tried to ${r.attempted} → ${r.accepted ? "ACCEPTED" : "rejected by the contract (" + r.reason + ")"}`);
+  };
+  const providerAttack = () => run("attack", async () => { const p = phaseOf(); if (p) await attackPhase(p); });
 
-  const finalize = () =>
-    run("finalize", async () => {
-      if (!dep || id === null || !draft) return;
+  const finalizePhase = async ({ dep, id }: Phase) => {
       const early = (await readAgreement(dep, id)).paidOut; // released during the season
       const settled = await write(dep, "deployer", "finalize", [id]);
       const a = await readAgreement(dep, id);
+      setAg(a); // show the settlement now, before the run's final refresh
+      setNow(await chainTime());
       const returned = a.amount - a.paidOut - a.contested;
       await addLog(
         a.status === "Paid"
@@ -596,9 +698,10 @@ export function Agreement({
               : `Settled what the data decide: ${[a.paidOut ? `${fmtDemo(a.paidOut)} paid to the cooperative` : "", returned ? `${fmtDemo(returned)} returned to the fund` : ""].filter(Boolean).join(" and ")} at once; only the providers' difference, ${fmtDemo(a.contested)}, goes to dispute.`,
         receiptInfo(dep, settled),
       );
-    });
+  };
+  const finalize = () => run("finalize", async () => { const p = phaseOf(); if (p) await finalizePhase(p); });
 
-  const vote = (role: string, pay: boolean) =>
+  const vote =(role: string, pay: boolean) =>
     run(`vote-${role}`, async () => {
       if (!dep || id === null) return;
       const voted = await write(dep, role, "voteDispute", [id, pay]);
@@ -655,7 +758,8 @@ export function Agreement({
     );
   if (!dep) return <div className="wrap card note">Connecting to the local chain…</div>;
 
-  const reported = Object.values(prov).some((p) => p.report || p.evidence);
+  const reported = Object.values(prov).some((p) => p.report);
+  const allReported = !!prov.station.report && !!prov.era5.report;
   const mismatch = fixed && ag ? termMismatches(spec, ag) : [];
   const liveSettingsDiffer = fixed && draft!.key !== draftKey;
   const goToReplay = () => document.getElementById("replay")?.scrollIntoView({ behavior: "smooth" });
@@ -666,13 +770,13 @@ export function Agreement({
       <strong>{title}</strong>
       <p className="note">{lead}</p>
       <button className="btn" disabled={!!busy} onClick={startDemo}>
-        {busy === "demo-start" ? "Signing demo roles…" : `Sign demo agreement & play summer ${seasonYear}`}
+        {busy === "demo-start" ? "Running the agreement…" : `Sign, run summer ${seasonYear} and settle`}
       </button>
       {err && <p className="err" role="alert">{err}</p>}
     </div>
   );
-  const demoEntry = demoEntryFor("Start with a signed demo agreement",
-    "This button proposes the rule, signs as all three simulated parties and locks the DEMO deposit. Then the summer replay starts.");
+  const demoEntry = demoEntryFor("Run the whole agreement in one click",
+    "Proposes the rule, signs as all three simulated parties and locks the DEMO deposit, then plays the summer: weekly releases, both providers' reports, one cheating attempt and the settlement, every step a real transaction.");
   const evidenceEntry = (title: string, lead: string) => !locked ? demoEntryFor(title, lead) : (
     <div className="next-action">
       <strong>The providers haven't published their results yet</strong>
@@ -693,6 +797,13 @@ export function Agreement({
               signature nothing can change — a different rule needs a new agreement — and the contract refuses to lock once the season has begun.
             </p>
           </div>
+          {busy === "restore" && <p className="callout" role="status">Restoring your agreement from the live chain…</p>}
+          {recoveryError && <div className="callout" role="alert">
+            <strong>Could not restore the previous agreement.</strong><p>{recoveryError}</p>
+            <div className="btn-row"><button className="btn" disabled={!!busy} onClick={() => setRecoveryAttempt((n) => n + 1)}>Retry recovery</button>
+              <button className="btn ghost" disabled={!!busy} onClick={clearAgreement}>Forget saved view & start fresh</button></div>
+            <p className="note">Starting fresh clears this browser's saved view only. It does not reset the chain or move funds.</p>
+          </div>}
           <div className="grid-2">
             <div className="card stack" style={{ gap: 12 }}>
               <div className="controls" style={{ marginBottom: 0 }}>
@@ -760,7 +871,7 @@ export function Agreement({
                   </div>
                   <div className="btn-row" style={{ marginTop: 10 }}>
                     <button className="btn ghost" onClick={() => downloadMemberSheet(draft.spec, draft.hash)}>
-                      Download a summary for members (EN/TR)
+                      Download a summary for members ({(draft.spec.site.country ?? "TR") === "TR" ? "EN/TR" : "EN"})
                     </button>
                     <span className="note">Plain-language page the cooperative can read before its representative signs.</span>
                   </div>
@@ -799,14 +910,7 @@ export function Agreement({
                   <strong>Agreement {id !== null ? `#${id}` : ""}</strong>
                   <span className={`chip ${ag?.status === "Paid" ? "good" : ag?.status === "Disputed" ? "warn" : ""}`}>{ag?.status ?? "not proposed"}</span>
                 </div>
-                {bal && (
-                  <dl className="kv" style={{ marginTop: 8 }}>
-                    <dt>Held by the contract</dt>
-                    <dd>{fmtDemo(bal.escrow)}</dd>
-                    <dt>Cooperative's account</dt>
-                    <dd>{fmtDemo(bal.beneficiary)}</dd>
-                  </dl>
-                )}
+                {ag && id !== null && <AgreementFunds ag={ag} id={id} />}
               </div>
             </div>
           </div>
@@ -817,7 +921,7 @@ export function Agreement({
           )}
           <div className="grid-3" style={{ marginTop: 16 }}>
             <div className="fact">
-              <strong>No two versions of the rule</strong>
+              <strong>One fixed rule per agreement</strong>
               <p className="small">
                 A signature proves who signed a rule, not that they didn't sign a different one for someone else. One public, ordered record of the fingerprint does.
               </p>
@@ -845,11 +949,21 @@ export function Agreement({
             <p>
               The season's data did not exist when the rule was signed. Providers post the daily readings on chain; the contract compares each one
               with the signed threshold for that day and counts the hot spell itself. Days can only be added, never changed, so a spell only grows,
-              and the share both providers' readings support is released that week. After the season each posts the rest of the season, naming
+              and weekly checks release the share both providers' published readings support. After the season each posts the rest of the season, naming
               the exact files it used. Observed data only, no forecast.
             </p>
           </div>
           <div className="card stack" style={{ gap: 10 }}>
+            {busy && busy !== "restore" && <p className="callout" role="status">{
+              busy === "interim" ? `Checking published readings week by week and releasing the agreed share… ${fmtChainDate(now).slice(0, 10)} (simulated clock)`
+              : busy === "report" ? "Both providers are fetching their season data and publishing the remaining readings…"
+              : busy === "finalize" ? "Settling the payment shares from the contract's records…"
+              : busy === "fallback" ? "Applying the fallback signed before the season…"
+              : busy === "attack" ? "The ERA5 provider is trying to post readings against a hot line 2 °C lower than the one signed…"
+              : busy === "demo-start" ? "Signing as the three simulated parties and locking the deposit…"
+              : busy === "prepare" ? "Writing the rule text and its 122 daily thresholds…"
+              : "Reading the agreement and checking its evidence…"
+            }</p>}
             {!locked && demoEntry}
             <div className="btn-row">
               {locked && (
@@ -863,6 +977,7 @@ export function Agreement({
                 ), ERA5 {runLen(erAnom, idx)} days
               </span>
             </div>
+            {!evDays && <p className="note">The station chart shows raw readings, before gap filling. The agreed gap fill appears when the provider publishes its evidence; the contract uses those filled readings.</p>}
             <LineChart
               xs={season}
               upto={locked ? Math.max(idx, 1) : season.length}
@@ -883,13 +998,13 @@ export function Agreement({
                     <button className="btn" onClick={interimAll} disabled={!!busy || interimDone || reported || ag?.status !== "Locked"}>
                       1 · During the season: release as the heat builds
                     </button>
-                    <button className="btn" onClick={reportAll} disabled={!!busy || reported}>
+                    <button className="btn" onClick={reportAll} disabled={!!busy || allReported || ag?.status !== "Locked"}>
                       2 · Providers fetch the season data and report
                     </button>
                     <button className="btn danger" onClick={providerAttack} disabled={!!busy || !prov.era5.report || ag?.status !== "Locked"}>
                       Attack: ERA5 provider lowers the signed hot line by 2 °C
                     </button>
-                    <button className="btn" onClick={finalize} disabled={!!busy || !reported || ag?.status !== "Locked"}>
+                    <button className="btn" onClick={finalize} disabled={!!busy || (!allReported && now <= (ag?.timing.reportDeadline ?? 0)) || ag?.status !== "Locked"}>
                       3 · Settle (anyone can)
                     </button>
                   </div>
@@ -926,25 +1041,12 @@ export function Agreement({
                       </div>
                     );
                   })}
-                  {ag && (["Disputed", "Paid", "Refunded"].includes(ag.status) || ag.paidOut > BigInt(0)) && (() => {
-                    const back = ag.amount - ag.paidOut - ag.contested;
-                    const parts = [
-                      { cls: "paid", label: "paid to the cooperative", v: ag.paidOut },
-                      { cls: "held", label: "in dispute", v: ag.contested },
-                      { cls: "back", label: "back to the fund", v: back },
-                    ].filter((x) => x.v > BigInt(0));
-                    return (
-                      <div className="deposit card" style={{ padding: 12 }} aria-label="The deposit after settlement, read from the contract">
-                        <strong>The {fmtDemo(ag.amount)} deposit, read from the contract{ag.status === "Locked" ? " (season still open)" : ""}</strong>
-                        <div className="deposit-bar">
-                          {parts.map((x) => <i key={x.cls} className={x.cls} style={{ width: `${(Number(x.v) / Number(ag.amount)) * 100}%` }} />)}
-                        </div>
-                        <div className="deposit-key">
-                          {parts.map((x) => <span key={x.cls}><i className={x.cls} />{fmtDemo(x.v)} {x.label}</span>)}
-                        </div>
-                      </div>
-                    );
-                  })()}
+                  {ag && id !== null && <AgreementFunds ag={ag} id={id} />}
+                  {ag && ["Paid", "Refunded", "Disputed"].includes(ag.status) && (
+                    <p className="note">
+                      Next: <a href="#attack">try to cheat it (step 5)</a> · <a href="#verify">check it yourself, without trusting us (step 6)</a>
+                    </p>
+                  )}
                   {attack.provider && (
                     <p className="callout">
                       Attack: {attack.provider.attempted} →{" "}
