@@ -7,6 +7,8 @@ IEEE ClimateChain Global Hackathon 2026 · Track 4: Climate Data & Environmental
 **Try it in the browser:** https://cs113062273-bot.github.io/IEEE-ClimateChain-Global-Hackathon/
 (static edition, no install; for the live chain see [Run it locally](#run-it-locally))
 
+**Watch the demo:** https://youtu.be/VtFjr0pjLpM
+
 ![Muğla 2021: the station saw a 4-day hot spell, ERA5 a 10-day one; under a graded rule 15,000 DEMO goes back at once and only 35,000 is disputed](extremeproof/docs/assets/hero.png)
 
 ## The problem
@@ -83,7 +85,13 @@ python verify.py <bundle> --rpc http://127.0.0.1:8545      # also re-read the li
 python verify.py <bundle> --refetch                        # compare with NOAA and Open-Meteo today
 ```
 
-The bundles and `verify.py` are downloadable from step 6 of both editions, and in [extremeproof/web/public/recorded/](extremeproof/web/public/recorded).
+The bundles and `verify.py` are downloadable from step 6 of both editions, and in [extremeproof/web/public/recorded/](extremeproof/web/public/recorded). To check an included case directly from the repository root:
+
+```sh
+python extremeproof/verifier/verify.py extremeproof/web/public/recorded/sources-disagree.zip
+```
+
+The recorded Muğla case uses the `refund` fallback. The video selects `pay` before signing, so its disputed 35,000 DEMO goes to the cooperative instead. Both outcomes follow the rule chosen for that agreement.
 
 **Static edition.** The online page runs steps 1–2 in the browser. Steps 3–6 replay three agreements recorded from the local stack, with their bundles. It is built by [.github/workflows/pages.yml](.github/workflows/pages.yml) (`EP_EDITION=static npx next build` in `extremeproof/web`).
 
@@ -179,5 +187,5 @@ extremeproof/
   web/          Next.js app; public/recorded/ holds the recorded runs
   experiments/  outputs of the reproduction scripts
   data/         raw/ (pinned files), manifest.json, stations.json
-  docs/         FACTS.md, DEVPOST.md, VIDEO_SCRIPT.md
+  docs/         FACTS.md, facts.json, DEVPOST.md, assets/hero.png
 ```

@@ -26,37 +26,6 @@ const CASES: { label: string; blurb: string; site: string; year: number; rule: P
   },
 ];
 
-function ThemeToggle() {
-  const [t, setT] = useState<string | null>(null);
-  useEffect(() => {
-    try {
-      const s = localStorage.getItem("ep-theme");
-      if (s) {
-        document.documentElement.dataset.theme = s;
-        setT(s);
-      }
-    } catch {
-      /* storage unavailable */
-    }
-  }, []);
-  const next = () => {
-    const dark = t ? t === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const v = dark ? "light" : "dark";
-    document.documentElement.dataset.theme = v;
-    setT(v);
-    try {
-      localStorage.setItem("ep-theme", v);
-    } catch {
-      /* ignore */
-    }
-  };
-  return (
-    <button className="theme-toggle" onClick={next} aria-label="Toggle dark mode">
-      ◐ theme
-    </button>
-  );
-}
-
 function openAiTest(e: React.MouseEvent) {
   const target = document.getElementById("ai-test");
   const details = target?.closest("details");
@@ -176,7 +145,6 @@ export function App() {
             <a href="#attack">5 Attack</a>
             <a href="#verify">6 Verify</a>
           </nav>
-          <ThemeToggle />
         </div>
       </header>
       <main>

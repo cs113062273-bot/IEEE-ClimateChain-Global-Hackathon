@@ -1,76 +1,80 @@
-# ExtremeProof — Devpost submission text
+# ExtremeProof
 
-**Tagline:** Heat relief agreed before the summer, paid by a rule both weather records can check, verifiable by anyone.
+**Track: Climate Data & Environmental Monitoring**
 
-**Links**
-- Source: https://github.com/cs113062273-bot/IEEE-ClimateChain-Global-Hackathon
-- Static demo (no install): https://cs113062273-bot.github.io/IEEE-ClimateChain-Global-Hackathon/
-- Video: _add link_
-
-## Track
-
-**Track 4 — Climate Data & Environmental Monitoring.** The track's problem is "environmental data is fragmented and difficult to verify"; its first suggested build is a climate data verification platform. ExtremeProof verifies the climate statistics behind a heat-relief payment (a place's 30-year normal, its calendar-day thresholds, the hot spells measured against them) and makes the payment follow from data anyone can recompute.
+ExtremeProof makes the climate data behind heat-relief payments transparent and independently verifiable.
 
 ## Inspiration
 
-Climate is the long-run statistics of weather in a place; a heatwave is the hot tail of those statistics. Relief for extremes is increasingly agreed in advance and paid when an index crosses a line. Whether a summer crosses it depends on choices that move money:
+Heatwaves threaten farmers' crops and incomes. But deciding when relief should be paid introduces another problem: different weather records can give different answers.
 
-- **Which record.** Muğla, Türkiye, summer 2021, a summer of forest fires: the weather station counted a 4-day hot spell, the ERA5 reanalysis 10 days.
-- **Which 30 years are normal.** In Muğla the same ERA5 rule flips verdict in 10 summers since 1966 between the 1961–1990 and 1991–2020 normals.
-- **How gaps are filled.** The Antalya station reported 31 of 122 days in summer 2024. Two standard gap fills give a 7-day or a 13-day spell.
+In Muğla, Türkiye, the weather station recorded a four-day hot spell in summer 2021, while ERA5 recorded ten days under the selected rule. With a six-day payment threshold, one record supports a payment and the other does not.
 
-These choices are usually made and computed by the paying side, and the community cannot check them. In 2016 Malawi's drought cover first failed to trigger because the model assumed the wrong maize variety; the payout came months later.
+Which record should decide? How should missing readings be filled? Which years should define “normal”?
+
+ExtremeProof makes these choices visible before anyone signs or deposits money.
 
 ## What it does
 
-Users: a **relief fund** that deposits the money, a **farmers' cooperative** that represents the people it is for, an **independent checker**, and two **data providers** (station record, ERA5).
+A relief fund, farmers' cooperative and independent checker agree on a heat-relief rule before summer.
 
-1. **Climate.** At 14 stations (10 in Türkiye; Athens, Larissa, Bucharest, Sofia), daily maximum temperature against two definitions of "unusually hot", and 60 summers of hot spells against one fixed line: in Muğla a 6+ day spell happened in 9 of 30 summers in 1966–1995 and 19 of 30 in 1996–2025.
-2. **Design the rule by its purpose.** Say how often the community should be paid (about 1 summer in 3, 5 or 10), all-or-nothing or graded (40 / 70 / 100 % of the deposit at 6 / 9 / 12 days), and where unresolved disputes go. The finder compares complete rules on 1996–2025: payment frequency, payments that hinge on one day, deposits held in dispute, and how often the heat met the definition in 1966–95 versus 1996–2025. A decision brief shows what the rule would have done in every summer 2021–2025, and a regional scan applies it at all 14 stations.
-3. **Lock.** The rule, the 122 daily thresholds per source and every contract term become one canonical JSON text and fingerprint. The browser recomputes it; the contract's terms are read back against it. The fund, cooperative and checker sign; the fund's signature escrows the deposit; the contract refuses to lock once the season has started. The cooperative can download a one-page member summary in English and Turkish.
-4. **The contract reads the heat.** Providers post daily readings on chain. The contract checks the thresholds against the signed fingerprint, compares every reading with that day's threshold and counts the spell itself. Days are append-only, so a spell only grows. Weekly, the share both records already support is released: in Antalya 2024, 35,000 DEMO on 15 June and 15,000 on 22 June. After the season the share neither supports returns at once and only the difference is disputed (unanimous vote, or the signed fallback after 30 days). Muğla 2021: 15,000 returned at once, 35,000 disputed instead of all 50,000.
-5. **Try to cheat.** Re-sign with another normal after the season, lower the signed threshold by 2 °C, edit one temperature, flip a verdict, drop the evidence. The contract or the verifier rejects each one, live.
-6. **Verify independently.** Download the bundle (signed rule, pinned history, season data each provider fetched, evidence, chain snapshot) and run one standard-library Python file. It recomputes thresholds and every season day, matches the contract's on-chain day log, checks every executed term against the signed text and checks the settlement. `--refetch` compares the season with what NOAA and Open-Meteo serve today.
+The application guides them through six steps:
 
-## How we built it
+1. **Compare the climate data.** Explore temperatures, missing readings and historical heatwaves at 14 stations across four countries.
+2. **Choose a rule.** Compare payment frequency, payment amounts and disagreements between data sources. Decide in advance what happens if a dispute remains unresolved.
+3. **Sign and fund the agreement.** Review the rule and daily temperature thresholds. Three parties sign the same fingerprint, and the fund deposits DEMO money into escrow before the season starts.
+4. **Follow the summer.** Two providers submit daily readings. The contract counts qualifying hot days and releases the amount both records support. After the season, the amount neither supports returns to the fund. Only the difference enters dispute.
+5. **Try to tamper with it.** Change a threshold, edit a temperature, alter a result or remove evidence. The contract or independent verifier detects the change.
+6. **Verify it yourself.** Download the evidence bundle and run a standalone Python verifier, including an optional check against the local chain.
 
-- **Climate engine** (standard-library Python): ETCCDI calendar-day percentiles (5-day window, Hyndman–Fan type 8), Zhang et al. (2005) bootstrap for in-base years, TX90p, WSDI, seasonal hot spells. Matched xclim 0.58 to within 1e-9 on real station data with gaps.
-- **Data:** GHCN-Daily (NOAA NCEI) and ERA5 / ERA5-Land via Open-Meteo, every file pinned by sha256 with URL and retrieval time. The signed rule pins history to 31 December of the previous year and names where the season will be fetched from.
-- **AI:** LightGBM gap filling for missing station days, evaluated under a protocol frozen before results against three baselines, judged on whether it keeps trigger verdicts right. It had the lowest daily error (0.97 °C vs 1.07 °C) and still missed 3 of 9 heatwaves, so it was **not adopted**; quantile mapping (9 of 9) is the default.
-- **Contracts** (Solidity 0.8.28, Hardhat 3): `TriggerAgreement` (three-party lock, escrow, payout ladder, quorum, in-season release, dispute, fallback) and `SeasonRecord` (daily readings checked against the signed thresholds, spells computed on chain, every day folded into a keccak log). Readings and thresholds are integers in thousandths of a degree. A disputed agreement costs 10 transactions, about 1.7 million gas.
-- **Services:** two provider processes with their own keys and a hub that stores specs and assembles bundles (FastAPI, web3.py).
-- **Verifier:** an independent re-implementation (percentiles, gap filling, spells, canonical hashing, Keccak) sharing no code with the engine.
-- **Web:** Next.js 16 with hand-built SVG charts. A live edition drives the local chain; a static edition on GitHub Pages replays three recorded agreements with their bundles.
+For Muğla 2021, the graded rule returns 15,000 DEMO and holds 35,000 in dispute, instead of holding the entire 50,000.
 
-## Challenges
+## Why use a blockchain?
 
-- Matching xclim exactly: leap-day handling (365 thresholds mapped onto 366 days) and bootstrap year substitution.
-- Station data are thinnest when it matters: Antalya has 48 days of TX in all of 2024. A provider must be able to say "not enough data" without that counting as "no".
-- Pinning only what exists at signing. The season's data do not exist on 1 June, so the rule pins history and the season's source; each provider's report binds the files it actually fetched.
-- Replaying past summers while the contract still enforces "lock before the season": the local chain starts on 1 May 2021 and its clock moves through the season.
+The calculation can be checked without a blockchain. The chain adds a shared record of the rule agreed before summer, signatures from all three parties and funds already held in escrow.
 
-## Accomplishments
+The contract computes heatwave lengths from submitted daily readings and moves money according to the signed terms. Neither side can simply rewrite the agreement after seeing the season's outcome.
 
-- The contract, not a provider, decides whether the heat counted, and the verifier matches its on-chain record day by day.
-- Money moves during the season: replaying 2021–2025 at the 10 Turkish stations, in the 19 summers both records supported a payment, 96 % of that money was released before the season ended, in 10 of them by end of July.
-- A regional finding from public data: with an all-or-nothing rule, station and ERA5 give opposite answers in 46 of 358 decidable summers in Türkiye and 27 of 180 abroad. At 4 of 10 Turkish stations and at Sofia the public station record is too incomplete to define a 1991–2020 normal, which a station-only scheme would only discover after money was promised.
-- Every attack in the demo runs for real against the contract or the verifier.
+## How it was built
 
-## What we learned
+- **Climate data:** NOAA GHCN-Daily station records and ERA5 reanalysis through Open-Meteo. Downloaded files retain their source URLs, retrieval times and SHA-256 hashes.
+- **Climate calculations:** A Python engine computes daily heat thresholds, fills gaps and counts hot spells. Its calculations were cross-checked against xclim.
+- **Smart contracts:** Solidity contracts manage signatures, escrow, daily readings, payments and dispute handling on a local EVM chain, using Hardhat.
+- **Services and interface:** FastAPI provider services, web3.py, and a Next.js interface with TypeScript, React and viem.
+- **Independent verification:** A separate implementation recomputes the climate calculations and settlement. The downloadable verifier needs only Python's standard library.
 
-The "objective" part of a parametric trigger, the climate statistics, hides judgement calls that move real money. Making them explicit, fixed before the season and recomputable matters more than any single model. For triggers the right AI objective is the tail, not the mean.
+## Challenges and lessons learned
 
-## Scalability and adoption
+Missing data must not silently become “no heatwave.” The application distinguishes insufficient evidence from a valid result that does not qualify for payment.
 
-- The rule needs a station ID and a grid point. GHCN-Daily and ERA5 are free and global; the same code runs unchanged at the 4 stations outside Türkiye.
-- One agreement is a handful of transactions; checking it is one Python file.
-- Possible users: Red Cross heatwave protocols that already release money at a threshold (Greece 2024, Kyrgyzstan 2025), relief funds, farm insurance pools and cooperatives that pay on a heat index.
-- Next: rainfall and drought indices (Rx5day, CDD, SPI), a third independent provider and 2-of-3 quorum, public testnet deployment with a decentralised oracle for provider transport, and a pilot with an anticipatory-action programme.
+Another challenge was keeping the signed rule, browser calculations, contract execution and downloadable evidence consistent. The verifier independently checks those connections rather than trusting the interface.
 
-## Built with
+The gap-filling experiment also changed a design decision. In a small evaluation using three complete summers, LightGBM achieved lower average temperature error but missed three of nine heatwaves. Quantile mapping detected all nine, so it became the default. Better average prediction accuracy did not mean better payment decisions.
 
-Python, xclim, LightGBM, FastAPI, web3.py, Solidity, Hardhat, viem, Next.js, TypeScript, GHCN-Daily, ERA5, Open-Meteo, GitHub Pages.
+## Results
 
-## Limits
+In the Antalya 2024 replay, the contract releases 35,000 DEMO on June 15 and another 15,000 on June 22, while summer is still underway.
 
-Adaptation, not mitigation: it does not reduce emissions. Pre-arranged relief, not insurance. Observed heat only, never a forecast. Parties, providers, DEMO money and the chain clock are simulated locally; no real users yet. Provider A fills station gaps with ERA5, provider B's source, so the two are not fully independent. A provider's report proves which bytes it used, not that the publisher served them. The payout ladder is an editable example, not calibrated to loss data. A blockchain does not make data true.
+Across historical replays of 2021–2025 at ten Turkish stations, 96% of the money supported by both records would have been released before the season ended. This result assumes a five-day publication delay and weekly checks. It is a retrospective simulation, not evidence of payments to real farmers.
+
+## Who could use it, and how could it scale?
+
+Potential users include relief funds, farmers' cooperatives and independent organisations checking heat-index payments.
+
+The public browser edition requires no installation. Users can compare rules, inspect recorded agreements and download verification bundles. The full local edition runs the signing and payment workflow.
+
+The same code already supports ten stations in Türkiye and four in Greece, Romania and Bulgaria. Adding locations would require checking data coverage and agreeing on suitable local rules. Member summaries are available in English and Turkish.
+
+## Current limits and next steps
+
+This is a working prototype using real weather data and contracts executed on a local EVM chain. Participants, provider operators, DEMO funds and the chain clock are simulated. There are no real customers yet, and the project has not been deployed to a public network.
+
+The two data sources are not fully independent because ERA5 also fills gaps in station records. Publisher revisions are not modelled, and the example payment ladder is not calibrated to crop losses.
+
+Next steps include adding a third independent source, testing deployment on a public testnet and evaluating the workflow with a relief organisation or cooperative.
+
+## Project links
+
+- Browser demo: https://cs113062273-bot.github.io/IEEE-ClimateChain-Global-Hackathon/
+- Source: https://github.com/cs113062273-bot/IEEE-ClimateChain-Global-Hackathon
+- Video: https://youtu.be/VtFjr0pjLpM

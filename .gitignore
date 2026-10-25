@@ -9,14 +9,16 @@ __pycache__/
 node_modules/
 .next/
 out/
+out-static/
 *.tsbuildinfo
 # Written by `next dev`
 extremeproof/web/AGENTS.md
 
 # Local secrets and runtime state
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+!.env.sample
 .runtime/
 .runtime-*/
 *.log
@@ -24,5 +26,26 @@ extremeproof/web/AGENTS.md
 # Recorded verification bundles served by the static edition
 !extremeproof/web/public/recorded/*.zip
 
+# Local recording media
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.mp3
+*.wav
+*.srt
+*.ass
+*.vtt
+
+# Generated contract artifacts (rebuilt by the setup scripts)
+extremeproof/contracts/artifacts/
+extremeproof/contracts/cache/
+
 # Internal working notes
 extremeproof/docs/PRODUCT_REVIEW_*.md
+extremeproof/docs/VIDEO_SCRIPT.md
+
+# Submission gallery images; the README hero remains tracked
+extremeproof/docs/assets/compare-rules.png
+extremeproof/docs/assets/contract-reads-the-heat.png
